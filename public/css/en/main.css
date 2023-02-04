@@ -1,0 +1,212 @@
+/* Style Code Here */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    line-height: 1.3;
+    font-size: 1em;
+}
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #45454545;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    opacity: .5;
+    cursor: pointer;
+}
+body {
+    height: 74vh;
+}
+ul {
+    list-style: none;
+}
+h1, h2, h3, h4, h5 {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+/* Start Colors */
+:root {
+    --bg-black-900   : #3E4142;
+    --bg-black-100   : #9FACB3;
+    --bg-black-70    : #E3E3E3;
+    --bg-black-50    : #D6E8F0;
+    --text-black-900 : #586266;
+    --text-black-700 : #3E4142;
+}
+body.dark {
+    --bg-black-900: #151515;
+    --bg-black-100: #222222;
+    --bg-black-50: #393939;
+    --text-black-900 : #ffffff;
+    --text-black-700 : #e9e9e9;
+}
+/* End Colors */
+
+/* Start Header */
+header.main {
+    max-width: 100%;
+    padding: 10px 13px;
+    background-color: var(--bg-black-100);
+    font-size: 22px;
+    box-shadow: 1px 1px 6px grey;
+}
+header.main .options {
+    align-items: center;
+}
+header.main .options svg {
+    color: var(--bg-black-900);
+}
+header.main .icons {
+    align-items: center;
+}
+header.main .icons svg {
+    color: var(--bg-black-900);
+    transition: color .3s ease-in-out;
+}
+header.main .icons svg:hover,
+header.main .icons i:hover,
+header.main .icons a:hover {
+    color: var(--bg-black-50);
+}
+header.main .options .drop-down  .name {
+    padding: 0 12px;
+    background-color: var(--text-black-900);
+    border-radius: 5px;
+    transition: background-color .6s ease-in-out;
+}
+header.main .options .drop-down  .name:hover {
+    background-color: rgba(var(--text-black-900), 6);
+}
+header.main .options .container-drop-down-main-header {
+    overflow: hidden;
+    height: 0;
+    opacity: 0;
+    transition: height 0.3ms 400ms, opacity 400ms 0.3ms;
+}
+header.main .options .container-drop-down-main-header.visible {
+    height: auto;
+    opacity: 1;
+    overflow: auto;
+}
+header.main .options ul.drop-down-main-header {
+    background: var(--bg-black-50);
+    padding: 20px;
+    right: 0;
+    top: 42px;
+    width: 150px;
+    box-shadow: 5px 4px 3px lightgrey;
+}
+header.main .options ul.drop-down-main-header:before {
+    content: "";
+    display: block;
+    border-right: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-top: 25px solid var(--bg-black-50);
+    position: absolute;
+    right: 19px;
+    top: -11px;
+    transform: rotate(45deg);
+    background-color: transparent;
+}
+header.main .options ul.drop-down-main-header li {
+    border-bottom: 1px solid #9b9494;
+    width: 100%;
+    font-size: 15px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 5px;
+    transition: .3s;
+    display: flex;
+    align-items: center;
+ }
+header.main .options ul.drop-down-main-header li:last-child {
+    border-bottom: 0;
+    margin: 0;
+}
+header.main .options ul.drop-down-main-header li:hover {
+    background-color: var(--bg-black-100);
+}
+header.main .options ul.drop-down-main-header li svg {
+    margin-right: 10px;
+}
+header.main .options ul.drop-down-main-header li .content {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    display: block;
+    white-space: nowrap;
+}
+header.main .options ul.drop-down-main-header li:last-child .content {
+    padding-bottom: 0;
+}
+
+/* End Header */
+
+/* Start Navigation */
+p.title {
+ color: #777;
+}
+div.body {
+    grid-template-columns: 300px 1fr;
+    height: 94vh;
+}
+@media(max-width: 767px) {
+    div.body {
+        grid-template-columns: 1fr;
+    }
+    .menu-switch {
+        transform: rotate(90deg);
+    }
+}
+nav.main_navigation {
+    text-align: center;
+    background-color: var(--bg-black-70);
+    box-shadow: inset 4px 4px 3px #80808066;;
+}
+nav.main_navigation ul li {
+    padding: 10px;
+    transition: all .3s ease-out;
+    border-radius: 5px;
+    background: rgba(225, 225, 225, 0.13);
+    display: flex;
+    align-items: center;
+}
+nav.main_navigation ul li:hover {
+    background-color: rgba(128, 128, 128, 0.68);
+}
+nav.main_navigation ul li span {
+    font-size: 19px;
+    color: dimgray;
+}
+nav.main_navigation ul li:hover span {
+    color: #eee;
+}
+nav.main_navigation ul li svg {
+    color: var(--bg-black-900);
+    margin-right: 6px;
+}
+nav.main_navigation ul li a {
+    width: 100%;
+}
+/* End Navigation */
+
+/* Start Action View */
+div.action-view {
+    overflow: hidden;
+}
+h1.title-header {
+    font-size: 40px;
+    color: #777;
+}
+/* End Action View */

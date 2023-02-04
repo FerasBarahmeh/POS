@@ -1,0 +1,1 @@
+Files with "template" in their name are the main files for any project

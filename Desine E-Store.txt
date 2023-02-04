@@ -1,0 +1,41 @@
+- Simpile analysis to Store:
+
+
+* Users
+	1) Employees whose work in companies (for him all permissions)
+		
+		1.1:	General Management (has all permissions)
+			- Reports(indebtedness, Alduin, show store and quantities)
+			- store (type products, products)
+			- Category Product
+			- Products
+			- Control users
+			- Suppliers
+			- Client
+			- expenses
+			- Transactions
+
+		1.2 Accountant
+			- Clients 	(Add && Edit)
+			- Suppliers 	(Add && Edit)
+			- Reports		(purchases & sales & expenses)
+			- expenses	(Add expenses, he is can't tack a look main item)
+			- Transactions	(sales)
+		1.3 Storekeeper
+			- Store 		(control Add & delete exchange quantities of items based on invoices)
+			- purchases 	(create new invoice just)
+	2) Store
+		2.1 class
+		2.2 products
+	3) Clients
+	4) Suppliers
+	5) expenses
+		5.1 type expenses
+		5.2 daily expenses
+	6) Reports
+	7) Transactions
+		7.1 purchases
+			7.1.1 invoices purchases
+		7.2 sales
+			7.2.1 invoices sales
+	8) Notifications
