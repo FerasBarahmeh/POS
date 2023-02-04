@@ -115,7 +115,6 @@ header.main .options ul.drop-down-main-header {
     top: 42px;
     width: 150px;
     box-shadow: 5px 4px 3px lightgrey;
-    direction: ltr;
 }
 header.main .options ul.drop-down-main-header:before {
     content: "";
@@ -149,7 +148,7 @@ header.main .options ul.drop-down-main-header li:hover {
     background-color: var(--bg-black-100);
 }
 header.main .options ul.drop-down-main-header li svg {
-    margin-right: 10px;
+    margin-left: 10px;
 }
 header.main .options ul.drop-down-main-header li .content {
     padding-bottom: 5px;
