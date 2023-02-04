@@ -12,21 +12,14 @@
             <a href="/"><span class="inline-block ml-5"><?= $text_nav_general_setting  ?></span></a>
         </li>
         <li class="cursor-pointer">
-            <i class="fa fa-language" aria-hidden="true"></i>
-            <a href="/language"><span class="inline-block ml-5"><?= $text_nav_change_lang ?></span></a>
-        </li>
-        <li class="cursor-pointer">
             <i class="fa fa-users" aria-hidden="true"></i>
-            <a href="/employee"><span class="inline-block ml-5"><?= $text_nav_employees ?></span></a>
+            <a href="/employee"><span class="inline-block ml-5"><?= $text_nav_users ?></span></a>
         </li>
-        <li class="cursor-pointer">
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            <a href="/employee/add"><span class="inline-block ml-5"><?= $text_nav_add_employee ?></span></a>
-        </li>
-        <li class="cursor-pointer">
-            <i class="fa fa-arrow-left" aria-hidden="true"></i>
-            <a href="/"><span class="inline-block ml-5"><?= $text_nav_logout ?></span></a>
-        </li>
+<!--        <li class="cursor-pointer">-->
+<!--            <i class="fa fa-plus" aria-hidden="true"></i>-->
+<!--            <a href="/employee/add"><span class="inline-block ml-5">--><?php //= $text_nav_add_user ?><!--</span></a>-->
+<!--        </li>-->
+
     </ul>
 </nav>
     <div class="action-view pt-20 pl-20 pr-20" id="action-view">

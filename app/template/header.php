@@ -28,19 +28,15 @@
                 <ul class="absolute drop-down-main-header">
                     <li>
                         <i class="fa fa-user inline-block"></i>
-                        <span class="content">Personal Information</span>
+                        <span class="content"><?= $text_header_personal_info ?></span>
                     </li>
                     <li>
                         <i class="fa fa-lock"></i>
-                        <span class="content">Change Password</span>
-                    </li>
-                    <li>
-                        <i class="fa fa-wrench inline-block mr-10"></i>
-                        <span class="content inline-block">Settings</span>
+                        <span class="content"><?= $text_header_setting ?></span>
                     </li>
                     <li>
                         <i class="fa fa-arrow-left"></i>
-                        <span class="content">Logout</span>
+                        <span class="content"><?= $text_nav_logout ?></span>
                     </li>
                 </ul>
 

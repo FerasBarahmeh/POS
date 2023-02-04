@@ -40,6 +40,7 @@ class Language
         $this->setSessionLanguage();
         $this->setPath($dirAndAction);
         if ($this->ifFileLangExist()) {
+            require LANGUAGES_PATH . $this->_userLanguage . DS . "template" . DS . "common" . ".lang.php";
             require $this->_path;
             // Set Content
             if(isset($content) && is_array($content))
