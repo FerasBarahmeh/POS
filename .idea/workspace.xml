@@ -4,22 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="">
+    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Do some edit in nav and header (remove not necessary links)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/LIB/Language.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/LIB/Language.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/ar/employee/add.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/employee/add.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/ar/employee/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/employee/default.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/ar/index/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/index/default.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/en/employee/add.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/employee/add.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/en/employee/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/employee/default.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/en/index/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/index/default.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/template/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/template/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/template/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/template/nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/template/templateheaderstart.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/template/templateheaderstart.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/ar/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/ar/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/storeIcone.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/storeicone.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sessions/sess_m4fgecp30uni2ah218ur44cjlk" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/en/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/en/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,11 +59,32 @@
       <workItem from="1675358709005" duration="215000" />
       <workItem from="1675358954037" duration="15359000" />
       <workItem from="1675431380360" duration="17084000" />
-      <workItem from="1675505488487" duration="25143000" />
+      <workItem from="1675505488487" duration="28650000" />
+      <workItem from="1675601510533" duration="3984000" />
     </task>
+    <task id="LOCAL-00001" summary="Create common language file and And change is necessary for the file to work">
+      <created>1675533265660</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675533265660</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Do some edit in nav and header (remove not necessary links)">
+      <created>1675533394420</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675533394420</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Create common language file and And change is necessary for the file to work" />
+    <MESSAGE value="Do some edit in nav and header (remove not necessary links)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Do some edit in nav and header (remove not necessary links)" />
   </component>
 </project>
