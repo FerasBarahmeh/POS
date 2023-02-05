@@ -10,7 +10,7 @@
     }
 
     body{
-        overflow:hidden;
+        overflow-x:hidden;
         background-color: #f4f6ff;
     }
 
