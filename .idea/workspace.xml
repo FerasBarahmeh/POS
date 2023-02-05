@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Do some edit in nav and header (remove not necessary links)">
+    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Translate template to arabic and English in common.lang.php files">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/template/nav.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/template/nav.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/ar/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/ar/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/en/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/en/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/LIB/Template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/LIB/Template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/abstractcontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/abstractcontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/notfoundcontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/notfoundcontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/languages/ar/template/common.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/template/common.lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/languages/en/template/common.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/template/common.lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/notfound/notfound.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/notfound/notfound.view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +62,7 @@
       <workItem from="1675358954037" duration="15359000" />
       <workItem from="1675431380360" duration="17084000" />
       <workItem from="1675505488487" duration="28650000" />
-      <workItem from="1675601510533" duration="3984000" />
+      <workItem from="1675601510533" duration="8036000" />
     </task>
     <task id="LOCAL-00001" summary="Create common language file and And change is necessary for the file to work">
       <created>1675533265660</created>
@@ -76,7 +78,28 @@
       <option name="project" value="LOCAL" />
       <updated>1675533394420</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Add Links In Navigation Bar">
+      <created>1675605760397</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675605760397</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add search input in main navigation bar">
+      <created>1675605798910</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675605798910</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Translate template to arabic and English in common.lang.php files">
+      <created>1675605925232</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675605925232</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -85,6 +108,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Create common language file and And change is necessary for the file to work" />
     <MESSAGE value="Do some edit in nav and header (remove not necessary links)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Do some edit in nav and header (remove not necessary links)" />
+    <MESSAGE value="Add Links In Navigation Bar" />
+    <MESSAGE value="Add search input in main navigation bar" />
+    <MESSAGE value="Translate template to arabic and English in common.lang.php files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Translate template to arabic and English in common.lang.php files" />
   </component>
 </project>

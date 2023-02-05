@@ -38,10 +38,10 @@ class Template
     {
         if (isset($this->_info)) extract($this->_info);
         foreach ($parts as $partKey => $partValue) {
-            if ($partKey === NAME_VIEW_TEMPLATE_KEY)
+            if ($partKey === NAME_VIEW_TEMPLATE_KEY) {
                 require_once $this->_actionView;
-            else
-            {
+            }
+            else  {
                 require_once $partValue;
             }
 

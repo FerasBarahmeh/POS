@@ -3,6 +3,8 @@
 namespace APP\Controllers;
 
 use APP\Lib\FrontController;
+use APP\LIB\Template;
+use function APP\pr;
 
 
 abstract class AbstractController {
@@ -10,7 +12,7 @@ abstract class AbstractController {
     protected $_action;
     protected $_params;
     public $_info = [];
-    protected $_template;
+    protected Template $_template;
     protected $_language;
 
     public function notFoundAction(): void
@@ -25,20 +27,16 @@ abstract class AbstractController {
     }
     protected function _renderView(): void
     {
-        if ($this->_action == FrontController::NOT_FOUND_ACTION) {
-            require_once VIEWS_PATH ."notfound" . DS . "notfound.view.php";
-        } else {
-            $view = VIEWS_PATH .$this->_controller . DS . $this->_action . ".view.php";
-
-            if (file_exists($view)) {
-                $this->mergeInfo();
-                $this->_template->setActionViewFile($view);
-                $this->_template->setData($this->_info);
-                $this->_template->renderFiles();
-            } else {
-                require_once VIEWS_PATH ."notfound" . DS . "notview.view.php";
-            }
+        $view = VIEWS_PATH .$this->_controller . DS . $this->_action . ".view.php";
+        if ($this->_action == FrontController::NOT_FOUND_ACTION || ! file_exists($view)  ) {
+            $view =  VIEWS_PATH ."notfound" . DS . "notfound.view.php";
         }
+
+        $this->mergeInfo();
+        $this->_template->setActionViewFile($view);
+        $this->_template->setData($this->_info);
+        $this->_template->renderFiles();
+
     }
     public function setTemplate($tem): void
     {

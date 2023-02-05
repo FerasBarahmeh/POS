@@ -1,4 +1,6 @@
 <?php
+// Not Found Page
+$content["text_not_found"]                          = "Not Found Page";
 // Start Header
 $content["text_header_title"]                       = "Dashboard";
 $content["text_header_personal_info"]               =  "Personal Information";

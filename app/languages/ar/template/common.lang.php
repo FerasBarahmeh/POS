@@ -1,5 +1,6 @@
 <?php
-
+// Not Found Page
+$content["text_not_found"]                  = "عذراَ الصفحة غير موجودة";
 // Header
 $content["text_header_title"]               = "لوحة التحكم";
 $content["text_header_personal_info"]       =  "المعلومات الشخصية";
