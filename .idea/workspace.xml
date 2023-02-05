@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Edit overflow in y-axis in not found page">
+    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Create Users model">
+      <change afterPath="$PROJECT_DIR$/public/css/ar/user.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/abstractmodel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/abstractmodel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/templateconfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/templateconfig.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/userscontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/userscontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/languages/ar/users/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/users/default.lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/languages/en/users/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/users/default.lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/usermodel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/usermodel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/users/default.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/users/default.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/ar/employee.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/ar/employee.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/en/employee.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/en/employee.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,20 +38,26 @@
     <option name="showMembers" value="true" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/XAMPP/htdocs/mvc&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/XAMPP/htdocs/estore/public/js",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\XAMPP\htdocs\estore\public\js" />
+      <recent name="E:\XAMPP\htdocs\estore\public\css\ar" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -57,7 +72,7 @@
       <workItem from="1675358954037" duration="15359000" />
       <workItem from="1675431380360" duration="17084000" />
       <workItem from="1675505488487" duration="28650000" />
-      <workItem from="1675601510533" duration="11737000" />
+      <workItem from="1675601510533" duration="16546000" />
     </task>
     <task id="LOCAL-00001" summary="Create common language file and And change is necessary for the file to work">
       <created>1675533265660</created>
@@ -108,7 +123,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675611075219</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add DATA_TYPE_DATE in abstract model class">
+      <created>1675614647899</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1675614647899</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Create Users model">
+      <created>1675614711216</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1675614711216</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +151,9 @@
     <MESSAGE value="Translate template to arabic and English in common.lang.php files" />
     <MESSAGE value="Handler Not Fount Page" />
     <MESSAGE value="Edit overflow in y-axis in not found page" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit overflow in y-axis in not found page" />
+    <MESSAGE value="Add DATA_TYPE_DATE in abstract model class" />
+    <MESSAGE value="Prepare users Page" />
+    <MESSAGE value="Create Users model" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Users model" />
   </component>
 </project>

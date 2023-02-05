@@ -15,6 +15,7 @@ return [
         "css" => [
             "main"          => CSS . $cssLang . "main"     . ".css",
             "shortcut"      => CSS . "shortcut" . ".css",
+            "user"          => CSS . $cssLang . "user" . ".css",
             "employee"      => CSS . $cssLang . "employee" . ".css",
         ],
         "js" => [
@@ -27,6 +28,7 @@ return [
             "shortcut"      => JS . "shortcut"  . ".js",
             "main"          => JS . "main"      . ".js",
             "employee"      => JS . "employee"  . ".js",
+            "user"          => JS . "user"      . ".js",
         ],
     ],
 ];

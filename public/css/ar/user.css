@@ -1,20 +1,16 @@
 /* Start Default Action */
-.header-option {
-    align-items: center;
-}
 .header-option a {
     background-color: #878282;
     color: #EEEEEE;
-    padding: 5px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 17px;
+    padding-right: 14px;
+    transition: .3s ease-in-out;
 }
-
-/*.header-option a:hover  {*/
-/*    background: repeating-linear-gradient(15deg, black, #00000063 100px);*/
-/*    transition: .3s ease-in-out;*/
-/*}*/
+.header-option .add-user:hover  {
+    background-color: #00000045;
+}
 .header-option .search {
     margin-left: 10px;
     position: relative;
@@ -25,6 +21,7 @@
     border-radius: 5px;
     width: 200px;
     transition: width .3s ease-in-out;
+    margin-right: 10px;
 }
 .header-option .search input:focus {
     width: 250px;
@@ -38,63 +35,55 @@ input[type="search"]::-webkit-search-results-decoration {
 .header-option .search .lens {
     color: var(--bg-black-100);
     position: absolute;
-    right: 8px;
     top: 27%;
-    display: block;
+    left: 5px;
 }
-.employees {
+.users {
     width: 100%;
     min-width: 1000px;
 
 }
-.employees table {
+.users table {
     border-spacing: unset;
     transition: all 3s ease-in-out;
     width: 100%;
 }
-.employees table td,
-.employees table th {
+.users table td,
+.users table th {
     padding: 5px ;
     white-space: nowrap;
 }
-.employees table thead th {
+.users table thead th {
     background-color: #EEE;
     color: gray;
     font-size: 16px;
 }
-.employees table tbody tr {
-    opacity: 1;
-    transition: opacity .3s ease-in-out;
-}
-.employees table tbody tr.un-visible {
-    opacity: 0;
-    position: absolute;
-    left: 2000px;
-}
-.employees table tbody td {
+.users table tbody td {
     border-bottom: 1px solid #eee;
     border-left: 1px solid #eee;
-    transition: all .3s ease-in-out;
+    transition: .3s;
 }
-
-.employees table tbody td:last-child {
+.users table tbody td:last-child {
     border-right: 1px solid #eee;
 }
-.employees table tbody tr:hover td {
+.users table tbody tr:hover td {
     background-color: rgb(0 0 0 / 19%);
 }
-.employees table tbody .controller-btns {
+.users table tbody .controller-btns {
     text-align: center;
 }
-.employees table tbody .controller-btns a {
+.users table tbody .controller-btns a {
     color: #8b8686;
 }
-.employees table tbody .controller-btns a:hover {
+.users table tbody .controller-btns a:hover {
     color: black;
 }
-.employees table tbody .controller-btns a:not(:last-child) {
+.users table tbody .controller-btns a:not(:last-child) {
     margin-right: 5px;
 }
+
+/* End Default */
+
 /* Start Add Employee */
 form.add-employee {
     width: 500px;

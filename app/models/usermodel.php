@@ -4,13 +4,13 @@ namespace APP\Models;
 
 class UserModel extends AbstractModel
 {
-    public $UserId;
-    public $UserName;
-    public $Password;
-    public $Email;
-    public $SubscriptionDate;
-    public $LastLogin;
-    public $PhoneNumber;
+    public $userId;
+    public $userName;
+    public $password;
+    public $email;
+    public $subscriptionDate;
+    public $lastLogin;
+    public $phoneNumber;
 
     protected static $tableName = "users";
 

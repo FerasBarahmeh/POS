@@ -7,10 +7,10 @@
     cursor: pointer;
     font-size: 17px;
 }
-.header-option a:hover  {
-    background: repeating-linear-gradient(15deg, black, #00000063 100px);
-    transition: .3s ease-in-out;
-}
+/*.header-option a:hover  {*/
+/*    background: repeating-linear-gradient(15deg, black, #00000063 100px);*/
+/*    transition: .3s ease-in-out;*/
+/*}*/
 .employees {
     width: 100%;
     min-width: 1000px;
