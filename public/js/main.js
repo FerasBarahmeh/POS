@@ -20,3 +20,32 @@ dropDown.addEventListener("click", () => {
     menu.classList.toggle("visible");
 });
 
+// Hidden icon search when focus in input field search session
+const inputSearch = document.getElementById("search-session");
+
+if (inputSearch !== null) {
+    inputSearch.onfocus = () => {
+        inputSearch.parentElement.querySelector(".search-icon").classList.add("un-visible");
+    }
+    inputSearch.onblur = () => {
+        inputSearch.parentElement.querySelector(".search-icon").classList.remove("un-visible");
+    }
+
+    // Search In Sessions
+    const appNav = document.getElementById("app_navigation");
+    inputSearch.addEventListener("keyup", () => {
+       const content = inputSearch.value.toLowerCase();
+       const links = appNav.querySelectorAll("a");
+       links.forEach(link => {
+           const linkTo = link.innerText.toLowerCase();
+           const li = link.closest("li");
+           if (linkTo.search(content) === -1) {
+               li.classList.add("hidden");
+           } else {
+               li.classList.remove("hidden");
+           }
+        });
+    });
+}
+
+
