@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Translate template to arabic and English in common.lang.php files">
+    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Edit overflow in y-axis in not found page">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/LIB/Template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/LIB/Template.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/abstractcontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/abstractcontroller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/notfoundcontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/notfoundcontroller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/ar/template/common.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/template/common.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/en/template/common.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/template/common.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/notfound/notfound.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/notfound/notfound.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/abstractmodel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/abstractmodel.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +57,7 @@
       <workItem from="1675358954037" duration="15359000" />
       <workItem from="1675431380360" duration="17084000" />
       <workItem from="1675505488487" duration="28650000" />
-      <workItem from="1675601510533" duration="8036000" />
+      <workItem from="1675601510533" duration="11737000" />
     </task>
     <task id="LOCAL-00001" summary="Create common language file and And change is necessary for the file to work">
       <created>1675533265660</created>
@@ -99,7 +94,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675605925232</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Handler Not Fount Page">
+      <created>1675610887567</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675610887567</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Edit overflow in y-axis in not found page">
+      <created>1675611075219</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675611075219</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,6 +120,8 @@
     <MESSAGE value="Add Links In Navigation Bar" />
     <MESSAGE value="Add search input in main navigation bar" />
     <MESSAGE value="Translate template to arabic and English in common.lang.php files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Translate template to arabic and English in common.lang.php files" />
+    <MESSAGE value="Handler Not Fount Page" />
+    <MESSAGE value="Edit overflow in y-axis in not found page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit overflow in y-axis in not found page" />
   </component>
 </project>
