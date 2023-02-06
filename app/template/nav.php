@@ -15,13 +15,13 @@
     <ul class="app_navigation mt-15 txt-l" id="app_navigation">
         <li class="cursor-pointer main-li">
             <i class="fa fa-cog" aria-hidden="true"></i>
-            <a href="/"><span class="inline-block ml-5"><?= $text_nav_general_setting  ?></span></a>
+            <a href="/"><span class="inline-block"><?= $text_nav_general_setting  ?></span></a>
         </li>
 
         <li class="cursor-pointer main-li sort-col grand-li">
 
             <button class="between-ele w-fu">
-                <span class="inline-block ml-5"><i class="fas fa-exchange-alt"></i><?= $text_nav_transactions ?></span>
+                <span class="inline-block"><a href="/transactions/"><i class="fas fa-exchange-alt"></i><?= $text_nav_transactions ?></a></span>
                 <i class="fa fa-angle-double-down angle "></i>
             </button>
 
@@ -33,12 +33,12 @@
 
         <li class="cursor-pointer main-li">
             <i class="fa fa-chart-pie" aria-hidden="true"></i>
-            <a href="/users"><span class="inline-block ml-5"><?= $text_nav_reports ?></span></a>
+            <a href="/users"><span class="inline-block"><?= $text_nav_reports ?></span></a>
         </li>
 
         <li class="cursor-pointer main-li sort-col grand-li">
             <button class="between-ele w-fu">
-                <span class="inline-block ml-5"><i class="fa fa-store" aria-hidden="true"></i><?= $text_nav_store ?></span>
+                <span class="inline-block"><a href="/store/"><i class="fa fa-store" aria-hidden="true"></i><?= $text_nav_store ?></a></span>
                 <i class="fa fa-angle-double-down angle "></i>
             </button>
 
@@ -52,7 +52,7 @@
         <li class="cursor-pointer main-li sort-col grand-li">
 
             <button class="between-ele w-fu">
-                <span class="inline-block ml-5"><i class="fa fa-wallet" aria-hidden="true"></i><?= $text_nav_expenses ?></span>
+                <span class="inline-block"><a href="/expenses/"><i class="fa fa-wallet" aria-hidden="true"></i><?= $text_nav_expenses ?></a></span>
                 <i class="fa fa-angle-double-down angle "></i>
             </button>
 
@@ -66,7 +66,7 @@
         <li class="cursor-pointer main-li sort-col grand-li">
 
             <button class="between-ele w-fu">
-                <span class="inline-block ml-5"><i class="fa fa-users" aria-hidden="true"></i><?= $text_nav_users ?></span>
+                <span class="inline-block"><a href="/users/"><i class="fa fa-users" aria-hidden="true"></i><?= $text_nav_users ?></a></span>
                 <i class="fa fa-angle-double-down angle "></i>
             </button>
 
@@ -80,18 +80,18 @@
 
         <li class="cursor-pointer main-li">
             <i class="fa fa-solid fa-users" aria-hidden="true"></i>
-            <a href="/clients"><span class="inline-block ml-5"><?= $text_nav_clients ?></span></a>
+            <a href="/clients"><span class="inline-block"><?= $text_nav_clients ?></span></a>
         </li>
 
         <li class="cursor-pointer main-li">
             <i class="fa fa-solid fa-parachute-box" aria-hidden="true"></i>
-            <a href="/suppliers"><span class="inline-block ml-5"><?= $text_nav_suppliers ?></span></a>
+            <a href="/suppliers"><span class="inline-block"><?= $text_nav_suppliers ?></span></a>
         </li>
 
 
         <li class="cursor-pointer main-li">
             <i class="fa fa-bell" aria-hidden="true"></i>
-            <a href="/users"><span class="inline-block ml-5"><?= $text_nav_Notifications ?></span></a>
+            <a href="/users"><span class="inline-block"><?= $text_nav_Notifications ?></span></a>
         </li>
 
 
