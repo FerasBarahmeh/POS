@@ -2,6 +2,7 @@
 
 namespace APP\Lib;
 
+use APP\LIB\Template\Template;
 use APP\LIP\languages;
 
 class FrontController {

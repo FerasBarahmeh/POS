@@ -3,7 +3,7 @@
 namespace APP\Controllers;
 
 use APP\Lib\FrontController;
-use APP\LIB\Template;
+use APP\LIB\Template\Template;
 use function APP\pr;
 
 

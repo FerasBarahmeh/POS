@@ -4,7 +4,7 @@ namespace APP;
 
 use APP\lib\FrontController;
 use APP\LIB\SessionManager;
-use APP\LIB\Template;
+use APP\LIB\Template\Template;
 use APP\LIB\Language;
 
 

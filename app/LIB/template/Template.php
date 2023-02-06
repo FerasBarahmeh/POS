@@ -1,9 +1,10 @@
 <?php
 
-namespace APP\LIB;
+namespace APP\LIB\Template;
 
 class Template
 {
+    use TemplateHelper;
     private $_templateParts;
     private $_actionView;
     private $_info;
