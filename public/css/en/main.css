@@ -158,8 +158,9 @@ header.main .options ul.drop-down-main-header li:last-child .content {
 /* End Header */
 
 /* Start Navigation */
+h1.title,
 p.title {
- color: #777;
+    color: var(--text-black-700);
 }
 div.body {
     grid-template-columns: 300px 1fr;

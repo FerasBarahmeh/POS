@@ -15,7 +15,12 @@
                 data-condition-menu="false">
                 <i class="fa fa-bars"></i>
         </span>
-        <p class="title inline-block ml-15 fs-20 fw-bold"><?= $text_header_title  ?> <?php setPathInHeader(); ?></p>
+        <h1 class="title inline-block ml-15 fs-20 fw-bold">
+            <?= $text_header_title  ?>
+            <?php if (isset($title)): ?>
+                <?= ' >> ' . $title ?>
+            <?php endif; ?>
+        </h1>
 
     </div>
 
