@@ -334,11 +334,15 @@ nav.main_navigation ul.sub-menu li.li-level-2:hover {
 nav.main_navigation ul.sub-menu li.li-level-2 a.sub-link {
     color: var(--text-black-900);
 }
+
+li.selected {
+    background-color: var(--bg-black-100);
+}
 /* End Navigation */
 
 /* Start Action View */
 div.action-view {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 h1.title-header {
     font-size: 40px;

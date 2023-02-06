@@ -201,6 +201,13 @@ nav .search-session input[type="search"] {
 
     transition: border-width 1s ease-in-out;
 }
+li.selected {
+    background-color: var(--bg-black-100) !important;
+    border-bottom: none !important;
+}
+li.selected > * > * {
+    color: #eee !important;
+}
 nav.main_navigation ul.app_navigation .main-li,
 nav.main_navigation ul.app_navigation button {
     padding: 10px;
@@ -290,7 +297,7 @@ nav.main_navigation ul.sub-menu li.li-level-2 a.sub-link {
 
 /* Start Action View */
 div.action-view {
-    overflow: hidden;
+    overflow-x: hidden;
 }
 h1.title-header {
     font-size: 40px;
