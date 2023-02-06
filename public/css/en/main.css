@@ -223,6 +223,9 @@ nav.main_navigation ul.app_navigation button {
     margin: 0;
     padding: 0;
 }
+nav.main_navigation ul.app_navigation button a {
+    color: var(--text-black-900);
+}
 nav.main_navigation ul.app_navigation .main-li:last-child {
     border-bottom: 0;
     margin-bottom: 0;

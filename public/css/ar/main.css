@@ -236,7 +236,7 @@ nav.main_navigation ul li:hover span {
 }
 nav.main_navigation ul li svg {
     color: var(--bg-black-900);
-    margin-right: 6px;
+    margin-left: 6px;
 }
 nav.main_navigation ul li a {
     width: 100%;
@@ -244,7 +244,95 @@ nav.main_navigation ul li a {
 nav.main_navigation ul li > * {
     direction: ltr;
     text-align: right;
-    margin-right: 14px;
+    color: var(--text-black-900);
+}
+
+nav.main_navigation ul.app_navigation .main-li,
+nav.main_navigation ul.app_navigation button {
+    padding: 10px;
+    transition: all .3s ease-out;
+    border-radius: 5px;
+    background: rgba(225, 225, 225, 0.13);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #666e;
+    margin-bottom: 15px;
+    opacity: 1;
+}
+nav.main_navigation ul.app_navigation .main-li.un-visible {
+    opacity: 0;
+    height: 0;
+    position: absolute;
+}
+nav.main_navigation ul.app_navigation button {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    direction: rtl;
+}
+nav.main_navigation ul.app_navigation button a {
+    color: var(--text-black-900);
+}
+nav.main_navigation ul.app_navigation .main-li:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+}
+nav.main_navigation ul.app_navigation .main-li:hover {
+    background-color: var(--bg-black-100);
+}
+nav.main_navigation ul.app_navigation .main-li span {
+    font-size: 19px;
+    margin-left: 5px;
+    color: dimgray;
+}
+nav.main_navigation ul.app_navigation .main-li:hover span {
+    color: #eee;
+}
+nav.main_navigation ul.app_navigation .main-li svg {
+    color: var(--bg-black-900);
+    /*margin-left: 6px;*/
+}
+nav.main_navigation ul.app_navigation .main-li a {
+    width: 100%;
+}
+/* Start Sub menu Nav */
+nav.main_navigation ul.app_navigation .main-li .angle {
+    transition: transform 1s ease, top 1s ease;
+}
+nav.main_navigation ul.app_navigation .main-li .angle.angle-rotate {
+    transform: rotateZ(180deg);
+}
+nav.main_navigation ul.sub-menu {
+    opacity: 1;
+    transition: opacity .6s ease-in-out,
+    height .6s ease-in-out;
+    height: auto;
+
+}
+nav.main_navigation ul.sub-menu.un-visible {
+    position: absolute;
+    top: -104px;
+    height: 0;
+    opacity: 0;
+}
+nav.main_navigation ul.sub-menu li.li-level-2 {
+    padding-left: 20px;
+    padding-right: 10px;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    opacity: 1;
+    transition: height .3s ease-in-out;
+}
+nav.main_navigation ul.sub-menu li.li-level-2.un-visible {
+    height: 0;
+    opacity: 0;
+    position: absolute;
+}
+nav.main_navigation ul.sub-menu li.li-level-2:hover {
+    background-color: var(--bg-black-50);
+}
+nav.main_navigation ul.sub-menu li.li-level-2 a.sub-link {
+    color: var(--text-black-900);
 }
 /* End Navigation */
 
