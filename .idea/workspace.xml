@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="add selected class in li in main navigation bar">
-      <change afterPath="$PROJECT_DIR$/app/controllers/usersgroupscontroller.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/languages/ar/usersgroups/default.lang.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/languages/en/usersgroups/default.lang.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/models/usergroupmodel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/usersgroups/default.view.php" afterDir="false" />
+    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="create users groups languages words">
+      <change afterPath="$PROJECT_DIR$/app/controllers/UsersPrivilegesController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/languages/ar/usersprivileges/default.lang.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/languages/en/usersprivileges/default.lang.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/userprivilegeModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/usersprivileges/default.view.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/LIB/Language.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/LIB/Language.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/abstractcontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/abstractcontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/indexcontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/indexcontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/userscontroller.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/userscontroller.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/languages/ar/usersgroups/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/usersgroups/default.lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/languages/en/usersgroups/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/usersgroups/default.lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/usergroupmodel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/usergroupmodel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/usersgroups/default.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/usersgroups/default.view.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +58,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\XAMPP\htdocs\estore\app\views" />
-      <recent name="E:\XAMPP\htdocs\estore\app\languages\en" />
       <recent name="E:\XAMPP\htdocs\estore\app\languages\ar" />
+      <recent name="E:\XAMPP\htdocs\estore\app\languages\en" />
       <recent name="E:\XAMPP\htdocs\estore\public\js" />
       <recent name="E:\XAMPP\htdocs\estore\public\css\ar" />
     </key>
@@ -71,7 +79,7 @@
       <workItem from="1675431380360" duration="17084000" />
       <workItem from="1675505488487" duration="28650000" />
       <workItem from="1675601510533" duration="29669000" />
-      <workItem from="1675674191424" duration="16227000" />
+      <workItem from="1675674191424" duration="25710000" />
     </task>
     <task id="LOCAL-00001" summary="Create common language file and And change is necessary for the file to work">
       <created>1675533265660</created>
@@ -192,7 +200,35 @@
       <option name="project" value="LOCAL" />
       <updated>1675689063483</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="create users groups controller">
+      <created>1675691094094</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1675691094094</updated>
+    </task>
+    <task id="LOCAL-00019" summary="create users groups model">
+      <created>1675691114152</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1675691114152</updated>
+    </task>
+    <task id="LOCAL-00020" summary="create users groups view">
+      <created>1675691133680</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1675691133680</updated>
+    </task>
+    <task id="LOCAL-00021" summary="create users groups languages words">
+      <created>1675691243349</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1675691243349</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -217,6 +253,10 @@
     <MESSAGE value="Edit design navigation in arabic language" />
     <MESSAGE value="create template helper class, add package template in lib" />
     <MESSAGE value="add selected class in li in main navigation bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="add selected class in li in main navigation bar" />
+    <MESSAGE value="create users groups controller" />
+    <MESSAGE value="create users groups model" />
+    <MESSAGE value="create users groups view" />
+    <MESSAGE value="create users groups languages words" />
+    <option name="LAST_COMMIT_MESSAGE" value="create users groups languages words" />
   </component>
 </project>
