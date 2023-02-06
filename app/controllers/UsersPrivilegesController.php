@@ -13,4 +13,12 @@ class UsersPrivilegesController extends AbstractController
         $this->_info["privileges"] = UserPrivilegeModel::getAll();
         $this->_renderView();
     }
+
+    public function addAction()
+    {
+        $this->_language->load("template.common");
+        $this->_language->load("usersprivileges.add");
+        $this->_info["privileges"] = UserPrivilegeModel::getAll();
+        $this->_renderView();
+    }
 }
