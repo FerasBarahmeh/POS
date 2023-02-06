@@ -1,3 +1,12 @@
+<?php
+    function setPathInHeader(): void
+    {
+        global $title;
+        if (isset($title)) {
+            echo  " >> " . $title;
+        }
+    }
+?>
 <header class="main between-ele">
     <div class="title">
         <span
@@ -6,7 +15,8 @@
                 data-condition-menu="false">
                 <i class="fa fa-bars"></i>
         </span>
-        <p class="title inline-block ml-15 fs-20 fw-bold"><?= $text_header_title ?></p>
+        <p class="title inline-block ml-15 fs-20 fw-bold"><?= $text_header_title  ?> <?php setPathInHeader(); ?></p>
+
     </div>
 
     <div class="options flex gap-15">
