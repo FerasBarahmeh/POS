@@ -17,6 +17,7 @@ abstract class AbstractController {
 
     public function notFoundAction(): void
     {
+        $this->_language->load("template.common");
         $this->_renderView();
     }
     private function mergeInfo(): void
