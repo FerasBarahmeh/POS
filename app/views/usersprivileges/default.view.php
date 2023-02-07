@@ -1,3 +1,8 @@
+<?php
+
+use APP\Helpers\Messenger\Messenger;
+
+?>
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
@@ -32,17 +37,16 @@
                                     <a href="/usersprivileges/edit/<?= $privilege->PrivilegeId ?>">
                                         <i class="fa fa-edit" aria-hidden="true"></i>
                                     </a>
-                                    <a href="/usersprivileges/delete/<?= $privilege->PrivilegeId ?>">
-                                        <i class="fa fa-trash" aria-hidden="true"></i>
-                                    </a>
-                                    <a href="/"><i class="fa fa-bell"  aria-hidden="true"></i></a>
+                                    <a class="hidden "  href="/usersprivileges/delete/<?= $privilege->PrivilegeId ?>" id="delete-privilege"></a>
+                                    <?php Messenger::popup("you wont delete privilege",'!', $typeStyle="danger", $typeAction="link", $id="delete-privilege"); ?>
+                                    <span class="pop-on-click danger-style cursor-pointer"><i class="fa fa-trash" aria-hidden="true"></i></span>
+
                                 </td>
 
                             </tr>
                             <?php
                         }
                     }
-
                 ?>
         </tbody>
     </table>
