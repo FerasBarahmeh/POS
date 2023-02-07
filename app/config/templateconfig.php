@@ -30,6 +30,7 @@ return [
             "main"          => JS . "main"      . ".js",
             "employee"      => JS . "employee"  . ".js",
             "user"          => JS . "user"      . ".js",
+            "privileges"    => JS . "privileges"      . ".js",
         ],
     ],
 ];
