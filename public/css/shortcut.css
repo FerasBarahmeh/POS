@@ -1,3 +1,16 @@
+/* End Variable colors */
+:root {
+    --danger-color-900: red;
+    --danger-color-700: #c82d2d;
+    --danger-color-500: #c13a3a;
+    --danger-color-300: #c34f4f;
+
+    --success-color-900: green;
+    --success-color-700: #0a800a;
+    --success-color-500: #178717;
+    --success-color-300: #419b41;
+}
+/* End Variable colors */
 /* Start Type Display */
 .hidden {
     display: none !important;
@@ -475,4 +488,105 @@
     }
 }
 /* End Media In General */
+
+/* Start popup */
+.card {
+    background-color: #eee;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: -100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all .5s ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+}
+.card.show {
+    opacity: 1;
+    top: 50%;
+}
+.card.danger {
+    border-color: var(--danger-color-700);
+}
+.card.success,
+.card.done {
+    border-color: var(--success-color-700);
+}
+.card .symbol span.express-symbol {
+    font-size: 99px;
+    border: 5px solid;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -81px;
+    left: 0;
+}
+.card .symbol span.express-symbol.danger {
+    color: white;
+    background-color:  var(--danger-color-300);
+    border-color: var(--danger-color-500);
+}
+.card .symbol span.express-symbol.success {
+    color: white;
+    background-color:  var(--success-color-300);
+    border-color: var(--success-color-500);
+}
+.card .symbol span.express-symbol.done {
+    color: white;
+    background-color:  var(--success-color-300);
+    border-color: var(--success-color-500);
+}
+.card .symbol span.delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 15px;
+    border-radius: 50%;
+    border: 1px solid var(--danger-color-500);
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    font-size: 19px;
+    background-color: var(--danger-color-300);
+}
+.card h2.title {
+    font-size: 35px;
+    color: gray;
+}
+.card p.content {
+    font-size: 20px;
+}
+.card p.content.danger {
+    color: var(--danger-color-700);
+}
+.card p.content.success {
+    color: var(--success-color-700);
+}
+.card .ok {
+    border: 1px solid;
+    width: 60px;
+    text-align: center;
+    margin-top: 10px;
+    background-color: var(--success-color-300);
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+}
+.card .ok:hover {
+    opacity: .8;
+}
+/* End popup */
 
