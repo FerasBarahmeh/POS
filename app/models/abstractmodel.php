@@ -39,9 +39,8 @@ class AbstractModel
 
         return trim($query, ", ");
     }
-    private function insert()
+    private function insert(): bool
     {
-        global $db;
         $query = "INSERT INTO " . static::$tableName . " SET " . self::buildNameParamSQL() ;
         $stmt = DatabaseHandler::factory()->prepare($query);
         $this->bindParams($stmt);
@@ -49,6 +48,7 @@ class AbstractModel
             $this->{static::$primaryKey} = DatabaseHandler::lastInsertID();
             return true;
         }
+        return false;
     }
     private function update()
     {
