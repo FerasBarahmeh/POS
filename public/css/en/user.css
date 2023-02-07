@@ -95,7 +95,9 @@ input[type="search"]::-webkit-search-results-decoration {
 .users table tbody .controller-btns a:not(:last-child) {
     margin-right: 5px;
 }
-
+.users table tbody .controller-btns span.danger-style {
+    color: var(--danger-color-300);
+}
 /* End Default */
 
 /* Start Add Employee */
