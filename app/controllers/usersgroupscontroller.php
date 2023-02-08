@@ -122,4 +122,27 @@ class UsersGroupsController extends AbstractController
 
         $this->_renderView();
     }
+
+    public function deleteAction()
+    {
+        $id = $this->_params[0];
+        $group = UserGroupModel::getByPK($id);
+
+        if (! $group) {
+            $this->redirect("/usersgroups");
+        }
+
+        // Delete All Privileges Linked To This Group
+        $privilegesThisGroup = UserGroupPrivilegeModel::getBy(["GroupId" => $group->GroupId]);
+        if ($privilegesThisGroup) {
+            foreach ($privilegesThisGroup as $privilegeThisGroup) {
+                $privilegeThisGroup->delete();
+            }
+        }
+
+        if($group->delete()) {
+            $this->redirect("/usersgroups");
+        }
+
+    }
 }
