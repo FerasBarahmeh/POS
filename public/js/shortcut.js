@@ -1,7 +1,5 @@
 const cardPopup = document.querySelector(".card");
-if (cardPopup != null) {
-    const classCard = [...cardPopup.classList];
-}
+const classCard = [...cardPopup.classList];
 function hiddenPopup() {
     cardPopup.classList.remove("show");
 }
