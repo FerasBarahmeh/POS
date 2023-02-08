@@ -29,10 +29,12 @@ class Messenger
         <div class="card <?= $typeStyle ?> <?= $typeAction ?> <?= $id ?>">
             <div class="symbol flex ">
                 <span class="express-symbol  <?= $typeStyle ?>"><?= $expressSymbol ?></span>
-                <span class="delete" id="reject-popup">X</span>
             </div>
             <p class="content <?= $typeStyle ?>"><?= $contentMassage ?></p>
-            <span class="ok" id="accepted-popup">OK</span>
+            <div class="discus center-ele">
+                <span class="delete" id="reject-popup">No</span>
+                <span class="ok" id="accepted-popup">OK</span>
+            </div>
         </div>
         <?php
     }

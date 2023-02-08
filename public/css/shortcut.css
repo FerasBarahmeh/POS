@@ -545,23 +545,6 @@
     background-color:  var(--success-color-300);
     border-color: var(--success-color-500);
 }
-.card .symbol span.delete {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin: 15px;
-    border-radius: 50%;
-    border: 1px solid var(--danger-color-500);
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    cursor: pointer;
-    font-size: 19px;
-    background-color: var(--danger-color-300);
-}
 .card h2.title {
     font-size: 35px;
     color: gray;
@@ -575,17 +558,24 @@
 .card p.content.success {
     color: var(--success-color-700);
 }
-.card .ok {
+.card .ok,
+.card .discus span.delete {
     border: 1px solid;
     width: 60px;
     text-align: center;
     margin-top: 10px;
-    background-color: var(--success-color-300);
     color: white;
     cursor: pointer;
     padding: 5px;
 }
-.card .ok:hover {
+.card .ok {
+    background-color: var(--success-color-300);
+}
+.card .discus span.delete {
+    background-color: var(--danger-color-300);
+}
+.card .ok:hover,
+.card .discus span.delete:hover {
     opacity: .8;
 }
 /* End popup */
