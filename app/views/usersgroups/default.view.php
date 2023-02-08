@@ -21,15 +21,14 @@
         <tbody>
 
                 <?php
-                    if (! empty($users) && isset($users)) {
-                        foreach ($users as $user) {
+                    if (! empty($groups) && isset($groups)) {
+                        foreach ($groups as $group) {
                             ?>
                             <tr class="row-each-employee">
-                                <td class="name-user-row"><?= $groups->groupName ?></td>
+                                <td class="name-user-row"><?= $group->GroupName ?></td>
                                 <td class="controller-btns">
-                                    <a href="employee/edit/<?= $user->groupId ?>"><i class="fas fa-edit"></i></a>
-                                    <a href="employee/delete/<?= $user->groupId ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                    <a href=""><i class="fa fa-bell"  aria-hidden="true"></i></a>
+                                    <a href="usersgroups/edit/<?= $group->GroupId ?>"><i class="fas fa-edit"></i></a>
+                                    <a href="usersgroups/delete/<?= $group->GroupId ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                 </td>
 
                             </tr>
