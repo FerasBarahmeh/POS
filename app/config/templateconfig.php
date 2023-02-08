@@ -18,6 +18,7 @@ return [
             "user"          => CSS . $cssLang . "user" . ".css",
             "employee"      => CSS . $cssLang . "employee" . ".css",
             "privilege"     => CSS . $cssLang . "privilege" . ".css",
+            "group"         => CSS . $cssLang . "group" . ".css",
         ],
         "js" => [
             "fontawesome"   =>  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"
