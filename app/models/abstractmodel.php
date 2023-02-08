@@ -3,6 +3,7 @@
 namespace APP\Models;
 use APP\Lib\Database\DatabaseHandler;
 use PDO;
+use function APP\pr;
 
 
 class AbstractModel
@@ -129,13 +130,40 @@ class AbstractModel
         return false;
     }
 
-    public static function get($sql, $options): void
+
+    public static function getBy($columns, $options = []): false|\ArrayIterator
     {
-        global $db;
-        $stmt = $db->prepare($sql);
+        $whereClauseColumns = array_keys($columns);
+        $whereClauseValues = array_values($columns);
+        $whereClause = []; $numberConditions = count($whereClauseColumns);
 
-        if(! empty($options)) {
-
+        // Connection keys whit values.
+        for ( $i = 0, $ii = $numberConditions; $i < $ii; $i++ ) {
+            $whereClause[] = $whereClauseColumns[$i] . ' = "' . $whereClauseValues[$i] . '"';
         }
+
+        // Bind all conditions
+        $whereClause = implode(' AND ', $whereClause);
+
+        $sql = 'SELECT * FROM ' . static::$tableName . '  WHERE ' . $whereClause;
+
+
+        return (new UserGroupPrivilegeModel)->get($sql, $options);
+    }
+
+    public function get($query, $options): false|\ArrayIterator
+    {
+        $stmt = DatabaseHandler::factory()->prepare($query);
+        $stmt->execute();
+        if(method_exists(get_called_class(), '__construct')) {
+            $results = $stmt->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, get_called_class(), array_keys(static::$tableSchema));
+        } else {
+            $results = $stmt->fetchAll(\PDO::FETCH_CLASS, get_called_class());
+        }
+
+        if ((is_array($results) && !empty($results))) {
+            return new \ArrayIterator($results);
+        }
+        return false;
     }
 }
