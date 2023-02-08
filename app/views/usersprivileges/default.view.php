@@ -14,7 +14,7 @@ use APP\Helpers\Messenger\Messenger;
 </div>
 
 <!-- Show Employees -->
-<div class="users responsive-table mt-20" id="employees-table">
+<div class="privileges responsive-table mt-20" id="employees-table">
     <table class="">
         <thead>
         <tr>
@@ -27,7 +27,7 @@ use APP\Helpers\Messenger\Messenger;
         <tbody>
 
                 <?php
-                    if (! empty($privileges) && isset($privileges)) {
+                    if (! empty($privileges)) {
                         foreach ($privileges as $privilege) {
                             ?>
                             <tr class="row-each-employee">

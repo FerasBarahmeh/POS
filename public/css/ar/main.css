@@ -342,6 +342,37 @@ li.selected {
 /* End Navigation */
 
 /* Start Action View */
+.header-option {
+    align-items: center;
+}
+.header-option a {
+    background-color: #878282;
+    color: #EEEEEE;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+}
+.header-option .search {
+    margin-left: 10px;
+    position: relative;
+}
+.header-option .search input {
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 200px;
+    transition: width .3s ease-in-out;
+}
+.header-option .search input:focus {
+    width: 250px;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance:none;
+}
 div.action-view {
     overflow-x: hidden;
 }

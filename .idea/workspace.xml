@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="change trash color in privileges default">
+    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Redesign popup rejected button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/helpers/messenger/messenger.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/helpers/messenger/messenger.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/shortcut.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/shortcut.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/usersprivileges/default.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/usersprivileges/default.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/ar/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/ar/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/en/privilege.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/en/privilege.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/shortcut.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/shortcut.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,20 +39,21 @@
     <option name="showMembers" value="true" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/XAMPP/htdocs/estore/app/languages/ar/usersprivileges&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "E:/XAMPP/htdocs/estore/app/languages/ar/usersprivileges",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "advanced.settings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\XAMPP\htdocs\estore\app\languages\ar\usersprivileges" />
@@ -79,14 +82,7 @@
       <workItem from="1675764605294" duration="29386000" />
       <workItem from="1675798921175" duration="723000" />
       <workItem from="1675799721525" duration="438000" />
-      <workItem from="1675855660722" duration="285000" />
-    </task>
-    <task id="LOCAL-00003" summary="Add Links In Navigation Bar">
-      <created>1675605760397</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1675605760397</updated>
+      <workItem from="1675855660722" duration="2065000" />
     </task>
     <task id="LOCAL-00004" summary="Add search input in main navigation bar">
       <created>1675605798910</created>
@@ -424,14 +420,20 @@
       <option name="project" value="LOCAL" />
       <updated>1675800150822</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="Redesign popup rejected button">
+      <created>1675856295171</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1675856295171</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="edit users group and user privileges languages files" />
     <MESSAGE value="call load language method in users controller" />
     <MESSAGE value="create user Privileges controller" />
     <MESSAGE value="create user Privileges Model" />
@@ -456,6 +458,11 @@
     <MESSAGE value="add popup in default action in privileges" />
     <MESSAGE value="focus auto in filed privileges default" />
     <MESSAGE value="change trash color in privileges default" />
-    <option name="LAST_COMMIT_MESSAGE" value="change trash color in privileges default" />
+    <MESSAGE value="Redesign popup rejected button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Redesign popup rejected button" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
