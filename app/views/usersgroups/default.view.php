@@ -1,3 +1,8 @@
+<?php
+
+use APP\Helpers\Messenger\Messenger;
+
+?>
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
@@ -28,7 +33,9 @@
                                 <td class="name-user-row"><?= $group->GroupName ?></td>
                                 <td class="controller-btns">
                                     <a href="usersgroups/edit/<?= $group->GroupId ?>"><i class="fas fa-edit"></i></a>
-                                    <a href="usersgroups/delete/<?= $group->GroupId ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                    <a href="usersgroups/delete/<?= $group->GroupId ?>"  class="hidden" id="delete-group"></a>
+                                    <?php Messenger::popup("you wont delete Group",'!', $typeStyle="danger", $typeAction="link", $id="delete-group"); ?>
+                                    <span class="pop-on-click danger-style link delete-group  cursor-pointer"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                 </td>
 
                             </tr>
