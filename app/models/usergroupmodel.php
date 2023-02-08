@@ -4,8 +4,8 @@ namespace APP\Models;
 
 class UserGroupModel extends AbstractModel
 {
-    public $groupId;
-    public $groupName;
+    public $GroupId;
+    public $GroupName;
 
     protected static $tableName = "users_groups";
 
