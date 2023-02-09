@@ -3,6 +3,7 @@ namespace APP;
 
 
 use APP\lib\FrontController;
+use APP\LIB\Messenger;
 use APP\LIB\SessionManager;
 use APP\LIB\Template\Template;
 use APP\LIB\Language;
@@ -41,10 +42,13 @@ $templateParts = require_once ".." . DS . "app" . DS . "config" . DS . "template
 $template   = new Template($templateParts);
 $languages  = new Language();
 
-$registry = Registration::getInstance();
+$message    = Messenger::getInstance($session);
 
-$registry->session = $session;
+$registry   = Registration::getInstance();
+
+$registry->session  = $session;
 $registry->language = $languages;
+$registry->message  = $message;
 
 $frontController = new FrontController($template, $registry);
 $frontController->dispatch();
