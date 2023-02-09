@@ -5,6 +5,7 @@ namespace APP\Controllers;
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\FilterInput;
 use APP\Models\AbstractModel;
+use APP\Models\UserGroupPrivilegeModel;
 use APP\Models\UserPrivilegeModel;
 
 class UsersPrivilegesController extends AbstractController
@@ -71,6 +72,15 @@ class UsersPrivilegesController extends AbstractController
 
         if ($privilege == null) {
             $this->redirect("usersprivileges");
+        }
+
+        $groupsPrivileges = UserGroupPrivilegeModel::getBy(["PrivilegeId" => $privilege->PrivilegeId]);
+
+        // Delete
+        if ($groupsPrivileges) {
+            foreach ($groupsPrivileges as $groupPrivilege) {
+                $groupPrivilege->delete();
+            }
         }
 
         if ($privilege->delete()) {
