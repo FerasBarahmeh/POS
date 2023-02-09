@@ -33,6 +33,15 @@ class Messenger
     {
         return isset($this->_session->message);
     }
+
+    private function setClassStyle($number): string
+    {
+        if ($number === self::MESSAGE_SUCCESS)  return "success";
+        if ($number === self::MESSAGE_DANGER)   return "danger";
+        if ($number === self::MESSAGE_WARING)   return "waring";
+        if ($number === self::MESSAGE_INFO)     return "info";
+        return '';
+    }
     public function addMessage($mss, $type = self::MESSAGE_SUCCESS): void
     {
         if (! $this->messagesExist()) {
@@ -40,7 +49,7 @@ class Messenger
         }
 
         $temp = $this->_session->message;
-        $temp[] = [$mss, $type];
+        $temp[] = [$mss, $this->setClassStyle($type)];
 
         $this->_session->message = $temp;
         unset($temp);
