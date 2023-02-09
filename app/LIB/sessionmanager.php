@@ -47,6 +47,10 @@ class SessionManager extends \SessionHandler
     {
         $_SESSION[$key] = $value;
     }
+    public function __unset(string $nameSession): void
+    {
+        unset($_SESSION[$nameSession]);
+    }
 
     public function __isset($key)
     {
