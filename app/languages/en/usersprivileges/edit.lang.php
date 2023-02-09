@@ -9,3 +9,4 @@ $content["title_header"] = "Edit Privilege";
 // Inputs
 $content["text_title_privilege"]                 = "Name Privileges";
 $content["text_privilege"]                      = "Privilege";
+$content["text_choose_save"]                      = "Save";
