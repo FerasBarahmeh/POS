@@ -1,8 +1,8 @@
 <?php
 
-namespace APP\Helpers\Messenger;
+namespace APP\Helpers\Structures;
 
-class Messenger
+class Structures
 {
     /**
      * This method to set Popup box in page depends on shortcut framework

@@ -1,6 +1,6 @@
 <?php
 
-use APP\Helpers\Messenger\Messenger;
+use APP\Helpers\Structures\Structures;
 
 ?>
 <h1 class="title-header"><?= $title_header ?></h1>
@@ -38,7 +38,7 @@ use APP\Helpers\Messenger\Messenger;
                                             <i class="fa fa-edit" aria-hidden="true"></i>
                                         </a>
                                         <a class="hidden "  href="/usersprivileges/delete/<?= $privilege->PrivilegeId ?>" id="delete-privilege"></a>
-                                        <?php Messenger::popup(
+                                        <?php Structures::popup(
                                                 "you wont delete privilege",
                                                 '!', $typeStyle="danger",
                                                 $typeAction="link",
