@@ -98,3 +98,12 @@
     </ul>
 </nav>
     <div class="action-view pt-20 pl-20 pr-20" id="action-view">
+
+        <?php
+            $messages = $this->message->getMessage();
+            if (! empty($messages)) {
+                foreach ($messages as $message) {
+                    ?> <p class="message <?= $message[1] ?>"><?= $message[0] ?></p> <?php
+                }
+            }
+        ?>
