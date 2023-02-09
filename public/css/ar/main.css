@@ -167,6 +167,31 @@ h1.title,
 p.title  {
     color: var(--text-black-700);
 }
+p.message {
+    background-color: #eee;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    transition: all .6s ease-in-out;
+    font-size: 20px;
+}
+p.message.finished {
+    opacity: 0;
+    transform: translateY(-100px);
+    position: absolute;
+}
+p.message.danger {
+    background-color: var(--danger-color-300);
+}
+p.message.success {
+    background-color: var(--success-color-300);
+}
+p.message.info {
+    background-color: var(--info-color-300);
+}
+p.message.waring {
+    background-color: var(--waring-color-300);
+}
 div.body {
     grid-template-columns: 300px 1fr;
     height: 94vh;

@@ -118,4 +118,8 @@ dropDown.addEventListener("click", () => {
 
 
 
-
+// Remove Message Tipe
+function finishedMessage() {
+    document.querySelector(".message").classList.add("finished");
+}
+setTimeout(finishedMessage, 5000);
