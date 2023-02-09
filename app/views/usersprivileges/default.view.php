@@ -13,41 +13,44 @@ use APP\Helpers\Messenger\Messenger;
     </div>
 </div>
 
-<!-- Show Employees -->
-<div class="privileges responsive-table mt-20" id="employees-table">
-    <table class="">
-        <thead>
-        <tr>
-            <th><?= $text_table_name_privilege ?></th>
-            <th><?= $text_table_privilege ?></th>
-            <th><?= $text_table_control ?></th>
-        </tr>
-        </thead>
+    <!-- Show Privileges -->
+    <div class="privileges responsive-table mt-20" id="employees-table">
+        <table class="">
+            <thead>
+                <tr>
+                    <th><?= $text_table_name_privilege ?></th>
+                    <th><?= $text_table_privilege ?></th>
+                    <th><?= $text_table_control ?></th>
+                </tr>
+            </thead>
 
-        <tbody>
+            <tbody>
 
                 <?php
                     if (! empty($privileges)) {
                         foreach ($privileges as $privilege) {
                             ?>
-                            <tr class="row-each-employee">
-                                <td class="name-user-row"><?= $privilege->PrivilegeTitle ?></td>
-                                <td class="name-user-row"><?= $privilege->Privilege ?></td>
-                                <td class="controller-btns">
-                                    <a href="/usersprivileges/edit/<?= $privilege->PrivilegeId ?>">
-                                        <i class="fa fa-edit" aria-hidden="true"></i>
-                                    </a>
-                                    <a class="hidden "  href="/usersprivileges/delete/<?= $privilege->PrivilegeId ?>" id="delete-privilege"></a>
-                                    <?php Messenger::popup("you wont delete privilege",'!', $typeStyle="danger", $typeAction="link", $id="delete-privilege"); ?>
-                                    <span class="pop-on-click danger-style cursor-pointer"><i class="fa fa-trash" aria-hidden="true"></i></span>
+                                <tr class="row-each-employee">
+                                    <td class="name-user-row"><?= $privilege->PrivilegeTitle ?></td>
+                                    <td class="name-user-row"><?= $privilege->Privilege ?></td>
+                                    <td class="controller-btns">
+                                        <a href="/usersprivileges/edit/<?= $privilege->PrivilegeId ?>">
+                                            <i class="fa fa-edit" aria-hidden="true"></i>
+                                        </a>
+                                        <a class="hidden "  href="/usersprivileges/delete/<?= $privilege->PrivilegeId ?>" id="delete-privilege"></a>
+                                        <?php Messenger::popup(
+                                                "you wont delete privilege",
+                                                '!', $typeStyle="danger",
+                                                $typeAction="link",
+                                                $id="delete-privilege"); ?>
+                                        <span class="pop-on-click danger-style cursor-pointer"><i class="fa fa-trash" aria-hidden="true"></i></span>
 
-                                </td>
-
-                            </tr>
+                                    </td>
+                                </tr>
                             <?php
                         }
                     }
                 ?>
-        </tbody>
-    </table>
-</div>
+            </tbody>
+        </table>
+    </div>

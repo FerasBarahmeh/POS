@@ -23,6 +23,6 @@
 
     </fieldset>
     <fieldset class="row submit-btn-container">
-        <input type="submit" class="submit-btn" value="Save" name="save">
+        <input type="submit" class="submit-btn" value="<?= $text_choose_save ?>" name="save">
     </fieldset>
 </form>
