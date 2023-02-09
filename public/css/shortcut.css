@@ -9,6 +9,16 @@
     --success-color-700: #0a800a;
     --success-color-500: #178717;
     --success-color-300: #419b41;
+
+    --info-color-900: blue;
+    --info-color-700: #1212d1;
+    --info-color-500: #1f1fa9;
+    --info-color-300: #3939a0;
+
+    --waring-color-900: #e1e112;
+    --waring-color-700: #d8d827;
+    --waring-color-500: #b7b730;
+    --waring-color-300: #abab42;
 }
 /* End Variable colors */
 /* Start Type Display */
