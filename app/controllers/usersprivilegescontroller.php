@@ -4,9 +4,11 @@ namespace APP\Controllers;
 
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\FilterInput;
+use APP\LIB\Messenger;
 use APP\Models\AbstractModel;
 use APP\Models\UserGroupPrivilegeModel;
 use APP\Models\UserPrivilegeModel;
+use function APP\pr;
 
 class UsersPrivilegesController extends AbstractController
 {
@@ -30,10 +32,11 @@ class UsersPrivilegesController extends AbstractController
             $privilege->Privilege       = $this->filterStr($_POST["privilege"]);
 
             if ($privilege->save()) {
-                $this->redirect("/usersprivileges");
+                $this->message->addMessage("Add Privilege Success");
             } else {
-                echo "Catch Some Error";
+                $this->message->addMessage("Add Privilege Filed");
             }
+            $this->redirect("/usersprivileges");
         }
         $this->_renderView();
     }
@@ -57,10 +60,11 @@ class UsersPrivilegesController extends AbstractController
             $privilege->Privilege       = $this->filterStr($_POST["privilege"]);
 
             if ($privilege->save()) {
-                $this->redirect("/usersprivileges");
+                $this->message->addMessage("Edit Privilege Success");
             } else {
-                echo "Catch Some Error";
+                $this->message->addMessage("Edit Privilege Filed Try Agan later", Messenger::MESSAGE_DANGER);
             }
+            $this->redirect("/usersprivileges");
         }
         $this->_renderView();
     }
@@ -84,7 +88,10 @@ class UsersPrivilegesController extends AbstractController
         }
 
         if ($privilege->delete()) {
-            $this->redirect("/usersprivileges");
+            $this->message->addMessage("Delete Privilege Success");
+        } else {
+            $this->message->addMessage("Delete Privilege Feild");
         }
+        $this->redirect("/usersprivileges");
     }
 }
