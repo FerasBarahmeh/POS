@@ -14,16 +14,16 @@ class UsersPrivilegesController extends AbstractController
     use PublicHelper;
     public function defaultAction()
     {
-        $this->_language->load("template.common");
-        $this->_language->load("usersprivileges.default");
+        $this->language->load("template.common");
+        $this->language->load("usersprivileges.default");
         $this->_info["privileges"] = UserPrivilegeModel::getAll();
         $this->_renderView();
     }
 
     public function addAction()
     {
-        $this->_language->load("template.common");
-        $this->_language->load("usersprivileges.add");
+        $this->language->load("template.common");
+        $this->language->load("usersprivileges.add");
         if (isset($_POST['add'])) {
             $privilege = new UserPrivilegeModel();
             $privilege->PrivilegeTitle  = $this->filterStr($_POST["privilege_title"]);
@@ -49,8 +49,8 @@ class UsersPrivilegesController extends AbstractController
             $this->redirect("usersprivileges");
         }
 
-        $this->_language->load("template.common");
-        $this->_language->load("usersprivileges.edit");
+        $this->language->load("template.common");
+        $this->language->load("usersprivileges.edit");
         if (isset($_POST['save'])) {
 
             $privilege->PrivilegeTitle  = $this->filterStr($_POST["privilege_title"]);

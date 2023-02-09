@@ -17,15 +17,15 @@ class UsersGroupsController extends AbstractController
     use PublicHelper;
     public function defaultAction()
     {
-        $this->_language->load("template.common");
-        $this->_language->load("usersgroups.default");
+        $this->language->load("template.common");
+        $this->language->load("usersgroups.default");
         $this->_info["groups"] = UserGroupModel::getAll();
         $this->_renderView();
     }
     public function addAction()
     {
-        $this->_language->load("template.common");
-        $this->_language->load("usersgroups.add");
+        $this->language->load("template.common");
+        $this->language->load("usersgroups.add");
         $this->_info["privileges"] = UserPrivilegeModel::getAll();
 
         if (isset($_POST["privileges"]) && isset($_POST["add"]) && is_array($_POST["privileges"])) {
@@ -99,8 +99,8 @@ class UsersGroupsController extends AbstractController
             $this->redirect("/usersgroups");
         }
 
-        $this->_language->load("template.common");
-        $this->_language->load("usersgroups.edit");
+        $this->language->load("template.common");
+        $this->language->load("usersgroups.edit");
 
         $this->_info["group"]           = $group;
         $this->_info["privileges"]      = UserPrivilegeModel::getAll();

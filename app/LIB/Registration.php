@@ -1,16 +1,16 @@
 <?php
 
-namespace APP\LIP;
+namespace APP\LIB;
 
 class Registration
 {
     private static $_instance;
 
-    private function __construct(){}
+    private function __construct() {}
 
-    private function __clone(){}
+    private function __clone() {}
 
-    public function getInstance(): Registration
+    public static function getInstance(): Registration
     {
         if (self::$_instance === null) {
             self::$_instance = new self();
@@ -22,6 +22,7 @@ class Registration
     {
         $this->$name = $value;
     }
+
     public function __get(string $name)
     {
         return $this->$name;

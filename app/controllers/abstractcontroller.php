@@ -4,6 +4,7 @@ namespace APP\Controllers;
 
 use APP\Lib\FrontController;
 use APP\LIB\Template\Template;
+use APP\LIB\Registration;
 use function APP\pr;
 
 
@@ -13,16 +14,21 @@ abstract class AbstractController {
     protected $_params;
     public $_info = [];
     protected Template $_template;
-    protected $_language;
+    protected Registration $_registry;
+
+    public function __get(string $name)
+    {
+        return $this->_registry->$name;
+    }
 
     public function notFoundAction(): void
     {
-        $this->_language->load("template.common");
+        $this->language->load("template.common");
         $this->_renderView();
     }
     private function mergeInfo(): void
     {
-        $dictionaryLanguage = $this->_language->getDictionary();
+        $dictionaryLanguage = $this->language->getDictionary();
         if (isset($dictionaryLanguage) && !empty($dictionaryLanguage))
             $this->_info = array_merge($this->_info, $dictionaryLanguage);
     }
@@ -34,6 +40,7 @@ abstract class AbstractController {
         }
 
         $this->mergeInfo();
+        $this->_template->setRegistry($this->_registry);
         $this->_template->setActionViewFile($view);
         $this->_template->setData($this->_info);
         $this->_template->renderFiles();
@@ -43,9 +50,9 @@ abstract class AbstractController {
     {
         $this->_template = $tem;
     }
-    public function setLanguage($lang): void
+    public function setRegistry($registry): void
     {
-        $this->_language = $lang;
+        $this->_registry = $registry;
     }
     public function setController(mixed $controller): void
     {

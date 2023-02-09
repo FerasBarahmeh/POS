@@ -8,12 +8,20 @@ class Template
     private $_templateParts;
     private $_actionView;
     private $_info;
-
+    private $_registry;
     public function __construct(array $templateParts)
     {
         $this->_templateParts = $templateParts;
     }
+    public function __get(string $name)
+    {
+        return $this->_registry->$name;
+    }
 
+    public function setRegistry($registry): void
+    {
+        $this->_registry = $registry;
+    }
     public function setActionViewFile($file): void
     {
         $this->_actionView = $file;

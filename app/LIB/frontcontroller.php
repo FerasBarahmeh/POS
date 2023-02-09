@@ -4,6 +4,8 @@ namespace APP\Lib;
 
 use APP\LIB\Template\Template;
 use APP\LIP\languages;
+use APP\LIB\Registration;
+
 
 class FrontController {
 
@@ -13,11 +15,11 @@ class FrontController {
     private $_action = "default";
     private $_params = [];
     private $_template;
-    private $_language;
-    public function __construct(Template $tem, Language $lang)
+    private Registration $_registry;
+    public function __construct(Template $tem, Registration $registry)
     {
         $this->_template = $tem;
-        $this->_language = $lang;
+        $this->_registry = $registry;
         $this->_parseURL();
     }
 
@@ -51,7 +53,7 @@ class FrontController {
         $controller->setAction($this->_action);
         $controller->setParams($this->_params);
         $controller->setTemplate($this->_template);
-        $controller->setLanguage($this->_language);
+        $controller->setRegistry($this->_registry);
         $controller->$actionName();
     }
     public function setController(mixed $controller): void

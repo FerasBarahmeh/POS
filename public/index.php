@@ -6,7 +6,7 @@ use APP\lib\FrontController;
 use APP\LIB\SessionManager;
 use APP\LIB\Template\Template;
 use APP\LIB\Language;
-
+use APP\LIB\Registration;
 
 
 function pr($arr, $typePrint=1): void
@@ -31,11 +31,9 @@ require_once APP_PATH . DS . "LIB" . DS . "autoload.php";
 // Session
 $session = new SessionManager;
 $session->start();
-if (! $session->ifValidFinger()) {
-    $session->kill();
-}
-if (! isset($_SESSION["lang"])) {
-    $_SESSION["lang"] = APP_DEFAULT_LANGUAGE;
+
+if (! isset($session->lang)) {
+    $session->lang = APP_DEFAULT_LANGUAGE;
 }
 
 $templateParts = require_once ".." . DS . "app" . DS . "config" . DS . "templateconfig.php";
@@ -43,6 +41,11 @@ $templateParts = require_once ".." . DS . "app" . DS . "config" . DS . "template
 $template   = new Template($templateParts);
 $languages  = new Language();
 
-$frontController = new FrontController($template, $languages);
+$registry = Registration::getInstance();
+
+$registry->session = $session;
+$registry->language = $languages;
+
+$frontController = new FrontController($template, $registry);
 $frontController->dispatch();
 
