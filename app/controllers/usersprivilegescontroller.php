@@ -32,15 +32,24 @@ class UsersPrivilegesController extends AbstractController
             $privilege->Privilege       = $this->filterStr($_POST["privilege"]);
 
             if ($privilege->save()) {
-                $this->message->addMessage("Add Privilege Success");
+                $this->message->addMessage($this->setMassLang("Add Privilege Success", "تم اضافة الصلاحية بنجاح"));
             } else {
-                $this->message->addMessage("Add Privilege Filed");
+                $this->message->addMessage($this->setMassLang("Add Privilege Filed", "عذرا, فشل اضافة الصلاحية بنجاح"));
             }
             $this->redirect("/usersprivileges");
         }
         $this->_renderView();
     }
 
+    private function setMassLang($enMass, $arMass)
+    {
+        // TODO: Update Set Message Way
+        if ($this->session->getLang() == APP_DEFAULT_LANGUAGE)
+            $mass = $enMass;
+        else
+            $mass = $arMass;
+        return $mass;
+    }
     public function editAction()
     {
 
@@ -60,9 +69,12 @@ class UsersPrivilegesController extends AbstractController
             $privilege->Privilege       = $this->filterStr($_POST["privilege"]);
 
             if ($privilege->save()) {
-                $this->message->addMessage("Edit Privilege Success");
+
+                $this->message->addMessage(
+                    $this->setMassLang("Edit Privilege Success", "تم تعديل الصلاحية بنجاح"));
             } else {
-                $this->message->addMessage("Edit Privilege Filed Try Agan later", Messenger::MESSAGE_DANGER);
+                $this->message->addMessage($this->setMassLang("Edit Privilege field", "لم تم تعديل الصلاحية بنجاح"),
+                    Messenger::MESSAGE_DANGER);
             }
             $this->redirect("/usersprivileges");
         }
@@ -88,9 +100,9 @@ class UsersPrivilegesController extends AbstractController
         }
 
         if ($privilege->delete()) {
-            $this->message->addMessage("Delete Privilege Success");
+            $this->message->addMessage($this->setMassLang("Delete Privilege Success", "تم حذف الصلاحية بنجاح"));
         } else {
-            $this->message->addMessage("Delete Privilege Feild");
+            $this->message->addMessage($this->setMassLang("Delete Privilege Filed", "عذرا فشل حذف الصلاحية حاول لاحقا"), Messenger::MESSAGE_DANGER);
         }
         $this->redirect("/usersprivileges");
     }

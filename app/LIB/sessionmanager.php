@@ -130,4 +130,9 @@ class SessionManager extends \SessionHandler
         }
         return false;
     }
+
+    public function getLang()
+    {
+        return $_SESSION["lang"];
+    }
 }
