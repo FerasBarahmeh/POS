@@ -347,6 +347,9 @@ form.add-form fieldset.row {
     display: flex;
     padding: 15px;
 }
+form.add-form fieldset.row:last-child {
+    padding: 5px;
+}
 form.add-form fieldset.row div.field {
     position: relative;
     flex: 1;
@@ -359,7 +362,7 @@ form.add-form fieldset.row div.field:not(:first-child) {
 form.add-form fieldset.row label {
     position: absolute;
     top: 0;
-    left: 10px;
+    left: 2px;
     color: var(--text-black-900);
     transition: all 0.3s ease-in-out;
     pointer-events: none;
@@ -367,13 +370,10 @@ form.add-form fieldset.row label {
 form.add-form fieldset.row input[type="text"] {
     width: 100%;
     color: var(--text-black-700);
-    padding-left: 5px;
+    transition: border-bottom-width .3s ease-in-out;
 }
-form.add-form fieldset.row input[type="text"]:focus {
-    /*border-bottom-width: 2px ;*/
-    /*border-bottom-style: solid ;*/
-
-    /*border-bottom-color: #746a6a ;*/
+form.add-form fieldset.row input[type="text"]:focus-within {
+    border-bottom: 2px solid #746a6a;
 }
 form.add-form fieldset.row input[type="text"]:focus + label,
 form.add-form fieldset.row input[type="text"]:not(:placeholder-shown)  + label {
@@ -388,6 +388,7 @@ form.add-form fieldset.row select {
     width: 100%;
     font-size: 15px;
     cursor: pointer;
+    padding-left: 10px;
 }
 form.add-form fieldset.row select option {
     cursor: pointer;
@@ -413,5 +414,21 @@ form.add-form .submit-btn {
 }
 form.add-form .submit-btn:hover {
     opacity: 0.7;
+}
+
+@media (max-width: 550px) {
+    form.add-form fieldset.row {
+        margin-bottom: 0;
+    }
+    form.add-form fieldset.row {
+        flex-direction: column;
+        padding: 10px 0 0 10px;
+    }
+    form.add-form fieldset.row div.field {
+        margin-bottom: 30px;
+    }
+    form.add-form fieldset.row div.field {
+        border-left: 1px solid var(--bg-black-100);
+    }
 }
 /* End Table Add */
