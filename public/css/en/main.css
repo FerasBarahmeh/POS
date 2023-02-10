@@ -28,6 +28,7 @@
 }
 body {
     height: 74vh;
+    background-color: var(--bg-black-30);
 }
 ul {
     list-style: none;
@@ -40,18 +41,21 @@ a {
     text-decoration: none;
 }
 /* Start Colors */
-:root {
+:root body {
     --bg-black-900   : #3E4142;
     --bg-black-100   : #9FACB3;
     --bg-black-70    : #E3E3E3;
     --bg-black-50    : #D6E8F0;
+    --bg-black-30    : #e8f1f4;
     --text-black-900 : #586266;
     --text-black-700 : #3E4142;
 }
-body.dark {
+:root body.dark {
     --bg-black-900: #151515;
     --bg-black-100: #222222;
-    --bg-black-50: #393939;
+    --bg-black-50:  #393939;
+    --bg-black-70:  #9793;
+    --bg-black-30    : #303131;
     --text-black-900 : #ffffff;
     --text-black-700 : #e9e9e9;
 }
