@@ -13,4 +13,11 @@ class UsersController extends AbstractController
         $this->_info["users"] = UserModel::getAll();
         $this->_renderView();
     }
+    public function addAction()
+    {
+        $this->language->load("template.common");
+        $this->language->load("users.add");
+
+        $this->_renderView();
+    }
 }
