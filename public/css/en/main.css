@@ -114,6 +114,7 @@ header.main .options ul.drop-down-main-header {
     top: 42px;
     width: 150px;
     box-shadow: 5px 4px 3px lightgrey;
+    z-index: 1000;
 }
 header.main .options ul.drop-down-main-header:before {
     content: "";
