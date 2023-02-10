@@ -5,17 +5,17 @@
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
             <input type="text"
-                   name="username" id="username"
+                   name="UserName" id="UserName"
                    placeholder=" " minlength="3"
                    maxlength="12" required autocomplete="off"/>
-            <label for="username"> <?= $table_user_name ?></label>
+            <label for="UserName"> <?= $table_user_name ?></label>
         </div>
 
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
-            <input type="text" name="password"  id="password" placeholder=" "
+            <input type="text" name="Password"  id="Password" placeholder=" "
                    minlength="7" maxlength="60" required autocomplete="off"/>
-            <label for="password"> <?= $table_password ?> </label>
+            <label for="Password"> <?= $table_password ?> </label>
         </div>
 
         <div class="field">
@@ -32,10 +32,19 @@
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
             <input type="email"
-                   name="email" id="email"
+                   name="Email" id="Email"
                    placeholder=" " minlength="10"
                    maxlength="30" required autocomplete="off"/>
-            <label for="email"> <?= $table_email ?></label>
+            <label for="Email"> <?= $table_email ?></label>
+        </div>
+
+        <div class="field">
+            <!-- Must Set space in placeholder to apply label animation -->
+            <input type="email"
+                   name="confirm-email" id="confirm-email"
+                   placeholder=" " minlength="10"
+                   maxlength="30" required autocomplete="off"/>
+            <label for="confirm-email"> <?= $table_confirm_email ?></label>
         </div>
 
     </fieldset>
@@ -44,18 +53,26 @@
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
             <select name="GroupId" id="GroupId" required autocomplete="off">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
+                <option class="selected"><?= $table_group_name ?></option>
+                <?php
+                    if ($groups) {
+                        foreach ($groups as $group) {
+                            ?>
+                                <option value="<?= $group->GroupId ?>"><?= $group->GroupName ?></option>
+                            <?php
+                        }
+
+                    }
+
+                ?>
             </select>
         </div>
 
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
-            <input type="text" name="phoneNumber"  id="phoneNumber" placeholder=" "
+            <input type="text" name="PhoneNumber"  id="PhoneNumber" placeholder=" "
                    minlength="3" maxlength="15" required autocomplete="off"/>
-            <label for="phoneNumber"> <?= $table_phone_number ?> </label>
+            <label for="PhoneNumber"> <?= $table_phone_number ?> </label>
         </div>
 
     </fieldset>
