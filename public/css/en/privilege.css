@@ -17,9 +17,10 @@
     white-space: nowrap;
 }
 .privileges table thead th {
-    background-color: #EEE;
+    background-color: white;
     color: gray;
     font-size: 16px;
+    border-left: 1px solid var(--bg-black-30);
 }
 .privileges table tbody tr {
     opacity: 1;
@@ -31,8 +32,8 @@
     left: 2000px;
 }
 .privileges table tbody td {
-    border-bottom: 1px solid #eee;
-    border-left: 1px solid #eee;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
     transition: all .3s ease-in-out;
 }
 
