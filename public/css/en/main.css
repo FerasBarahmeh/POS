@@ -393,6 +393,7 @@ form.add-form fieldset.row select {
     font-size: 15px;
     cursor: pointer;
     padding-left: 10px;
+    color: var(--text-black-900);
 }
 form.add-form fieldset.row select option {
     cursor: pointer;
@@ -400,7 +401,6 @@ form.add-form fieldset.row select option {
     outline: none;
     background-color: var(--bg-black-70);
 }
-
 form.add-form fieldset.row select option:hover {
     background-color: var(--bg-black-100);
 }

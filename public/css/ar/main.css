@@ -463,6 +463,7 @@ form.add-form fieldset.row select {
     width: 100%;
     font-size: 15px;
     cursor: pointer;
+    color: var(--text-black-900);
     padding-left: 10px;
 }
 form.add-form fieldset.row select option {
