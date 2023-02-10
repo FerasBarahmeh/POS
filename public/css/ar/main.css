@@ -40,11 +40,12 @@ a {
     text-decoration: none;
 }
 /* Start Colors */
-:root {
+:root body {
     --bg-black-900   : #3E4142;
     --bg-black-100   : #9FACB3;
     --bg-black-70    : #E3E3E3;
     --bg-black-50    : #D6E8F0;
+    --bg-black-30    : #ffffff;
     --text-black-900 : #586266;
     --text-black-700 : #3E4142;
 }
