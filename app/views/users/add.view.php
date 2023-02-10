@@ -1,7 +1,7 @@
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <form class="add-form" method="POST" enctype="application/x-www-form-urlencoded">
-    <fieldset class="row pb-10">
+    <fieldset class="row">
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
             <input type="text"
@@ -28,10 +28,10 @@
 
     </fieldset>
 
-    <fieldset class="row pb-10">
+    <fieldset class="row">
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
-            <input type="text"
+            <input type="email"
                    name="email" id="email"
                    placeholder=" " minlength="10"
                    maxlength="30" required autocomplete="off"/>
@@ -40,7 +40,7 @@
 
     </fieldset>
 
-    <fieldset class="row pb-10">
+    <fieldset class="row">
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
             <select name="GroupId" id="GroupId" required autocomplete="off">

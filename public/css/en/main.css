@@ -368,7 +368,8 @@ form.add-form fieldset.row label {
     transition: all 0.3s ease-in-out;
     pointer-events: none;
 }
-form.add-form fieldset.row input[type="text"] {
+form.add-form fieldset.row input[type="text"],
+form.add-form fieldset.row input[type="email"] {
     width: 100%;
     color: var(--text-black-700);
     transition: border-bottom-width .3s ease-in-out;
@@ -377,7 +378,9 @@ form.add-form fieldset.row input[type="text"]:focus-within {
     border-bottom: 2px solid #746a6a;
 }
 form.add-form fieldset.row input[type="text"]:focus + label,
-form.add-form fieldset.row input[type="text"]:not(:placeholder-shown)  + label {
+form.add-form fieldset.row input[type="email"]:focus + label,
+form.add-form fieldset.row input[type="text"]:not(:placeholder-shown)  + label,
+form.add-form fieldset.row input[type="email"]:not(:placeholder-shown)  + label {
     transform: translateY(-20px);
     left: 0;
     font-size: 15px;
