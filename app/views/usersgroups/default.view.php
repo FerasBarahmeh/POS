@@ -33,7 +33,7 @@ use APP\Helpers\Structures\Structures;
                                 <td class="name-user-row"><?= $group->GroupName ?></td>
                                 <td class="controller-btns">
                                     <a href="usersgroups/edit/<?= $group->GroupId ?>"><i class="fas fa-edit"></i></a>
-                                    <a href="usersgroups/delete/<?= $group->GroupId ?>"  class="hidden" id="delete-group"></a>
+                                    <a href="usersgroups/delete/<?= $group->GroupId ?>"  class="hidden" id="delete"></a>
                                     <?php Structures::popup("you wont delete Group",'!', $typeStyle="danger", $typeAction="link", $id="delete-group"); ?>
                                     <span class="pop-on-click danger-style link delete-group  cursor-pointer"><i class="fa fa-trash" aria-hidden="true"></i></span>
                                 </td>

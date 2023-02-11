@@ -37,7 +37,7 @@ use APP\Helpers\Structures\Structures;
                                         <a href="/usersprivileges/edit/<?= $privilege->PrivilegeId ?>">
                                             <i class="fa fa-edit" aria-hidden="true"></i>
                                         </a>
-                                        <a class="hidden "  href="/usersprivileges/delete/<?= $privilege->PrivilegeId ?>" id="delete-privilege"></a>
+                                        <a class="hidden"  href="/usersprivileges/delete/<?= $privilege->PrivilegeId ?>" id="delete"></a>
                                         <?php Structures::popup(
                                                 "you wont delete privilege",
                                                 '!', $typeStyle="danger",
