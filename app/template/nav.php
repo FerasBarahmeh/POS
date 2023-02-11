@@ -71,7 +71,7 @@
             </button>
 
             <ul class="sub-menu w-fu mtb-10 un-visible">
-                <li class="li-level-2 between-ele"><a href="/userslist" class="sub-link"><?= $text_nav_users_list ?></a><i class="fa fa-list" aria-hidden="true"></i></li>
+                <li class="li-level-2 between-ele"><a href="/users/" class="sub-link"><?= $text_nav_users_list ?></a><i class="fa fa-list" aria-hidden="true"></i></li>
                 <li class="li-level-2 between-ele"><a href="/usersgroups" class="sub-link"><?= $text_nav_users_groups ?></a> <i class="fas fa-users" aria-hidden="true"></i></li>
                 <li class="li-level-2 between-ele"><a href="/usersprivileges" class="sub-link"><?= $text_nav_users_privileges ?></a> <i class="fas fa-user-secret" aria-hidden="true"></i></li>
             </ul>
