@@ -5,10 +5,13 @@ namespace APP\Controllers;
 use APP\Lib\FrontController;
 use APP\LIB\Template\Template;
 use APP\LIB\Registration;
+use APP\LIB\Validation;
 use function APP\pr;
 
 
-abstract class AbstractController {
+abstract class AbstractController
+{
+    use Validation;
     protected $_controller;
     protected $_action;
     protected $_params;
