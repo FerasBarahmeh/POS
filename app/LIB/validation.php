@@ -8,15 +8,16 @@ trait Validation
 {
     private array $errors = [];
     private array $_words;
+    private bool $flagIfSimpleValidation;
     private array $_regexPatterns = [
-        'num' => '/^[0-9]+(?:\.[0-9]+)?$/',
-        'int' => '/^[0-9]+$/',
-        'float' => '/^[0-9]+\.[0-9]+$/',
-        'alpha' => '/^[a-zA-Z\p{Arabic} ]+$/u',
-        'alphaNum' => '/^[a-zA-Z\p{Arabic}0-9 ]+$/u',
-        'vDate' => '/^[1-2][0-9][0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:0[1-9])|(?:(?:1|2)[0-9])|(?:3[0-1]))$/',
-        'email' => '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
-        'url' => '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/'
+        'num'           => '/^[0-9]+(?:\.[0-9]+)?$/',
+        'int'           => '/^[0-9]+$/',
+        'float'         => '/^[0-9]+\.[0-9]+$/',
+        'alpha'         => '/^[a-zA-Z\p{Arabic} ]+$/u',
+        'alphaNum'      => '/^[a-zA-Z\p{Arabic}0-9 ]+$/u',
+        'vDate'         => '/^[1-2][0-9][0-9][0-9]-(?:(?:0[1-9])|(?:1[0-2]))-(?:(?:0[1-9])|(?:(?:1|2)[0-9])|(?:3[0-1]))$/',
+        'email'         => '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
+        'url'           => '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/'
     ];
 
     public function req($value): bool
@@ -159,30 +160,43 @@ trait Validation
                 $this->feedKey("text_error_" . $nameMethod, [$this->get("table_" . $nameAttribute), $valueMin]),
                 Messenger::MESSAGE_DANGER
             );
+            $this->errors[$nameAttribute] = $nameAttributeValue;
         }
     }
     private function callMinMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(min)\((\d+)\)/", $roleMethod, $minValue)) {
             $this->validationTowArgument($minValue, $nameAttributeValue, $nameAttribute);
+            $this->flagIfSimpleValidation = true;
+        } else {
+            $this->flagIfSimpleValidation = false;
         }
     }
     private function callMaxMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(max)\((\d+)\)/", $roleMethod, $minValue)) {
             $this->validationTowArgument($minValue, $nameAttributeValue, $nameAttribute);
+            $this->flagIfSimpleValidation = true;
+        } else {
+            $this->flagIfSimpleValidation = false;
         }
     }
     private function ltMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(lt)\((\d+)\)/", $roleMethod, $partsArgument)) {
             $this->validationTowArgument($partsArgument, $nameAttributeValue, $nameAttribute);
+            $this->flagIfSimpleValidation = true;
+        } else {
+            $this->flagIfSimpleValidation = false;
         }
     }
     private function gtMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(gt)\((\d+)\)/", $roleMethod, $minValue)) {
             $this->validationTowArgument($minValue, $nameAttributeValue, $nameAttribute);
+            $this->flagIfSimpleValidation = true;
+        } else {
+            $this->flagIfSimpleValidation = false;
         }
     }
 
@@ -197,37 +211,66 @@ trait Validation
                 $this->feedKey("text_error_" . $nameMethod, [$this->get("table_" . $nameAttribute), $valueMin, $valueMax]),
                 Messenger::MESSAGE_DANGER
             );
+            $this->errors[$nameMethod] = $nameAttribute;
         }
 
     }
-    private function betweenMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
+    private function betweenMethod($roleMethod, $nameAttributeValue, $nameAttribute)
     {
         if (preg_match_all("/(between)\((\d+),(\d+)\)/", $roleMethod, $partsArgument)) {
             $this->validationThreeArgument($partsArgument, $nameAttributeValue, $nameAttribute);
+            $this->flagIfSimpleValidation = true;
+        } else {
+            $this->flagIfSimpleValidation = false;
         }
+
     }
     private function floatLikeMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(floatLike)\((\d+),(\d+)\)/", $roleMethod, $partsArgument)) {
             $this->validationThreeArgument($partsArgument, $nameAttributeValue, $nameAttribute);
+            $this->flagIfSimpleValidation = true;
+        } else {
+            $this->flagIfSimpleValidation = false;
+        }
+
+    }
+
+    private function isSimpleRole($roleMethod, $nameAttributeValue, $nameAttribute): void
+    {
+        if($this->$roleMethod($nameAttributeValue) === false) {
+            $this->errors[$roleMethod] = $nameAttributeValue;
+            $this->message->addMessage (
+                $this->feedKey("text_error_" . $roleMethod, [$this->get("table_" . $nameAttribute)]),
+                Messenger::MESSAGE_DANGER
+            );
+            $this->errors[$roleMethod] = $nameAttribute;
         }
     }
+
     public function isAppropriate($roles, $typeInput): void
     {
         $this->_words = $this->language->getDictionary();
         if ($roles) {
             foreach ($roles as $nameAttribute => $rolesFiled) {
                 $nameAttributeValue = $typeInput[$nameAttribute];
-
                 foreach ($rolesFiled as $roleMethod ) {
-                    $this->callMinMethod($roleMethod, $nameAttributeValue, $nameAttribute);
-                    $this->callMaxMethod($roleMethod, $nameAttributeValue, $nameAttribute);
-                    $this->ltMethod($roleMethod, $nameAttributeValue, $nameAttribute);
-                    $this->gtMethod($roleMethod, $nameAttributeValue, $nameAttribute);
-                    $this->betweenMethod($roleMethod, $nameAttributeValue, $nameAttribute);
-                    $this->floatLikeMethod($roleMethod, $nameAttributeValue, $nameAttribute);
+                     $this->callMinMethod($roleMethod, $nameAttributeValue, $nameAttribute);
+                     if (! $this->flagIfSimpleValidation)
+                        $this->callMaxMethod($roleMethod, $nameAttributeValue, $nameAttribute);
+                    if (! $this->flagIfSimpleValidation)
+                         $this->ltMethod($roleMethod, $nameAttributeValue, $nameAttribute);
+                    if (! $this->flagIfSimpleValidation)
+                         $this->gtMethod($roleMethod, $nameAttributeValue, $nameAttribute);
+                    if (! $this->flagIfSimpleValidation)
+                         $this->betweenMethod($roleMethod, $nameAttributeValue, $nameAttribute);
+                    if (! $this->flagIfSimpleValidation)
+                        $this->floatLikeMethod($roleMethod, $nameAttributeValue, $nameAttribute);
+                    if (! $this->flagIfSimpleValidation)
+                        $this->isSimpleRole($roleMethod, $nameAttributeValue, $nameAttribute);
                 }
             }
+
         }
     }
 }
