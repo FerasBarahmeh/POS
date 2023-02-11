@@ -18,6 +18,7 @@ const menu      = dropDown.querySelector("#menu");
 
 dropDown.addEventListener("click", () => {
     menu.classList.toggle("visible");
+
 });
 
 // Start navigation Bar
@@ -118,8 +119,10 @@ dropDown.addEventListener("click", () => {
 
 
 
-// Remove Message Tipe
+// Remove Message Tip
 function finishedMessage() {
-    document.querySelector(".message").classList.add("finished");
+    document.querySelectorAll(".message").forEach(mass => {
+        mass.classList.add("finished");
+    });
 }
 setTimeout(finishedMessage, 5000);
