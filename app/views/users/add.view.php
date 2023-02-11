@@ -3,10 +3,10 @@
 <form class="add-form" method="POST" enctype="application/x-www-form-urlencoded">
     <fieldset class="row">
         <div class="field">
-            <!-- Must Set space in placeholder to apply label animation minlength="4" maxlength="12" required -->
+            <!-- Must Set space in placeholder to apply label animation  -->
             <input type="text"
                    name="UserName" id="UserName"
-
+                   minlength="4" maxlength="12" required
                    placeholder=" "   autocomplete="off"/>
             <label for="UserName"> <?= $table_UserName ?></label>
         </div>
