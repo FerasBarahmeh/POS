@@ -8,11 +8,11 @@ $content["title_header"] = "Add User";
 
 
 // Field
-$content["table_user_name"]             = "User Name";
-$content["table_password"]              = "Password";
+$content["table_UserName"]              = "User Name";
+$content["table_Password"]              = "Password";
 $content["table_confirm_password"]      = "Confirm Password";
-$content["table_email"]                 = "Email";
+$content["table_Email"]                 = "Email";
 $content["table_confirm_email"]         = "Confirm Email";
-$content["table_subscription_date"]     = "Subscription Date";
-$content["table_phone_number"]          = "Phone Number";
-$content["table_group_name"]            = "Pleas Choose Group Name";
+$content["table_SubscriptionDate"]      = "Subscription Date";
+$content["table_PhoneNumber"]           = "Phone Number";
+$content["table_GroupId"]               = "Pleas Choose Group Name";
