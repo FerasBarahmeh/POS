@@ -12,6 +12,7 @@ const popsOnClick = document.querySelectorAll(".pop-on-click");
 if (popsOnClick != null) {
     popsOnClick.forEach(popOnClick => {
        popOnClick.addEventListener("click", () => {
+           popOnClick.classList.add("clicked");
            if(popOnClick.classList.contains("danger-style")) {
                cardPopup.classList.add("danger");
            } else {
@@ -44,14 +45,12 @@ const acceptedPopup = document.getElementById("accepted-popup");
 if (acceptedPopup != null) {
     acceptedPopup.addEventListener("click", () => {
         if (cardPopup.classList.contains("link")) {
-
-            // Get name Action
-            const indexLinkClass = classCard.indexOf("link");
-
-            // Get Element by id to apply action for example(if link we will click to this link)
-            if (classCard.length > indexLinkClass) {
-                document.getElementById(classCard[indexLinkClass + 1]).click();
-            }
+            popsOnClick.forEach(clicked => {
+                if (clicked.classList.contains("clicked")) {
+                    clicked.parentElement.querySelector("#delete").click();
+                    clicked.classList.remove("clicked")
+                }
+            });
         }
 
         hiddenPopup();
