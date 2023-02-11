@@ -101,11 +101,13 @@ header.main .options .container-drop-down-main-header {
     height: 0;
     opacity: 0;
     transition: height 0.3ms 400ms, opacity 400ms 0.3ms;
+    pointer-events: none;
 }
 header.main .options .container-drop-down-main-header.visible {
     height: auto;
     opacity: 1;
     overflow: auto;
+    pointer-events: auto;
 }
 header.main .options ul.drop-down-main-header {
     background: var(--bg-black-50);
