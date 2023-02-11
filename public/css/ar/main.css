@@ -170,11 +170,12 @@ p.title  {
 }
 p.message {
     background-color: #eee;
-    padding: 10px;
+    padding: 5px 10px;
     color: white;
     border-radius: 5px;
     transition: all .6s ease-in-out;
     font-size: 20px;
+    margin-bottom: 5px;
 }
 p.message.finished {
     opacity: 0;
