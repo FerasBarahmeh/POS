@@ -215,7 +215,7 @@ trait Validation
         }
 
     }
-    private function betweenMethod($roleMethod, $nameAttributeValue, $nameAttribute)
+    private function betweenMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(between)\((\d+),(\d+)\)/", $roleMethod, $partsArgument)) {
             $this->validationThreeArgument($partsArgument, $nameAttributeValue, $nameAttribute);
@@ -248,7 +248,7 @@ trait Validation
         }
     }
 
-    public function isAppropriate($roles, $typeInput): void
+    public function isAppropriate($roles, $typeInput): array|bool
     {
         $this->_words = $this->language->getDictionary();
         if ($roles) {
@@ -272,5 +272,7 @@ trait Validation
             }
 
         }
+
+        return count($this->errors) == 0 ? true : $this->errors;
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
 $content["text_error_req"]          = "%s required ";
-$content["text_error_min"]          = "Number characters %s short must be greater than %s";
-$content["text_error_max"]          = "Number characters %s long must be less than %s";
-$content["text_error_num"]          = "%s must be number";
+$content["text_error_min"]          = "%s short must be greater than %s";
+$content["text_error_max"]          = "%s long must be less than %s";
+$content["text_error_num"]          = "%s must be only numbers";
 $content["text_error_int"]          = "%s must be integer";
 $content["text_error_float"]        = "%s must be Float";
 $content["text_error_alpha"]        = "%s must be alpha";
