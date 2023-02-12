@@ -19,6 +19,9 @@
             <th><?= $text_table_subscription_date_user ?></th>
             <th><?= $text_table_last_login_user ?></th>
             <th><?= $text_table_phone_number_user ?></th>
+            <th><?= $text_table_group_name ?></th>
+            <th><?= $text_table_status ?></th>
+            <th><?= $text_table_control ?></th>
         </tr>
         </thead>
 
@@ -28,19 +31,21 @@
                     if (! empty($users) && isset($users)) {
                         foreach ($users as $user) {
                             ?>
-                            <tr class="row-each-employee">
-                                <td class="name-user-row"><?= $user->UserName ?></td>
-                                <td><?= $user->email ?></td>
-                                <td><?= $user->password ?></td>
-                                <td><?= $user->subscriptionDate ?></td>
-                                <td><?= $user->lastLogin ?></td>
-                                <td class="controller-btns">
-                                    <a href="employee/edit/<?= $user->id ?>"><i class="fas fa-edit"></i></a>
-                                    <a href="employee/delete/<?= $user->id ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                                    <a href=""><i class="fa fa-bell"  aria-hidden="true"></i></a>
-                                </td>
+                                <tr class="row-each-employee">
+                                    <td class="name-user-row"><?= $user->UserName ?></td>
+                                    <td><?= $user->Email ?></td>
+                                    <td><?= $user->Password ?></td>
+                                    <td><?= $user->SubscriptionDate ?></td>
+                                    <td><?= $user->LastLogin ?></td>
+                                    <td><?= $user->PhoneNumber ?></td>
+                                    <td><?= $user->GroupName ?></td>
+                                    <td><?= $user->Status ?></td>
+                                    <td class="controller-btns">
+                                        <a href="users/edit/<?= $user->UserId ?>"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                        <a href="users/delete/<?= $user->UserId ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                    </td>
 
-                            </tr>
+                                </tr>
                             <?php
                         }
                     }
