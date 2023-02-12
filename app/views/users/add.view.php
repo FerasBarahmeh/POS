@@ -13,14 +13,14 @@
 
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
-            <input type="text" name="Password"  id="Password" placeholder=" "
+            <input type="password" name="Password"  id="Password" placeholder=" "
                    minlength="7" maxlength="60" required autocomplete="off"/>
             <label for="Password"> <?= $table_Password ?> </label>
         </div>
 
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
-            <input type="text" name="confirm-password"  id="confirm-password" placeholder=" "
+            <input type="password" name="confirm-password"  id="confirm-password" placeholder=" "
                    minlength="7" maxlength="60" required autocomplete="off"/>
             <label for="confirm-password"> <?= $table_confirm_password ?> </label>
         </div>
