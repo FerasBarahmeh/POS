@@ -441,6 +441,7 @@ form.add-form fieldset.row label {
     width: 100%;
 }
 form.add-form fieldset.row input[type="text"],
+form.add-form fieldset.row input[type="password"],
 form.add-form fieldset.row input[type="email"]  {
     width: 100%;
     color: var(--text-black-700);
@@ -450,8 +451,10 @@ form.add-form fieldset.row input[type="text"]:focus-within {
     border-bottom: 2px solid #746a6a;
 }
 form.add-form fieldset.row input[type="text"]:focus + label,
+form.add-form fieldset.row input[type="password"]:focus + label,
 form.add-form fieldset.row input[type="email"]:focus + label,
 form.add-form fieldset.row input[type="text"]:not(:placeholder-shown)  + label,
+form.add-form fieldset.row input[type="password"]:not(:placeholder-shown)  + label,
 form.add-form fieldset.row input[type="email"]:not(:placeholder-shown)  + label {
     transform: translateY(-20px);
     left: 0;
