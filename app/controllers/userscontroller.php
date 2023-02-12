@@ -10,11 +10,11 @@ class UsersController extends AbstractController
 {
     private array $_rolesValid = [
         "UserName"          => ["req", "alphaNum",  "between(4,12)",],
-        "Password"          => ["req",  "between(7,60)", "alphaNum"],
+        "Password"          => ["req", "between(7,60)", "alphaNum"],
         "confirm-password"  => ["req", "between(7,60)", "alphaNum"],
         "Email"             => ["req", "between(10,30)", "email"],
         "confirm-email"     => ["req", "between(10,30)", "email"],
-        "GroupId"           => ["req", "min(1)", "max(1)", "int"],
+        "GroupId"           => ["req", "int", "posInt"],
         "PhoneNumber"       => ["num"],
     ];
     public function defaultAction()
