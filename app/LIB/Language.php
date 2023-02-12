@@ -53,4 +53,13 @@ class Language
         return $this->_dictionary;
     }
 
+    public function get($key)
+    {
+        // TODO: remove method from validation trait
+        if(array_key_exists($key, $this->_dictionary)) {
+            return $this->_dictionary[$key];
+        }
+        return false;
+    }
+
 }
