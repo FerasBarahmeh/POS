@@ -19,4 +19,4 @@ $content["text_error_gt"]           = "%s يجب ان يكون اكبر من %s"
 $content["text_error_between"]      = "%s يجب ان تكون قيمته ما بين %s و %s (أحرف ان كان نصيا)";
 $content["text_error_floatLike"]    = "%s يجب ان يحتوي %s قبل الفاصلة العشرية and %s وبعدها";
 $content["text_error_posInt"]       = "%s يحب ان يكون عدد صحيح فقط";
-$content["text_error_compare"]      = "%s مختلفين";
+$content["text_error_compare"]      = "%s و %s مختلفين";
