@@ -17,3 +17,6 @@ $content["text_table_email_user"]               = "Email";
 $content["text_table_subscription_date_user"]   = "Subscription Date";
 $content["text_table_last_login_user"]          = "Last Login";
 $content["text_table_phone_number_user"]        = "Phone Number";
+$content["text_table_group_name"]               = "Group User";
+$content["text_table_status"]                   = "Status";
+$content["text_table_control"]                  = "Control";

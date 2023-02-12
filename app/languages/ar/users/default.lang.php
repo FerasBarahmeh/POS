@@ -17,3 +17,6 @@ $content["text_table_email_user"]               = "البريد الالكترو
 $content["text_table_subscription_date_user"]   = "تاريخ التسجيل";
 $content["text_table_last_login_user"]          = "اخر تسجيل دخول";
 $content["text_table_phone_number_user"]        = "رقم الهاتف";
+$content["text_table_group_name"]               = "قروب المستخدم";
+$content["text_table_status"]                   = "الحالة";
+$content["text_table_control"]                  = "التحكم";
