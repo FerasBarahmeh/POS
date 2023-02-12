@@ -6,7 +6,7 @@ use function APP\pr;
 
 trait Validation
 {
-    private array $errors = [];
+    private int $_errorsNum = 0;
     private array $_words;
     private bool $flagIfSimpleValidation;
     private array $_regexPatterns = [
@@ -51,7 +51,7 @@ trait Validation
     }
     public function posInt($value): bool
     {
-        return $value >= 0 && is_int($value);
+        return $value >= 0 && is_numeric($value);
     }
 
     public function eq($value, $matchAgainst): bool
@@ -59,9 +59,9 @@ trait Validation
         return $value == $matchAgainst;
     }
 
-    public function eqField($value, $otherFieldValue): bool
+    public function compare($value, $valueTow): bool
     {
-        return $value == $otherFieldValue;
+        return $value == $valueTow;
     }
 
     public function lt($value, $matchAgainst): bool
@@ -155,7 +155,7 @@ trait Validation
         }
         return false;
     }
-    private function validationTowArgument(array $partsArgument, $nameAttributeValue, $nameAttribute): void
+    private function validationOneArgument(array $partsArgument, $nameAttributeValue, $nameAttribute): void
     {
         $nameMethod = $partsArgument[1][0];
         $valueMin = $partsArgument[2][0];
@@ -164,13 +164,13 @@ trait Validation
                 $this->feedKey("text_error_" . $nameMethod, [$this->get("table_" . $nameAttribute), $valueMin]),
                 Messenger::MESSAGE_DANGER
             );
-            $this->errors[$nameAttribute] = $nameAttributeValue;
+            $this->_errorsNum ++;
         }
     }
     private function callMinMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(min)\((\d+)\)/", $roleMethod, $minValue)) {
-            $this->validationTowArgument($minValue, $nameAttributeValue, $nameAttribute);
+            $this->validationOneArgument($minValue, $nameAttributeValue, $nameAttribute);
             $this->flagIfSimpleValidation = true;
         } else {
             $this->flagIfSimpleValidation = false;
@@ -179,7 +179,7 @@ trait Validation
     private function callMaxMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(max)\((\d+)\)/", $roleMethod, $minValue)) {
-            $this->validationTowArgument($minValue, $nameAttributeValue, $nameAttribute);
+            $this->validationOneArgument($minValue, $nameAttributeValue, $nameAttribute);
             $this->flagIfSimpleValidation = true;
         } else {
             $this->flagIfSimpleValidation = false;
@@ -188,7 +188,7 @@ trait Validation
     private function ltMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(lt)\((\d+)\)/", $roleMethod, $partsArgument)) {
-            $this->validationTowArgument($partsArgument, $nameAttributeValue, $nameAttribute);
+            $this->validationOneArgument($partsArgument, $nameAttributeValue, $nameAttribute);
             $this->flagIfSimpleValidation = true;
         } else {
             $this->flagIfSimpleValidation = false;
@@ -197,7 +197,7 @@ trait Validation
     private function gtMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(gt)\((\d+)\)/", $roleMethod, $minValue)) {
-            $this->validationTowArgument($minValue, $nameAttributeValue, $nameAttribute);
+            $this->validationOneArgument($minValue, $nameAttributeValue, $nameAttribute);
             $this->flagIfSimpleValidation = true;
         } else {
             $this->flagIfSimpleValidation = false;
@@ -206,41 +206,62 @@ trait Validation
     private function eqMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(eq)\((\d+)\)/", $roleMethod, $minValue)) {
-            $this->validationTowArgument($minValue, $nameAttributeValue, $nameAttribute);
+            $this->validationOneArgument($minValue, $nameAttributeValue, $nameAttribute);
             $this->flagIfSimpleValidation = true;
         } else {
             $this->flagIfSimpleValidation = false;
         }
     }
-    private function validationThreeArgument(array $partsArgument, $nameAttributeValue, $nameAttribute): void
+    private function compareMethod($roleMethod, $nameAttributeValue, $nameAttribute, $typeInput): void
+    {
+        if (preg_match_all('/(compare)\(([a-z-A-z]+)\)/', $roleMethod, $m)) {
+            $nameMethod     = $m[1][0];
+            $paramValue     = $typeInput[$m[2][0]];
+
+            if ($this->$nameMethod($nameAttributeValue, $paramValue) === false) {
+                $this->message->addMessage(
+                    $this->feedKey("text_error_" . $nameMethod, [
+                        $this->get("table_" . $nameAttribute), $this->get("table_" . $m[2][0])
+                    ]),
+                    Messenger::MESSAGE_DANGER
+                );
+                $this->_errorsNum ++;
+            }
+            $this->flagIfSimpleValidation = true;
+        }
+        else {
+            $this->flagIfSimpleValidation = false;
+        }
+    }
+    private function validationTowArgument(array $partsArgument, $nameAttributeValue, $nameAttribute): void
     {
         $nameMethod = $partsArgument[1][0];
-        $valueMin   = $partsArgument[2][0];
-        $valueMax   = $partsArgument[3][0];
+        $paramOne   = $partsArgument[2][0];
+        $paramTow   = $partsArgument[3][0];
 
-        if ($this->$nameMethod($nameAttributeValue, $valueMin, $valueMax) === false) {
+        if ($this->$nameMethod($nameAttributeValue, $paramOne, $paramTow) === false) {
             $this->message->addMessage(
-                $this->feedKey("text_error_" . $nameMethod, [$this->get("table_" . $nameAttribute), $valueMin, $valueMax]),
+                $this->feedKey("text_error_" . $nameMethod, [$this->get("table_" . $nameAttribute), $paramOne, $paramTow]),
                 Messenger::MESSAGE_DANGER
             );
-            $this->errors[$nameMethod] = $nameAttribute;
+            $this->_errorsNum ++;
+
         }
 
     }
     private function betweenMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(between)\((\d+),(\d+)\)/", $roleMethod, $partsArgument)) {
-            $this->validationThreeArgument($partsArgument, $nameAttributeValue, $nameAttribute);
+            $this->validationTowArgument($partsArgument, $nameAttributeValue, $nameAttribute);
             $this->flagIfSimpleValidation = true;
         } else {
             $this->flagIfSimpleValidation = false;
         }
-
     }
     private function floatLikeMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if (preg_match_all("/(floatLike)\((\d+),(\d+)\)/", $roleMethod, $partsArgument)) {
-            $this->validationThreeArgument($partsArgument, $nameAttributeValue, $nameAttribute);
+            $this->validationTowArgument($partsArgument, $nameAttributeValue, $nameAttribute);
             $this->flagIfSimpleValidation = true;
         } else {
             $this->flagIfSimpleValidation = false;
@@ -251,12 +272,11 @@ trait Validation
     private function isSimpleRole($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if($this->$roleMethod($nameAttributeValue) === false) {
-            $this->errors[$roleMethod] = $nameAttributeValue;
             $this->message->addMessage (
                 $this->feedKey("text_error_" . $roleMethod, [$this->get("table_" . $nameAttribute)]),
                 Messenger::MESSAGE_DANGER
             );
-            $this->errors[$roleMethod] = $nameAttribute;
+            $this->_errorsNum ++;
         }
     }
 
@@ -281,12 +301,14 @@ trait Validation
                     if (! $this->flagIfSimpleValidation)
                         $this->floatLikeMethod($roleMethod, $nameAttributeValue, $nameAttribute);
                     if (! $this->flagIfSimpleValidation)
+                        $this->compareMethod($roleMethod, $nameAttributeValue, $nameAttribute, $typeInput);
+                    if (! $this->flagIfSimpleValidation)
                         $this->isSimpleRole($roleMethod, $nameAttributeValue, $nameAttribute);
                 }
             }
 
         }
 
-        return count($this->errors) == 0 ? true : $this->errors;
+        return $this->_errorsNum === 0 ;
     }
 }

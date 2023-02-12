@@ -12,6 +12,7 @@ class UserModel extends AbstractModel
     public $LastLogin;
     public $PhoneNumber;
     public $GroupId;
+    public $Status;
 
     protected static $tableName = "users";
 
@@ -22,6 +23,7 @@ class UserModel extends AbstractModel
         "SubscriptionDate"      => self::DATA_TYPE_DATE,
         "LastLogin"             => self::DATA_TYPE_STR,
         "GroupId"               => self::DATA_TYPE_INT,
+        "Status"                => self::DATA_TYPE_INT,
         "PhoneNumber"           => self::DATA_TYPE_STR,
     ];
 

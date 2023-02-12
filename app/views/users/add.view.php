@@ -20,9 +20,9 @@
 
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
-            <input type="password" name="confirm-password"  id="confirm-password" placeholder=" "
+            <input type="password" name="confirm_password"  id="confirm_password" placeholder=" "
                    minlength="7" maxlength="60" required autocomplete="off"/>
-            <label for="confirm-password"> <?= $table_confirm_password ?> </label>
+            <label for="confirm_password"> <?=  $table_confirm_password ?> </label>
         </div>
 
 
@@ -41,10 +41,10 @@
         <div class="field">
             <!-- Must Set space in placeholder to apply label animation -->
             <input type="email"
-                   name="confirm-email" id="confirm-email"
+                   name="confirm_email" id="confirm_email"
                    placeholder=" " minlength="10"
                    maxlength="30" required autocomplete="off"/>
-            <label for="confirm-email"> <?= $table_confirm_email ?></label>
+            <label for="confirm_email"> <?= $table_confirm_email ?></label>
         </div>
 
     </fieldset>
