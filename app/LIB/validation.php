@@ -49,6 +49,10 @@ trait Validation
     {
         return (bool)preg_match($this->_regexPatterns['alphaNum'], $value);
     }
+    public function posInt($value): bool
+    {
+        return $value >= 0 && is_int($value);
+    }
 
     public function eq($value, $matchAgainst): bool
     {
@@ -199,7 +203,15 @@ trait Validation
             $this->flagIfSimpleValidation = false;
         }
     }
-
+    private function eqMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
+    {
+        if (preg_match_all("/(eq)\((\d+)\)/", $roleMethod, $minValue)) {
+            $this->validationTowArgument($minValue, $nameAttributeValue, $nameAttribute);
+            $this->flagIfSimpleValidation = true;
+        } else {
+            $this->flagIfSimpleValidation = false;
+        }
+    }
     private function validationThreeArgument(array $partsArgument, $nameAttributeValue, $nameAttribute): void
     {
         $nameMethod = $partsArgument[1][0];
@@ -262,6 +274,8 @@ trait Validation
                          $this->ltMethod($roleMethod, $nameAttributeValue, $nameAttribute);
                     if (! $this->flagIfSimpleValidation)
                          $this->gtMethod($roleMethod, $nameAttributeValue, $nameAttribute);
+                    if (! $this->flagIfSimpleValidation)
+                        $this->eqMethod($roleMethod, $nameAttributeValue, $nameAttribute);
                     if (! $this->flagIfSimpleValidation)
                          $this->betweenMethod($roleMethod, $nameAttributeValue, $nameAttribute);
                     if (! $this->flagIfSimpleValidation)
