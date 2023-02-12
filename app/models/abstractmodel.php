@@ -151,7 +151,7 @@ class AbstractModel
         return (new UserGroupPrivilegeModel)->get($sql, $options);
     }
 
-    public function get($query, $options): false|\ArrayIterator
+    public function get($query, $options=[]): false|\ArrayIterator
     {
         $stmt = DatabaseHandler::factory()->prepare($query);
         $stmt->execute();
