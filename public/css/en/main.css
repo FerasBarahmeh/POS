@@ -372,7 +372,8 @@ form.add-form fieldset.row label {
     pointer-events: none;
 }
 form.add-form fieldset.row input[type="text"],
-form.add-form fieldset.row input[type="email"] {
+form.add-form fieldset.row input[type="email"],
+form.add-form fieldset.row input[type="password"] {
     width: 100%;
     color: var(--text-black-700);
     transition: border-bottom-width .3s ease-in-out;
@@ -382,11 +383,18 @@ form.add-form fieldset.row input[type="text"]:focus-within {
 }
 form.add-form fieldset.row input[type="text"]:focus + label,
 form.add-form fieldset.row input[type="email"]:focus + label,
+form.add-form fieldset.row input[type="password"]:focus + label,
 form.add-form fieldset.row input[type="text"]:not(:placeholder-shown)  + label,
+form.add-form fieldset.row input[type="password"]:not(:placeholder-shown)  + label,
 form.add-form fieldset.row input[type="email"]:not(:placeholder-shown)  + label {
     transform: translateY(-20px);
     left: 0;
     font-size: 15px;
+}
+form.add-form fieldset.row input[type="password"] {
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
 }
 form.add-form fieldset.row select {
     appearance: none;
