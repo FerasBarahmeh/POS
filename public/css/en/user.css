@@ -42,62 +42,6 @@ input[type="search"]::-webkit-search-results-decoration {
     top: 27%;
     display: block;
 }
-.users {
-    width: 100%;
-    min-width: 1000px;
-
-}
-.users table {
-    border-spacing: unset;
-    transition: all 3s ease-in-out;
-    width: 100%;
-}
-.users table td,
-.users table th {
-    padding: 5px ;
-    white-space: nowrap;
-}
-.users table thead th {
-    background-color: #EEE;
-    color: gray;
-    font-size: 16px;
-}
-.users table tbody tr {
-    opacity: 1;
-    transition: opacity .3s ease-in-out;
-}
-.users table tbody tr.un-visible {
-    opacity: 0;
-    position: absolute;
-    left: 2000px;
-}
-.users table tbody td {
-    border-bottom: 1px solid #eee;
-    border-left: 1px solid #eee;
-    transition: all .3s ease-in-out;
-}
-
-.users table tbody td:last-child {
-    border-right: 1px solid #eee;
-}
-.users table tbody tr:hover td {
-    background-color: rgb(0 0 0 / 19%);
-}
-.users table tbody .controller-btns {
-    text-align: center;
-}
-.users table tbody .controller-btns a {
-    color: #8b8686;
-}
-.users table tbody .controller-btns a:hover {
-    color: black;
-}
-.users table tbody .controller-btns a:not(:last-child) {
-    margin-right: 5px;
-}
-.users table tbody .controller-btns span.danger-style {
-    color: var(--danger-color-300);
-}
 /* End Default */
 
 /* Start Add user */
