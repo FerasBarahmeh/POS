@@ -125,7 +125,7 @@ class AbstractModel
                 $results = $stmt->fetchAll(\PDO::FETCH_CLASS , get_called_class());
             }
 
-            return array_shift($results);
+            return !empty($results) ? array_shift($results) : false ;
         }
         return false;
     }
