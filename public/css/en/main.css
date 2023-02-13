@@ -341,7 +341,7 @@ h1.title-header {
 
 /* Start Table Add */
 .add-form {
-    border: 1px solid #eee;
+    border: 3px solid #eee;
     width: 100%;
     padding: 30px 0 0 0;
     margin-top: 15px;
@@ -350,6 +350,7 @@ h1.title-header {
 form.add-form fieldset.row {
     display: flex;
     padding: 15px;
+    margin-bottom: 10px;
 }
 form.add-form fieldset.row:last-child {
     padding: 5px;
@@ -445,5 +446,33 @@ form.add-form .submit-btn:hover {
     form.add-form fieldset.row div.field {
         border-left: 1px solid var(--bg-black-100);
     }
+}
+.rejected-value-input {
+    position: absolute;
+
+}
+i.rejected-value-input,
+svg.rejected-value-input {
+    right: 0;
+    margin-right: 10px;
+}
+.rejected-value-input.message {
+    font-size: 15px;
+    position: absolute;
+    top: -17px;
+    left: 0;
+    background-color: var(--danger-color-300);
+    margin: 0;
+    color: var(--bg-black-30);
+    min-width: 100px;
+    padding-left: 3px;
+    border-radius: 4px;
+    line-height: 14px;
+}
+.rejected-value-input.danger {
+    color: var(--danger-color-700);
+}
+.rejected-value-input.success {
+    color: var(--success-color-300);
 }
 /* End Table Add */

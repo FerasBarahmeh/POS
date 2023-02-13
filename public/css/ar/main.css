@@ -412,7 +412,7 @@ h1.title-header {
 
 /* Start Table Add */
 .add-form {
-    border: 1px solid #eee;
+    border: 3px solid #eee;
     width: 100%;
     padding: 30px 0 0 0;
     margin-top: 15px;
@@ -421,6 +421,7 @@ h1.title-header {
 form.add-form fieldset.row {
     display: flex;
     padding: 15px;
+    margin-bottom: 10px;
 }
 form.add-form fieldset.row:last-child {
     padding: 5px;
@@ -431,6 +432,8 @@ form.add-form fieldset.row div.field {
     flex: 1;
     border-bottom: 1px solid #eee;
     width: 100%;
+    border-right: 3px solid #eee;
+    padding-right: 5px;
 }
 form.add-form fieldset.row label {
     position: absolute;
@@ -446,6 +449,7 @@ form.add-form fieldset.row input[type="email"]  {
     width: 100%;
     color: var(--text-black-700);
     padding: 3px;
+    text-align: right;
 }
 form.add-form fieldset.row input[type="text"]:focus-within {
     border-bottom: 2px solid #746a6a;
@@ -506,5 +510,33 @@ form.add-form .submit-btn:hover {
     form.add-form fieldset.row div.field {
         border-left: 1px solid var(--bg-black-100);
     }
+}
+.rejected-value-input {
+    position: absolute;
+}
+i.rejected-value-input,
+svg.rejected-value-input {
+    left: 0;
+    margin-left: 10px;
+    top: 0;
+}
+.rejected-value-input.message {
+    font-size: 15px;
+    position: absolute;
+    top: -17px;
+    right: 0;
+    background-color: var(--danger-color-300);
+    margin: 0;
+    color: var(--bg-black-30);
+    min-width: 100px;
+    padding: 2px 1px;
+    border-radius: 4px;
+    line-height: 14px;
+}
+.rejected-value-input.danger {
+    color: var(--danger-color-700);
+}
+.rejected-value-input.success {
+    color: var(--success-color-300);
 }
 /* End Table Add */

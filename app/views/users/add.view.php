@@ -3,6 +3,7 @@
 <form class="add-form" method="POST" enctype="application/x-www-form-urlencoded">
     <fieldset class="row">
         <div class="field">
+<!--            <span class="rejected-value-input message">error</span>-->
             <!-- Must Set space in placeholder to apply label animation  -->
             <input type="text" name="UserName" id="UserName"
                    value="<?= $this->getStorePost("UserName") ?>"
