@@ -43,4 +43,8 @@ class UserModel extends AbstractModel
             " as u INNER JOIN users_groups as ug ON ug.GroupId = u.GroupId "
         );
     }
+    public static function count($column, $value): false|\ArrayIterator
+    {
+        return (new UserModel)->get("SELECT " . $column . " FROM " .static::$tableName . " WHERE " . $column . " = '$value'");
+    }
 }
