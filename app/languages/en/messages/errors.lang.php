@@ -20,6 +20,3 @@ $content["text_error_between"]              = "%s must be between %s and %s (cha
 $content["text_error_floatLike"]            = "%s must be contain %s before dot and %s after dot";
 $content["text_error_posInt"]               = "%s must be integer positive";
 $content["text_error_compare"]              = "%s and %s are differences";
-$content["text_error_user_exist"]           = "This username used";
-$content["text_error_email_exist"]          = "This email used";
-$content["text_error_email_or_user_exist"]  = "email or user name or both exist used";

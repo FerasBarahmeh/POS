@@ -20,6 +20,3 @@ $content["text_error_between"]              = "%s يجب ان تكون قيمت�
 $content["text_error_floatLike"]            = "%s يجب ان يحتوي %s قبل الفاصلة العشرية and %s وبعدها";
 $content["text_error_posInt"]               = "%s يحب ان يكون عدد صحيح فقط";
 $content["text_error_compare"]              = "%s و %s مختلفين";
-$content["text_error_user_exist"]           = "اسم المستخدم مستخدم بالفعل";
-$content["text_error_email_exist"]          = "البريد الالكتروني مستخدم بالفعل";
-$content["text_error_email_or_user_exist"]  = "اسم المستخدم او البريد الالكتروني مستخدمين بالفعل";
