@@ -13,13 +13,17 @@ class UsersController extends AbstractController
 {
     use FilterInput;
     use PublicHelper;
-    private  $isUserExist = 0 ;
-    private array $_rolesValid = [
+    private  $isUserExist = [] ;
+    private array $_rolesAddValid = [
         "UserName"          => ["req", "alphaNum",  "between(4,12)",],
         "Password"          => ["req", "between(7,60)", "alphaNum", "compare(confirm_password)"],
         "confirm_password"  => ["req", "between(7,60)", "alphaNum"],
         "Email"             => ["req", "between(10,30)", "email", "compare(confirm_email)"],
         "confirm_email"     => ["req", "between(10,30)", "email"],
+        "GroupId"           => ["req", "int", "posInt"],
+        "PhoneNumber"       => ["num"],
+    ];
+    private array $_rolesEditValid = [
         "GroupId"           => ["req", "int", "posInt"],
         "PhoneNumber"       => ["num"],
     ];
@@ -30,9 +34,47 @@ class UsersController extends AbstractController
         $this->_info["users"] = UserModel::getAll();
         $this->_renderView();
     }
+
+    private function checkIfRepeat($columnName, $valueColumn)
+    {
+        if (UserModel::count($columnName, $valueColumn)) {
+            $this->message->addMessage(
+                $this->language->get("message_" . $columnName . "_exist"),
+                Messenger::MESSAGE_DANGER
+            );
+            $this->redirect("/users/add");
+        }
+    }
+
+    private function saveUser($user, $messageSuccess, $messageFail)
+    {
+        if ($user->save()) {
+            $this->message->addMessage(
+                $this->language->get($messageSuccess),
+            );
+        } else {
+            $this->message->addMessage(
+                $this->language->get($messageFail),
+                Messenger::MESSAGE_DANGER
+            );
+        }
+
+    }
+
+    private function setAttributeUser($user)
+    {
+        $user->UserName = $this->filterStr($_POST["UserName"]);
+        $user->encryptionPassword($_POST["Password"]);
+        $user->Email                = $this->filterStr($_POST["Email"]);
+        $user->SubscriptionDate     = date("Y-m-d H:i:s");
+        $user->LastLogin            = date("Y-m-d H:i:s");
+        $user->GroupId              = $this->filterInt($_POST["GroupId"]);
+        $user->PhoneNumber          = $this->filterStr($_POST["PhoneNumber"]);
+        $user->Status               = 1;
+
+    }
     public function addAction()
     {
-        // TODO: no redirect id error username or email exist separated
         $this->language->load("template.common");
         $this->language->load("users.add");
         $this->language->load("messages.errors");
@@ -40,56 +82,93 @@ class UsersController extends AbstractController
 
         $this->_info["groups"] = UserGroupModel::getAll();
 
-        if (isset($_POST["add"]) && $this->isAppropriate($this->_rolesValid, $_POST) && ! $this->isUserExist)  {
-                $user = new UserModel();
-                $user->UserName = $this->filterStr($_POST["UserName"]);
-                $user->encryptionPassword($_POST["Password"]);
-                $user->Email                = $this->filterStr($_POST["Email"]);
-                $user->SubscriptionDate     = date("Y-m-d H:i:s");
-                $user->LastLogin            = date("Y-m-d H:i:s");
-                $user->GroupId              = $this->filterInt($_POST["GroupId"]);
-                $user->PhoneNumber          = $this->filterStr($_POST["PhoneNumber"]);
-                $user->Status               = 1;
+        if (isset($_POST["add"]) && $this->isAppropriate($this->_rolesAddValid, $_POST))  {
 
-                if ($user->save()) {
-                    $this->message->addMessage(
-                        $this->language->get("message_add_success"),
-                    );
-                } else {
-                    $this->message->addMessage(
-                        $this->language->get("message_add_fail"),
-                        Messenger::MESSAGE_DANGER
-                    );
-                }
+            $user = new UserModel();
 
-                $this->redirect("/users");
+            $this->setAttributeUser($user);
+
+            $this->checkIfRepeat("UserName", $user->UserName);
+            $this->checkIfRepeat("Email", $user->Email);
+
+            $this->saveUser($user, "message_add_success", "message_add_fail");
+
+            $this->redirect("/users");
         }
         $this->_renderView();
     }
-    private function sendData($message, $to): void
+
+    public function editAction()
+    {
+        $idUser =  $this->filterInt($this->_params[0]);
+        $user = UserModel::getByPK($idUser);
+
+        if (! $user) { // User not exist
+            $this->redirect("/users");
+        }
+
+        $this->_info["user"] = $user;
+
+        $this->language->load("template.common");
+        $this->language->load("users.edit");
+        $this->language->load("users.messages");
+        $this->language->load("messages.errors");
+
+        $this->_info["groups"] = UserGroupModel::getAll();
+
+        if (isset($_POST["edit"]) && $this->isAppropriate($this->_rolesEditValid, $_POST) )  {
+            $user->GroupId              = $this->filterInt($_POST["GroupId"]);
+            $user->PhoneNumber          = $this->filterStr($_POST["PhoneNumber"]);
+
+            $this->saveUser($user, "message_edit_success", "message_edit_fail");
+
+            $this->redirect("/users");
+        }
+        $this->_renderView();
+    }
+    public function deleteAction()
+    {
+        $idUser =  $this->filterInt($this->_params[0]);
+        $user = UserModel::getByPK($idUser);
+
+        if (! $user) { // User not exist
+            $this->redirect("/users");
+        }
+
+        $this->language->load("users.messages");
+
+        if ($user->delete()) {
+            $this->message->addMessage(
+                $this->language->get("message_delete_user_success"),
+            );
+        } else {
+            $this->message->addMessage(
+                $this->language->get("message_delete_user_fail"),
+            );
+        }
+
+        $this->redirect("/users");
+    }
+
+    private function sendData($message, $to)
     {
         if (isset($_POST[$to]) && !empty($_POST[$to]))
-
             if (!UserModel::count($to, $_POST[$to])) {
                 echo '{"result":"1", "message":"' . $message . '"}';
-                $this->isUserExist = false;
             } else {
                 echo '{"result":"0", "message":"' . $message . '"}';
-                $this->isUserExist = true;
             }
     }
     public function isNameAlreadyUsedAction()
     {
-        $this->language->load("messages.errors");
-        $message = $this->language->get("text_error_user_exist");
-
+        $this->language->load("users.messages");
+        $message = $this->language->get("message_UserName_exist");
         $this->sendData($message, "UserName");
     }
     public function isEmailAlreadyUsedAction()
     {
-        $this->language->load("messages.errors");
-        $message = $this->language->get("text_error_email_exist");
-
+        $this->language->load("users.messages");
+        $message = $this->language->get("message_Email_exist");
         $this->sendData($message, "Email");
 
     }
