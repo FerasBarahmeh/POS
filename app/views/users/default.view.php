@@ -1,3 +1,8 @@
+<?php
+
+use APP\Helpers\Structures\Structures;
+
+?>
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
@@ -9,7 +14,7 @@
 </div>
 
 <!-- Show Employees -->
-<div class="users responsive-table mt-20" id="employees-table">
+<div class="container-table responsive-table mt-20" id="employees-table">
     <table class="">
         <thead>
         <tr>
@@ -41,8 +46,15 @@
                                     <td><?= $user->GroupName ?></td>
                                     <td><?= $user->Status ?></td>
                                     <td class="controller-btns">
-                                        <a href="users/edit/<?= $user->UserId ?>"><i class="fas fa-edit" aria-hidden="true"></i></a>
-                                        <a href="users/delete/<?= $user->UserId ?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                        <a href="/users/edit/<?= $user->UserId ?>"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                        <a class="hidden" href="/users/delete/<?= $user->UserId ?>" id="delete"></a>
+                                        <?php Structures::popup(
+                                            "you wont delete User",
+                                            '!', $typeStyle="danger",
+                                            $typeAction="link",
+                                            $id="delete-user"); ?>
+                                        <span class="pop-on-click danger-style cursor-pointer"><i class="fa fa-trash" aria-hidden="true"></i></span>
+
                                     </td>
 
                                 </tr>
