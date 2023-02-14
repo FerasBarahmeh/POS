@@ -27,6 +27,10 @@ class Template
         $this->_actionView = $file;
     }
 
+    public function choosePartsUI($templates): void
+    {
+        $this->_templateParts["template"] = $templates;
+    }
     private function setTemplateHeaderStart(): void
     {
         if (isset($this->_info)) extract($this->_info);
