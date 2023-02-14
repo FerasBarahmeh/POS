@@ -29,6 +29,7 @@
 body {
     height: 74vh;
     background-color: var(--bg-black-30);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 ul {
     list-style: none;
