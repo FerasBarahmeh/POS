@@ -3,8 +3,10 @@
 namespace APP\Lib;
 
 use APP\LIB\Template\Template;
-use APP\LIP\languages;
+use APP\LIB\Authentication;
+use APP\LIB\languages;
 use APP\LIB\Registration;
+use function APP\pr;
 
 
 class FrontController {
@@ -16,10 +18,12 @@ class FrontController {
     private $_params = [];
     private $_template;
     private Registration $_registry;
-    public function __construct(Template $tem, Registration $registry)
+    private Authentication $_authenticated;
+    public function __construct(Template $tem, Registration $registry, Authentication $authenticated)
     {
         $this->_template = $tem;
         $this->_registry = $registry;
+        $this->_authenticated = $authenticated;
         $this->_parseURL();
     }
 
@@ -36,8 +40,15 @@ class FrontController {
 
     public function dispatch(): void
     {
-        $controllerClassName = "APP\Controllers\\" . ucfirst($this->_controller) . "Controller";
-        $actionName          = $this->_action . "Action";
+        if ($this->_authenticated->isAuthenticated()) {
+            $controllerClassName = "APP\Controllers\\" . ucfirst($this->_controller) . "Controller";
+            $actionName          = $this->_action . "Action";
+        } else  {
+            $controllerClassName    = "APP\Controllers\\" . "Authentication" . "Controller";
+            $actionName             = "login". "Action";
+            $this->_controller      = "authentication";
+            $this->_action          = "login";
+        }
 
         if (! class_exists($controllerClassName)) {
             $controllerClassName = self::NOT_FOUND_CONTROLLER;
