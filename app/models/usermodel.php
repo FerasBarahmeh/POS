@@ -2,8 +2,15 @@
 
 namespace APP\Models;
 
+use APP\Helpers\PublicHelper\PublicHelper;
+use APP\Lib\Database\DatabaseHandler;
+use UserStatus;
+use function APP\pr;
+
 class UserModel extends AbstractModel
 {
+    use PublicHelper;
+    use UserStatus;
     public $UserId;
     public $UserName;
     public $Password;
@@ -32,8 +39,7 @@ class UserModel extends AbstractModel
 
     public function encryptionPassword($pass)
     {
-        $salt = '$2a$07$bnzferasbarahmeh$';
-        $this->Password = crypt($pass, $salt);
+        $this->Password = crypt($pass, MAIN_SALT);
     }
 
     public static function getAll(): bool|\ArrayIterator
@@ -46,5 +52,39 @@ class UserModel extends AbstractModel
     public static function count($column, $value): false|\ArrayIterator
     {
         return (new UserModel)->get("SELECT " . $column . " FROM " .static::$tableName . " WHERE " . $column . " = '$value'");
+    }
+
+    private function ifUserRegistration($username, $password)
+    {
+        $sql = "
+            SELECT 
+                *
+            FROM ".
+                static::$tableName . "
+            WHERE  
+                UserName = '" . $username ."'
+            AND 
+                Password = '" . $password ."'
+            ";
+        return (new UserModel)->getRow($sql);
+    }
+
+    public static function authentication($username, $password, $session)
+    {
+        $user = (new UserModel)->ifUserRegistration($username, $password);
+        if ($user === false || $user === 0) {
+            return self::$UserNotRegistration;
+        }
+        if ($user) { // If user exist
+            if ($user->Status == self::$UserDisable) {
+                return  self::$UserDisable;
+            } elseif ($user->Status == self::$UserValid) {
+                $session->user = $user;
+                $user->LastLogin = date("Y-m-d H:i:s");
+                $user->save();
+                return self::$UserValid;
+            }
+
+        }
     }
 }
