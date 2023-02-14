@@ -55,7 +55,6 @@ class AbstractModel
     {
         $query = "UPDATE " . static::$tableName . " SET " . self::buildNameParamSQL() . " WHERE " . static::$primaryKey . " = " . $this->{static::$primaryKey} ;
         $stmt = DatabaseHandler::factory()->prepare($query);
-        echo gettype($stmt);
         $this->bindParams($stmt);
         return $stmt->execute();
     }
@@ -165,5 +164,11 @@ class AbstractModel
             return new \ArrayIterator($results);
         }
         return false;
+    }
+
+    public function getRow($sql)
+    {
+        $row = static::get($sql);
+        return ! $row ? 0 : $row->current();
     }
 }
