@@ -8,6 +8,7 @@ use APP\LIB\SessionManager;
 use APP\LIB\Template\Template;
 use APP\LIB\Language;
 use APP\LIB\Registration;
+use APP\LIB\Authentication;
 
 
 function pr($arr, $typePrint=1): void
@@ -39,17 +40,19 @@ if (! isset($session->lang)) {
 
 $templateParts = require_once ".." . DS . "app" . DS . "config" . DS . "templateconfig.php";
 
-$template   = new Template($templateParts);
-$languages  = new Language();
+$template       = new Template($templateParts);
+$languages      = new Language();
 
-$message    = Messenger::getInstance($session);
+$message        = Messenger::getInstance($session);
+$authenticated  = Authentication::getInstance($session);
 
-$registry   = Registration::getInstance();
+$registry       = Registration::getInstance();
 
 $registry->session  = $session;
 $registry->language = $languages;
 $registry->message  = $message;
 
-$frontController = new FrontController($template, $registry);
+// Inject authentication in front controller not registry because we will use in front controller just
+$frontController = new FrontController($template, $registry, $authenticated);
 $frontController->dispatch();
 
