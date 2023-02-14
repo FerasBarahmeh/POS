@@ -49,3 +49,13 @@ const SESSION_SAVE_PATH = APP_PATH . DS . ".." . DS . "sessions";
 const SESSION_NAME = "E_STORE";
 const SESSION_DOMAIN = ".estore.local";
 const SESSION_MAX_LIVE_TIME = 0;
+
+// Salts
+const MAIN_SALT = '$2a$07$yeNCSNwRpYopOhv0TrrReP$';
+
+trait UserStatus
+{
+    public static $UserValid           = 1;
+    public static $UserDisable         = 2;
+    public static $UserNotRegistration = 3;
+}
