@@ -109,16 +109,24 @@ class UsersGroupsController extends AbstractController
 
         $this->_info["groupPrivilege"]  = $privileges;
 
-        if (isset($_POST["privileges"]) && is_array($_POST["privileges"])) {
+        if (isset($_POST["edit"])) {
+            $group->GroupName = $this->filterStr($_POST["GroupName"]);
 
-            // Delete Removed Privileges
-            $this->removeDeletePrivilege($privileges, $group->GroupId);
+            if ($group->save()) {
+                if (isset($_POST["privileges"]) && is_array($_POST["privileges"])) {
 
-            // Add new Privileges
-            $this->addNewPrivileges($privileges, $group->GroupId);
+                    // Delete Removed Privileges
+                    $this->removeDeletePrivilege($privileges, $group->GroupId);
 
-            $this->redirect("/usersgroups");
+                    // Add new Privileges
+                    $this->addNewPrivileges($privileges, $group->GroupId);
+
+                }
+                $this->redirect("/usersgroups");
+
+            }
         }
+
 
         $this->_renderView();
     }
