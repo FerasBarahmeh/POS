@@ -4,6 +4,7 @@ namespace APP\Controllers;
 
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\FilterInput;
+use APP\LIB\Messenger;
 use APP\Models\AbstractModel;
 use APP\Models\UserGroupModel;
 use APP\Models\UserGroupPrivilegeModel;
@@ -41,7 +42,16 @@ class UsersGroupsController extends AbstractController
                     $groupPrivilege->save();
                 }
             }
+            $this->message->addMessage(
+                $this->language->get("text_message_add_success"),
+            );
 
+            $this->redirect("/usersgroups");
+        } else {
+            $this->message->addMessage(
+                $this->language->get("text_message_add_field"),
+                Messenger::MESSAGE_DANGER
+            );
             $this->redirect("/usersgroups");
         }
         $this->_renderView();
@@ -122,9 +132,17 @@ class UsersGroupsController extends AbstractController
                     $this->addNewPrivileges($privileges, $group->GroupId);
 
                 }
+                $this->message->addMessage(
+                    $this->language->get("text_message_edit_success"),
+                );
                 $this->redirect("/usersgroups");
 
             }
+        } else {
+            $this->message->addMessage(
+                $this->language->get("text_message_edit_field"),
+                Messenger::MESSAGE_DANGER
+            );
         }
 
 
@@ -139,6 +157,7 @@ class UsersGroupsController extends AbstractController
         if (! $group) {
             $this->redirect("/usersgroups");
         }
+        $this->language->load("usersgroups.default");
 
         // Delete All Privileges Linked To This Group
         $privilegesThisGroup = UserGroupPrivilegeModel::getBy(["GroupId" => $group->GroupId]);
@@ -149,8 +168,16 @@ class UsersGroupsController extends AbstractController
         }
 
         if($group->delete()) {
-            $this->redirect("/usersgroups");
+            $this->message->addMessage(
+                $this->language->get("text_delete_success"),
+            );
+        } else {
+            $this->message->addMessage(
+                $this->language->get("text_delete_filed"),
+                Messenger::MESSAGE_DANGER
+            );
         }
+        $this->redirect("/usersgroups");
 
     }
 }
