@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2023 at 10:15 AM
+-- Generation Time: Feb 15, 2023 at 05:01 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -246,11 +246,21 @@ CREATE TABLE `users` (
   `UserName` varchar(12) NOT NULL,
   `Password` char(60) NOT NULL,
   `Email` varchar(30) NOT NULL,
-  `SubscriptionDate` date NOT NULL,
+  `SubscriptionDate` datetime NOT NULL,
   `LastLogin` datetime NOT NULL,
   `GroupId` tinyint(1) UNSIGNED NOT NULL,
-  `PhoneNumber` varchar(15) DEFAULT NULL
+  `PhoneNumber` varchar(15) DEFAULT NULL,
+  `Status` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
+(49, 'admin', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras@feras.com', '2023-02-15 14:12:51', '2023-02-15 15:36:16', 7, '0785102996', 1),
+(50, 'accountant', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras@f.com', '2023-02-15 14:49:33', '2023-02-15 15:37:02', 9, '0785102996', 1),
+(56, 'ferasbarahme', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 16:53:19', '2023-02-15 16:53:19', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
 
@@ -268,8 +278,8 @@ CREATE TABLE `users_groups` (
 --
 
 INSERT INTO `users_groups` (`GroupId`, `GroupName`) VALUES
-(4, 'Co-leader'),
-(5, 'Admin Application');
+(7, 'Admin Application'),
+(9, 'Accountant');
 
 -- --------------------------------------------------------
 
@@ -288,17 +298,9 @@ CREATE TABLE `users_groups_privileges` (
 --
 
 INSERT INTO `users_groups_privileges` (`Id`, `GroupId`, `PrivilegeId`) VALUES
-(25, 4, 19),
-(26, 4, 20),
-(27, 4, 22),
-(28, 4, 23),
-(29, 4, 24),
-(30, 5, 19),
-(31, 5, 20),
-(32, 5, 21),
-(33, 5, 22),
-(34, 5, 23),
-(35, 5, 24);
+(37, 7, 36),
+(38, 7, 38),
+(42, 9, 38);
 
 -- --------------------------------------------------------
 
@@ -317,12 +319,15 @@ CREATE TABLE `users_privileges` (
 --
 
 INSERT INTO `users_privileges` (`PrivilegeId`, `Privilege`, `PrivilegeTitle`) VALUES
-(19, 'suppliers\\add', 'Add New supplier'),
-(20, 'suppliers\\edit', 'Edit supplier information'),
-(21, 'suppliers\\delete', 'Delete supplier'),
-(22, 'users\\add', 'Add new user'),
-(23, 'clients\\edit', 'Edit users client '),
-(24, 'clients\\delete', 'Delete client');
+(36, 'privileges\\add', 'Add privileges'),
+(38, 'reports\\add', 'Add reports'),
+(40, 'products\\delete', 'Delete Product'),
+(41, 'suppliers\\add', 'create new supplier'),
+(42, 'suppliers\\edit', 'Edit information supplier'),
+(43, 'suppliers\\delete', 'delete supplier'),
+(44, 'users\\add', 'Add new user'),
+(45, 'users\\delete', 'Delete use'),
+(46, 'users\\edit', 'Edit user information');
 
 --
 -- Indexes for dumped tables
@@ -537,7 +542,7 @@ ALTER TABLE `sales_invoices_receipts`
 -- AUTO_INCREMENT for table `subset_information_users`
 --
 ALTER TABLE `subset_information_users`
-  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -549,25 +554,25 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `GroupId` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `GroupId` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `users_groups_privileges`
 --
 ALTER TABLE `users_groups_privileges`
-  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `users_privileges`
 --
 ALTER TABLE `users_privileges`
-  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- Constraints for dumped tables
