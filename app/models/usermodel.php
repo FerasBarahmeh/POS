@@ -42,11 +42,11 @@ class UserModel extends AbstractModel
         $this->Password = crypt($pass, MAIN_SALT);
     }
 
-    public static function getAll(): bool|\ArrayIterator
+    public static function getUsers(UserModel $user): bool|\ArrayIterator
     {
         return (new UserModel)->get(
             "SELECT u.*, ug.GroupName FROM " . self::$tableName .
-            " as u INNER JOIN users_groups as ug ON ug.GroupId = u.GroupId "
+            " as u INNER JOIN users_groups as ug ON ug.GroupId = u.GroupId  WHERE UserId != " . $user->UserId
         );
     }
     public static function count($column, $value): false|\ArrayIterator
