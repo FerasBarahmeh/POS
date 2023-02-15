@@ -2,6 +2,7 @@
 
 namespace APP\Models;
 use APP\Lib\Database\DatabaseHandler;
+use http\Params;
 use PDO;
 use function APP\pr;
 
@@ -59,8 +60,16 @@ class AbstractModel
         return $stmt->execute();
     }
 
-    public function save()
+    /**
+     * @param bool $isSubProcess if you want to use save method to model subset from another model such as user model
+     * and subset info model (check if set primary key manual)
+     * @return bool
+     */
+    public function save(bool $isSubProcess=true): bool
     {
+        if (! $isSubProcess) {
+            return $this->insert();
+        }
         if ($this->{static::$primaryKey} === null) {
             return $this->insert();
         } else {
