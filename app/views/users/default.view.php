@@ -39,7 +39,7 @@ use APP\Helpers\Structures\Structures;
                                 <tr class="row-each-employee">
                                     <td class="name-user-row"><?= $user->UserName ?></td>
                                     <td><?= $user->Email ?></td>
-                                    <td><?= $user->Password ?></td>
+                                    <td class="long-content"><?= $user->Password ?></td>
                                     <td><?= $user->SubscriptionDate ?></td>
                                     <td><?= $user->LastLogin ?></td>
                                     <td><?= $user->PhoneNumber ?></td>
