@@ -51,7 +51,7 @@
                     </li>
                     <li>
                         <i class="fa fa-arrow-left"></i>
-                        <span class="content"><?= $text_nav_logout ?></span>
+                        <a href="/authentication/logout" class="content"><?= $text_nav_logout ?></a>
                     </li>
                 </ul>
 
