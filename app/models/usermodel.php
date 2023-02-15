@@ -21,6 +21,7 @@ class UserModel extends AbstractModel
     public $GroupId;
     public $Status;
 
+    public $extraUserInfo;
     protected static $tableName = "users";
 
     protected static array $tableSchema = [
@@ -60,14 +61,20 @@ class UserModel extends AbstractModel
 
         $sql = "
             SELECT 
-                *
-            FROM ".
-                static::$tableName . "
-            WHERE  
-                (UserName = '" . $username ."' OR Email = '" . $username . "')
+                    u.*, ug.GroupName
+            FROM 
+                    ". static::$tableName ." 
+            AS 
+                u 
+            INNER JOIN 
+                    users_groups AS ug 
+            ON 
+                u.GroupId = ug.GroupId 
             AND 
-                Password = '" . $password ."'
-            ";
+                u.Password = '". $password . "' 
+            AND 
+                (u.UserName = '" . $username . "'  OR  u.Email = '" . $username . "' )
+        ";
         return (new UserModel)->getRow($sql);
     }
 
@@ -81,9 +88,11 @@ class UserModel extends AbstractModel
             if ($user->Status == self::$UserDisable) {
                 return  self::$UserDisable;
             } elseif ($user->Status == self::$UserValid) {
-                $session->user = $user;
+                // set subset information in session
+                $user->extraUserInfo = UserExtraInfoModel::getByPK($user->UserId);
                 $user->LastLogin = date("Y-m-d H:i:s");
                 $user->save();
+                $session->user = $user;
                 return self::$UserValid;
             }
         }
