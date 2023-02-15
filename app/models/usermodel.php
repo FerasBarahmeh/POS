@@ -56,6 +56,8 @@ class UserModel extends AbstractModel
 
     private function ifUserRegistration($username, $password)
     {
+        $password = crypt($password, MAIN_SALT);
+
         $sql = "
             SELECT 
                 *
@@ -84,7 +86,6 @@ class UserModel extends AbstractModel
                 $user->save();
                 return self::$UserValid;
             }
-
         }
     }
 }
