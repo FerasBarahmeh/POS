@@ -35,7 +35,7 @@
 
         <div class="drop-down relative" id="drop-down">
             <div class="name cursor-pointer">
-                <span>Feras</span>
+                <span><?= $this->session->user->UserName ?></span>
                 <i class="fa fa-caret-down" aria-hidden="true"></i>
             </div>
 

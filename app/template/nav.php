@@ -3,8 +3,8 @@
         <div class="profile_picture">
             <img src="<?= IMG ?>avatar.png" class="s-img" alt="User Profile Picture">
         </div>
-        <span class="name block mt-5 fs-20">Feras Barahmeh</span>
-        <span class="privilege block mt-5 fs-15">Admin Application</span>
+        <span class="name block mt-5 fs-20"><i class="fist-name"><?= $this->session->user->extraUserInfo->FirstName ?></i> <i class="last-name"><?= $this->session->user->extraUserInfo->LastName ?></i></span>
+        <span class="privilege block mt-5 fs-15"><?= $this->session->user->GroupName ?></span>
     </div>
 
     <div class="search-session mtb-15 w-fu relative">
