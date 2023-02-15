@@ -39,4 +39,10 @@ class AuthenticationController extends AbstractController
 
         $this->_renderView();
     }
+
+    public function logoutAction()
+    {
+        $this->session->kill();
+        $this->redirect("/authentication/login");
+    }
 }
