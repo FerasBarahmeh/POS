@@ -4,6 +4,7 @@ namespace APP\Models;
 
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\Lib\Database\DatabaseHandler;
+use http\Client\Curl\User;
 use UserStatus;
 use function APP\pr;
 
@@ -22,6 +23,8 @@ class UserModel extends AbstractModel
     public $Status;
 
     public $extraUserInfo;
+
+    public $privileges;
     protected static $tableName = "users";
 
     protected static array $tableSchema = [
@@ -89,7 +92,8 @@ class UserModel extends AbstractModel
                 return  self::$UserDisable;
             } elseif ($user->Status == self::$UserValid) {
                 // set subset information in session
-                $user->extraUserInfo = UserExtraInfoModel::getByPK($user->UserId);
+                $user->extraUserInfo    = UserExtraInfoModel::getByPK($user->UserId);
+                $user->privileges       = UserGroupPrivilegeModel::getPrivilegesByGroup($user->GroupId);
                 $user->LastLogin = date("Y-m-d H:i:s");
                 $user->save();
                 $session->user = $user;
