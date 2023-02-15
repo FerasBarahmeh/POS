@@ -1,10 +1,10 @@
 <?php
 
 // Title Page
-$content["title"] = "المستخدمين والاصلاحيات";
+$content["title"] = "قائمة المستخدمين";
 
 // Title Header
-$content["title_header"] = "المستخدمين والاصلاحيات";
+$content["title_header"] = "قائمة المستخدمين";
 
 // content page
 $content["text_content_add_user"]                = "اضافة مستخدم";

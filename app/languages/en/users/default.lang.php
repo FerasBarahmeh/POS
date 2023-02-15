@@ -1,10 +1,10 @@
 <?php
 
 // Title
-$content["title"] = "Users And Privileges";
+$content["title"] = "List Users";
 
 // Title Header
-$content["title_header"] = "Users And Privileges";
+$content["title_header"] = "List Users";
 
 // content page
 $content["text_content_add_user"]                = "Add User";
