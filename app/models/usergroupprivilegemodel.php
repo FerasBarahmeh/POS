@@ -17,4 +17,31 @@ class UserGroupPrivilegeModel extends AbstractModel
     ];
 
     protected static string $primaryKey = "Id";
+
+    public static function getPrivilegesByGroup($groupId): array
+    {
+        $query =
+            "SELECT 
+                ugp.*, up.Privilege
+            FROM
+                " . self::$tableName . "
+            AS
+                ugp
+            INNER JOIN
+                users_privileges
+            AS 
+                up
+            ON
+                up.PrivilegeId = ugp.PrivilegeId
+            WHERE 
+                ugp.GroupId = " . $groupId . "
+        ";
+
+        $privilegesUrls =  (new UserGroupPrivilegeModel)->get($query);
+        $urls = [];
+        foreach ($privilegesUrls as $privilegesUrl) {
+            $urls[] = $privilegesUrl->Privilege;
+        }
+        return $urls;
+    }
 }
