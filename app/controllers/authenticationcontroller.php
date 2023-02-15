@@ -20,7 +20,10 @@ class AuthenticationController extends AbstractController
             $this->message->addMessage($this->language->get("message_user_disabled"), Messenger::MESSAGE_DANGER);
         }
         if($result == self::$UserValid) {
-            $this->message->addMessage($this->language->get("welcome_message"));
+            $this->message->addMessage(
+                $this->language->get("welcome_message") ." " . $this->session->user->extraUserInfo->FirstName
+                . " "  . $this->session->user->extraUserInfo->LastName
+            );
             $this->redirect("/");
         }
 
