@@ -2,6 +2,7 @@
 
 namespace APP\Lib;
 
+use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\Template\Template;
 use APP\LIB\Authentication;
 use APP\LIB\languages;
@@ -9,7 +10,9 @@ use APP\LIB\Registration;
 use function APP\pr;
 
 
-class FrontController {
+class FrontController
+{
+    use PublicHelper;
 
     const NOT_FOUND_ACTION = "notFoundAction";
     const NOT_FOUND_CONTROLLER = "APP\Controllers\NotFoundController";
@@ -40,14 +43,22 @@ class FrontController {
 
     public function dispatch(): void
     {
-        if ($this->_authenticated->isAuthenticated()) {
-            $controllerClassName = "APP\Controllers\\" . ucfirst($this->_controller) . "Controller";
-            $actionName          = $this->_action . "Action";
-        } else  {
+        $controllerClassName = "APP\Controllers\\" . ucfirst($this->_controller) . "Controller";
+        $actionName          = $this->_action . "Action";
+
+        if (! $this->_authenticated->isAuthenticated()) {
             $controllerClassName    = "APP\Controllers\\" . "Authentication" . "Controller";
             $actionName             = "login". "Action";
             $this->_controller      = "authentication";
             $this->_action          = "login";
+        } else  {
+            if ($this->_controller == "authentication" && $this->_action == "login") {
+                if (isset($_SERVER["HTTP_REFERER"])) {
+                    $this->redirect($_SERVER["HTTP_REFERER"]);
+                } else {
+                    $this->redirect("/");
+                }
+            }
         }
 
         if (! class_exists($controllerClassName)) {
