@@ -4,7 +4,7 @@ $content["title"] = "Login";
 
 // form
 $content["welcome_message"]         = "Welcome Back !!";
-$content["placeholder_username"]    = "Username";
+$content["placeholder_username"]    = "Username Or Email";
 $content["placeholder_password"]    = "Password";
 $content["value_btn_login"]         = "Login";
 

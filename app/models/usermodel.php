@@ -64,7 +64,7 @@ class UserModel extends AbstractModel
             FROM ".
                 static::$tableName . "
             WHERE  
-                UserName = '" . $username ."'
+                (UserName = '" . $username ."' OR Email = '" . $username . "')
             AND 
                 Password = '" . $password ."'
             ";

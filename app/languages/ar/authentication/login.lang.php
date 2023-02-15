@@ -4,7 +4,7 @@ $content["title"] = "تسجيل الدخول";
 
 // form
 $content["welcome_message"]         = "مرحبا بعودتك";
-$content["placeholder_username"]    = "اسم المستخدم";
+$content["placeholder_username"]    = "اسم المستخدم او البريد الألكتروني";
 $content["placeholder_password"]    = "كلمة المرور";
 $content["value_btn_login"]         = "تسجيل الدخول";
 
