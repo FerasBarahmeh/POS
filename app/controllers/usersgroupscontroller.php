@@ -137,12 +137,12 @@ class UsersGroupsController extends AbstractController
                 );
                 $this->redirect("/usersgroups");
 
+            } else {
+                $this->message->addMessage(
+                    $this->language->get("text_message_edit_field"),
+                    Messenger::MESSAGE_DANGER
+                );
             }
-        } else {
-            $this->message->addMessage(
-                $this->language->get("text_message_edit_field"),
-                Messenger::MESSAGE_DANGER
-            );
         }
 
 
