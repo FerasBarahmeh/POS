@@ -1,9 +1,35 @@
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <form class="add-form" method="POST" enctype="application/x-www-form-urlencoded">
+
+    <fieldset class="row">
+
+        <div class="field">
+            <!-- Must Set space in placeholder to apply label animation  -->
+            <input type="text" name="FirstName" id="FirstName"
+                   value="<?= $this->getStorePost("FirstName") ?>"
+                   minlength="4" maxlength="12" required
+                   placeholder=" "   autocomplete="off"  />
+
+            <label for="FirstName"> <?= $table_FirstName ?></label>
+        </div>
+        <div class="field">
+            <!-- Must Set space in placeholder to apply label animation  -->
+            <input type="text" name="LastName" id="LastName"
+                   value="<?= $this->getStorePost("LastName") ?>"
+                   minlength="4" maxlength="12" required
+                   placeholder=" "   autocomplete="off"  />
+
+            <label for="LastName"> <?= $table_LastName ?></label>
+        </div>
+
+    </fieldset>
+
+
+
+
     <fieldset class="row">
         <div class="field">
-<!--            <span class="rejected-value-input message">error</span>-->
             <!-- Must Set space in placeholder to apply label animation  -->
             <input type="text" name="UserName" id="UserName"
                    value="<?= $this->getStorePost("UserName") ?>"
@@ -31,7 +57,6 @@
 
             <label for="confirm_password"> <?=  $table_confirm_password ?> </label>
         </div>
-
 
     </fieldset>
 

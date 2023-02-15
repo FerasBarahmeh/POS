@@ -8,6 +8,9 @@ $content["title_header"] = "اضافة مستخدم";
 
 
 // Field
+$content["table_LastName"]              = "الاسم الاخير";
+$content["table_FirstName"]             = "الاسم الاول";
+
 $content["table_UserName"]              = "اسم المستخدم";
 $content["table_Password"]              = "كلمة المرور";
 $content["table_confirm_password"]      = "تأكيد كلمة المرور";

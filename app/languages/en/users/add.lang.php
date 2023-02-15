@@ -8,6 +8,8 @@ $content["title_header"] = "Add User";
 
 
 // Field
+$content["table_LastName"]              = "Last Name";
+$content["table_FirstName"]             = "First Name";
 $content["table_UserName"]              = "User Name";
 $content["table_Password"]              = "Password";
 $content["table_confirm_password"]      = "Confirm Password";

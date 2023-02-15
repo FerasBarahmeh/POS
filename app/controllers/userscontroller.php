@@ -5,6 +5,7 @@ namespace APP\Controllers;
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\FilterInput;
 use APP\LIB\Messenger;
+use APP\Models\UserExtraInfoModel;
 use APP\Models\UserGroupModel;
 use APP\Models\UserModel;
 use function APP\pr;
@@ -13,8 +14,9 @@ class UsersController extends AbstractController
 {
     use FilterInput;
     use PublicHelper;
-    private  $isUserExist = [] ;
     private array $_rolesAddValid = [
+        "FirstName"         => ["req", "alpha",  "between(2,10)",],
+        "LastName"          => ["req", "alpha",  "between(2,10)",],
         "UserName"          => ["req", "alphaNum",  "between(4,12)",],
         "Password"          => ["req", "between(7,60)", "alphaNum", "compare(confirm_password)"],
         "confirm_password"  => ["req", "between(7,60)", "alphaNum"],
@@ -31,7 +33,7 @@ class UsersController extends AbstractController
     {
         $this->language->load("template.common");
         $this->language->load("users.default");
-        $this->_info["users"] = UserModel::getAll();
+        $this->_info["users"] = UserModel::getUsers($this->session->user);
         $this->_renderView();
     }
 
@@ -46,9 +48,18 @@ class UsersController extends AbstractController
         }
     }
 
+    private function saveSubsetInformation($user)
+    {
+        $userSubsetInfo = new UserExtraInfoModel();
+        $userSubsetInfo->UserId = $user->UserId;
+        $userSubsetInfo->FirstName  = $this->filterStr($_POST["FirstName"]);
+        $userSubsetInfo->LastName   = $this->filterStr($_POST["LastName"]);
+        $userSubsetInfo->save(false);
+    }
     private function saveUser($user, $messageSuccess, $messageFail)
     {
         if ($user->save()) {
+            $this->saveSubsetInformation($user);
             $this->message->addMessage(
                 $this->language->get($messageSuccess),
             );
