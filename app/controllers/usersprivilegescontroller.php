@@ -22,6 +22,19 @@ class UsersPrivilegesController extends AbstractController
         $this->_renderView();
     }
 
+    private function savePrivilege($privilege, $successMess, $fieldMess)
+    {
+        if ($privilege->save()) {
+            $this->message->addMessage(
+                $this->language->get($successMess) . " <b class='bold-font'>" . $privilege->PrivilegeTitle . "</b>"
+            );
+        } else {
+            $this->message->addMessage(
+                $this->language->get($fieldMess) . " <b class='bold-font'>" . $privilege->PrivilegeTitle . "</b>",
+                Messenger::MESSAGE_DANGER
+            );
+        }
+    }
     public function addAction()
     {
         $this->language->load("template.common");
@@ -31,25 +44,14 @@ class UsersPrivilegesController extends AbstractController
             $privilege->PrivilegeTitle  = $this->filterStr($_POST["privilege_title"]);
             $privilege->Privilege       = $this->filterStr($_POST["privilege"]);
 
-            if ($privilege->save()) {
-                $this->message->addMessage($this->setMassLang("Add Privilege Success", "تم اضافة الصلاحية بنجاح"));
-            } else {
-                $this->message->addMessage($this->setMassLang("Add Privilege Filed", "عذرا, فشل اضافة الصلاحية بنجاح"));
-            }
+            $this->savePrivilege($privilege,
+                "text_privilege_add_success", "text_privilege_add_field");
+
             $this->redirect("/usersprivileges");
         }
         $this->_renderView();
     }
 
-    private function setMassLang($enMass, $arMass)
-    {
-        // TODO: Update Set Message Way
-        if ($this->session->getLang() == APP_DEFAULT_LANGUAGE)
-            $mass = $enMass;
-        else
-            $mass = $arMass;
-        return $mass;
-    }
     public function editAction()
     {
 
@@ -67,15 +69,10 @@ class UsersPrivilegesController extends AbstractController
 
             $privilege->PrivilegeTitle  = $this->filterStr($_POST["privilege_title"]);
             $privilege->Privilege       = $this->filterStr($_POST["privilege"]);
+            $this->savePrivilege($privilege,
+                "text_privilege_edit_success",
+                "text_privilege_edit_field");
 
-            if ($privilege->save()) {
-
-                $this->message->addMessage(
-                    $this->setMassLang("Edit Privilege Success", "تم تعديل الصلاحية بنجاح"));
-            } else {
-                $this->message->addMessage($this->setMassLang("Edit Privilege field", "لم تم تعديل الصلاحية بنجاح"),
-                    Messenger::MESSAGE_DANGER);
-            }
             $this->redirect("/usersprivileges");
         }
         $this->_renderView();
@@ -99,10 +96,16 @@ class UsersPrivilegesController extends AbstractController
             }
         }
 
+        $this->language->load("usersprivileges.default");
+
         if ($privilege->delete()) {
-            $this->message->addMessage($this->setMassLang("Delete Privilege Success", "تم حذف الصلاحية بنجاح"));
+            $this->message->addMessage(
+                $this->language->get("text_privilege_delete_success")
+            );
         } else {
-            $this->message->addMessage($this->setMassLang("Delete Privilege Filed", "عذرا فشل حذف الصلاحية حاول لاحقا"), Messenger::MESSAGE_DANGER);
+            $this->message->addMessage(
+                $this->language->get("text_privilege_delete_field")
+            );
         }
         $this->redirect("/usersprivileges");
     }
