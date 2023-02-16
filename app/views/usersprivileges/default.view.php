@@ -14,7 +14,7 @@ use APP\Helpers\Structures\Structures;
 </div>
 
     <!-- Show Privileges -->
-    <div class="privileges responsive-table mt-20" id="employees-table">
+    <div class="container-table responsive-table mt-20" id="employees-table">
         <table class="">
             <thead>
                 <tr>
