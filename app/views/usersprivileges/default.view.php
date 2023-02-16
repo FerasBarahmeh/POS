@@ -19,7 +19,6 @@ use APP\Helpers\Structures\Structures;
             <thead>
                 <tr>
                     <th><?= $text_table_name_privilege ?></th>
-                    <th><?= $text_table_privilege ?></th>
                     <th><?= $text_table_control ?></th>
                 </tr>
             </thead>
@@ -32,7 +31,6 @@ use APP\Helpers\Structures\Structures;
                             ?>
                                 <tr class="row-each-employee">
                                     <td class="name-user-row"><?= $privilege->PrivilegeTitle ?></td>
-                                    <td class="name-user-row"><?= $privilege->Privilege ?></td>
                                     <td class="controller-btns">
                                         <a href="/usersprivileges/edit/<?= $privilege->PrivilegeId ?>">
                                             <i class="fa fa-edit" aria-hidden="true"></i>
