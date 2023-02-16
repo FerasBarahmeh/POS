@@ -41,25 +41,48 @@ class FrontController
         $this->setParams(@$url[2]);
     }
 
+    private function denyAccessLogin($controller, $action): void
+    {
+        if ($controller == "authentication" && $action == "login") {
+            if (isset($_SERVER["HTTP_REFERER"])) {
+                $this->redirect($_SERVER["HTTP_REFERER"]);
+            } else {
+                $this->redirect("/");
+            }
+        }
+    }
+    private function isNotAuthenticated(): array
+    {
+        $controllerClassName    = "APP\Controllers\\" . "Authentication" . "Controller";
+        $actionName             = "login". "Action";
+        $this->_controller      = "authentication";
+        $this->_action          = "login";
+        return [
+            "controllerClassName" => $controllerClassName,
+            "actionName" => $actionName,
+        ];
+    }
+
+    private function authorizedAccess(): void
+    {
+        if (! $this->_authenticated->authorizedAccess($this->_controller, $this->_action)) {
+            $this->redirect("/denyauthorizeaccess/default");
+        }
+    }
     public function dispatch(): void
     {
         $controllerClassName = "APP\Controllers\\" . ucfirst($this->_controller) . "Controller";
         $actionName          = $this->_action . "Action";
 
         if (! $this->_authenticated->isAuthenticated()) {
-            $controllerClassName    = "APP\Controllers\\" . "Authentication" . "Controller";
-            $actionName             = "login". "Action";
-            $this->_controller      = "authentication";
-            $this->_action          = "login";
-        } else  {
-            if ($this->_controller == "authentication" && $this->_action == "login") {
-                if (isset($_SERVER["HTTP_REFERER"])) {
-                    $this->redirect($_SERVER["HTTP_REFERER"]);
-                } else {
-                    $this->redirect("/");
-                }
-            }
+            $values = $this->isNotAuthenticated();
+            $controllerClassName    = $values["controllerClassName"];
+            $actionName             = $values["actionName"];
+        } else {
+            $this->denyAccessLogin($this->_controller, $this->_action);
+            $this->authorizedAccess();
         }
+
 
         if (! class_exists($controllerClassName)) {
             $controllerClassName = self::NOT_FOUND_CONTROLLER;
