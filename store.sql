@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 15, 2023 at 05:01 PM
+-- Generation Time: Feb 16, 2023 at 02:37 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -221,6 +221,14 @@ CREATE TABLE `subset_information_users` (
   `Image` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `subset_information_users`
+--
+
+INSERT INTO `subset_information_users` (`UserId`, `FirstName`, `LastName`, `Address`, `BOD`, `Image`) VALUES
+(1, 'Feras', 'Barahmeh', NULL, NULL, NULL),
+(2, 'Majd', 'Barahmeh', NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -258,9 +266,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(49, 'admin', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras@feras.com', '2023-02-15 14:12:51', '2023-02-15 15:36:16', 7, '0785102996', 1),
-(50, 'accountant', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras@f.com', '2023-02-15 14:49:33', '2023-02-15 15:37:02', 9, '0785102996', 1),
-(56, 'ferasbarahme', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 16:53:19', '2023-02-15 16:53:19', 9, '0785102996', 1);
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-16 13:50:33', 7, '0785102996', 1),
+(2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-16 11:13:03', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
 
@@ -300,7 +307,16 @@ CREATE TABLE `users_groups_privileges` (
 INSERT INTO `users_groups_privileges` (`Id`, `GroupId`, `PrivilegeId`) VALUES
 (37, 7, 36),
 (38, 7, 38),
-(42, 9, 38);
+(42, 9, 38),
+(53, 9, 41),
+(54, 9, 42),
+(57, 7, 40),
+(58, 7, 41),
+(59, 7, 42),
+(60, 7, 43),
+(61, 7, 44),
+(62, 7, 45),
+(63, 7, 46);
 
 -- --------------------------------------------------------
 
@@ -310,7 +326,7 @@ INSERT INTO `users_groups_privileges` (`Id`, `GroupId`, `PrivilegeId`) VALUES
 
 CREATE TABLE `users_privileges` (
   `PrivilegeId` tinyint(3) UNSIGNED NOT NULL,
-  `Privilege` varchar(20) NOT NULL,
+  `Privilege` varchar(30) NOT NULL,
   `PrivilegeTitle` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -319,15 +335,18 @@ CREATE TABLE `users_privileges` (
 --
 
 INSERT INTO `users_privileges` (`PrivilegeId`, `Privilege`, `PrivilegeTitle`) VALUES
-(36, 'privileges\\add', 'Add privileges'),
-(38, 'reports\\add', 'Add reports'),
-(40, 'products\\delete', 'Delete Product'),
-(41, 'suppliers\\add', 'create new supplier'),
-(42, 'suppliers\\edit', 'Edit information supplier'),
-(43, 'suppliers\\delete', 'delete supplier'),
-(44, 'users\\add', 'Add new user'),
-(45, 'users\\delete', 'Delete use'),
-(46, 'users\\edit', 'Edit user information');
+(36, '/usersprivileges/add', 'Add privileges'),
+(38, '/reports/add', 'Add reports'),
+(40, '/products/delete', 'Delete Product'),
+(41, '/suppliers/add', 'create new supplier'),
+(42, '/suppliers/edit', 'Edit information supplier'),
+(43, '/suppliers/delete', 'Delete supplier'),
+(44, '/users/add', 'Add new user'),
+(45, '/users/delete', 'Delete user'),
+(46, '/users/edit', 'Edit user information'),
+(47, '/users/default', 'Users List'),
+(48, '/usersprivileges/default', 'Privileges'),
+(49, '/usersprivileges/delete', 'Delete Privilege');
 
 --
 -- Indexes for dumped tables
@@ -542,7 +561,7 @@ ALTER TABLE `sales_invoices_receipts`
 -- AUTO_INCREMENT for table `subset_information_users`
 --
 ALTER TABLE `subset_information_users`
-  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
@@ -554,25 +573,25 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `GroupId` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `GroupId` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users_groups_privileges`
 --
 ALTER TABLE `users_groups_privileges`
-  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT for table `users_privileges`
 --
 ALTER TABLE `users_privileges`
-  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- Constraints for dumped tables
@@ -643,7 +662,7 @@ ALTER TABLE `sales_invoices_receipts`
 -- Constraints for table `subset_information_users`
 --
 ALTER TABLE `subset_information_users`
-  ADD CONSTRAINT `subset_information_users_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`);
+  ADD CONSTRAINT `subset_information_users_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users`
