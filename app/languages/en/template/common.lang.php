@@ -28,5 +28,10 @@ $content["text_nav_transactions_sales"]         =  "Transactions Sales";
 $content["text_nav_reports"]                    =  "Reports";
 $content["text_nav_Notifications"]              =  "Notifications";
 
+// Start Errors
+$content["text_access_denied_title"]        =  "Access Denied";
+$content["text_deny_authorize_access"]      =  "Oops, your permissions do not allow you to access this page";
+$content["text_deny_authorize_access_back_home"]      =  "Go to homepage";
+$content["text_deny_authorize_access_description"]      =  "A web server may return a 403 Forbidden HTTP status code in response to a request from a client for a web page or resource to indicate that the server can be reached and understood the request, but refuses to take any further action. Status code 403 responses are the result of the web server being configured to deny access, for some reason, to the requested resource by the client.";
 
 
