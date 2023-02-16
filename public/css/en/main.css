@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:700);
+
 /* Style Code Here */
 * {
     margin: 0;
@@ -29,7 +31,7 @@
 body {
     height: 74vh;
     background-color: var(--bg-black-30);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 ul {
     list-style: none;
@@ -40,6 +42,10 @@ h1, h2, h3, h4, h5 {
 }
 a {
     text-decoration: none;
+}
+.bold-font {
+    color: var(--bg-black-900);
+    font-weight: bold;
 }
 /* Start Colors */
 :root body {

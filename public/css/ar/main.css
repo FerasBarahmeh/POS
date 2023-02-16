@@ -1,4 +1,4 @@
-/* Style Code Here */
+@import url(https://fonts.googleapis.com/earlyaccess/lateef.css);
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@ html {
 }
 body {
     direction: rtl;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "font-family: 'Lateef', serif; font-size:25px;", serif;
     height: 74vh;
 }
 ul {
@@ -39,6 +39,10 @@ h1, h2, h3, h4, h5 {
 }
 a {
     text-decoration: none;
+}
+b.bold-font {
+    color: var(--bg-black-900);
+    font-weight: bold;
 }
 /* Start Colors */
 :root body {
