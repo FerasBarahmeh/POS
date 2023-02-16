@@ -23,6 +23,16 @@ class UsersGroupsController extends AbstractController
         $this->_info["groups"] = UserGroupModel::getAll();
         $this->_renderView();
     }
+
+    private function setMessage($group, $message, $type=Messenger::MESSAGE_SUCCESS)
+    {
+        $this->message->addMessage(
+            sprintf($this->language->get($message),
+                "<b class='bold-font'>" . $group->GroupName . "</b>"),
+            $type
+        );
+
+    }
     public function addAction()
     {
         $this->language->load("template.common");
@@ -41,17 +51,12 @@ class UsersGroupsController extends AbstractController
                     $groupPrivilege->PrivilegeId    = $privilege;
                     $groupPrivilege->save();
                 }
-            }
-            $this->message->addMessage(
-                $this->language->get("text_message_add_success"),
-            );
+                $this->setMessage($group, "text_message_add_success");
 
-            $this->redirect("/usersgroups");
-        } else {
-            $this->message->addMessage(
-                $this->language->get("text_message_add_field"),
-                Messenger::MESSAGE_DANGER
-            );
+            } else {
+                $this->setMessage($group, "text_message_add_field", Messenger::MESSAGE_DANGER);
+            }
+
             $this->redirect("/usersgroups");
         }
         $this->_renderView();
@@ -132,17 +137,13 @@ class UsersGroupsController extends AbstractController
                     $this->addNewPrivileges($privileges, $group->GroupId);
 
                 }
-                $this->message->addMessage(
-                    $this->language->get("text_message_edit_success"),
-                );
-                $this->redirect("/usersgroups");
+                $this->setMessage($group, "text_message_edit_success");
 
             } else {
-                $this->message->addMessage(
-                    $this->language->get("text_message_edit_field"),
-                    Messenger::MESSAGE_DANGER
-                );
+                $this->setMessage($group, "text_message_edit_field", Messenger::MESSAGE_DANGER);
             }
+
+            $this->redirect("/usersgroups");
         }
 
 
@@ -168,14 +169,9 @@ class UsersGroupsController extends AbstractController
         }
 
         if($group->delete()) {
-            $this->message->addMessage(
-                $this->language->get("text_delete_success"),
-            );
+            $this->setMessage($group, "text_delete_success");
         } else {
-            $this->message->addMessage(
-                $this->language->get("text_delete_filed"),
-                Messenger::MESSAGE_DANGER
-            );
+            $this->setMessage($group, "text_delete_filed", Messenger::MESSAGE_DANGER);
         }
         $this->redirect("/usersgroups");
 
