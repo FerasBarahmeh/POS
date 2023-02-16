@@ -14,4 +14,5 @@ $content["text_content_search_supplier"]             = "البحث عن ممول
 $content["text_table_name_supplier"]                = "اسم الممول";
 $content["text_table_email_supplier"]               = "البريد الالكتروني";
 $content["text_table_phone_number_supplier"]        = "رقم الهاتف";
+$content["text_table_address_supplier"]        = "العنوان";
 $content["text_table_control"]                  = "التحكم";

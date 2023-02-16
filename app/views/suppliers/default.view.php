@@ -21,6 +21,7 @@ use APP\Helpers\Structures\Structures;
             <th><?= $text_table_name_supplier ?></th>
             <th><?= $text_table_email_supplier ?></th>
             <th><?= $text_table_phone_number_supplier ?></th>
+            <th><?= $text_table_address_supplier ?></th>
             <th><?= $text_table_control ?></th>
         </tr>
         </thead>
@@ -35,6 +36,7 @@ use APP\Helpers\Structures\Structures;
                                     <td class="name-supplier-row"><?= $supplier->Name ?></td>
                                     <td><?= $supplier->Email ?></td>
                                     <td><?= $supplier->PhoneNumber ?></td>
+                                    <td><?= $supplier->Address ?></td>
 
                                     <td class="controller-btns">
                                         <a href="/suppliers/edit/<?= $supplier->SupplierId ?>"><i class="fas fa-edit" aria-hidden="true"></i></a>

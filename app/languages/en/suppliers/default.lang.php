@@ -14,4 +14,5 @@ $content["text_content_search_supplier"]             = "Find Supplier";
 $content["text_table_name_supplier"]                = "Name Supplier";
 $content["text_table_email_supplier"]               = "Email";
 $content["text_table_phone_number_supplier"]        = "Phone Number";
+$content["text_table_address_supplier"]        = "Address";
 $content["text_table_control"]                  = "Control";
