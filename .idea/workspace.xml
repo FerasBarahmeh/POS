@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Redesign popup rejected button">
+    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Create products categories model, controller, category and all you need for this">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/usersprivileges/default.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/usersprivileges/default.view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/ar/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/ar/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/en/privilege.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/en/privilege.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/shortcut.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/shortcut.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/languages/ar/authentication/login.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/authentication/login.lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/languages/en/authentication/login.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/authentication/login.lang.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +27,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/controllers/userscontroller.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -39,28 +40,33 @@
     <option name="showMembers" value="true" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/XAMPP/htdocs/estore/app/languages/ar/usersprivileges",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/XAMPP/htdocs/estore/app/languages/ar/messages&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editing.templates&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\XAMPP\htdocs\estore\app\languages\ar\usersprivileges" />
-      <recent name="E:\XAMPP\htdocs\estore\app\languages\en\usersprivileges" />
-      <recent name="E:\XAMPP\htdocs\estore\app\views\usersprivileges" />
-      <recent name="E:\XAMPP\htdocs\estore\public\css\ar" />
+      <recent name="E:\XAMPP\htdocs\estore\app\languages\ar\messages" />
+      <recent name="E:\XAMPP\htdocs\estore\app\languages\ar" />
+      <recent name="E:\XAMPP\htdocs\estore\app\languages\ar\productscategories" />
       <recent name="E:\XAMPP\htdocs\estore\app\views" />
+      <recent name="E:\XAMPP\htdocs\estore\app\languages\en" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -82,384 +88,419 @@
       <workItem from="1675764605294" duration="29386000" />
       <workItem from="1675798921175" duration="723000" />
       <workItem from="1675799721525" duration="438000" />
-      <workItem from="1675855660722" duration="2065000" />
+      <workItem from="1675855660722" duration="27217000" />
+      <workItem from="1675885960540" duration="2969000" />
+      <workItem from="1675931005571" duration="31075000" />
+      <workItem from="1676038298714" duration="21340000" />
+      <workItem from="1676105223387" duration="33238000" />
+      <workItem from="1676148750072" duration="2377000" />
+      <workItem from="1676190709984" duration="40620000" />
+      <workItem from="1676283526962" duration="33369000" />
+      <workItem from="1676382783011" duration="21324000" />
+      <workItem from="1676463761154" duration="29736000" />
+      <workItem from="1676540091161" duration="28749000" />
+      <workItem from="1676644352841" duration="15319000" />
+      <workItem from="1676720531637" duration="19913000" />
+      <workItem from="1676750364099" duration="391000" />
     </task>
-    <task id="LOCAL-00004" summary="Add search input in main navigation bar">
-      <created>1675605798910</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
+    <task id="LOCAL-00137" summary="create authentication controller class">
+      <created>1676404669044</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
       <option name="project" value="LOCAL" />
-      <updated>1675605798910</updated>
+      <updated>1676404669044</updated>
     </task>
-    <task id="LOCAL-00005" summary="Translate template to arabic and English in common.lang.php files">
-      <created>1675605925232</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
+    <task id="LOCAL-00138" summary="create main salt constant and create UserStatus trait">
+      <created>1676404721294</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
       <option name="project" value="LOCAL" />
-      <updated>1675605925232</updated>
+      <updated>1676404721294</updated>
     </task>
-    <task id="LOCAL-00006" summary="Handler Not Fount Page">
-      <created>1675610887567</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
+    <task id="LOCAL-00139" summary="add authentication in front controller and use in dispatch">
+      <created>1676404782697</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
       <option name="project" value="LOCAL" />
-      <updated>1675610887567</updated>
+      <updated>1676404782697</updated>
     </task>
-    <task id="LOCAL-00007" summary="Edit overflow in y-axis in not found page">
-      <created>1675611075219</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
+    <task id="LOCAL-00140" summary="add some words in languages files">
+      <created>1676404807230</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
       <option name="project" value="LOCAL" />
-      <updated>1675611075219</updated>
+      <updated>1676404807230</updated>
     </task>
-    <task id="LOCAL-00008" summary="Add DATA_TYPE_DATE in abstract model class">
-      <created>1675614647899</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
+    <task id="LOCAL-00141" summary="create version one in view login">
+      <created>1676404835502</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
       <option name="project" value="LOCAL" />
-      <updated>1675614647899</updated>
+      <updated>1676404835502</updated>
     </task>
-    <task id="LOCAL-00009" summary="Create Users model">
-      <created>1675614711216</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
+    <task id="LOCAL-00142" summary="change font family body">
+      <created>1676404857515</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
       <option name="project" value="LOCAL" />
-      <updated>1675614711216</updated>
+      <updated>1676404857515</updated>
     </task>
-    <task id="LOCAL-00010" summary="Create Default users css, js, languages Files">
-      <created>1675620338943</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
+    <task id="LOCAL-00143" summary="create choosePartsUI method version one">
+      <created>1676404887528</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
       <option name="project" value="LOCAL" />
-      <updated>1675620338943</updated>
+      <updated>1676404887528</updated>
     </task>
-    <task id="LOCAL-00011" summary="Refactor navigation bar (add sub menus)">
-      <created>1675679047869</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
+    <task id="LOCAL-00144" summary="create authentication method, apply Main slat constant in encryptionPassword method and ifUserRegistration method">
+      <created>1676404982451</created>
+      <option name="number" value="00144" />
+      <option name="presentableId" value="LOCAL-00144" />
       <option name="project" value="LOCAL" />
-      <updated>1675679047869</updated>
+      <updated>1676404982451</updated>
     </task>
-    <task id="LOCAL-00012" summary="edit search fetcher in main navigation bar">
-      <created>1675679097263</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
+    <task id="LOCAL-00145" summary="edit bug ifUserRegistration encryption password before check if exist">
+      <created>1676464443064</created>
+      <option name="number" value="00145" />
+      <option name="presentableId" value="LOCAL-00145" />
       <option name="project" value="LOCAL" />
-      <updated>1675679097263</updated>
+      <updated>1676464443064</updated>
     </task>
-    <task id="LOCAL-00013" summary="Add Path In header">
-      <created>1675680976023</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
+    <task id="LOCAL-00146" summary="create logout action in authentication controller">
+      <created>1676468463589</created>
+      <option name="number" value="00146" />
+      <option name="presentableId" value="LOCAL-00146" />
       <option name="project" value="LOCAL" />
-      <updated>1675680976023</updated>
+      <updated>1676468463589</updated>
     </task>
-    <task id="LOCAL-00014" summary="Add Links in Buttons li">
-      <created>1675683086917</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
+    <task id="LOCAL-00147" summary="add logout link in menu">
+      <created>1676468507111</created>
+      <option name="number" value="00147" />
+      <option name="presentableId" value="LOCAL-00147" />
       <option name="project" value="LOCAL" />
-      <updated>1675683086917</updated>
+      <updated>1676468507111</updated>
     </task>
-    <task id="LOCAL-00015" summary="Edit design navigation in arabic language">
-      <created>1675683197943</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
+    <task id="LOCAL-00148" summary="change class table users groups users to container-table">
+      <created>1676468559634</created>
+      <option name="number" value="00148" />
+      <option name="presentableId" value="LOCAL-00148" />
       <option name="project" value="LOCAL" />
-      <updated>1675683197943</updated>
+      <updated>1676468559634</updated>
     </task>
-    <task id="LOCAL-00016" summary="create template helper class, add package template in lib">
-      <created>1675688924932</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
+    <task id="LOCAL-00149" summary="add edit group name in users groups controller">
+      <created>1676468596882</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
       <option name="project" value="LOCAL" />
-      <updated>1675688924932</updated>
+      <updated>1676468596882</updated>
     </task>
-    <task id="LOCAL-00017" summary="add selected class in li in main navigation bar">
-      <created>1675689063483</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
+    <task id="LOCAL-00150" summary="some edit in main table">
+      <created>1676469290367</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
       <option name="project" value="LOCAL" />
-      <updated>1675689063483</updated>
+      <updated>1676469290367</updated>
     </task>
-    <task id="LOCAL-00018" summary="create users groups controller">
-      <created>1675691094094</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
+    <task id="LOCAL-00151" summary="add class to password cell to design it">
+      <created>1676469329099</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
       <option name="project" value="LOCAL" />
-      <updated>1675691094094</updated>
+      <updated>1676469329099</updated>
     </task>
-    <task id="LOCAL-00019" summary="create users groups model">
-      <created>1675691114152</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
+    <task id="LOCAL-00152" summary="edit title and header words content">
+      <created>1676469356259</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
       <option name="project" value="LOCAL" />
-      <updated>1675691114152</updated>
+      <updated>1676469356259</updated>
     </task>
-    <task id="LOCAL-00020" summary="create users groups view">
-      <created>1675691133680</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
+    <task id="LOCAL-00153" summary="add fetcher in dispatch if user go to authentication and already login redirect to current page">
+      <created>1676471618209</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
       <option name="project" value="LOCAL" />
-      <updated>1675691133680</updated>
+      <updated>1676471618209</updated>
     </task>
-    <task id="LOCAL-00021" summary="create users groups languages words">
-      <created>1675691243349</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
+    <task id="LOCAL-00154" summary="add fetcher login width email">
+      <created>1676471936330</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
       <option name="project" value="LOCAL" />
-      <updated>1675691243349</updated>
+      <updated>1676471936330</updated>
     </task>
-    <task id="LOCAL-00022" summary="load language in abstract controller">
-      <created>1675704061018</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
+    <task id="LOCAL-00155" summary="update method save in abstraction model">
+      <created>1676484137341</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
       <option name="project" value="LOCAL" />
-      <updated>1675704061018</updated>
+      <updated>1676484137341</updated>
     </task>
-    <task id="LOCAL-00023" summary="Remove required common.lang file">
-      <created>1675704186074</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
+    <task id="LOCAL-00156" summary="rename method getAll from user model to getUser and add condition where to not fetch current users">
+      <created>1676484219044</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
       <option name="project" value="LOCAL" />
-      <updated>1675704186074</updated>
+      <updated>1676484219044</updated>
     </task>
-    <task id="LOCAL-00024" summary="change table name in user group model">
-      <created>1675704223733</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
+    <task id="LOCAL-00157" summary="add first name and last name users controller">
+      <created>1676484328366</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
       <option name="project" value="LOCAL" />
-      <updated>1675704223733</updated>
+      <updated>1676484328366</updated>
     </task>
-    <task id="LOCAL-00025" summary="call load language method in index controller(default action)">
-      <created>1675704288768</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
+    <task id="LOCAL-00158" summary="re export db">
+      <created>1676484352119</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
       <option name="project" value="LOCAL" />
-      <updated>1675704288768</updated>
+      <updated>1676484352120</updated>
     </task>
-    <task id="LOCAL-00026" summary="edit users group and user privileges languages files">
-      <created>1675704457942</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
+    <task id="LOCAL-00159" summary="add name user in welcome message">
+      <created>1676493346518</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
       <option name="project" value="LOCAL" />
-      <updated>1675704457942</updated>
+      <updated>1676493346518</updated>
     </task>
-    <task id="LOCAL-00027" summary="call load language method in users controller">
-      <created>1675704515169</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
+    <task id="LOCAL-00160" summary="set names in privileges in nav and header dynamically">
+      <created>1676493423599</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
       <option name="project" value="LOCAL" />
-      <updated>1675704515169</updated>
+      <updated>1676493423599</updated>
     </task>
-    <task id="LOCAL-00028" summary="create user Privileges controller">
-      <created>1675704546845</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
+    <task id="LOCAL-00161" summary="add constraint current user can't delete himself">
+      <created>1676493487963</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
       <option name="project" value="LOCAL" />
-      <updated>1675704546845</updated>
+      <updated>1676493487963</updated>
     </task>
-    <task id="LOCAL-00029" summary="create user Privileges Model">
-      <created>1675704564054</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
+    <task id="LOCAL-00162" summary="add messages when deleted, edit and add group">
+      <created>1676493534534</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
       <option name="project" value="LOCAL" />
-      <updated>1675704564054</updated>
+      <updated>1676493534534</updated>
     </task>
-    <task id="LOCAL-00030" summary="edit view user group">
-      <created>1675704633837</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
+    <task id="LOCAL-00163" summary="edit ifUserRegistration method query fetch user(new fetch group name)">
+      <created>1676493622627</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
       <option name="project" value="LOCAL" />
-      <updated>1675704633837</updated>
+      <updated>1676493622627</updated>
     </task>
-    <task id="LOCAL-00031" summary="edit view user privileges">
-      <created>1675704650667</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
+    <task id="LOCAL-00164" summary="add some words in languages files">
+      <created>1676493679096</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
       <option name="project" value="LOCAL" />
-      <updated>1675704650667</updated>
+      <updated>1676493679096</updated>
     </task>
-    <task id="LOCAL-00032" summary="edit path in header">
-      <created>1675705809139</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
+    <task id="LOCAL-00165" summary="edit bug in edit groups messages(Set error messages else group not save not is not set POST[&quot;edit&quot;]">
+      <created>1676494690548</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
       <option name="project" value="LOCAL" />
-      <updated>1675705809139</updated>
+      <updated>1676494690548</updated>
     </task>
-    <task id="LOCAL-00033" summary="Append add privilege action">
-      <created>1675713769752</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
+    <task id="LOCAL-00166" summary="add method getPrivilegesByGroup to get privileges urls">
+      <created>1676498249129</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
       <option name="project" value="LOCAL" />
-      <updated>1675713769752</updated>
+      <updated>1676498249129</updated>
     </task>
-    <task id="LOCAL-00034" summary="Design add privilege view">
-      <created>1675713856934</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
+    <task id="LOCAL-00167" summary="set getPrivilegesByGroup object in user from session">
+      <created>1676498289615</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
       <option name="project" value="LOCAL" />
-      <updated>1675713856934</updated>
+      <updated>1676498289615</updated>
     </task>
-    <task id="LOCAL-00035" summary="Add view privilege">
-      <created>1675713889809</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
+    <task id="LOCAL-00168" summary="remove urls privileges from privileges/default">
+      <created>1676541362068</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
       <option name="project" value="LOCAL" />
-      <updated>1675713889809</updated>
+      <updated>1676541362068</updated>
     </task>
-    <task id="LOCAL-00036" summary="include privilege css file">
-      <created>1675713934125</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
+    <task id="LOCAL-00169" summary="change font family, bold-font class">
+      <created>1676558282573</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
       <option name="project" value="LOCAL" />
-      <updated>1675713934125</updated>
+      <updated>1676558282573</updated>
     </task>
-    <task id="LOCAL-00037" summary="Add languages words to privileges">
-      <created>1675713985166</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
+    <task id="LOCAL-00170" summary="change privilege size to 30 character">
+      <created>1676558326337</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
       <option name="project" value="LOCAL" />
-      <updated>1675713985166</updated>
+      <updated>1676558326337</updated>
     </task>
-    <task id="LOCAL-00038" summary="Edit insert method in abstract model method be return false if not insert value">
-      <created>1675781314920</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
+    <task id="LOCAL-00171" summary="update addMessage method to savePrivilege method">
+      <created>1676558429503</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
       <option name="project" value="LOCAL" />
-      <updated>1675781314920</updated>
+      <updated>1676558429503</updated>
     </task>
-    <task id="LOCAL-00039" summary="Edit add privilege method in controller, &#10;Add Edit &amp; delete method in users privilges controller">
-      <created>1675781517318</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
+    <task id="LOCAL-00172" summary="create authorizedAccess, isNotAuthenticated and denyAccessLogin methods">
+      <created>1676558615275</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
       <option name="project" value="LOCAL" />
-      <updated>1675781517318</updated>
+      <updated>1676558615275</updated>
     </task>
-    <task id="LOCAL-00040" summary="rename property ad a column name in db table">
-      <created>1675781595458</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
+    <task id="LOCAL-00173" summary="add word in files language to privileges page">
+      <created>1676558703162</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
       <option name="project" value="LOCAL" />
-      <updated>1675781595458</updated>
+      <updated>1676558703162</updated>
     </task>
-    <task id="LOCAL-00041" summary="fixed label input if input not empty, &#10;change top padding to form">
-      <created>1675781674014</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
+    <task id="LOCAL-00174" summary="create authorizedAccess method">
+      <created>1676558730363</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
       <option name="project" value="LOCAL" />
-      <updated>1675781674014</updated>
+      <updated>1676558730363</updated>
     </task>
-    <task id="LOCAL-00042" summary="split input attribute and add placeholder space to apply fixed label idea">
-      <created>1675781823935</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
+    <task id="LOCAL-00175" summary="reset show privileges urls in table">
+      <created>1676558800752</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
       <option name="project" value="LOCAL" />
-      <updated>1675781823935</updated>
+      <updated>1676558800752</updated>
     </task>
-    <task id="LOCAL-00043" summary="add words in files lang to privilege pages">
-      <created>1675781893381</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
+    <task id="LOCAL-00176" summary="create Deny Authorize Access controller and view">
+      <created>1676558836941</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
       <option name="project" value="LOCAL" />
-      <updated>1675781893381</updated>
+      <updated>1676558836941</updated>
     </task>
-    <task id="LOCAL-00044" summary="add words in files lang to privilege pages">
-      <created>1675781934994</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
+    <task id="LOCAL-00177" summary="edit format messages in users groups">
+      <created>1676563220032</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
       <option name="project" value="LOCAL" />
-      <updated>1675781934994</updated>
+      <updated>1676563220032</updated>
     </task>
-    <task id="LOCAL-00045" summary="Add links in control filed">
-      <created>1675781979821</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
+    <task id="LOCAL-00178" summary="change class container-table to table">
+      <created>1676563316193</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
       <option name="project" value="LOCAL" />
-      <updated>1675781979821</updated>
+      <updated>1676563316193</updated>
     </task>
-    <task id="LOCAL-00046" summary="add privileges file js in template configuration">
-      <created>1675799036683</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
+    <task id="LOCAL-00179" summary="finish suppliers section (add, edit, delete)">
+      <created>1676573756466</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
       <option name="project" value="LOCAL" />
-      <updated>1675799036683</updated>
+      <updated>1676573756466</updated>
     </task>
-    <task id="LOCAL-00047" summary="create messenger class and popup method">
-      <created>1675799823889</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
+    <task id="LOCAL-00180" summary="add columns address in table suppliers">
+      <created>1676574211722</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
       <option name="project" value="LOCAL" />
-      <updated>1675799823889</updated>
+      <updated>1676574211722</updated>
     </task>
-    <task id="LOCAL-00048" summary="Style popup structure">
-      <created>1675799968689</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
+    <task id="LOCAL-00181" summary="Add Client section (add, edit, delete) model and controller">
+      <created>1676652720973</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
       <option name="project" value="LOCAL" />
-      <updated>1675799968689</updated>
+      <updated>1676652720973</updated>
     </task>
-    <task id="LOCAL-00049" summary="add popup in default action in privileges">
-      <created>1675800030531</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
+    <task id="LOCAL-00182" summary="edit path categories in navigation">
+      <created>1676741001237</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
       <option name="project" value="LOCAL" />
-      <updated>1675800030531</updated>
+      <updated>1676741001237</updated>
     </task>
-    <task id="LOCAL-00050" summary="focus auto in filed privileges default">
-      <created>1675800077454</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
+    <task id="LOCAL-00183" summary="add path to upload folder, images uploaded and docs uploaded">
+      <created>1676741080713</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
       <option name="project" value="LOCAL" />
-      <updated>1675800077454</updated>
+      <updated>1676741080713</updated>
     </task>
-    <task id="LOCAL-00051" summary="change trash color in privileges default">
-      <created>1675800150822</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
+    <task id="LOCAL-00184" summary="create upload class and files languages">
+      <created>1676741148542</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
       <option name="project" value="LOCAL" />
-      <updated>1675800150822</updated>
+      <updated>1676741148542</updated>
     </task>
-    <task id="LOCAL-00052" summary="Redesign popup rejected button">
-      <created>1675856295171</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
+    <task id="LOCAL-00185" summary="Create products categories model, controller, category and all you need for this">
+      <created>1676741279093</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
       <option name="project" value="LOCAL" />
-      <updated>1675856295171</updated>
+      <updated>1676741279093</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <option name="localTasksCounter" value="186" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="call load language method in users controller" />
-    <MESSAGE value="create user Privileges controller" />
-    <MESSAGE value="create user Privileges Model" />
-    <MESSAGE value="edit view user group" />
-    <MESSAGE value="edit view user privileges" />
-    <MESSAGE value="edit path in header" />
-    <MESSAGE value="Append add privilege action" />
-    <MESSAGE value="Design add privilege view" />
-    <MESSAGE value="Add view privilege" />
-    <MESSAGE value="include privilege css file" />
-    <MESSAGE value="Add languages words to privileges" />
-    <MESSAGE value="Edit insert method in abstract model method be return false if not insert value" />
-    <MESSAGE value="Edit add privilege method in controller, &#10;Add Edit &amp; delete method in users privilges controller" />
-    <MESSAGE value="rename property ad a column name in db table" />
-    <MESSAGE value="fixed label input if input not empty, &#10;change top padding to form" />
-    <MESSAGE value="split input attribute and add placeholder space to apply fixed label idea" />
-    <MESSAGE value="add words in files lang to privilege pages" />
-    <MESSAGE value="Add links in control filed" />
-    <MESSAGE value="add privileges file js in template configuration" />
-    <MESSAGE value="create messenger class and popup method" />
-    <MESSAGE value="Style popup structure" />
-    <MESSAGE value="add popup in default action in privileges" />
-    <MESSAGE value="focus auto in filed privileges default" />
-    <MESSAGE value="change trash color in privileges default" />
-    <MESSAGE value="Redesign popup rejected button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Redesign popup rejected button" />
+    <MESSAGE value="add constraint current user can't delete himself" />
+    <MESSAGE value="add messages when deleted, edit and add group" />
+    <MESSAGE value="edit ifUserRegistration method query fetch user(new fetch group name)" />
+    <MESSAGE value="add some words in languages files" />
+    <MESSAGE value="edit bug in edit groups messages(Set error messages else group not save not is not set POST[&quot;edit&quot;]" />
+    <MESSAGE value="add method getPrivilegesByGroup to get privileges urls" />
+    <MESSAGE value="set getPrivilegesByGroup object in user from session" />
+    <MESSAGE value="remove urls privileges from privileges/default" />
+    <MESSAGE value="change font family, bold-font class" />
+    <MESSAGE value="change privilege size to 30 character" />
+    <MESSAGE value="update addMessage method to savePrivilege method" />
+    <MESSAGE value="create authorizedAccess, isNotAuthenticated and denyAccessLogin methods" />
+    <MESSAGE value="add word in files language to privileges page" />
+    <MESSAGE value="create authorizedAccess method" />
+    <MESSAGE value="reset show privileges urls in table" />
+    <MESSAGE value="create Deny Authorize Access controller and view" />
+    <MESSAGE value="edit format messages in users groups" />
+    <MESSAGE value="change class container-table to table" />
+    <MESSAGE value="finish suppliers section (add, edit, delete)" />
+    <MESSAGE value="add columns address in table suppliers" />
+    <MESSAGE value="Add Client section (add, edit, delete) model and controller" />
+    <MESSAGE value="edit path categories in navigation" />
+    <MESSAGE value="add path to upload folder, images uploaded and docs uploaded" />
+    <MESSAGE value="create upload class and files languages" />
+    <MESSAGE value="Create products categories model, controller, category and all you need for this" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create products categories model, controller, category and all you need for this" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/LIB/upload.php</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -11,4 +11,4 @@ $content["value_btn_login"]         = "Login";
 // messages
 $content["message_user_not_registration"]   = "Username not exist or Password not correct";
 $content["message_user_disabled"]           = "This user disabled";
-$content["message_user_exist"]              = "Welcome Back  %s";
+$content["message_user_exist"]              = "Welcome Back  <b class='bold-font'>%s</b>";
