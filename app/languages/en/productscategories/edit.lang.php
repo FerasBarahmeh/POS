@@ -8,5 +8,5 @@ $content["title_header"] = "Modify Category Information";
 
 
 // Field
-$content["table_Name"]                  = "Category Name";
-$content["table_Image"]                 = "Image";
+$content["text_Name"]                  = "Category Name";
+$content["text_Image"]                 = "Image";
