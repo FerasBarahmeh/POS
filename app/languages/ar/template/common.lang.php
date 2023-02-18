@@ -35,3 +35,6 @@ $content["text_deny_authorize_access"]      =  "المعذرة صلاحياتك 
 $content["text_deny_authorize_access_back_home"]      =  "العوده للصفحه الرئسية";
 $content["text_deny_authorize_access_description"]  = "قد يعرض خادم الويب رمز حالة HTTP محظور 403 استجابة لطلب من عميل لصفحة ويب أو مورد للإشارة إلى أنه يمكن الوصول إلى الخادم وفهم الطلب ، ولكنه يرفض اتخاذ أي إجراء آخر. استجابات رمز الحالة 403 هي نتيجة تكوين خادم الويب لرفض الوصول ، لسبب ما ، إلى المورد المطلوب بواسطة العميل.";
 
+// Table
+$content["text_save_btn"]      =  "حفظ";
+$content["text_edit_btn"]      =  "تعديل";
