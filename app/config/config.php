@@ -59,3 +59,10 @@ trait UserStatus
     public static $UserDisable         = 2;
     public static $UserNotRegistration = 3;
 }
+
+// Files
+const UPLOAD_PATH = APP_PATH .  DS . '..' . DS . 'uploads';
+const IMAGES_UPLOAD_PATH = UPLOAD_PATH . DS . "images";
+const DOCS_UPLOAD_PATH  = UPLOAD_PATH . DS . "docs";
+
+define("MAX_SIZE_FILE_UPLOAD", ini_get("upload_max_filesize"));
