@@ -522,19 +522,25 @@ form.add-form fieldset.row label {
 }
 form.add-form fieldset.row input[type="text"],
 form.add-form fieldset.row input[type="password"],
+form.add-form fieldset.row input[type="file"],
 form.add-form fieldset.row input[type="email"]  {
     width: 100%;
     color: var(--text-black-700);
     padding: 3px;
     text-align: right;
 }
-form.add-form fieldset.row input[type="text"]:focus-within {
+form.add-form fieldset.row input[type="text"]:focus-within,
+form.add-form fieldset.row input[type="file"]:focus-within,
+form.add-form fieldset.row input[type="password"]:focus-within,
+form.add-form fieldset.row input[type="email"]:focus-within {
     border-bottom: 2px solid #746a6a;
 }
 form.add-form fieldset.row input[type="text"]:focus + label,
 form.add-form fieldset.row input[type="password"]:focus + label,
 form.add-form fieldset.row input[type="email"]:focus + label,
+form.add-form fieldset.row input[type="file"] + label,
 form.add-form fieldset.row input[type="text"]:not(:placeholder-shown)  + label,
+form.add-form fieldset.row input[type="file"]:not(:placeholder-shown)  + label,
 form.add-form fieldset.row input[type="password"]:not(:placeholder-shown)  + label,
 form.add-form fieldset.row input[type="email"]:not(:placeholder-shown)  + label {
     transform: translateY(-20px);
