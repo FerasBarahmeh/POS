@@ -61,7 +61,7 @@ trait UserStatus
 }
 
 // Files
-const UPLOAD_PATH = APP_PATH .  DS . '..' . DS . 'uploads';
+const UPLOAD_PATH = APP_PATH .  DS . '..' . DS . "public" . DS . "uploads";
 const IMAGES_UPLOAD_PATH = UPLOAD_PATH . DS . "images";
 const DOCS_UPLOAD_PATH  = UPLOAD_PATH . DS . "docs";
 
