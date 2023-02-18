@@ -72,6 +72,7 @@ class Upload
     }
     private function isValid(): bool
     {
+        // TODO: create Trait to validate errors files
         if (mb_strlen($this->name) > 35) {
             $this->handleMessage(
                 "file_error_large_long_name", 35, Messenger::MESSAGE_DANGER
