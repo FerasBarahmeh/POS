@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2023 at 02:37 PM
+-- Generation Time: Feb 18, 2023 at 09:28 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -34,6 +34,14 @@ CREATE TABLE `clients` (
   `Email` varchar(40) NOT NULL,
   `Address` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`ClientId`, `Name`, `PhoneNumber`, `Email`, `Address`) VALUES
+(1, 'Tamer Ahmad', '0785120996', 'ahmad@gmail.com', 'Amman Jordan'),
+(2, 'Belal Khaled Nour', '0785102996', 'belal@gmail.com', 'Irbid Jordan');
 
 -- --------------------------------------------------------
 
@@ -86,8 +94,21 @@ CREATE TABLE `notifications` (
 CREATE TABLE `products_categories` (
   `CategoryId` int(10) UNSIGNED NOT NULL,
   `Name` varchar(30) NOT NULL,
-  `Image` varchar(30) DEFAULT NULL
+  `Image` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `products_categories`
+--
+
+INSERT INTO `products_categories` (`CategoryId`, `Name`, `Image`) VALUES
+(1, 'Stikars', '80f33bd9304127bc4df203c12e30bb'),
+(2, 'Electronics', 'ef1dfcb935c446ade899a6cfba09b8'),
+(3, 'Fruits', '443aaed0592bb3716e47f839ef5e78'),
+(4, 'Books', 'fcf6b380c5f2297f617f831c94e400'),
+(5, 'Version', '69a67a58fa24e6c5be81e7a0a73db3'),
+(6, 'test', '69a67a58fa24e6c5be81e7a0a73db3'),
+(7, 'testforue', '5257e4b07b17264525ac671cd0496b.jpg');
 
 -- --------------------------------------------------------
 
@@ -243,6 +264,14 @@ CREATE TABLE `suppliers` (
   `Address` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`SupplierId`, `Name`, `PhoneNumber`, `Email`, `Address`) VALUES
+(1, 'Ahmad Mohammad', '0785102996', 'ahmad@gmail.com', 'Zarqa Jordan'),
+(2, 'Mohammad Tammemi', '0785102996', 'mohammad@gmail.com', 'Zarqa Jordan');
+
 -- --------------------------------------------------------
 
 --
@@ -266,8 +295,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-16 13:50:33', 7, '0785102996', 1),
-(2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-16 11:13:03', 9, '0785102996', 1);
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-18 21:01:07', 7, '0785102996', 1),
+(2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-16 15:18:58', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
 
@@ -316,7 +345,25 @@ INSERT INTO `users_groups_privileges` (`Id`, `GroupId`, `PrivilegeId`) VALUES
 (60, 7, 43),
 (61, 7, 44),
 (62, 7, 45),
-(63, 7, 46);
+(63, 7, 46),
+(64, 7, 47),
+(65, 7, 48),
+(66, 7, 49),
+(67, 7, 51),
+(68, 7, 52),
+(69, 7, 53),
+(70, 7, 54),
+(71, 7, 55),
+(72, 9, 47),
+(75, 7, 56),
+(76, 7, 57),
+(77, 7, 58),
+(78, 7, 59),
+(79, 7, 60),
+(80, 7, 61),
+(81, 7, 62),
+(82, 7, 63),
+(83, 7, 64);
 
 -- --------------------------------------------------------
 
@@ -346,7 +393,21 @@ INSERT INTO `users_privileges` (`PrivilegeId`, `Privilege`, `PrivilegeTitle`) VA
 (46, '/users/edit', 'Edit user information'),
 (47, '/users/default', 'Users List'),
 (48, '/usersprivileges/default', 'Privileges'),
-(49, '/usersprivileges/delete', 'Delete Privilege');
+(49, '/usersprivileges/delete', 'Delete Privilege'),
+(51, '/usersprivileges/edit', 'Edit Privilege'),
+(52, '/usersgroups/default', 'Groups List'),
+(53, '/usersgroups/edit', 'Edit Group'),
+(54, '/usersgroups/delete', 'Group Delete'),
+(55, '/usersgroups/add', 'Add Group'),
+(56, '/suppliers/default', 'Suppliers'),
+(57, '/clients/default', 'Client List'),
+(58, '/clients/add', 'Client Add'),
+(59, '/clients/delete', 'Client Delete'),
+(60, '/clients/edit', 'Client Edit'),
+(61, '/productscategories/default', 'Category List'),
+(62, '/productscategories/add', 'Add Category'),
+(63, '/productscategories/edit', 'Edit Category'),
+(64, '/productscategories/delete', 'Delete Category ');
 
 --
 -- Indexes for dumped tables
@@ -489,7 +550,7 @@ ALTER TABLE `users_privileges`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `ClientId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ClientId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `expenses_categories`
@@ -513,7 +574,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `products_categories`
 --
 ALTER TABLE `products_categories`
-  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `products_list`
@@ -561,13 +622,13 @@ ALTER TABLE `sales_invoices_receipts`
 -- AUTO_INCREMENT for table `subset_information_users`
 --
 ALTER TABLE `subset_information_users`
-  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `UserId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `SupplierId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `SupplierId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -579,19 +640,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users_groups`
 --
 ALTER TABLE `users_groups`
-  MODIFY `GroupId` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `GroupId` tinyint(1) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users_groups_privileges`
 --
 ALTER TABLE `users_groups_privileges`
-  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
 
 --
 -- AUTO_INCREMENT for table `users_privileges`
 --
 ALTER TABLE `users_privileges`
-  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- Constraints for dumped tables
