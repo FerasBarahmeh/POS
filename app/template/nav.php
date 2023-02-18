@@ -43,7 +43,7 @@
             </button>
 
             <ul class="sub-menu w-fu mtb-10 un-visible">
-                <li class="li-level-2 between-ele"><a href="/productcategory" class="sub-link"><?= $text_nav_product_category ?></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
+                <li class="li-level-2 between-ele"><a href="/productscategories" class="sub-link"><?= $text_nav_product_category ?></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
                 <li class="li-level-2 between-ele"><a href="/products" class="sub-link"><?= $text_nav_products ?></a> <i class="fas fa-comment-dollar"></i></li>
             </ul>
         </li>
