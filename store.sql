@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2023 at 09:28 PM
+-- Generation Time: Feb 19, 2023 at 07:57 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -88,6 +88,34 @@ CREATE TABLE `notifications` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `products`
+--
+
+CREATE TABLE `products` (
+  `ProductId` int(10) UNSIGNED NOT NULL,
+  `CategoryId` int(10) UNSIGNED NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `Image` varchar(50) DEFAULT NULL,
+  `Quantity` smallint(5) UNSIGNED NOT NULL,
+  `BuyPrice` decimal(6,3) NOT NULL,
+  `BarCode` char(20) DEFAULT NULL,
+  `Unit` tinyint(1) NOT NULL,
+  `SellPrice` decimal(6,3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`) VALUES
+(1, 11, 'hardway', 'fcf6b380c5f2297f617f831c94e400', 1, '20.000', '205313523165', 1, '30.000'),
+(2, 11, 'test', 'a4833569b65c1008a5dc30af2f580f', 1, '50.000', '5131565', 1, '60.000'),
+(3, 11, 'test2', 'fcf6b380c5f2297f617f831c94e400', 2, '85.000', '0516462', 5, '100.000'),
+(4, 11, 'testM', '67934a8d2ed3b7fc6fdd73e5da5ed6.png', 1, '963.000', '5545132', 5, '999.999');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `products_categories`
 --
 
@@ -102,30 +130,7 @@ CREATE TABLE `products_categories` (
 --
 
 INSERT INTO `products_categories` (`CategoryId`, `Name`, `Image`) VALUES
-(1, 'Stikars', '80f33bd9304127bc4df203c12e30bb'),
-(2, 'Electronics', 'ef1dfcb935c446ade899a6cfba09b8'),
-(3, 'Fruits', '443aaed0592bb3716e47f839ef5e78'),
-(4, 'Books', 'fcf6b380c5f2297f617f831c94e400'),
-(5, 'Version', '69a67a58fa24e6c5be81e7a0a73db3'),
-(6, 'test', '69a67a58fa24e6c5be81e7a0a73db3'),
-(7, 'testforue', '5257e4b07b17264525ac671cd0496b.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `products_list`
---
-
-CREATE TABLE `products_list` (
-  `ProductId` int(10) UNSIGNED NOT NULL,
-  `CategoryId` int(10) UNSIGNED NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `Image` varchar(30) DEFAULT NULL,
-  `Quantity` smallint(5) UNSIGNED NOT NULL,
-  `Price` decimal(6,2) NOT NULL,
-  `BarCode` char(20) DEFAULT NULL,
-  `unit` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+(11, 'Books', 'fcf6b380c5f2297f617f831c94e400.png');
 
 -- --------------------------------------------------------
 
@@ -295,7 +300,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-18 21:01:07', 7, '0785102996', 1),
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-19 16:19:40', 7, '0785102996', 1),
 (2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-16 15:18:58', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
@@ -339,7 +344,6 @@ INSERT INTO `users_groups_privileges` (`Id`, `GroupId`, `PrivilegeId`) VALUES
 (42, 9, 38),
 (53, 9, 41),
 (54, 9, 42),
-(57, 7, 40),
 (58, 7, 41),
 (59, 7, 42),
 (60, 7, 43),
@@ -363,7 +367,11 @@ INSERT INTO `users_groups_privileges` (`Id`, `GroupId`, `PrivilegeId`) VALUES
 (80, 7, 61),
 (81, 7, 62),
 (82, 7, 63),
-(83, 7, 64);
+(83, 7, 64),
+(84, 7, 65),
+(85, 7, 66),
+(86, 7, 67),
+(87, 7, 68);
 
 -- --------------------------------------------------------
 
@@ -384,7 +392,6 @@ CREATE TABLE `users_privileges` (
 INSERT INTO `users_privileges` (`PrivilegeId`, `Privilege`, `PrivilegeTitle`) VALUES
 (36, '/usersprivileges/add', 'Add privileges'),
 (38, '/reports/add', 'Add reports'),
-(40, '/products/delete', 'Delete Product'),
 (41, '/suppliers/add', 'create new supplier'),
 (42, '/suppliers/edit', 'Edit information supplier'),
 (43, '/suppliers/delete', 'Delete supplier'),
@@ -407,7 +414,11 @@ INSERT INTO `users_privileges` (`PrivilegeId`, `Privilege`, `PrivilegeTitle`) VA
 (61, '/productscategories/default', 'Category List'),
 (62, '/productscategories/add', 'Add Category'),
 (63, '/productscategories/edit', 'Edit Category'),
-(64, '/productscategories/delete', 'Delete Category ');
+(64, '/productscategories/delete', 'Delete Category '),
+(65, '/products/default', 'Products'),
+(66, '/products/edit', 'Edit Product'),
+(67, '/products/add', 'Add Product'),
+(68, '/products/delete', 'Delete Product	');
 
 --
 -- Indexes for dumped tables
@@ -441,17 +452,17 @@ ALTER TABLE `notifications`
   ADD KEY `UserId` (`UserId`);
 
 --
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`ProductId`),
+  ADD KEY `CategoryId` (`CategoryId`);
+
+--
 -- Indexes for table `products_categories`
 --
 ALTER TABLE `products_categories`
   ADD PRIMARY KEY (`CategoryId`);
-
---
--- Indexes for table `products_list`
---
-ALTER TABLE `products_list`
-  ADD PRIMARY KEY (`ProductId`),
-  ADD KEY `CategoryId` (`CategoryId`);
 
 --
 -- Indexes for table `purchases_invoices`
@@ -571,16 +582,16 @@ ALTER TABLE `notifications`
   MODIFY `NotificationId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `products_categories`
 --
 ALTER TABLE `products_categories`
-  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `products_list`
---
-ALTER TABLE `products_list`
-  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `purchases_invoices`
@@ -646,13 +657,13 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `users_groups_privileges`
 --
 ALTER TABLE `users_groups_privileges`
-  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `users_privileges`
 --
 ALTER TABLE `users_privileges`
-  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- Constraints for dumped tables
@@ -672,10 +683,10 @@ ALTER TABLE `notifications`
   ADD CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`UserId`);
 
 --
--- Constraints for table `products_list`
+-- Constraints for table `products`
 --
-ALTER TABLE `products_list`
-  ADD CONSTRAINT `products_list_ibfk_1` FOREIGN KEY (`CategoryId`) REFERENCES `products_categories` (`CategoryId`);
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`CategoryId`) REFERENCES `products_categories` (`CategoryId`);
 
 --
 -- Constraints for table `purchases_invoices`
@@ -688,7 +699,7 @@ ALTER TABLE `purchases_invoices`
 -- Constraints for table `purchases_invoices_details`
 --
 ALTER TABLE `purchases_invoices_details`
-  ADD CONSTRAINT `purchases_invoices_details_ibfk_1` FOREIGN KEY (`ProductId`) REFERENCES `products_list` (`ProductId`),
+  ADD CONSTRAINT `purchases_invoices_details_ibfk_1` FOREIGN KEY (`ProductId`) REFERENCES `products` (`ProductId`),
   ADD CONSTRAINT `purchases_invoices_details_ibfk_2` FOREIGN KEY (`InvoiceId`) REFERENCES `purchases_invoices` (`InvoiceId`);
 
 --
@@ -709,7 +720,7 @@ ALTER TABLE `sales_invoices`
 -- Constraints for table `sales_invoices_details`
 --
 ALTER TABLE `sales_invoices_details`
-  ADD CONSTRAINT `sales_invoices_details_details_ibfk_1` FOREIGN KEY (`ProductId`) REFERENCES `products_list` (`ProductId`),
+  ADD CONSTRAINT `sales_invoices_details_details_ibfk_1` FOREIGN KEY (`ProductId`) REFERENCES `products` (`ProductId`),
   ADD CONSTRAINT `sales_invoices_details_details_ibfk_2` FOREIGN KEY (`InvoiceId`) REFERENCES `purchases_invoices` (`InvoiceId`);
 
 --
