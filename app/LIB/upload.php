@@ -20,7 +20,7 @@ class Upload
     private Messenger $message;
     private string $destination;
     private array $pactExtension = [
-        "png", "jpg", "jp",
+        "png", "jpg", "jp", "jpeg",
     ];
 
     public function __construct(array $file, Language $language, $destination='')
