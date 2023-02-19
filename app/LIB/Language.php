@@ -61,5 +61,12 @@ class Language
         }
         return false;
     }
-
+    public function feedKey ($key, $data)
+    {
+        if(array_key_exists($key, $this->_dictionary)) {
+            array_unshift($data, $this->_dictionary[$key]);
+            return call_user_func_array('sprintf', $data);
+        }
+        return false;
+    }
 }

@@ -3,8 +3,6 @@
 namespace APP\LIB;
 
 use APP\Helpers\PublicHelper\PublicHelper;
-use Cassandra\RetryPolicy\Fallthrough;
-use function APP\pr;
 
 class Upload
 {
@@ -21,12 +19,11 @@ class Upload
     private Language $language;
     private Messenger $message;
     private string $destination;
-
     private array $pactExtension = [
         "png", "jpg", "jp",
     ];
 
-    public function __construct(array $file, Language $language, Messenger $messenger, $destination='')
+    public function __construct(array $file, Language $language, $destination='')
     {
         $this->name     = $file["name"];
         $this->type     = $file["type"];
@@ -34,7 +31,6 @@ class Upload
         $this->error    = $file["error"];
         $this->tempDIR  = $file["tmp_name"];
         $this->language = $language;
-        $this->message = $messenger;
         $this->destination = $destination ?? $_SERVER["HTTP_REFERER"];
     }
 
@@ -42,13 +38,6 @@ class Upload
     {
         preg_match_all('/([a-z]{1,4})$/i', $this->name, $m);
         $this->extension = strtolower($m[0][0]);
-    }
-    public function handleMessage($message, $name, $type=Messenger::MESSAGE_SUCCESS): void
-    {
-        $this->message->addMessage(
-            sprintf($this->language->get($message),
-                $name ),
-            $type);
     }
     private function encryptName(): void
      {
@@ -73,43 +62,29 @@ class Upload
     private function isValid(): bool
     {
         // TODO: create Trait to validate errors files
+        // TODO: Update Functionality Send Messages Params
         if (mb_strlen($this->name) > 35) {
-            $this->handleMessage(
-                "file_error_large_long_name", 35, Messenger::MESSAGE_DANGER
-            );
-            $this->redirect($this->destination);
+            throw new \Exception("file_error_large_long_name" . "|35");
         }
 
 
-        if ( is_array($this->isValidSizeFile()) ) {
-            // TODO: Create Method Helper To Handel String
-            $validExtension = $this->isValidSizeFile();
-            array_unshift($validExtension, $this->language->get("file_error_large_size"));
-
-            $this->message->addMessage(
-                call_user_func_array("sprintf", $validExtension),
-                Messenger::MESSAGE_DANGER);
-
-            $this->redirect($this->destination);
+        $sizeValid = $this->isValidSizeFile();
+        if ( is_array($sizeValid) ) {
+            array_unshift($sizeValid, "file_error_large_size");
+            $m = array_shift($sizeValid);
+            throw new \Exception($m . "|" . implode('|', $sizeValid));
         }
 
         if (! is_writable($this->determineFolderStorage())) {
             $nameDir = explode(DIRECTORY_SEPARATOR, $this->determineFolderStorage());
-            $this->handleMessage(
-                "file_error_directory_not_writable", end($nameDir), Messenger::MESSAGE_DANGER
-            );
-            $this->redirect($this->destination);
+            throw new \Exception("file_error_directory_not_writable" . "|". end($nameDir));
         }
         if (! in_array($this->extension, $this->pactExtension)) {
-            // TODO: Create Method Helper To Handel String
             $validExtension = [$this->extension, trim(implode(', ', $this->pactExtension), ", ")];
-            array_unshift($validExtension, $this->language->get("file_error_field_extension"));
+            array_unshift($validExtension, "file_error_field_extension");
+            throw new \Exception("file_error_field_extension" . "|". $validExtension [1] .
+                '|[' . end($validExtension) . ']');
 
-            $this->message->addMessage(
-                call_user_func_array("sprintf", $validExtension),
-                Messenger::MESSAGE_DANGER);
-
-            $this->redirect($this->destination);
         }
         return true;
     }
@@ -137,17 +112,13 @@ class Upload
     {
         $this->encryptName();
     }
-    private function moveFile(): false|static
+    private function moveFile(): \Exception|static
     {
         if (move_uploaded_file($this->tempDIR, $this->determineFolderStorage() . DS . $this->getEncryptNameFile()))  {
             return $this;
         } else {
-            $this->handleMessage(
-                "file_error_when_upload", $this->getEncryptNameFile(), Messenger::MESSAGE_DANGER
-            );
-            $this->redirect($this->destination);
+            throw new \Exception("file_error_when_upload" . "|".  $this->getEncryptNameFile());
         }
-        return false;
     }
     public function upload(): void
     {

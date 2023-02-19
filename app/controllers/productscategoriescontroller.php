@@ -8,7 +8,6 @@ use APP\LIB\Messenger;
 use APP\LIB\Upload;
 use APP\LIB\Validation;
 use APP\Models\ProductCategoriesModel;
-use function APP\pr;
 
 class ProductsCategoriesController extends AbstractController
 {
@@ -50,11 +49,40 @@ class ProductsCategoriesController extends AbstractController
             $this->removeImage($obj);
         }
     }
+
+    private function setMessagesFilesErrors(string $s): array
+    {
+        $params = explode('|', $s);
+        $nameMessageError = array_shift($params);
+
+        return  [
+            "nameMessage"   => $nameMessageError,
+            "paramMessage"  => $params,
+        ];
+    }
     private function setImage($obj): null|string
     {
+        $findErrors = false;
         if (!empty($_FILES["Image"]["name"])) {
-            $upload = new Upload($_FILES["Image"], $this->language, $this->message, $_SERVER["HTTP_REFERER"]);
-            $upload->upload();
+            $upload = new Upload($_FILES["Image"], $this->language, $_SERVER["HTTP_REFERER"]);
+            try {
+                $upload->upload();
+            } catch ( \Exception $e) {
+                $m =  $this->setMessagesFilesErrors($e->getMessage());
+
+                $this->message->addMessage(
+                    $this->language->feedKey($m["nameMessage"], $m["paramMessage"]),
+                  Messenger::MESSAGE_DANGER
+                );
+                $findErrors = true;
+            }
+
+            if ($findErrors) {
+                $findErrors = false;
+                $this->redirect("/productscategories/add");
+                exit();
+            }
+
             $this->checkTypeActionPostToSetImgName($upload, $obj);
             $obj->Image = $upload->getEncryptNameFile();
         }
@@ -72,7 +100,8 @@ class ProductsCategoriesController extends AbstractController
         $this->language->load("productscategories.messages");
         $this->language->load("messages.files");
 
-        if (isset($_POST["add"]) && $this->isAppropriate($this->_rolesValid, $_POST)) {
+        // && $this->isAppropriate($this->_rolesValid, $_POST)
+        if (isset($_POST["add"]) ) {
             $category = new ProductCategoriesModel();
             $category->Name = $this->filterStr($_POST["Name"]);
             $this->setImage($category);
