@@ -100,8 +100,8 @@ class ProductsCategoriesController extends AbstractController
         $this->language->load("productscategories.messages");
         $this->language->load("messages.files");
 
-        // && $this->isAppropriate($this->_rolesValid, $_POST)
-        if (isset($_POST["add"]) ) {
+
+        if (isset($_POST["add"])&& $this->isAppropriate($this->_rolesValid, $_POST) ) {
             $category = new ProductCategoriesModel();
             $category->Name = $this->filterStr($_POST["Name"]);
             $this->setImage($category);
