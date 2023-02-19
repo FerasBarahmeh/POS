@@ -34,21 +34,35 @@ class ProductsCategoriesController extends AbstractController
             $type
         );
     }
-
-    private function setImage($obj=null): string
+    private function removeImage($obj)
     {
-        if (!empty($_FILES["Image"])) {
+        if (file_exists(IMAGES_UPLOAD_PATH . DS . $obj->Image)) {
+            unlink(IMAGES_UPLOAD_PATH . DS . $obj->Image);
+        }
+    }
+    private function checkTypeActionPostToSetImgName($upload, $obj)
+    {
+        $id = $obj::class::getPrimaryKey();
+        if ($obj->$id == null) { // Mean Add Action
+            $obj->Image = $upload->getEncryptNameFile();
+        } else {
+            // Edit Action Must Remove previous image
+            $this->removeImage($obj);
+        }
+    }
+    private function setImage($obj): null|string
+    {
+        if (!empty($_FILES["Image"]["name"])) {
             $upload = new Upload($_FILES["Image"], $this->language, $this->message, $_SERVER["HTTP_REFERER"]);
             $upload->upload();
-            return $upload->getEncryptNameFile();
+            $this->checkTypeActionPostToSetImgName($upload, $obj);
+            $obj->Image = $upload->getEncryptNameFile();
         }
 
         if (! $obj) {
             return '';
         }
-
         return $obj->Image;
-
     }
     public function addAction()
     {
@@ -61,7 +75,7 @@ class ProductsCategoriesController extends AbstractController
         if (isset($_POST["add"]) && $this->isAppropriate($this->_rolesValid, $_POST)) {
             $category = new ProductCategoriesModel();
             $category->Name = $this->filterStr($_POST["Name"]);
-            $category->Image = $this->setImage();
+            $this->setImage($category);
 
             if ($category->save()) {
                 $this->setMessage($category, "message_add_success");
@@ -95,8 +109,8 @@ class ProductsCategoriesController extends AbstractController
         $this->_info["category"]           = $category;
 
         if (isset($_POST["edit"])  && $this->isAppropriate($this->_rolesValid, $_POST)) {
-            $category->Name = $this->filterStr($_POST["Name"]);
-            $category->Image = $this->setImage($category)  ;
+            $category->Name     = $this->filterStr($_POST["Name"]);
+            $category->Image    = $this->setImage($category)  ;
 
             if ($category->save()) {
                 $this->setMessage($category, "message_edit_success");
@@ -123,6 +137,7 @@ class ProductsCategoriesController extends AbstractController
 
 
         if($category->delete()) {
+            $this->removeImage($category);
             $this->setMessage($category, "message_delete_category_success");
         } else {
             $this->setMessage($category, "message_delete_category_fail", Messenger::MESSAGE_DANGER);

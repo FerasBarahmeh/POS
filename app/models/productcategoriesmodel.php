@@ -18,4 +18,8 @@ class ProductCategoriesModel extends AbstractModel
 
     protected static string $primaryKey = "CategoryId";
 
+    public static function getPrimaryKey(): string
+    {
+        return self::$primaryKey;
+    }
 }
