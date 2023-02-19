@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2023 at 07:57 PM
+-- Generation Time: Feb 19, 2023 at 09:45 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -100,18 +100,17 @@ CREATE TABLE `products` (
   `BuyPrice` decimal(6,3) NOT NULL,
   `BarCode` char(20) DEFAULT NULL,
   `Unit` tinyint(1) NOT NULL,
-  `SellPrice` decimal(6,3) NOT NULL
+  `SellPrice` decimal(6,3) NOT NULL,
+  `Tax` decimal(3,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`) VALUES
-(1, 11, 'hardway', 'fcf6b380c5f2297f617f831c94e400', 1, '20.000', '205313523165', 1, '30.000'),
-(2, 11, 'test', 'a4833569b65c1008a5dc30af2f580f', 1, '50.000', '5131565', 1, '60.000'),
-(3, 11, 'test2', 'fcf6b380c5f2297f617f831c94e400', 2, '85.000', '0516462', 5, '100.000'),
-(4, 11, 'testM', '67934a8d2ed3b7fc6fdd73e5da5ed6.png', 1, '963.000', '5545132', 5, '999.999');
+INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`, `Tax`) VALUES
+(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 1, '350.000', '1589456982', 5, '400.000', '0'),
+(2, 1, 'PlayStaion', '7a423b266c668ac098e5020ec74385.jpeg', 100, '265.000', 'ABC-abc-1234', 5, '300.000', '0');
 
 -- --------------------------------------------------------
 
@@ -130,7 +129,8 @@ CREATE TABLE `products_categories` (
 --
 
 INSERT INTO `products_categories` (`CategoryId`, `Name`, `Image`) VALUES
-(11, 'Books', 'fcf6b380c5f2297f617f831c94e400.png');
+(1, 'Books', 'fcf6b380c5f2297f617f831c94e400.png'),
+(2, 'Video Games', '539c770a538bd4c9963768d0196e08.jpeg');
 
 -- --------------------------------------------------------
 
@@ -585,13 +585,13 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `products_categories`
 --
 ALTER TABLE `products_categories`
-  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `purchases_invoices`
