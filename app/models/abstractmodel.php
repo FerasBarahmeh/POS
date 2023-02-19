@@ -180,4 +180,9 @@ class AbstractModel
         $row = static::get($sql);
         return ! $row ? 0 : $row->current();
     }
+
+    public static function getTableName()
+    {
+        return static::$tableName;
+    }
 }
