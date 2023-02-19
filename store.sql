@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2023 at 09:45 PM
+-- Generation Time: Feb 19, 2023 at 09:54 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -101,7 +101,7 @@ CREATE TABLE `products` (
   `BarCode` char(20) DEFAULT NULL,
   `Unit` tinyint(1) NOT NULL,
   `SellPrice` decimal(6,3) NOT NULL,
-  `Tax` decimal(3,0) NOT NULL
+  `Tax` decimal(3,2) DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -109,8 +109,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`, `Tax`) VALUES
-(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 1, '350.000', '1589456982', 5, '400.000', '0'),
-(2, 1, 'PlayStaion', '7a423b266c668ac098e5020ec74385.jpeg', 100, '265.000', 'ABC-abc-1234', 5, '300.000', '0');
+(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 1, '350.000', '1589456982', 5, '400.000', '0.00'),
+(2, 1, 'PlayStaion', '7a423b266c668ac098e5020ec74385.jpeg', 100, '265.000', 'ABC-abc-1234', 5, '300.000', '0.00');
 
 -- --------------------------------------------------------
 
