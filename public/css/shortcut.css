@@ -25,6 +25,10 @@
 .hidden {
     display: none !important;
 }
+.flay {
+    position: absolute !important;
+    top: -15px !important;
+}
 .block {
     display: block;
 }
