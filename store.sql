@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2023 at 09:54 PM
+-- Generation Time: Feb 19, 2023 at 11:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -109,8 +109,8 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`, `Tax`) VALUES
-(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 1, '350.000', '1589456982', 5, '400.000', '0.00'),
-(2, 1, 'PlayStaion', '7a423b266c668ac098e5020ec74385.jpeg', 100, '265.000', 'ABC-abc-1234', 5, '300.000', '0.00');
+(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 501, '350.000', '1589456982', 5, '400.000', '0.50'),
+(3, 3, 'Fan', '2bf21fc83f5bbb2e7a58a9f7cf7c40.png', 1000, '15.000', '0124585292462', 5, '20.000', '0.00');
 
 -- --------------------------------------------------------
 
@@ -130,7 +130,8 @@ CREATE TABLE `products_categories` (
 
 INSERT INTO `products_categories` (`CategoryId`, `Name`, `Image`) VALUES
 (1, 'Books', 'fcf6b380c5f2297f617f831c94e400.png'),
-(2, 'Video Games', '539c770a538bd4c9963768d0196e08.jpeg');
+(2, 'Video Games', '539c770a538bd4c9963768d0196e08.jpeg'),
+(3, 'Electricals', '77e1cec667706e567412dab72c734d.jpeg');
 
 -- --------------------------------------------------------
 
@@ -300,7 +301,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-19 16:19:40', 7, '0785102996', 1),
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-19 22:16:43', 7, '0785102996', 1),
 (2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-16 15:18:58', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
@@ -456,7 +457,7 @@ ALTER TABLE `notifications`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`ProductId`),
-  ADD KEY `CategoryId` (`CategoryId`);
+  ADD KEY `products_ibfk_1` (`CategoryId`);
 
 --
 -- Indexes for table `products_categories`
@@ -585,13 +586,13 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products_categories`
 --
 ALTER TABLE `products_categories`
-  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `purchases_invoices`
@@ -686,7 +687,7 @@ ALTER TABLE `notifications`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`CategoryId`) REFERENCES `products_categories` (`CategoryId`);
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`CategoryId`) REFERENCES `products_categories` (`CategoryId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `purchases_invoices`
