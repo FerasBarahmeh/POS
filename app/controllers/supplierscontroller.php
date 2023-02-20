@@ -22,6 +22,7 @@ class SuppliersController extends AbstractController
     {
         $this->language->load("template.common");
         $this->language->load("suppliers.default");
+        $this->language->load("suppliers.messages");
         $this->_info["suppliers"] = SupplierModel::getAll();
 
         $this->_renderView();
@@ -98,7 +99,6 @@ class SuppliersController extends AbstractController
     }
     public function deleteAction()
     {
-        $this->language->load("suppliers.messages");
         $idSupplier =  $this->filterInt($this->_params[0]);
         $supplier = SupplierModel::getByPK($idSupplier);
 

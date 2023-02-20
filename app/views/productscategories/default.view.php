@@ -1,8 +1,3 @@
-<?php
-
-use APP\Helpers\Structures\Structures;
-
-?>
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
@@ -40,7 +35,7 @@ use APP\Helpers\Structures\Structures;
                                         <?php
                                             // TODO: Add Structures To registry class
                                             // TODO: Update Delete Structure
-                                            Structures::popup(
+                                            $this->popup(
                                                 "you wont delete category",
                                                 '!', $typeStyle="danger",
                                                 $typeAction="link",

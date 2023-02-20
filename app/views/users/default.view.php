@@ -1,8 +1,3 @@
-<?php
-
-use APP\Helpers\Structures\Structures;
-
-?>
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
@@ -48,7 +43,7 @@ use APP\Helpers\Structures\Structures;
                                     <td class="controller-btns">
                                         <a href="/users/edit/<?= $user->UserId ?>"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                         <a class="hidden" href="/users/delete/<?= $user->UserId ?>" id="delete"></a>
-                                        <?php Structures::popup(
+                                        <?php $this->popup(
                                             "you wont delete User",
                                             '!', $typeStyle="danger",
                                             $typeAction="link",

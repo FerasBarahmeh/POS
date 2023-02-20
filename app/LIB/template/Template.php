@@ -2,9 +2,12 @@
 
 namespace APP\LIB\Template;
 
+use APP\Helpers\Structures\Structures;
+
 class Template
 {
     use TemplateHelper;
+    use Structures;
     private $_templateParts;
     private $_actionView;
     private $_info;

@@ -1,8 +1,3 @@
-<?php
-
-use APP\Helpers\Structures\Structures;
-
-?>
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
@@ -41,9 +36,8 @@ use APP\Helpers\Structures\Structures;
                                     <td class="controller-btns">
                                         <a href="/suppliers/edit/<?= $supplier->SupplierId ?>"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                         <a class="hidden" href="/suppliers/delete/<?= $supplier->SupplierId ?>" id="delete"></a>
-                                        <?php Structures::popup(
-                                            "you wont delete supplier",
-                                            '!', $typeStyle="danger",
+                                        <?php $this->popup(
+                                            $this->language->feedKey("message_delete_hint", [$supplier->Name]),                                            '!', $typeStyle="danger",
                                             $typeAction="link",
                                             $id="delete-supplier"); ?>
                                         <span class="pop-on-click danger-style cursor-pointer"><i class="fa fa-trash" aria-hidden="true"></i></span>

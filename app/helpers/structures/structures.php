@@ -2,7 +2,7 @@
 
 namespace APP\Helpers\Structures;
 
-class Structures
+trait Structures
 {
     /**
      * This method to set Popup box in page depends on shortcut framework

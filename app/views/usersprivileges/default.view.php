@@ -1,8 +1,3 @@
-<?php
-
-use APP\Helpers\Structures\Structures;
-
-?>
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
@@ -38,7 +33,7 @@ use APP\Helpers\Structures\Structures;
                                             <i class="fa fa-edit" aria-hidden="true"></i>
                                         </a>
                                         <a class="hidden"  href="/usersprivileges/delete/<?= $privilege->PrivilegeId ?>" id="delete"></a>
-                                        <?php Structures::popup(
+                                        <?php $this->popup(
                                                 "you wont delete privilege",
                                                 '!', $typeStyle="danger",
                                                 $typeAction="link",

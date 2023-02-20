@@ -96,7 +96,7 @@ class UsersPrivilegesController extends AbstractController
             }
         }
 
-        $this->language->load("usersprivileges.default");
+        $this->language->load("usersprivileges.messages");
 
         if ($privilege->delete()) {
             $this->message->addMessage(

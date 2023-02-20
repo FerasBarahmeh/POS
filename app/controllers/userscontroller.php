@@ -139,7 +139,6 @@ class UsersController extends AbstractController
     }
     public function deleteAction()
     {
-        $this->language->load("users.messages");
         $idUser =  $this->filterInt($this->_params[0]);
         $user = UserModel::getByPK($idUser);
 
@@ -148,10 +147,13 @@ class UsersController extends AbstractController
         if (! $user) {
             $this->redirect("/users");
         }
+
+        $this->language->load("users.messages");
+
         // user want to delete himself
         if ($this->session->user->UserId == $user->UserId) {
             $this->message->addMessage(
-                $this->language->get("message_cant_delete_your_self_error"),
+                $this->language->feedKey("message_cant_delete_your_self_error", [$user->UserName]),
                 Messenger::MESSAGE_DANGER
             );
             $this->redirect("/users");
@@ -160,11 +162,11 @@ class UsersController extends AbstractController
 
         if ($user->delete()) {
             $this->message->addMessage(
-                $this->language->get("message_delete_user_success"),
+                $this->language->feedKey("message_delete_user_success", [$user->UserName]),
             );
         } else {
             $this->message->addMessage(
-                $this->language->get("message_delete_user_fail"),
+                $this->language->feedKey("message_delete_user_fail", [$user->UserName]),
             );
         }
 

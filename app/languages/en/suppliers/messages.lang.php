@@ -6,6 +6,7 @@ $content["message_edit_success"]                = "Success edit information Supp
 $content["message_edit_fail"]                   = "Sorry Fail Edit information Supplier, try again later";
 $content["message_Name_exist"]                  = "This Supplier name used";
 $content["message_Email_exist"]                 = "This email used";
+$content["message_delete_hint"]                 = "Are you sure delete <b class='bold-font'>%s</b> supplier";
 $content["message_delete_supplier_success"]     = "Success Deleted Supplier";
 $content["message_delete_supplier_fail"]        = "Success Deleted Supplier";
 $content["message_cant_delete_your_self_error"] = "Can't Deleted Your self";

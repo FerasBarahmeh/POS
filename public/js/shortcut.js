@@ -11,18 +11,18 @@ const popsOnClick = document.querySelectorAll(".pop-on-click");
 
 if (popsOnClick != null) {
     popsOnClick.forEach(popOnClick => {
-       popOnClick.addEventListener("click", () => {
-           popOnClick.classList.add("clicked");
-           if(popOnClick.classList.contains("danger-style")) {
-               cardPopup.classList.add("danger");
-           } else {
-               if (popOnClick.classList.contains("success-style") || popOnClick.classList.contains("done-style")) {
-                   cardPopup.querySelector("span.exclamation").classList.add("success");
-                   cardPopup.querySelector("span.exclamation").classList.remove("danger");
-               }
-           }
-           showPopup();
-       }) ;
+        popOnClick.addEventListener("click", () => {
+            popOnClick.classList.add("clicked");
+            if(popOnClick.classList.contains("danger-style")) {
+                cardPopup.classList.add("danger");
+            } else {
+                if (popOnClick.classList.contains("success-style") || popOnClick.classList.contains("done-style")) {
+                    cardPopup.querySelector("span.exclamation").classList.add("success");
+                    cardPopup.querySelector("span.exclamation").classList.remove("danger");
+                }
+            }
+            showPopup();
+        }) ;
     });
 }
 
@@ -57,4 +57,3 @@ if (acceptedPopup != null) {
         return true;
     });
 }
-

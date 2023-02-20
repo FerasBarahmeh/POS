@@ -158,7 +158,7 @@ class UsersGroupsController extends AbstractController
         if (! $group) {
             $this->redirect("/usersgroups");
         }
-        $this->language->load("usersgroups.default");
+        $this->language->load("usersgroups.messages");
 
         // Delete All Privileges Linked To This Group
         $privilegesThisGroup = UserGroupPrivilegeModel::getBy(["GroupId" => $group->GroupId]);
