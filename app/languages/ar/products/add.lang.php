@@ -8,6 +8,7 @@ $content["title_header"] = "اضافة منتج";
 
 
 // Field
+$content["table_message_category_description"]       = "القسم التابع لهائا المنتج";
 $content["table_Name"]       = "اسم المنتج";
 $content["table_Quantity"]   = "الكمية";
 $content["table_BuyPrice"]   = "سعر الشراء";

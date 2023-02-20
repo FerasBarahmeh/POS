@@ -8,6 +8,7 @@ $content["title_header"] = "Add Products";
 
 
 // Field
+$content["table_message_category_description"]       = "Category of this product";
 $content["table_Name"]       = "Name Products";
 $content["table_Quantity"]   = "Quantity";
 $content["table_BuyPrice"]   = "Buy Price";

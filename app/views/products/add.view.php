@@ -58,6 +58,7 @@
 
             <!-- Must Set space in placeholder to apply label animation -->
             <select name="CategoryId" id="CategoryId" required autocomplete="off">
+                <option value=""><?= $table_message_category_description ?></option>
                 <?php
                 if ($categories) {
                     foreach ($categories as $categorie) {
