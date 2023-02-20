@@ -33,8 +33,6 @@
                                         <a class="hidden"  href="/productscategories/delete/<?= $category->CategoryId ?>" id="delete"></a>
 
                                         <?php
-                                            // TODO: Add Structures To registry class
-                                            // TODO: Update Delete Structure
                                             $this->popup(
                                                 "you wont delete category",
                                                 '!', $typeStyle="danger",
