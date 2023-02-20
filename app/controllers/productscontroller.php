@@ -126,6 +126,7 @@ class ProductsController extends AbstractController
         $this->language->load("messages.errors");
         $this->language->load("products.messages");
         $this->language->load("products.units");
+        $this->language->load("products.common");
         $this->language->load("messages.files");
 
         $this->_info["categories"] = ProductCategoriesModel::getAll();
@@ -163,6 +164,7 @@ class ProductsController extends AbstractController
         $this->language->load("products.edit");
         $this->language->load("messages.errors");
         $this->language->load("products.messages");
+        $this->language->load("products.common");
         $this->language->load("products.units");
         $this->language->load("messages.files");
 
