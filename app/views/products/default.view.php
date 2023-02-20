@@ -52,7 +52,7 @@
                                             // TODO: Add Structures To registry class
                                             // TODO: Update Delete Structure
                                             $this->popup(
-                                                "you wont delete product",
+                                                $this->language->feedKey("message_delete_hint", [$product->Name]),
                                                 '!', $typeStyle="danger",
                                                 $typeAction="link",
                                                 $id="delete-product");

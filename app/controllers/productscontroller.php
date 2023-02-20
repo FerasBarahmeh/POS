@@ -30,6 +30,7 @@ class ProductsController extends AbstractController
     {
         $this->language->load("template.common");
         $this->language->load("products.default");
+        $this->language->load("products.messages");
         $this->_info["products"] = ProductModel::getProducts();
         $this->_info["units"]       = $this->getClassValuesProperties(new Units());
         $this->_renderView();
