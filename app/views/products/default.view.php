@@ -49,8 +49,6 @@
                                         <a class="hidden"  href="/products/delete/<?= $product->ProductId ?>" id="delete"></a>
 
                                         <?php
-                                            // TODO: Add Structures To registry class
-                                            // TODO: Update Delete Structure
                                             $this->popup(
                                                 $this->language->feedKey("message_delete_hint", [$product->Name]),
                                                 '!', $typeStyle="danger",
