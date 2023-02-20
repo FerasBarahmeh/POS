@@ -15,8 +15,8 @@ class SuppliersController extends AbstractController
     private array $_rolesValid = [
         "Name"              => ["req", "alpha",  "between(2,30)",],
         "Email"             => ["req", "email"],
-        "PhoneNumber"       => ["req", "alphanum"],
-        "Address"           => ["req", "alphanum", "max(50)"],
+        "PhoneNumber"       => ["req", "alphaNum"],
+        "Address"           => ["req", "alphaNum", "max(50)"],
     ];
     public function defaultAction()
     {
@@ -27,12 +27,12 @@ class SuppliersController extends AbstractController
 
         $this->_renderView();
     }
-    private function setAttributeSuplpplier($supplier)
+    private function setAttributeSupplier($supplier)
     {
-        $supplier->Name = $this->filterStr($_POST["Name"]);
-        $supplier->Email                = $this->filterStr($_POST["Email"]);
-        $supplier->PhoneNumber          = $this->filterStr($_POST["PhoneNumber"]);
-        $supplier->Address              = $this->filterStr($_POST["Address"]);
+        $supplier->Name         = $this->filterStr($_POST["Name"]);
+        $supplier->Email        = $this->filterStr($_POST["Email"]);
+        $supplier->PhoneNumber  = $this->filterStr($_POST["PhoneNumber"]);
+        $supplier->Address      = $this->filterStr($_POST["Address"]);
 
     }
     private function saveSupplier($supplier, $messageSuccess, $messageFail)
@@ -55,12 +55,12 @@ class SuppliersController extends AbstractController
         $this->language->load("suppliers.add");
         $this->language->load("messages.errors");
         $this->language->load("suppliers.messages");
+        $this->language->load("suppliers.common");
 
-        if (isset($_POST["add"]) && $this->isAppropriate($this->_rolesValid, $_POST))  {
-
+        if (isset($_POST["add"]) && $this->isAppropriate($this->_rolesValid, $_POST) )  {
             $supplier = new SupplierModel();
 
-            $this->setAttributeSuplpplier($supplier);
+            $this->setAttributeSupplier($supplier);
 
             $this->saveSupplier($supplier, "message_add_success", "message_add_field");
 
@@ -84,12 +84,11 @@ class SuppliersController extends AbstractController
         $this->language->load("suppliers.edit");
         $this->language->load("suppliers.messages");
         $this->language->load("messages.errors");
+        $this->language->load("suppliers.common");
+
 
         if (isset($_POST["edit"]) && $this->isAppropriate($this->_rolesValid, $_POST) )  {
-            $supplier->Name                 = $this->filterStr($_POST["Name"]);
-            $supplier->Email                = $this->filterStr($_POST["Email"]);
-            $supplier->Address              = $this->filterStr($_POST["Address"]);
-            $supplier->PhoneNumber          = $this->filterStr($_POST["PhoneNumber"]);
+            $this->setAttributeSupplier($supplier);
 
             $this->saveSupplier($supplier, "message_edit_success", "message_edit_fail");
 
@@ -108,6 +107,7 @@ class SuppliersController extends AbstractController
             $this->redirect("/suppliers");
         }
 
+        $this->language->load("suppliers.messages");
 
         if ($supplier->delete()) {
             $this->message->addMessage(

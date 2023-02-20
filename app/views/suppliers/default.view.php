@@ -34,10 +34,13 @@
                                     <td><?= $supplier->Address ?></td>
 
                                     <td class="controller-btns">
-                                        <a href="/suppliers/edit/<?= $supplier->SupplierId ?>"><i class="fas fa-edit" aria-hidden="true"></i></a>
+                                        <a href="/suppliers/edit/<?= $supplier->SupplierId ?>">
+                                            <i class="fas fa-edit" aria-hidden="true"></i>
+                                        </a>
                                         <a class="hidden" href="/suppliers/delete/<?= $supplier->SupplierId ?>" id="delete"></a>
                                         <?php $this->popup(
-                                            $this->language->feedKey("message_delete_hint", [$supplier->Name]),                                            '!', $typeStyle="danger",
+                                            $this->language->feedKey("message_delete_hint", [$supplier->Name]),
+                                            '!', $typeStyle="danger",
                                             $typeAction="link",
                                             $id="delete-supplier"); ?>
                                         <span class="pop-on-click danger-style cursor-pointer"><i class="fa fa-trash" aria-hidden="true"></i></span>
