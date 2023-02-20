@@ -1,10 +1,12 @@
+// TODO: Convert Structure Delete To AJAX
 const cardPopup = document.querySelector(".card");
 const classCard = [...cardPopup.classList];
-function hiddenPopup() {
-    cardPopup.classList.remove("show");
+function hiddenPopup(e) {
+    console.log(e)
+    e.closest(".card").classList.remove("show");
 }
-function showPopup() {
-    cardPopup.classList.add("show");
+function showPopup(e) {
+    e.previousElementSibling.classList.add("show");
 }
 
 const popsOnClick = document.querySelectorAll(".pop-on-click");
@@ -21,39 +23,42 @@ if (popsOnClick != null) {
                     cardPopup.querySelector("span.exclamation").classList.remove("danger");
                 }
             }
-            showPopup();
+            showPopup(popOnClick);
         }) ;
     });
 }
 
 
-const deletePopup = document.getElementById("reject-popup");
+const deletePopups = document.querySelectorAll("#reject-popup");
 /*
 * If Click in X button in popup box just remove box
 * */
-if (deletePopup !== null) {
-    deletePopup.addEventListener("click", () => {
-        hiddenPopup();
-        return false;
+if (deletePopups !== null) {
+    deletePopups.forEach(deletePopup => {
+        deletePopup.addEventListener("click", () => {
+            hiddenPopup(deletePopup);
+            return false;
+        });
     });
 }
 
-const acceptedPopup = document.getElementById("accepted-popup");
+const acceptedPopups = document.querySelectorAll("#accepted-popup");
 /*
 * If user click Ok (Confirm Operation) will apply action
 * */
-if (acceptedPopup != null) {
-    acceptedPopup.addEventListener("click", () => {
-        if (cardPopup.classList.contains("link")) {
-            popsOnClick.forEach(clicked => {
-                if (clicked.classList.contains("clicked")) {
-                    clicked.parentElement.querySelector("#delete").click();
-                    clicked.classList.remove("clicked")
-                }
-            });
-        }
-
-        hiddenPopup();
-        return true;
-    });
+if (acceptedPopups != null) {
+    acceptedPopups.forEach(acceptedPopup => {
+        acceptedPopup.addEventListener("click", () => {
+            if (cardPopup.classList.contains("link")) {
+                popsOnClick.forEach(clicked => {
+                    if (clicked.classList.contains("clicked")) {
+                        clicked.parentElement.querySelector("#delete").click();
+                        clicked.classList.remove("clicked")
+                    }
+                });
+            }
+            hiddenPopup();
+            return true;
+        });
+    })
 }
