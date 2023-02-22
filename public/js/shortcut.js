@@ -219,7 +219,7 @@ function setupPagination(rows, pagination, rowsBerSlid) {
 }
 let rows        = [];
 let tableNumber = 0;
-const shownRowsNumber = 2;
+const shownRowsNumber = 5;
 let currentSlide        = 1;
 let allSlidesNumber = null;
 let tBody = null;
@@ -272,25 +272,13 @@ tables.forEach(table => {
             previous.classList.remove("un-active");
         }
 
+        next.classList.remove("un-active");
         currentBtn.classList.add("active");
         currentSlide--;
 
 
         // Shuffle Buttons
-
-        let pagination = container.querySelector(".pagination");
-        pagination.innerHTML = '';
-        let slideCount = Math.ceil(trs.length / shownRowsNumber);
-
-
-        let start = currentSlide - numberPaginationInRow <= 0 ? 1 : currentSlide - numberPaginationInRow ;
-
-        let end = currentSlide + numberPaginationInRow > slideCount ? slideCount : currentSlide + numberPaginationInRow ;
-
-        for (let i = start; i <= end; i++) {
-            let button = paginationButtons(i, trs);
-            pagination.appendChild(button)
-        }
+        shuffleButtons(container, table);
         let count = table.nextElementSibling.querySelector(".statistics .count");
 
         let num  =  count.innerText ;
@@ -329,6 +317,14 @@ tables.forEach(table => {
 
         // Shuffle Buttons
 
+        shuffleButtons(container);
+        let count = table.nextElementSibling.querySelector(".statistics .count");
+
+        let num  =  count.innerText ;
+        count.innerText = parseInt(num) + 1;
+
+    });
+    function shuffleButtons(container) {
         let pagination = container.querySelector(".pagination");
         pagination.innerHTML = '';
         let slideCount = Math.ceil(trs.length / shownRowsNumber);
@@ -342,13 +338,7 @@ tables.forEach(table => {
             let button = paginationButtons(i, trs);
             pagination.appendChild(button)
         }
-        let count = table.nextElementSibling.querySelector(".statistics .count");
-
-        let num  =  count.innerText ;
-        count.innerText = parseInt(num) + 1;
-
-    });
-
+    }
 
 
     setupPagination(rows[tableNumber], container.querySelector(".pagination"), shownRowsNumber, rows[tableNumber]);
