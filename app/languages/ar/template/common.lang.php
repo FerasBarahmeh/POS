@@ -27,7 +27,7 @@ $content["text_nav_transactions"]           =  "المعاملات";
 $content["text_nav_transactions_purchases"] =  "معاملات المشتريات";
 $content["text_nav_transactions_sales"]     =  "معاملات المبيعات";
 $content["text_nav_sales"]                  =  "بيع";
-$content["text_nav_sales_product"]          =  "بيع منتج";
+$content["text_nav_sell_product"]          =  "بيع منتج";
 $content["text_nav_reports"]                =  "تقارير";
 $content["text_nav_Notifications"]          =  "الاشعارات";
 

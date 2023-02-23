@@ -26,7 +26,7 @@ $content["text_nav_transactions"]               =  "Transactions";
 $content["text_nav_transactions_purchases"]     =  "Transactions Purchases";
 $content["text_nav_transactions_sales"]         =  "Transactions Sales";
 $content["text_nav_sales"]                      =  "Sales";
-$content["text_nav_sales_product"]              =  "Sale Product";
+$content["text_nav_sell_product"]              =  "Sell Product";
 $content["text_nav_reports"]                    =  "Reports";
 $content["text_nav_Notifications"]              =  "Notifications";
 

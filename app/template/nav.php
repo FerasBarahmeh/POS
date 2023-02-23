@@ -26,8 +26,7 @@
             </button>
 
             <ul class="sub-menu w-fu mtb-10 un-visible">
-                <li class="li-level-2 between-ele"><a href="/sales" class="sub-link"><?= $text_nav_sales_product ?></a><i class="fa fa-tag"></i></li>
-                <li class="li-level-2 between-ele"><a href="/sales" class="sub-link"><?= $text_nav_transactions_sales ?></a> <i class="fas fa-comment-dollar"></i></li>
+                <li class="li-level-2 between-ele"><a href="/sales/sellproduct" class="sub-link"><?= $text_nav_sell_product ?></a><i class="fa fa-tag"></i></li>
             </ul>
         </li>
 
