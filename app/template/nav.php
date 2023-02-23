@@ -18,6 +18,19 @@
             <a href="/"><span class="inline-block"><?= $text_nav_general_setting  ?></span></a>
         </li>
 
+        <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/sales') === true ? 'selected' : '' ?> ">
+
+            <button class="between-ele w-fu">
+                <span class="inline-block"><a href="/sales"><i class="fa fa-chart-area"></i><?= $text_nav_sales ?></a></span>
+                <i class="fa fa-angle-double-down angle "></i>
+            </button>
+
+            <ul class="sub-menu w-fu mtb-10 un-visible">
+                <li class="li-level-2 between-ele"><a href="/sales" class="sub-link"><?= $text_nav_sales_product ?></a><i class="fa fa-tag"></i></li>
+                <li class="li-level-2 between-ele"><a href="/sales" class="sub-link"><?= $text_nav_transactions_sales ?></a> <i class="fas fa-comment-dollar"></i></li>
+            </ul>
+        </li>
+
         <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/transactions') === true ? 'selected' : '' ?> ">
 
             <button class="between-ele w-fu">
