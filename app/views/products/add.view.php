@@ -81,9 +81,8 @@
                 <option value=""><?= $table_Unit ?></option>
                 <?php
                     foreach ($units as $name => $value) {
-                        $n = "unit_" . ucfirst($name);
                         ?>
-                            <option value="<?= $value ?>" ><?= $$n ?></option>
+                            <option value="<?= $value ?>" ><?= ${$this->getNameByNumber("unit", $value, $units)} ?></option>
                         <?php
                     }
                 ?>

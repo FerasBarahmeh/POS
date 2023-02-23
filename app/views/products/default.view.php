@@ -17,12 +17,12 @@
                     <th><?= $text_table_name_product ?></th>
                     <th><?= $text_table_category ?></th>
                     <th><?= $text_table_quantity ?></th>
+                    <th><?= $text_table_unit ?></th>
                     <th><?= $text_table_buy_price ?></th>
                     <th><?= $text_table_sell_price ?></th>
                     <th><?= $text_table_profit ?></th>
                     <th><?= $text_table_total_price ?></th>
                     <th><?= $text_table_barcode ?></th>
-                    <th><?= $text_table_unit ?></th>
                     <th><?= $text_table_status ?></th>
                     <th><?= $text_table_tax ?></th>
                     <th><?= $text_table_description ?></th>
@@ -41,13 +41,13 @@
                                     <td class="name-user-row"><?= $product->Name ?></td>
                                     <td ><?= $product->CategoryName ?></td>
                                     <td ><?= $product->Quantity ?></td>
+                                    <td ><?= ${$this->getNameByNumber("unit", $product->Unit, $units)} ?></td>
                                     <td ><?= $product->BuyPrice ?></td>
                                     <td ><?= $product->SellPrice ?></td>
                                     <td ><?= ($product->Quantity * $product->SellPrice) - ($product->Quantity * $product->BuyPrice) ?> $</td>
                                     <td ><?= ($product->Quantity * $product->BuyPrice) ?> $</td>
                                     <td ><?= $product->BarCode ?></td>
-                                    <td ><?= array_search($product->Unit, $units) ?></td>
-                                    <td ><?= array_search($product->Status, $status) ?></td>
+                                    <td ><?= ${$this->getNameByNumber("status", $product->Status, $status)} ?></td>
                                     <td ><?= $product->Tax ?></td>
                                     <td ><?= $product->Description ?></td>
                                     <td ><?= $product->Image ?></td>
