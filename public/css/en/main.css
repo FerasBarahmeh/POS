@@ -371,7 +371,7 @@ h1.title-header {
     transition: opacity .3s ease-in-out;
 }
 .container-table table tbody tr:nth-child(odd) {
-    background-color: var(--bg-black-100);
+    background-color: var(--bg-black-30);
 }
 .container-table table tbody tr:nth-child(even) {
     background-color: var(--bg-black-70);
@@ -391,7 +391,7 @@ h1.title-header {
     border-right: 1px solid #eee;
 }
 .container-table table tbody tr:hover td {
-    background-color: var(--bg-black-30);
+    background-color: var(--bg-black-100);
 }
 .container-table table tbody td.long-content {
     max-width: 20px;
