@@ -15,6 +15,9 @@ class ProductModel extends AbstractModel
     public $BarCode;
     public $Unit;
     public $Tax;
+    public $Status;
+    public $Description;
+    public $Rating;
 
     protected static $tableName = "products";
 
@@ -27,7 +30,10 @@ class ProductModel extends AbstractModel
         "SellPrice"     => self::DATA_TYPE_DECIMAL,
         "BarCode"       => self::DATA_TYPE_STR,
         "Unit"          => self::DATA_TYPE_INT,
-        "Tax"          => self::DATA_TYPE_DECIMAL,
+        "Tax"           => self::DATA_TYPE_DECIMAL,
+        "Status"        => self::DATA_TYPE_INT,
+        "Description"   => self::DATA_TYPE_STR,
+        "Rating"        => self::DATA_TYPE_INT,
     ];
 
     protected static string $primaryKey = "ProductId";

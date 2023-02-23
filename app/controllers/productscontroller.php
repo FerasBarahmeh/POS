@@ -2,6 +2,7 @@
 
 namespace APP\Controllers;
 
+use APP\Enums\StatusProduct;
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\FilterInput;
 use APP\LIB\Messenger;
@@ -25,7 +26,12 @@ class ProductsController extends AbstractController
         "SellPrice"         => ["req", "num",],
         "BarCode"           => ["req",  "between(2,20)",],
         "Unit"              => ["req", "num"],
+        "Status"              => ["req", "int"],
     ];
+
+    /**
+     * @throws \ReflectionException
+     */
     public function defaultAction()
     {
         $this->language->load("template.common");
@@ -33,6 +39,7 @@ class ProductsController extends AbstractController
         $this->language->load("products.messages");
         $this->_info["products"] = ProductModel::getProducts();
         $this->_info["units"]       = $this->getClassValuesProperties(new Units());
+        $this->_info["status"]       = $this->getClassValuesProperties(new StatusProduct());
         $this->_renderView();
     }
 
@@ -109,16 +116,21 @@ class ProductsController extends AbstractController
      */
     private function setProperties(mixed $product): void
     {
-        $product->Name = $this->filterStr($_POST["Name"]);
-        $product->Quantity = $this->filterInt($_POST["Quantity"]);
-        $product->BuyPrice = $this->filterFloat($_POST["BuyPrice"]);
-        $product->SellPrice = $this->filterFloat($_POST["SellPrice"]);
-        $product->Unit = $this->filterFloat($_POST["Unit"]);
-        $product->CategoryId = $this->filterInt($_POST["CategoryId"]);
-        $product->BarCode = $this->filterStr($_POST["BarCode"]);
-        $product->Tax = $this->filterFloat($_POST["Tax"]);
+        $product->Name          = $this->filterStr($_POST["Name"]);
+        $product->Quantity      = $this->filterInt($_POST["Quantity"]);
+        $product->BuyPrice      = $this->filterFloat($_POST["BuyPrice"]);
+        $product->SellPrice     = $this->filterFloat($_POST["SellPrice"]);
+        $product->Unit          = $this->filterFloat($_POST["Unit"]);
+        $product->CategoryId    = $this->filterInt($_POST["CategoryId"]);
+        $product->BarCode       = $this->filterStr($_POST["BarCode"]);
+        $product->Tax           = $this->filterFloat($_POST["Tax"]);
+        $product->Status        = $this->filterInt($_POST["Status"]);
         $this->setImage($product);
     }
+
+    /**
+     * @throws \ReflectionException
+     */
     public function addAction()
     {
         $this->language->load("template.common");
@@ -130,7 +142,8 @@ class ProductsController extends AbstractController
         $this->language->load("messages.files");
 
         $this->_info["categories"] = ProductCategoriesModel::getAll();
-        $this->_info["units"]       = $this->getClassValuesProperties(new Units());
+        $this->_info["units"]      = $this->getClassValuesProperties(new Units());
+        $this->_info["status"]     = $this->getClassValuesProperties(new StatusProduct());
 
 
         if (isset($_POST["add"]) && $this->isAppropriate($this->_rolesValid, $_POST) ) {
@@ -151,6 +164,9 @@ class ProductsController extends AbstractController
     }
 
 
+    /**
+     * @throws \ReflectionException
+     */
     public function editAction()
     {
         $id = $this->_params[0];
@@ -173,6 +189,7 @@ class ProductsController extends AbstractController
         $this->_info["categories"] = ProductCategoriesModel::getAll();
 
         $this->_info["units"]       = $this->getClassValuesProperties(new Units());
+        $this->_info["status"]       = $this->getClassValuesProperties(new StatusProduct());
 
         if (isset($_POST["edit"])  && $this->isAppropriate($this->_rolesValid, $_POST)) {
             $this->setProperties($product);

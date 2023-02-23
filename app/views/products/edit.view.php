@@ -110,6 +110,21 @@
             <input type="file" name="Image" value="<?= $this->getStorePost("Image", $product) ?>" id="Image" placeholder=" " accept="image/*"/>
             <label for="Image"> <?= $table_Image ?> </label>
         </div>
+
+
+        <div class="field">
+            <!-- Must Set space in placeholder to apply label animation -->
+
+            <select name="Status" id="Status" required autocomplete="off">
+                <?php
+                foreach ($status as $nameStatus => $valueStatus) {
+                    ?> <option value="<?= $valueStatus ?>"><?= $nameStatus ?></option> <?php
+                }
+                ?>
+            </select>
+            <label for="Status" class="flay"> <?= $table_Status; ?> </label>
+        </div>
+
     </fieldset>
 
     <fieldset class="row submit-btn-container">

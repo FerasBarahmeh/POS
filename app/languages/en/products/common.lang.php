@@ -8,4 +8,5 @@ $content["table_BarCode"]    = "Barcode";
 $content["table_Image"]      = "Image";
 $content["table_CategoryId"] = "Category";
 $content["table_Unit"]       = "Unit";
-$content["table_Tax"]       = "Tax";
+$content["table_Tax"]        = "Tax";
+$content["table_Status"]     = "Status";

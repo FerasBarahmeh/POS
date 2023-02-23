@@ -1,3 +1,4 @@
+<?php // TODO: set Image product (Not Name) ?>
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
@@ -18,8 +19,11 @@
                     <th><?= $text_table_quantity ?></th>
                     <th><?= $text_table_buy_price ?></th>
                     <th><?= $text_table_sell_price ?></th>
+                    <th><?= $text_table_profit ?></th>
+                    <th><?= $text_table_total_price ?></th>
                     <th><?= $text_table_barcode ?></th>
                     <th><?= $text_table_unit ?></th>
+                    <th><?= $text_table_status ?></th>
                     <th><?= $text_table_tax ?></th>
                     <th><?= $text_table_image ?></th>
                     <th><?= $text_table_control ?></th>
@@ -38,8 +42,11 @@
                                     <td ><?= $product->Quantity ?></td>
                                     <td ><?= $product->BuyPrice ?></td>
                                     <td ><?= $product->SellPrice ?></td>
+                                    <td ><?= ($product->Quantity * $product->SellPrice) - ($product->Quantity * $product->BuyPrice) ?> $</td>
+                                    <td ><?= ($product->Quantity * $product->BuyPrice) ?> $</td>
                                     <td ><?= $product->BarCode ?></td>
                                     <td ><?= array_search($product->Unit, $units) ?></td>
+                                    <td ><?= array_search($product->Status, $status) ?></td>
                                     <td ><?= $product->Tax ?></td>
                                     <td ><?= $product->Image ?></td>
                                     <td class="controller-btns">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2023 at 11:30 PM
+-- Generation Time: Feb 23, 2023 at 12:37 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -101,16 +101,20 @@ CREATE TABLE `products` (
   `BarCode` char(20) DEFAULT NULL,
   `Unit` tinyint(1) NOT NULL,
   `SellPrice` decimal(6,3) NOT NULL,
-  `Tax` decimal(3,2) DEFAULT 0.00
+  `Tax` decimal(3,2) DEFAULT 0.00,
+  `Status` tinyint(2) NOT NULL,
+  `Description` varchar(255) DEFAULT NULL,
+  `Rating` smallint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`, `Tax`) VALUES
-(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 501, '350.000', '1589456982', 5, '400.000', '0.50'),
-(3, 3, 'Fan', '2bf21fc83f5bbb2e7a58a9f7cf7c40.png', 1000, '15.000', '0124585292462', 5, '20.000', '0.00');
+INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`, `Tax`, `Status`, `Description`, `Rating`) VALUES
+(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 501, '350.000', '1589456982', 5, '400.000', '0.50', 1, NULL, NULL),
+(3, 3, 'Fan', '2bf21fc83f5bbb2e7a58a9f7cf7c40.png', 1000, '15.000', '0124585292462', 5, '20.000', '0.00', 2, NULL, NULL),
+(4, 4, 'HP PAVILION', 'c20820aa680e5e28f6950ee120ac35.jpg', 250, '500.000', '12458796315', 5, '580.000', '0.20', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -131,7 +135,8 @@ CREATE TABLE `products_categories` (
 INSERT INTO `products_categories` (`CategoryId`, `Name`, `Image`) VALUES
 (1, 'Books', 'fcf6b380c5f2297f617f831c94e400.png'),
 (2, 'Video Games', '539c770a538bd4c9963768d0196e08.jpeg'),
-(3, 'Electricals', '77e1cec667706e567412dab72c734d.jpeg');
+(3, 'Electricals', '77e1cec667706e567412dab72c734d.jpeg'),
+(4, 'Laptops', 'b6d2fe2ca501d49baa47c644a99359.jpeg');
 
 -- --------------------------------------------------------
 
@@ -301,8 +306,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-19 22:16:43', 7, '0785102996', 1),
-(2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-16 15:18:58', 9, '0785102996', 1);
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-23 11:21:19', 7, '0785102996', 1),
+(2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-21 14:50:49', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
 
@@ -586,13 +591,13 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products_categories`
 --
 ALTER TABLE `products_categories`
-  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `CategoryId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `purchases_invoices`
@@ -640,7 +645,7 @@ ALTER TABLE `subset_information_users`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `SupplierId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `SupplierId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
