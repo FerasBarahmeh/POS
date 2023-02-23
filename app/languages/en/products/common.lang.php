@@ -10,3 +10,4 @@ $content["table_CategoryId"] = "Category";
 $content["table_Unit"]       = "Unit";
 $content["table_Tax"]        = "Tax";
 $content["table_Status"]     = "Status";
+$content["table_Description"]     = "Description";

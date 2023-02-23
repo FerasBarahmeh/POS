@@ -25,6 +25,7 @@
                     <th><?= $text_table_unit ?></th>
                     <th><?= $text_table_status ?></th>
                     <th><?= $text_table_tax ?></th>
+                    <th><?= $text_table_description ?></th>
                     <th><?= $text_table_image ?></th>
                     <th><?= $text_table_control ?></th>
                 </tr>
@@ -48,6 +49,7 @@
                                     <td ><?= array_search($product->Unit, $units) ?></td>
                                     <td ><?= array_search($product->Status, $status) ?></td>
                                     <td ><?= $product->Tax ?></td>
+                                    <td ><?= $product->Description ?></td>
                                     <td ><?= $product->Image ?></td>
                                     <td class="controller-btns">
                                         <a href="/products/edit/<?= $product->ProductId ?>">

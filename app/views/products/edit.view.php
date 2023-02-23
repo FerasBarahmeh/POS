@@ -116,6 +116,7 @@
             <!-- Must Set space in placeholder to apply label animation -->
 
             <select name="Status" id="Status" required autocomplete="off">
+                <option value="Status"><?= array_search($product->Status, $status) ?></option>
                 <?php
                 foreach ($status as $nameStatus => $valueStatus) {
                     ?> <option value="<?= $valueStatus ?>"><?= $nameStatus ?></option> <?php
@@ -125,6 +126,14 @@
             <label for="Status" class="flay"> <?= $table_Status; ?> </label>
         </div>
 
+    </fieldset>
+
+
+    <fieldset class="row submit-btn-container">
+        <div class="field">
+            <label for="Description" class="t-m20"><?= $table_Description ?></label>
+            <textarea name="Description" id="Description" ><?= $product->Description ?></textarea>
+        </div>
     </fieldset>
 
     <fieldset class="row submit-btn-container">

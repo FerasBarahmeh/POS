@@ -23,4 +23,5 @@ $content["text_table_barcode"]      = "BarCode";
 $content["text_table_unit"]         = "Unit";
 $content["text_table_status"]         = "Status";
 $content["text_table_tax"]          = "Tax";
+$content["text_table_description"]          = "Description";
 $content["text_table_control"]      = "Control";

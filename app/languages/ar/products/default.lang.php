@@ -20,5 +20,6 @@ $content["text_table_sell_price"]   = "سعر البيع";
 $content["text_table_barcode"]      = "الباركود";
 $content["text_table_unit"]         = "الوحدة";
 $content["text_table_status"]         = "حالة المنتج";
+$content["text_table_description"]          = "الوصف";
 $content["text_table_tax"]          = "الضريبة";
 $content["text_table_control"]      = "التحكم";

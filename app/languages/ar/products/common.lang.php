@@ -11,3 +11,4 @@ $content["table_CategoryId"] = "القسم";
 $content["table_Unit"]       = "الوحدة";
 $content["table_Tax"]       = "الضريبة";
 $content["table_Status"]     = "حالة المنتج";
+$content["table_Description"]     = "وصف";

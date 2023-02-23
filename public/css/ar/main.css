@@ -515,6 +515,7 @@ form.add-form fieldset.row div.field {
 form.add-form fieldset.row label {
     position: absolute;
     top: 0;
+    left: 0;
     color: var(--text-black-900);
     transition: all 0.3s ease-in-out;
     pointer-events: none;
@@ -550,6 +551,14 @@ form.add-form fieldset.row input[type="email"]:not(:placeholder-shown)  + label 
     transform: translateY(-20px);
     left: 0;
     font-size: 15px;
+}
+form.add-form fieldset.row textarea {
+    width: 100%;
+    border: 1px solid;
+    min-height: 100px;
+    padding: 10px;
+    color: var(--text-black-700);
+    font-size: 18px;
 }
 form.add-form fieldset.row select {
     appearance: none;

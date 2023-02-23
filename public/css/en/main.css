@@ -486,6 +486,14 @@ form.add-form fieldset.row input[type="password"] {
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
 }
+form.add-form fieldset.row textarea {
+    width: 100%;
+    border: 1px solid;
+    min-height: 100px;
+    padding: 10px;
+    color: var(--text-black-700);
+    font-size: 18px;
+}
 form.add-form fieldset.row select {
     appearance: none;
     background-color: transparent;

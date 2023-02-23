@@ -118,7 +118,8 @@
             <select name="Status" id="Status" required autocomplete="off">
                 <?php
                     foreach ($status as $nameStatus => $valueStatus) {
-                        ?> <option value="<?= $valueStatus ?>"><?= $nameStatus ?></option> <?php
+                        $n = "status_" . ucfirst($nameStatus);
+                        ?> <option value="<?= $valueStatus ?>"><?= $$n ?></option> <?php
                     }
                 ?>
             </select>
@@ -127,6 +128,14 @@
 
     </fieldset>
 
+
+    <fieldset class="row submit-btn-container">
+        <div class="field">
+            <label for="Description" class="t-m20">Add Description</label>
+            <textarea name="Description" id="Description" ></textarea>
+        </div>
+    </fieldset>
+    
     <fieldset class="row submit-btn-container">
         <input type="submit" class="submit-btn" value="<?= $text_add_btn ?>" name="add">
     </fieldset>

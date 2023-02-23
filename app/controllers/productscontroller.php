@@ -26,7 +26,8 @@ class ProductsController extends AbstractController
         "SellPrice"         => ["req", "num",],
         "BarCode"           => ["req",  "between(2,20)",],
         "Unit"              => ["req", "num"],
-        "Status"              => ["req", "int"],
+        "Status"            => ["req", "int"],
+        "Description"       => ["alphaNum"],
     ];
 
     /**
@@ -36,6 +37,7 @@ class ProductsController extends AbstractController
     {
         $this->language->load("template.common");
         $this->language->load("products.default");
+        $this->language->load("products.status");
         $this->language->load("products.messages");
         $this->_info["products"] = ProductModel::getProducts();
         $this->_info["units"]       = $this->getClassValuesProperties(new Units());
@@ -125,6 +127,7 @@ class ProductsController extends AbstractController
         $product->BarCode       = $this->filterStr($_POST["BarCode"]);
         $product->Tax           = $this->filterFloat($_POST["Tax"]);
         $product->Status        = $this->filterInt($_POST["Status"]);
+        $product->Description        = $this->filterStr($_POST["Description"]);
         $this->setImage($product);
     }
 
@@ -138,6 +141,7 @@ class ProductsController extends AbstractController
         $this->language->load("messages.errors");
         $this->language->load("products.messages");
         $this->language->load("products.units");
+        $this->language->load("products.status");
         $this->language->load("products.common");
         $this->language->load("messages.files");
 
@@ -182,6 +186,7 @@ class ProductsController extends AbstractController
         $this->language->load("products.messages");
         $this->language->load("products.common");
         $this->language->load("products.units");
+        $this->language->load("products.status");
         $this->language->load("messages.files");
 
 
