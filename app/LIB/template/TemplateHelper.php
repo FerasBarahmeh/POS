@@ -25,4 +25,22 @@ trait TemplateHelper
         }
         return null;
     }
+    /**
+     * function to get variable name sorted in files language
+     * for example: If you want return name unit product in multiple language the unit sorted as a number in db
+     * of course can't display it as a number this function solve this problem
+     *
+     * units = ["Piece" => 1]
+     *
+     *
+     * @param string    $key key mean the common string in units variable unit_Piece, unit_Box the key unit in this case
+     * @param int       $number the value sorted in db
+     * @param array     $iter array contain all elements and values
+     *
+     * @return string name variable by the number unit_Piece this variable contain name different language
+     */
+    public function getNameByNumber(string $key, int $number, array $iter): string
+    {
+        return rtrim($key, '_') . '_' . ucfirst(array_search($number, $iter));
+    }
 }
