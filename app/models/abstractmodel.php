@@ -185,4 +185,21 @@ class AbstractModel
     {
         return static::$tableName;
     }
+
+    /**
+     * Method to check if value exist in db or not get column and value this column
+     * @author Feras Barahmeh
+     * @version 1.0.0
+     *
+     * @param string $column select the column you want count
+     * @param string $value value column you want search it
+     * @return false|\ArrayIterator false if value not exist and values to this column otherwise
+     *
+     */
+    public static function countRow(string $column, string $value): false|\ArrayIterator
+    {
+        $calledClass = get_called_class();
+        return (new $calledClass)->get("SELECT " . $column . " FROM " . static::$tableName . " WHERE " . $column . " = '$value'");
+
+    }
 }
