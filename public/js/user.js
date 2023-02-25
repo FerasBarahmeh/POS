@@ -117,5 +117,3 @@ if (inputEmail != null) {
 
     whenBlurInput(inputEmail);
 }
-
-// TODO: convert table users to slides
