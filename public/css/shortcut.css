@@ -8,17 +8,17 @@
     --success-color-900: green;
     --success-color-700: #0a800a;
     --success-color-500: #178717;
-    --success-color-300: #7df17d;
+    --success-color-300: #47ad47;
 
     --info-color-900: blue;
     --info-color-700: #1212d1;
     --info-color-500: #1f1fa9;
     --info-color-300: #3939a0;
 
-    --waring-color-900: #e1e112;
-    --waring-color-700: #d8d827;
-    --waring-color-500: #b7b730;
-    --waring-color-300: #abab42;
+    --warning-color-900: #b93e00;
+    --warning-color-700: #d8d827;
+    --warning-color-500: #b7b730;
+    --warning-color-300: #FF9966;
 }
 /* End Variable colors */
 /* Start Type Display */
@@ -393,6 +393,12 @@
 }
 /* End Text */
 /* Start Border */
+.border {
+    border: 1px solid #EEEEEE;
+}
+.border-danger {
+    border: 2px solid var(--danger-color-900);
+}
 .no-bord {
     border: none;
 }
@@ -688,3 +694,70 @@
     background-color: #495464;
 }
 /* end pagination container */
+
+/* Start Flush Messages */
+.flash-message-container {
+    position: fixed;
+    right: 2%;
+    top: 4%;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+.flash-message-container .flash-message {
+    padding: 10px 12px;
+    width: 100%;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    box-shadow: 1px 1px 1px rgb(0 0 0 / 11%);
+    color: white;
+    animation: fed-in 1s ease-in-out;
+}
+.fed-out {
+    animation: fed-out 1s ease-in-out 3s forwards;
+}
+.flash-message-container .flash-message::after {
+    content: "";
+}
+.flash-message-container .flash-message.danger {
+    background-color: var(--danger-color-300);
+    border-left: 7px solid var(--danger-color-900);
+}
+.flash-message-container .flash-message.success {
+    background-color: var(--success-color-300);
+    border-left: 7px solid var(--success-color-900);
+}
+.flash-message-container .flash-message.warning {
+    background-color: var(--warning-color-300);
+    border-left: 7px solid var(--warning-color-900);
+}
+.flash-message-container .flash-message.info {
+    background-color: var(--info-color-300);
+    border-left: 7px solid var(--info-color-900);
+}
+.flash-message-container .flash-message .type-message {
+    text-transform: capitalize;
+}
+.flash-message-container .flash-message .times {
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+@keyframes fed-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fed-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* End Flush Messages */

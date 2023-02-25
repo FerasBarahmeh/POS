@@ -68,25 +68,56 @@ if (acceptedPopups != null) {
     })
 }
 
-function getPreviousSlide(rows, bodyTable, rowsBerSlid, pageNumber) {
-    bodyTable.innerHTML = '';
-    pageNumber --;
+// Start Flash message
+var flashMessageContainer = document.querySelector(".flash-message-container");
+function createFlashMessage(type, message) {
+    const p = document.createElement('p');
+    p.classList.add("flash-message")
+    p.classList.add(type);
 
-    console.log("page Number = " + pageNumber);
-    console.log("rowsBerSlid = " + rowsBerSlid)
+    const typeMessage = document.createElement("span");
+    typeMessage.classList.add("type-message");
+    typeMessage.innerHTML = (type === "danger") ? "Error " : type;
 
-    let start = (pageNumber * rowsBerSlid) - rowsBerSlid ;
-    let end  = start + rowsBerSlid  ;
+    p.appendChild(typeMessage);
 
-    console.log("start = " + start);
-    console.log("end = " + end)
+    const messageContinent = document.createElement("span");
+    messageContinent.classList.add("message");
+    messageContinent.innerHTML = message;
 
-    let rowsSlide = Array.from(rows).slice(start, end);
+    p.appendChild(messageContinent);
 
-    rowsSlide.forEach(row => {
-        tBody.appendChild(row);
-    });
+    const times = document.createElement("span");
+    times.classList.add("times");
+    times.innerHTML = "&times";
+
+    p.appendChild(times);
+
+    return p;
 }
+/**
+ * @author Feras Barahmeh
+ * @version 1.0.0
+ *
+ * @param type specific type message
+ * @param message content message
+ * @param time select time before message hidden
+ *
+ * @return void
+ * */
+function flashMessage(type, message, time) {
+    const flashMessageContainer = document.querySelector(".flash-message-container");
+    const flashMessage = createFlashMessage(type, message);
+    flashMessageContainer.appendChild(flashMessage);
+
+    flashMessage.classList.add("fed-out");
+
+    setTimeout(() => {
+        flashMessageContainer.removeChild(flashMessage);
+    }, time);
+}
+// End Flash Message
+
 // start pagination table
 function createPreviousBtn() {
     let previousBtn = document.createElement("button");

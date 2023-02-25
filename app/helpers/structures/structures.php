@@ -38,4 +38,14 @@ trait Structures
         </div>
         <?php
     }
+
+    public function flashMessage(): void
+    {
+        ?>
+            <div class="flash-message-container">
+
+            </div>
+        <?php
+
+    }
 }
