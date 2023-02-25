@@ -34,10 +34,23 @@ class Authentication
         return isset($this->_session->user);
     }
 
-    public function authorizedAccess($controller, $action): bool
+    /**
+     * @param string $controller name controller you go it
+     * @param $action $the view you want render
+     *
+     * @return bool false if user can't access page or controller and true other ways
+     * *@version 1.2
+     * This method to check if user has authorized access in page
+     * if url (controller / action) in $_authorizedURLs array (this array has urls can each user go to it)
+     * Or url (controller / action) in privileges user (get it from db)
+     *
+     * @author Feras Barahmeh
+     */
+    public function authorizedAccess(string $controller, $action): bool
     {
         $url = '/' . $controller . '/' . $action;
-        if (in_array($url, $this->_authorizedURLs) || in_array($url, $this->_session->user->privileges)) {
+        if (in_array($url, $this->_authorizedURLs)
+            || in_array($url, $this->_session->user->privileges)) {
             return true;
         }
         return false;
