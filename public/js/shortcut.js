@@ -69,15 +69,50 @@ if (acceptedPopups != null) {
 }
 
 // Start Flash message
+function createSymbol(type) {
+    const symbol = document.createElement("span");
+    symbol.classList.add("flash-symbol");
+    symbol.classList.add(type)
+    const containerSymbol = document.createElement("span");
+
+    switch (type) {
+        case "danger":
+            containerSymbol.innerHTML = 'X';
+            break;
+
+        case "success":
+            const i = document.createElement('i');
+            i.classList.add("fa");
+            i.classList.add("fa-check");
+            containerSymbol.appendChild(i);
+            break;
+        case "warning":
+            const exclamation = document.createElement('i');
+            exclamation.classList.add("fa-solid");
+            exclamation.classList.add("fa-triangle-exclamation");
+            containerSymbol.appendChild(exclamation);
+            break;
+
+
+        case "info":
+            containerSymbol.innerHTML = '!';
+            break;
+    }
+    symbol.appendChild(containerSymbol);
+    return symbol;
+}
 var flashMessageContainer = document.querySelector(".flash-message-container");
 function createFlashMessage(type, message) {
     const p = document.createElement('p');
     p.classList.add("flash-message")
     p.classList.add(type);
 
+
+    p.appendChild(createSymbol(type));
+
     const typeMessage = document.createElement("span");
     typeMessage.classList.add("type-message");
-    typeMessage.innerHTML = (type === "danger") ? "Error " : type;
+    typeMessage.innerHTML = (type === "danger") ? "Error " : type + ' : ';
 
     p.appendChild(typeMessage);
 
@@ -97,7 +132,7 @@ function createFlashMessage(type, message) {
 }
 /**
  * @author Feras Barahmeh
- * @version 1.0.0
+ * *@version 1.2
  *
  * @param type specific type message
  * @param message content message
