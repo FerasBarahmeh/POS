@@ -56,6 +56,7 @@ a {
     --bg-black-30    : #ffffff;
     --text-black-900 : #586266;
     --text-black-700 : #3E4142;
+    --text-black-30  : #eee;
 }
 :root body.dark {
     --bg-black-900: #151515;
@@ -200,7 +201,7 @@ p.message.info {
     background-color: var(--info-color-300);
 }
 p.message.waring {
-    background-color: var(--waring-color-300);
+    background-color: var(--warning-color-300);
 }
 div.body {
     grid-template-columns: 300px 1fr;
