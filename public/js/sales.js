@@ -72,6 +72,36 @@ function whenWriteInInput(input, fetchButton, lis) {
 
     });
 }
+function whenClickDownUp(input, ul, lis) {
+
+    let count = -1;
+    document.addEventListener("keydown", (e) => {
+        if (ul.classList.contains("active")) {
+            if (e.key === "ArrowDown") {
+                if (count < ul.children.length - 1) {
+                    count++;
+                    console.log(count)
+                    count-1 >= 0 ? lis[count-1].classList.remove("hover") : null;
+                    lis[count].classList.add("hover");
+                }
+            } else if (e.key === "ArrowUp") {
+                if (count > 0) {
+                    count--;
+                    count+1 <= ul.children.length - 1 ? lis[count+1].classList.remove("hover") : null;
+
+                    lis[count].classList.add("hover");
+                }
+            } else if (e.key === "Enter") {
+                lis.forEach(li => {
+                   if (li.classList.contains("hover")) {
+                       li.classList.remove("hover");
+                       li.click();
+                   }
+                });
+            }
+        }
+    });
+}
 function ifExist(input, lis) {
     let value = input.value.trim();
 
@@ -86,16 +116,20 @@ function ifExist(input, lis) {
     // return false;
 
 }
-function whenClickInButtonSearch(input, fetchButton, lis) {
+function whenClickInButtonSearch(input, fetchButton, lis, label) {
     fetchButton.addEventListener("click", () => {
         ifExist(input, lis);
 
-            getInfo(
-                "sales",
-                "getInfoClientAjax",
-                input.getAttribute("primaryKey"),
-                input.name
-            );
+        getInfo(
+            "sales",
+            "getInfoClientAjax",
+            input.getAttribute("primaryKey"),
+            input.name
+        );
+        input.value = '';
+        label.classList.remove("up");
+        fetchButton.classList.remove("active");
+
 
     });
 }
@@ -128,7 +162,10 @@ searchInputs.forEach(searchInput => {
     whenClickLis(lis, searchInput, ul, fetchButton);
 
     // Control button search
-    whenClickInButtonSearch(searchInput, fetchButton, lis);
+    whenClickInButtonSearch(searchInput, fetchButton, lis, label);
+
+    // When Click up down
+    whenClickDownUp(searchInput, ul, lis);
 });
 
 function getInfo(controller, action, primaryKey, name) {
@@ -146,7 +183,12 @@ function getInfo(controller, action, primaryKey, name) {
             } else {
                 flashMessage("success", response.message, 5000);
 
-                // TODO: fill input in information
+                const theyFillInputs = document.querySelectorAll(".they-fill");
+                theyFillInputs.forEach(fillInput => {
+
+                   fillInput.value =  response[fillInput.name];
+                   fillInput.parentElement.querySelector("label").classList.add("up");
+                });
             }
         }
     }
