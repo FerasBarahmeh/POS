@@ -30,33 +30,30 @@ function whenBlurInput(input, label, ul, lis) {
             label.classList.add("up");
         }
 
-        // control ul
+        // Control label
         if (input.value === '') {
             ul.classList.add("active");
             label.classList.add("up");
-        } else  {
-            document.addEventListener("click", (e) => {
-                const element = e.target;
-
-                if (element === input) {
-                    ul.classList.remove("active");
-                    ul.classList.add("active");
-                } else {
-                    lis.forEach(li => {
-                        if (element === li) {
-                            ul.classList.remove("active")
-                        } else {
-                            ul.classList.remove("active");
-                        }
-                    });
-                }
-
-
-            });
-
-
         }
 
+        document.addEventListener("click", (e) => {
+            const element = e.target;
+
+            if (element === input) {
+                ul.classList.remove("active");
+                ul.classList.add("active");
+            } else {
+                lis.forEach(li => {
+                    if (element === li) {
+                        ul.classList.remove("active")
+                    } else {
+                        ul.classList.remove("active");
+                    }
+                });
+            }
+
+
+        });
     };
 }
 
