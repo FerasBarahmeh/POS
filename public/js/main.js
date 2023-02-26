@@ -126,3 +126,49 @@ function finishedMessage() {
     });
 }
 setTimeout(finishedMessage, 5000);
+
+
+// Ajax Get Messages
+
+/**
+ * this function to get words messages in multi-language
+ *
+ * How Use it this function ?
+ *
+ * getMessage(controllerName, action, nameFile).then((result)=>
+ *      // Do What you want
+ * );
+ *
+ * @param controller determine the controller you want fetch data from
+ * @param action the action method name this method must include `Ajax` word to
+ * @param nameFile the file name you want load for example "template.common" where template name folder and common name file
+ *
+ *
+ * @return Promise object
+ * @version 1.0
+ * @author Feras Barahmeh
+ *
+ * */
+const getMessages = (controller, action, nameFile) => {
+    return new Promise((resolve, reject) => {
+        let xml = new XMLHttpRequest();
+
+        xml.onload = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                resolve(JSON.parse(xml.responseText));
+            } else {
+                reject(Error("File name not valid"));
+            }
+        }
+
+
+        xml.open("POST", "http://estore.local/"+ controller +"/" + action);
+        xml.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+
+        xml.send(`nameFile=${nameFile}`);
+
+    });
+};
