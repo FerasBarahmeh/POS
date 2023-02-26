@@ -704,16 +704,18 @@
     flex-direction: column;
 }
 .flash-message-container .flash-message {
-    padding: 10px 12px;
+    padding: 4px 9px;
     min-width: 100%;
     border-radius: 3px;
     margin-bottom: 5px;
     box-shadow: 1px 1px 1px rgb(0 0 0 / 11%);
     color: white;
     animation: fed-in 1s ease-in-out;
+    display: flex;
+    align-items: center;
 }
 .flash-message-container .flash-message .flash-symbol {
-    margin: 5px;
+    margin-right: 5px;
     font-size: 22px;
     width: 20px;
     border-radius: 50%;
@@ -766,6 +768,7 @@
     text-transform: capitalize;
 }
 .flash-message-container .flash-message .times {
+    display: none;
     float: right;
     font-size: 20px;
     cursor: pointer;
