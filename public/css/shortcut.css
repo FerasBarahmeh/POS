@@ -13,7 +13,7 @@
     --info-color-900: blue;
     --info-color-700: #1212d1;
     --info-color-500: #1f1fa9;
-    --info-color-300: #3939a0;
+    --info-color-300: #7878fa;
 
     --warning-color-900: #b93e00;
     --warning-color-700: #d8d827;
@@ -700,13 +700,12 @@
     position: fixed;
     right: 2%;
     top: 4%;
-    width: 300px;
     display: flex;
     flex-direction: column;
 }
 .flash-message-container .flash-message {
     padding: 10px 12px;
-    width: 100%;
+    min-width: 100%;
     border-radius: 3px;
     margin-bottom: 5px;
     box-shadow: 1px 1px 1px rgb(0 0 0 / 11%);
