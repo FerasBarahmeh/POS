@@ -131,6 +131,7 @@ setTimeout(finishedMessage, 5000);
 // Ajax Get Messages
 
 /**
+ * @todo Update function to accept multi files
  * this function to get words messages in multi-language
  *
  * How Use it this function ?
