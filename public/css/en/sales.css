@@ -1,0 +1,142 @@
+.container {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 25% 25% auto;
+    margin-top: 14px;
+}
+.container .row {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: 2px 2px 0 rgb(0 0 0 / 11%);
+}
+.container .row .section-title {
+    color: var(--text-black-900);
+    font-size: 20px;
+    font-weight: bold;
+}
+.container .row .header-field {
+    border-bottom: 1px solid #EEEEEE;
+    padding: 15px 5px 20px 5px;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.container .row .header-field .input-container {
+    position: relative;
+}
+.container .row .header-field .container-input-search {
+    display: flex;
+}
+.container .row .header-field .input-container input {
+    transition: width .3s ease-in-out,
+                border .3s ease-in-out;
+    padding: 5px;
+    width: 350px;
+}
+.container .row .header-field .input-container input:focus {
+    border: 1px solid #7b7777;
+    width: 400px;
+}
+.container .row .header-field .input-container input.focus-danger {
+    border: 1px solid var(--danger-color-900);
+    width: 110%;
+}
+/*.container .row .header-field .input-container input:focus ~ label,*/
+.container .row .header-field .input-container label.up {
+    font-size: 10px;
+    top: -13px;
+    left: 0;
+}
+.container .row .header-field .input-container label {
+    font-size: 13px;
+    position: absolute;
+    user-select: none;
+    color: var(--text-black-700);
+    top: 7px;
+    left: 17px;
+}
+
+.container .row .header-field .input-container .fetch-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: var(--bg-black-900);
+    opacity: .6;
+    pointer-events: none;
+    cursor: grabbing;
+    color: var(--text-black-30);
+    padding: 3px 4px;
+    text-align: center;
+    height: 100%;
+    transition: all .3s ease-in-out;
+    z-index: 100;
+}
+.container .row .header-field .input-container .fetch-btn:hover {
+    color: var(--bg-black-30);
+}
+.container .row .header-field .input-container .fetch-btn.active {
+    background-color: var(--bg-black-900);
+    cursor: pointer;
+    opacity: 1;
+    pointer-events: auto;
+}
+.container .row .row-fieldset {
+    margin-top: 15px;
+}
+.container .row .header-field .input-container .search-ul {
+    position: absolute;
+    background: var(--bg-black-100);
+    width: 100%;
+    margin-top: 6px;
+    color: var(--text-black-700);
+    cursor: pointer;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all .3s ease-in-out;
+    max-height: 200px;
+}
+.container .row .header-field .input-container .search-ul.active {
+    overflow-y: scroll;
+    opacity: 1;
+    pointer-events: auto;
+    height: auto;
+}
+.container .row .header-field .input-container .search-ul.active li {
+    padding: 10px;
+    border-bottom: 1px solid var(--bg-black-30);
+    position: relative;
+    transition: all .3s ease-in-out,
+                background-color .3s ease-in-out;
+}
+.container .row .header-field .input-container .search-ul li {
+
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+.container .row .header-field .input-container .search-ul.active li.active {
+    height: auto;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.container .row .header-field .input-container .search-ul li:nth-child(odd) {
+    background-color: var(--bg-black-100);
+}
+.container .row .header-field .input-container .search-ul li:hover {
+    background-color: var(--bg-black-900);
+    color: var(--text-black-30);
+}
+.container .row .header-field .input-container .search-ul li:hover:before {
+    content: '';
+    position: absolute;
+    background-color: black;
+    height: 100%;
+    width: 3px;
+    left: 0;
+    top: 0;
+}

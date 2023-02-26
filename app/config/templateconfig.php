@@ -19,6 +19,7 @@ return [
             "employee"      => CSS . $cssLang . "employee" . ".css",
             "privilege"     => CSS . $cssLang . "privilege" . ".css",
             "group"         => CSS . $cssLang . "group" . ".css",
+            "sales"         => CSS . $cssLang . "sales" . ".css",
         ],
         "js" => [
             "fontawesome"   =>  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"
@@ -32,6 +33,7 @@ return [
             "employee"      => JS . "employee"  . ".js",
             "user"          => JS . "user"      . ".js",
             "privileges"    => JS . "privileges"      . ".js",
+            "sales"         => JS . "sales"      . ".js",
         ],
     ],
 ];
