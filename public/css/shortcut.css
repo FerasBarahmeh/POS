@@ -791,3 +791,9 @@
     }
 }
 /* End Flush Messages */
+
+/* Start pointer events*/
+.un-clickable {
+    pointer-events: none;
+}
+/* End pointer events*/
