@@ -80,7 +80,6 @@ function whenClickDownUp(input, ul, lis) {
             if (e.key === "ArrowDown") {
                 if (count < ul.children.length - 1) {
                     count++;
-                    console.log(count)
                     count-1 >= 0 ? lis[count-1].classList.remove("hover") : null;
                     lis[count].classList.add("hover");
                 }
@@ -116,15 +115,16 @@ function ifExist(input, lis) {
     // return false;
 
 }
-function whenClickInButtonSearch(input, fetchButton, lis, label) {
+function whenClickInButtonSearch(input, fetchButton, lis, label, nameClassInputs) {
     fetchButton.addEventListener("click", () => {
         ifExist(input, lis);
 
         getInfo(
             "sales",
-            "getInfoClientAjax",
+            input.getAttribute("action"),
             input.getAttribute("primaryKey"),
-            input.name
+            input.name,
+            nameClassInputs,
         );
         input.value = '';
         label.classList.remove("up");
@@ -162,14 +162,46 @@ searchInputs.forEach(searchInput => {
     whenClickLis(lis, searchInput, ul, fetchButton);
 
     // Control button search
-    whenClickInButtonSearch(searchInput, fetchButton, lis, label);
+    whenClickInButtonSearch(searchInput, fetchButton, lis, label, "they-fill");
 
     // When Click up down
     whenClickDownUp(searchInput, ul, lis);
 });
+function buttonGetProducts(response) {
+    const showSlideButton = document.getElementById("show-slide");
+    showSlideButton.classList.add("active");
 
-function getInfo(controller, action, primaryKey, name) {
+    console.log(response["productsCategory"])
+
+
+}
+function salesProcess(response, classNameInput) {
+    flashMessage("success", response.message, 5000);
+
+    if (classNameInput === "they-fill-product") {
+        const imageProduct = document.getElementById("img-product");
+
+        // Live Change Image
+        if (response["Image"] != null) {
+            imageProduct.setAttribute("src", response["Image"]);
+        }
+
+        // TODO: Show Products depend on categories
+
+        // active show productions to this product category
+        buttonGetProducts(response);
+        
+    }
+
+    const theyFillInputs = document.querySelectorAll('.' + classNameInput);
+    theyFillInputs.forEach(fillInput => {
+        fillInput.value =  response[fillInput.name];
+        fillInput.parentElement.querySelector("label").classList.add("up");
+    });
+}
+function getInfo(controller, action, primaryKey, name, classNameInput) {
     let xml = new XMLHttpRequest();
+
 
     xml.onreadystatechange = function () {
 
@@ -181,14 +213,10 @@ function getInfo(controller, action, primaryKey, name) {
             if (response.result === "false" || response.result === false) {
                 flashMessage("danger", response.message, 5000);
             } else {
-                flashMessage("success", response.message, 5000);
+                if (controller === "sales") {
+                    salesProcess(response, classNameInput);
+                }
 
-                const theyFillInputs = document.querySelectorAll(".they-fill");
-                theyFillInputs.forEach(fillInput => {
-
-                   fillInput.value =  response[fillInput.name];
-                   fillInput.parentElement.querySelector("label").classList.add("up");
-                });
             }
         }
     }
@@ -200,4 +228,109 @@ function getInfo(controller, action, primaryKey, name) {
         "application/x-www-form-urlencoded"
     );
     xml.send(`primaryKey=${primaryKey}&name=${name}`);
+}
+
+
+
+
+
+/*
+* ----------------------------- Products ------------------------------------
+*
+* */
+
+
+
+// Show Information popup
+function whenKeyupFillInput(input, icon) {
+    input.addEventListener("keyup", () => {
+        if (input.value == null) {
+            icon.classList.remove("active");
+        } else {
+            icon.classList.add("active");
+        }
+    });
+}
+function whenBlurFillInput(input, label, icon) {
+    input.onblur = () => {
+
+        icon.classList.remove("active");
+        label.classList.remove("up")
+
+        if (input.value !== '') {
+            label.classList.add("up");
+            icon.classList.add("active");
+        } else {
+            icon.classList.remove("active");
+            label.classList.remove("up")
+        }
+    };
+}
+function whenClickInfoIcon(icon, statisticsPopup) {
+    if (icon != null) {
+        icon.addEventListener("click", () => {
+            console.log(icon)
+        });
+    }
+}
+function whenFocusInputFill(input, label) {
+    input.onfocus = () => {
+      // label.classList.add("up");
+    };
+}
+const searchInputsProducts = document.querySelectorAll(".search-input-product");
+const theyFillInputs = document.querySelectorAll(".fill-product");
+const statisticsPopups = document.querySelectorAll("#statistics-popup");
+
+// Get Products
+searchInputsProducts.forEach(searchInputsProduct => {
+
+    let ul = searchInputsProduct.closest(".input-container").querySelector("ul");
+    let lis = searchInputsProduct.closest(".input-container").querySelectorAll("li");
+    let fetchButton = searchInputsProduct.parentElement.querySelector(".fetch-btn");
+    let label = searchInputsProduct.parentElement.querySelector(".label-input");
+
+    // When focus search input
+    whenFocusInput(searchInputsProduct, label, ul);
+
+    // When Blur input
+    whenBlurInput(searchInputsProduct, label, ul, lis);
+
+    // When Write in input
+    whenWriteInInput(searchInputsProduct, fetchButton, lis)
+
+    // When click li
+    whenClickLis(lis, searchInputsProduct, ul, fetchButton);
+
+    // Control button search
+    whenClickInButtonSearch(searchInputsProduct, fetchButton, lis, label, "they-fill-product");
+
+    // When Click up down
+    whenClickDownUp(searchInputsProduct, ul, lis);
+});
+theyFillInputs.forEach(theyFillInput => {
+    let infoIcon = theyFillInput.parentElement.querySelector(".info-icon");
+    let statisticsPopup = theyFillInput.parentElement.querySelector("#statistics-popup");
+    let label = theyFillInput.parentElement.querySelector("label");
+
+
+    whenFocusInputFill(theyFillInput, label)
+
+    whenKeyupFillInput(theyFillInput, infoIcon);
+
+    whenBlurFillInput(theyFillInput, label, infoIcon);
+
+    whenClickInfoIcon(infoIcon, statisticsPopup);
+
+
+ });
+
+
+// Remove Container table Popup
+const xButtonContainer = document.getElementById("remove-container-table-popup");
+
+if (xButtonContainer != null) {
+    xButtonContainer.addEventListener("click", () => {
+        xButtonContainer.closest("#container-table-popup").classList.remove("active");
+    });
 }
