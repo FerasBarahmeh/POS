@@ -62,7 +62,9 @@ trait UserStatus
 
 // Files
 const UPLOAD_PATH = APP_PATH .  DS . '..' . DS . "public" . DS . "uploads";
-const IMAGES_UPLOAD_PATH = UPLOAD_PATH . DS . "images";
+const IMAGES_UPLOAD_PATH = UPLOAD_PATH . DS . "images" . DS;
 const DOCS_UPLOAD_PATH  = UPLOAD_PATH . DS . "docs";
+
+const UPLOAD_FOLDER_IMAGE = "\uploads\images" . DS;
 
 define("MAX_SIZE_FILE_UPLOAD", ini_get("upload_max_filesize"));
