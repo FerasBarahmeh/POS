@@ -112,7 +112,7 @@ function createFlashMessage(type, message) {
 
     const typeMessage = document.createElement("span");
     typeMessage.classList.add("type-message");
-    typeMessage.innerHTML = (type === "danger") ? "Error " : type + ' : ';
+    typeMessage.innerHTML = (type === "danger") ? "Error : " : type + ' : ';
 
     p.appendChild(typeMessage);
 
