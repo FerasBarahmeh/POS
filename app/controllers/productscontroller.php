@@ -27,7 +27,7 @@ class ProductsController extends AbstractController
         "BarCode"           => ["req",  "between(2,20)",],
         "Unit"              => ["req", "num"],
         "Status"            => ["req", "int"],
-        "Description"       => ["alphaNum"],
+//        "Description"       => ["alphaNum"],
     ];
 
     /**
