@@ -115,12 +115,12 @@ function ifExist(input, lis) {
     // return false;
 
 }
-function whenClickInButtonSearch(input, fetchButton, lis, label, nameClassInputs) {
+function whenClickInButtonSearch(input, fetchButton, lis, label, nameClassInputs, to) {
     fetchButton.addEventListener("click", () => {
         ifExist(input, lis);
 
         getInfo(
-            "sales",
+            to,
             input.getAttribute("action"),
             input.getAttribute("primaryKey"),
             input.name,
@@ -162,19 +162,11 @@ searchInputs.forEach(searchInput => {
     whenClickLis(lis, searchInput, ul, fetchButton);
 
     // Control button search
-    whenClickInButtonSearch(searchInput, fetchButton, lis, label, "they-fill");
+    whenClickInButtonSearch(searchInput, fetchButton, lis, label, "they-fill", "sales");
 
     // When Click up down
     whenClickDownUp(searchInput, ul, lis);
 });
-function buttonGetProducts(response) {
-    const showSlideButton = document.getElementById("show-slide");
-    showSlideButton.classList.add("active");
-
-    console.log(response["productsCategory"])
-
-
-}
 function salesProcess(response, classNameInput) {
     flashMessage("success", response.message, 5000);
 
@@ -187,10 +179,6 @@ function salesProcess(response, classNameInput) {
         }
 
         // TODO: Show Products depend on categories
-
-        // active show productions to this product category
-        buttonGetProducts(response);
-        
     }
 
     const theyFillInputs = document.querySelectorAll('.' + classNameInput);
@@ -199,15 +187,38 @@ function salesProcess(response, classNameInput) {
         fillInput.parentElement.querySelector("label").classList.add("up");
     });
 }
+
+/**
+ * Summary. fetch data from db
+ *
+ * Description.
+ *  function to fetch data from db and handel it by create
+ *  for example we used this function to simplify make fetch items easier for the user;
+ *  the user write name product for example and fill all (get all data from db)
+ *  data for chosen product in field (Easier than filling them in manually)
+ *
+ *   @since 2/28/2023
+ *   @param {string} controller the name controller you want to go (sales for example)
+ *   @param {string} action name action you will to apply
+ *          important note (the name action must be contained Ajax word case-sensitive)
+ *  @param {string} primaryKey this primary key to select row from db
+ *  @param {string} name name value check if is set post method or not (or controller)
+ *  @param {string} classNameInput to select input you want to fill (by get all input the same class name)
+ *
+ *
+ *  @return {void} return void value
+ *
+ *  @author Feras Barahmeh
+ *  @version 1.1
+ *
+ * */
 function getInfo(controller, action, primaryKey, name, classNameInput) {
     let xml = new XMLHttpRequest();
-
-
+    // TODO: update function (separate fill inputs)
     xml.onreadystatechange = function () {
 
         if (this.readyState === 4 && this.status === 200) {
 
-            console.log(xml.responseText)
             let response = JSON.parse(xml.responseText);
 
             if (response.result === "false" || response.result === false) {
@@ -266,7 +277,7 @@ function whenBlurFillInput(input, label, icon) {
         }
     };
 }
-function whenClickInfoIcon(icon, statisticsPopup) {
+function whenClickInfoIcon(icon) {
     if (icon != null) {
         icon.addEventListener("click", () => {
             console.log(icon)
@@ -303,7 +314,7 @@ searchInputsProducts.forEach(searchInputsProduct => {
     whenClickLis(lis, searchInputsProduct, ul, fetchButton);
 
     // Control button search
-    whenClickInButtonSearch(searchInputsProduct, fetchButton, lis, label, "they-fill-product");
+    whenClickInButtonSearch(searchInputsProduct, fetchButton, lis, label, "they-fill-product", "sales");
 
     // When Click up down
     whenClickDownUp(searchInputsProduct, ul, lis);
@@ -320,7 +331,7 @@ theyFillInputs.forEach(theyFillInput => {
 
     whenBlurFillInput(theyFillInput, label, infoIcon);
 
-    whenClickInfoIcon(infoIcon, statisticsPopup);
+    whenClickInfoIcon(infoIcon);
 
 
  });
@@ -334,3 +345,118 @@ if (xButtonContainer != null) {
         xButtonContainer.closest("#container-table-popup").classList.remove("active");
     });
 }
+
+
+// Nav Popup
+const sectionsButtons = document.querySelectorAll(".button-section");
+
+
+
+// Switch between sections
+sectionsButtons.forEach( sectionsButton => {
+
+    sectionsButton.addEventListener("click", () => {
+        if (! sectionsButton.classList.contains("active")) {
+            document.querySelectorAll(".container-section").forEach(container => {
+                if (container.getAttribute("for") === sectionsButton.getAttribute('id')) {
+                    container.classList.add("active");
+                    sectionsButton.classList.add("active");
+                } else {
+                    sectionsButtons.forEach(button => {button.classList.remove("active")});
+                    container.classList.remove("active");
+                }
+
+            });
+
+            sectionsButton.classList.add("active");
+        }
+    });
+});
+
+// drop down item container
+function whenActiveFromAllDropItemButton(dropItemButtons, dropItemButton) {
+    dropItemButtons.forEach(button => {
+        if (button !== dropItemButton) {
+            button.classList.remove("active");
+            button.closest(".item").querySelector(".data-item").classList.remove("active");
+            button.lastElementChild.classList.remove("angle-rotate");
+        } else {
+            dropItemButton.classList.toggle("active");
+        }
+    });
+}
+const dropItemButtons = document.querySelectorAll(".drop-item");
+
+dropItemButtons.forEach(dropItemButton => {
+   dropItemButton.addEventListener("click", (e) => {
+       whenActiveFromAllDropItemButton(dropItemButtons, dropItemButton)
+       dropItemButton.closest(".item").querySelector(".data-item").classList.toggle("active");
+
+       dropItemButton.lastElementChild.classList.toggle("angle-rotate");
+   });
+});
+
+// Search in nav popup
+const searchNavPopups = document.querySelectorAll(".search-nav-popup");
+
+searchNavPopups.forEach(searchNavPopup => {
+   const sectionContainer = searchNavPopup.closest(".container-section");
+   const items = sectionContainer.querySelectorAll(".item");
+
+
+   searchNavPopup.addEventListener("keyup", (e) => {
+       const value = searchNavPopup.value.toLowerCase();
+
+       items.forEach(item => {
+          let name = item.querySelector("span.name").textContent.toLowerCase();
+
+           if (name.search(value) === -1) {
+               item.classList.add("not-found");
+           } else {
+               item.classList.remove("not-found");
+           }
+
+
+       });
+   });
+});
+
+// show nav popup
+const controlShowNavButton = document.getElementById("show-nav-popup-button");
+
+controlShowNavButton.addEventListener("click", () => {
+   const nav = document.getElementById("nav-popup");
+   nav.classList.toggle("active");
+});
+
+// Close popup nav
+const buttonCloseNavPopup = document.getElementById("close-nav");
+buttonCloseNavPopup.addEventListener("click", () => {
+   buttonCloseNavPopup.closest("#nav-popup").classList.remove("active");
+});
+
+// display info product in from nav product section to Product section
+const showProductNavButtons = document.querySelectorAll("[for=products-section] .data-item #show-product-nav-button");
+
+showProductNavButtons.forEach(showProductNavButton => {
+    showProductNavButton.addEventListener("click", () => {
+       getInfo(
+   "sales",
+            showProductNavButton.getAttribute("action"),
+            showProductNavButton.getAttribute("primaryKey"),
+            showProductNavButton.getAttribute("name"),
+            "they-fill-product"
+       );
+        buttonCloseNavPopup.click();
+    });
+});
+
+// hidden nav popup when click out it
+document.addEventListener("click", (e) => {
+    const popupNav = document.getElementById("nav-popup");
+
+    if (! popupNav.contains(e.target) && ! controlShowNavButton.contains(e.target) ) {
+        popupNav.classList.remove("active");
+    }
+
+});

@@ -93,8 +93,134 @@
 
 
     <!-- start product -->
-    <section class="row" id="client-section">
-        <h5 class="section-title"><i class="fa fa-tag"></i> Product </h5>
+    <section class="row" id="product-section">
+
+        <!-- Popup nav -->
+        <section class="nav-popup" id="nav-popup">
+
+            <nav class="side-nav" id="side-nav">
+                <div class="header-section">
+                    <ul>
+                        <li><button class="active button-section" id="products-section"><?= $text_nav_products ?></button></li>
+                        <li><button class="button-section" id="categories-section"><?= $text_nav_categories ?></button></li>
+                    </ul>
+
+                    <button class="bars" id="close-nav"><i class="fa fa-bars"></i></button>
+                </div>
+
+
+                <section class="container-section products active" for="products-section">
+
+                    <div class="search-input mb-20">
+                        <label for="products-section"></label><input type="search" class="search-nav-popup" name="" id="products-section" placeholder="search">
+                        <span class="search-icon"><i class="fa fa-search"></i></span>
+                    </div>
+
+
+
+                    <?php
+                        foreach ($products as $product) {
+                            ?>
+                                <div class="item flex sort-col">
+                                    <button class="drop-item flex between-ele plr-5 ptb-5 mb-5 br-3 cursor-pointer bg-black-100  text-30">
+                                        <span class="name"><?= $product->Name  ?></span>
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <div class="flex sort-col data-item">
+
+                                        <button class="add-item"
+                                                action="getInfoProductAjax"
+                                                name="Name"
+                                                id="show-product-nav-button"
+                                                primaryKey="<?= $product->ProductId ?>">
+                                            <?= $text_nav_show_button ?>
+                                        </button>
+                                        <div class="img">
+                                            <?= $this->setImageIfExist(UPLOAD_FOLDER_IMAGE, $product->Image, IMG . "NotFoundItem.png") ?>
+                                        </div>
+                                        <div class="info-item">
+                                            <h5 class="title flex between-ele revers-r"><i class="fa fa-signature"></i><?= $product->Name  ?></h5>
+                                            <div class="container-items-info">
+                                                <div>
+                                                    <span class="name"><?= $text_nav_category_name  ?></span>
+                                                    <span class="value"><?= $product->CategoryName  ?></span>
+                                                </div>
+                                                <div>
+                                                    <span class="name"><?= $text_nav_price  ?></span>
+                                                    <span class="value"><?= $product->BuyPrice  ?></span>
+                                                </div>
+                                                <div>
+                                                    <span class="name"><?= $text_nav_unit ?></span>
+                                                    <span class="value"><?= $product->Unit  ?></span>
+                                                </div>
+                                                <div>
+                                                    <span class="name"><?= $text_nav_quantity ?></span>
+                                                    <span class="value"><?= $product->Quantity  ?></span>
+                                                </div>
+                                                <div>
+                                                    <span class="name"><?= $text_nav_barcode ?></span>
+                                                    <span class="value"><?= $product->BarCode  ?></span>
+                                                </div>
+                                                <div>
+                                                    <span class="name"><?= $text_nav_tax ?></span>
+                                                    <span class="value"><?= $product->Tax  ?></span>
+                                                </div>
+                                                <div>
+                                                    <span class="name"><?= $text_nav_sell_price ?></span>
+                                                    <span class="value"><?= $product->SellPrice  ?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            <?php
+                        }
+                    ?>
+
+
+                </section>
+
+                <section class="container-section category" for="categories-section">
+
+                    <div class="search-input mb-20">
+                        <label for="categories-section"></label><input type="search" name="" class="search-nav-popup" id="categories-section" placeholder="search">
+                        <span class="search-icon"><i class="fa fa-search"></i></span>
+                    </div>
+
+                    <div class="item">
+                        <button class="drop-item flex between-ele plr-5 ptb-5 mb-5 br-3 cursor-pointer bg-black-100  text-30">
+                            <span class="name">Name Category</span>
+                            <i class="fa fa-angle-down angle"></i>
+                        </button>
+                        <div class="flex sort-col data-item">
+                            <div class="img"><img src="<?= IMG ?>searchProduct.jpeg" alt=""></div>
+                            <div class="info-item">
+                                <h5 class="title flex between-ele revers-r"><i class="fa fa-signature"></i>Name Category</h5>
+                                <div class="container-items-info">
+                                    <div>
+                                        <span class="name">Category name</span>
+                                        <span class="value">Books</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="add-item p-5 text-30 w-fu bg-black-900 mt-5 cursor-pointer">Add</button>
+                        </div>
+                    </div>
+
+                </section>
+            </nav>
+
+        </section>
+
+
+        <!-- start main content -->
+        <div class="header flex between-ele plr-15">
+            <h5 class="section-title"><i class="fa fa-tag"></i> Product </h5>
+            <div class="show-side-nav-button " id="show-side-nav-button">
+                <button class="bars-icon cursor-pointer description" description="show all products" id="show-nav-popup-button"><i class="fa fa-bars"></i></button>
+            </div>
+        </div>
 
 
         <fieldset class="header-field row-fieldset between-ele flex">
@@ -115,10 +241,7 @@
                 </div>
             </div>
 
-            <div class="show-products-categories-button" id="show-products-categories-button">
-                <button class="slide" id="show-slide">View products in this product category Categories Follow these products</button>
 
-            </div>
 
             <div class="img input-container">
                 <img src="<?= IMG ?>searchProduct.jpeg" alt="" id="img-product">
@@ -205,21 +328,19 @@
 
         </fieldset>
 
-    <button>Add To Slaes</button>
+        <button>Add To basket</button>
     </section>
+
 
 </div>
 
 <?= $this->flashMessage()  ?>
 
-<div class="statistics-window" id="statistics-popup">
-    <div class="container-statistics-popup">
-        <div class="body-statistics">
-            <!-- TODO: Add last information client -->
-        </div>
-    </div>
-</div>
 
+
+
+
+<!-- Show Client Info -->
 <div class="container-table-popup" id="container-table-popup">
     <div class="table container-table">
     <button id="remove-container-table-popup">&times;</button>

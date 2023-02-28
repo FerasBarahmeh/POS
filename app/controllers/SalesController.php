@@ -113,7 +113,7 @@ class SalesController extends AbstractController
 
 
             $productsCategory = ProductModel::getBy(["products.CategoryId" => $values->CategoryId]);
-            pr($productsCategory);
+
 
             $values = get_object_vars($values);
             $this->setAnomalyValues($values);

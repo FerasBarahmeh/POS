@@ -12,4 +12,4 @@ $content["message_product_not_exist"]           = "This product Not Exist";
 $content["message_hint_search_product"]         = "Search Name Product";
 $content["message_hint_search_client_category"] = "Search Category Product";
 $content["message_hint_search_client_category"] = "Search Category Product";
-$content["message_status_message"]              = "Status Product not valid ";
+$content["message_status_message"]              = " The status of the product cannot be sold ";

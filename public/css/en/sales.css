@@ -18,6 +18,15 @@
     font-size: 20px;
     font-weight: bold;
 }
+.container .row .header .show-side-nav-button button.bars-icon {
+    background-color: transparent;
+    font-size: 20px;
+    color: var(--text-black-900);
+    transition: none;
+}
+.container .row .header .show-side-nav-button button.bars-icon:hover {
+    color: black;
+}
 .container .row .header-field {
     border-bottom: 1px solid #EEEEEE;
     padding: 15px 5px 20px 5px;
@@ -152,10 +161,10 @@ label.up {
     width: 100px;
     height: 100px;
 }
-.container .row .header-field .show-products-categories-button {
+.container .row .header-field .show-side-nav-button {
 
 }
-.container .row .header-field .show-products-categories-button button.slide {
+.container .row .header-field .show-side-nav-button button.slide {
     padding: 15px;
     color: var(--bg-black-30);
     background-color: var(--bg-black-900);
@@ -164,7 +173,7 @@ label.up {
     cursor: pointer;
     transition: all .3s ease-in-out;
 }
-.container .row .header-field .show-products-categories-button button.slide.active {
+.container .row .header-field .show-side-nav-button button.slide.active {
     background-color: var(--bg-black-900);
     cursor: pointer;
     opacity: 1;
@@ -286,28 +295,187 @@ label.up {
     opacity: 1;
 }
 
-/* Statistic info */
-
-.statistics-window {
-    position: absolute;
-    background-color: #000000c7;
-    left: 50%;
-    top: 50%;
-    width: 100%;
-    transform: translate(-50%, -50%);
+/* Start nav popup */
+.nav-popup {
+    position: fixed;
+    left: -1000px;
+    top: 0;
+    float: right;
+    min-width: 400px;
     height: 0;
-    z-index: 1000;
+    pointer-events: none;
+    background-color: #000000d6;
+    z-index: 10000;
+    overflow-y: scroll;
+    min-height: 50vh;
+}
+.nav-popup.active {
+    height: calc(100% + 50px);
+    pointer-events: auto;
+    left: 0;
+}
+.nav-popup nav .header-section {
+    background-color: var(--bg-black-900);
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    position: relative;
     align-items: center;
-    transition: all .3s ease-in-out;
 }
-.statistics-window.active {
-    height: 100%;
+.nav-popup nav .search-input {
+    position: relative;
+    width: 100%;
+    text-align: center;
 }
-.statistics-window.active .container-statistics-popup {
-    background-color: var(--bg-black-70);
-    min-width: 500px;
-    min-height: 500px;
-    padding: 20px;
+.nav-popup nav .search-input input[type="search"] {
+    width: 98%;
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 2px solid var(--bg-black-50);
+    margin-top: 4px;
+    color: var(--text-black-30);
+    outline: none;
 }
+.nav-popup nav .search-input input[type="search"]:focus {
+    border: 2px solid var(--text-black-900);
+}
+.nav-popup nav span.search-icon {
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    color: var(--bg-black-50);
+}
+.nav-popup nav .header-section button.bars {
+    background-color: transparent;
+    color: var(--bg-black-30);
+    margin-right: 8px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.nav-popup nav .header-section button.bars:hover {
+    opacity: .5;
+}
+.nav-popup nav {
+    max-width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.nav-popup nav ul {
+    display: flex;
+    padding: 10px;
+    gap: 5px;
+    color: var(--text-black-30);
+
+}
+.nav-popup nav ul li {
+
+}
+
+.nav-popup nav ul li button {
+    padding: 4px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color .3s ease-in-out;
+    background-color: transparent;
+    color: var(--bg-black-30);
+}
+.nav-popup nav ul li button:hover,
+.nav-popup nav ul li button.active {
+    color: var(--text-black-700);
+    background-color: var(--bg-black-100);
+}
+.nav-popup nav section {
+    padding: 5px;
+}
+.nav-popup nav section.container-section {
+    padding: 10px;
+    left: -1000px;
+    position: absolute;
+}
+.nav-popup nav section.container-section.active {
+    left: 0;
+    position: relative;
+    margin-bottom: 80px;
+}
+.nav-popup nav section.container-section .item {
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+}
+.nav-popup nav section.container-section .item.not-found {
+     transform: translateX(-1000px);
+}
+.nav-popup nav section.container-section .item .drop-item.active {
+color: var(--text-black-900);
+background-color: var(--bg-black-30);
+}
+.nav-popup nav section.container-section .data-item {
+height: 0;
+opacity: 0;
+transform: scale(0);
+pointer-events: none;
+transition: all .5s ease-in-out;
+box-shadow: 2px 1px 16px rgb(0 0 0 / 90%);
+}
+.nav-popup nav section.container-section .data-item.active {
+height: auto;
+opacity: 1;
+transform: scale(1);
+margin-bottom: 20px;
+padding: 10px;
+pointer-events: auto;
+}
+.nav-popup nav section.container-section .item .img {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    max-width: 400px;
+}
+.nav-popup nav section.container-section .item .img img {
+width: 100%;
+}
+.nav-popup nav section.container-section .item .info-item {
+color: var(--text-black-900);
+padding: 10px;
+background-color: var(--bg-black-100);
+}
+.nav-popup nav section.container-section .item .info-item .title {
+color: var(--bg-black-30);
+text-align: center;
+border-bottom: 1px solid #eee;
+padding-bottom: 5px
+}
+.nav-popup nav section.container-section .item .info-item .container-items-info {
+margin-top: 10px;
+}
+.nav-popup nav section.container-section .item .info-item .container-items-info div {
+padding: 7px 3px;
+display: flex;
+}
+.nav-popup nav section.container-section .item .info-item .container-items-info div:nth-child(odd) {
+background-color: var(--bg-black-900);
+color: var(--bg-black-30);
+}
+.nav-popup nav section.container-section .item .info-item .container-items-info div:nth-child(even) {
+background-color: var(--text-black-30);
+}
+.nav-popup nav section.container-section .item .info-item .container-items-info span.name {
+
+}
+.nav-popup nav section.container-section .item .info-item .container-items-info span.value {
+text-align: right;
+flex: 1;
+width: 100%;
+}
+.nav-popup nav button.add-item {
+    padding: 5px;
+    color: var(--text-black-30);
+    background-color: var(--bg-black-900);
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+.nav-popup nav button.add-item:hover {
+    background-color: var(--bg-black-30);
+    color: var(--text-black-900);
+}
+/* End nav popup */
