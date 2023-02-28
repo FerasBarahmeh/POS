@@ -43,4 +43,48 @@ trait TemplateHelper
     {
         return rtrim($key, '_') . '_' . ucfirst(array_search($number, $iter));
     }
+
+    /**
+     * function to set image if image not valid or not exist set alter image
+     *
+     * @param string        $path direction root folder image
+     * @param string|null   $nameImage name image will set
+     * @param string    $alterImagePath the path the alter image if the main image not found or name id null
+     * @param array|null|string $imageClass all class is css
+     * @param string|null   $altContentImage Alter text if no image
+     *
+     * @return void set image in page
+     */
+    public function setImageIfExist(string $path,
+                                    string|null $nameImage,
+                                    string $alterImagePath,
+                                    array|null|string $imageClass=null,
+                                    string|null $altContentImage=null): void
+    {
+        
+        
+        if ($nameImage != null || $nameImage >= 3) {
+            if (is_array($imageClass)) {
+                ?>
+                    <img  src= "<?= $path . $nameImage ?>"
+                        class="<?= implode(' ', $imageClass) ?>"
+                        alt="<?= $altContentImage ?>">
+                <?php
+            } elseif (is_string($imageClass) || $imageClass == null) {
+                ?>
+                    <img
+                        src= "<?= $path ?><?= $nameImage ?>"
+                        class="<?= $imageClass ?>"
+                        alt="<?= $altContentImage ?>">
+                <?php
+            }
+        } else {
+            ?>
+                <img
+                    src= "<?= $alterImagePath ?>"
+                    class="<?= $imageClass ?>"
+                    alt="<?= $altContentImage ?>">
+            <?php
+        }
+    }
 }
