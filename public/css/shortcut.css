@@ -797,3 +797,8 @@
     pointer-events: none;
 }
 /* End pointer events*/
+/* Start Icon */
+.angle-rotate {
+    transform: rotate(180deg);
+}
+/* End Icon */
