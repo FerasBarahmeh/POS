@@ -116,7 +116,10 @@
             <!-- Must Set space in placeholder to apply label animation -->
 
             <select name="Status" id="Status" required autocomplete="off">
-                <option value="Status"><?= array_search($product->Status, $status) ?></option>
+                <?php
+                    $getNameStatus = array_search($product->Status, $status);
+                ?>
+                <option value="<?= $status[$getNameStatus] ?>"><?= $getNameStatus ?></option>
                 <?php
                 foreach ($status as $nameStatus => $valueStatus) {
                     ?> <option value="<?= $valueStatus ?>"><?= $nameStatus ?></option> <?php
