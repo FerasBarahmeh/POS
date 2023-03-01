@@ -1,6 +1,8 @@
 <?php
 namespace APP\Controllers;
 
+use APP\Enums\PaymentStatus;
+use APP\Enums\PaymentType;
 use APP\Enums\StatusProduct;
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\FilterInput;
@@ -27,10 +29,12 @@ class SalesController extends AbstractController
         $this->language->load("template.common");
         $this->language->load("sales.sellproducts");
 
-        $this->_info["clients"]     = ClientModel::getAll();
-        $this->_info["products"]    = ProductModel::getProducts();
-        $this->_info["units"]       = $this->getClassValuesProperties(new Units());
-        $this->_info["status"]      = $this->getClassValuesProperties(new StatusProduct());
+        $this->_info["clients"]         = ClientModel::getAll();
+        $this->_info["products"]        = ProductModel::getProducts();
+        $this->_info["units"]           = $this->getClassValuesProperties(new Units());
+        $this->_info["paymentType"]     = $this->getClassValuesProperties(new PaymentType());
+        $this->_info["paymentStatus"]   = $this->getClassValuesProperties(new PaymentStatus());
+        $this->_info["status"]          = $this->getClassValuesProperties(new StatusProduct());
 
         $this->_renderView();
     }

@@ -7,6 +7,7 @@
     margin-top: 14px;
 }
 .container .row {
+    position: relative;
     border: 1px solid #eee;
     padding: 10px 10px 20px 10px;
     border-radius: 3px;
@@ -29,7 +30,7 @@
 }
 .container .row .header-field {
     border-bottom: 1px solid #EEEEEE;
-    padding: 15px 5px 20px 5px;
+    padding: 5px;
     position: relative;
     flex-wrap: wrap;
     gap: 15px;
@@ -95,7 +96,7 @@ label.up {
     pointer-events: auto;
 }
 .container .row .row-fieldset {
-    margin-top: 15px;
+    /*margin-top: 15px;*/
 }
 .container .row .header-field .input-container .search-ul {
     position: absolute;
@@ -155,7 +156,6 @@ label.up {
 }
 .container .row .header-field .img {
     border-radius: 5px;
-    box-shadow: 1px 0 4px rgb(0 0 0 / 88%);
 }
 .container .row .header-field .img img {
     width: 100px;
@@ -241,6 +241,9 @@ label.up {
     color: var(--text-black-700);
     user-select: none;
 }
+.container .row .content-row h5.bg {
+    background-color: var(--bg-black-70);
+}
 .container .row .content-row .field {
     border-bottom: 1px solid #eee;
     border-left: 1px solid #eee;
@@ -266,6 +269,7 @@ label.up {
     color: var(--text-black-700);
     transition: all .3s ease-in-out;
     pointer-events: none;
+    user-select: none;
 }
 .container .row .content-row .field input:focus ~ label {
     top: -14px;
@@ -294,7 +298,20 @@ label.up {
     height: auto;
     opacity: 1;
 }
-
+.add-to-cart-button {
+    position: relative;
+    top: 18px;
+    float: right;
+    padding: 10px;
+    background-color: var(--bg-black-900);
+    color: var(--bg-black-30);
+    border-radius: 4px;
+    cursor: pointer;
+}
+.add-to-cart-button:hover {
+    color: var(--text-black-900);
+    background-color: var(--bg-black-70);
+}
 /* Start nav popup */
 .nav-popup {
     position: fixed;
@@ -479,3 +496,80 @@ width: 100%;
     color: var(--text-black-900);
 }
 /* End nav popup */
+
+/* Start Cart Section */
+.cart {
+    flex-direction: column;
+}
+.cart .container-table-products-carts {
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #a69d9d;
+    margin-bottom: 20px;
+}
+.cart .empty-cart-image {
+    transition: width .3s ease-in-out;
+    width: 0;
+}
+.cart .empty-cart-image.active {
+    width: 200px
+}
+.cart .fingerprint {
+    box-shadow: 2px 2px 10px rgb(0 0 0 / 90%);
+    padding: 10px;
+    border-radius: 4px;
+    transition: all .3s ease-in-out;
+}
+.cart .fingerprint .discount-section {
+    border: 1px solid var(--bg-black-100);
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+}
+.cart .fingerprint .discount-section .discount-type {
+    border-bottom: 1px solid var(--text-black-900);
+    padding: 5px 5px 10px;
+}
+.cart .fingerprint .value-discount {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.cart .fingerprint .value-discount .input {
+    box-shadow: 0 0 2px rgb(0 0 0 / 58%);
+    overflow: hidden;
+    padding: 5px;
+    pointer-events: none;
+    user-select: none;
+    opacity: .5;
+    border: 2px solid #eee;
+}
+.cart .fingerprint .value-discount .input.active {
+    pointer-events: auto;
+    opacity: 1;
+    border: 2px solid black;
+}
+.cart .fingerprint .value-discount .input input {
+    width: 100%;
+}
+.label-checkbox {
+    position: relative !important;
+    left: 0 !important;
+    margin-left: 3px;
+    font-size: 13px;
+    pointer-events: auto !important;
+    top: 0 !important;
+    color: var(--text-black-700);
+    transition: all .3s ease-in-out;
+}
+.create-invoices {
+    cursor: pointer;
+    background-color: var(--bg-black-900);
+    color: var(--text-black-30);
+    border-radius: 4px;
+}
+.create-invoices:hover {
+    background-color: var(--bg-black-70);
+    color: var(--text-black-900);
+}
+/* End Cart Section */
+
