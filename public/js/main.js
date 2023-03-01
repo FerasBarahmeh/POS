@@ -173,3 +173,122 @@ const getMessages = (controller, action, nameFile) => {
 
     });
 };
+
+
+// fingerprint section in add invoices
+
+// Active set discount value section is chosen
+
+/**
+ *
+ * Description function to active discount section depend on type discount
+ *
+ * @param {Object} activeButton the input type clicked set is active value
+ * @param {Object} disabledButton un active value discount
+ * @param {Object} activeContainer the input we will set the value by the type chosen in clicked button
+ * @param {Object} disabledContainer the input we will un set the value by the type chosen in clicked button
+ *
+ * */
+function activeAddDiscountSection(activeButton, disabledButton, activeContainer, disabledContainer) {
+    activeButton.addEventListener("click", (e) => {
+
+        console.log(activeButton.checked === true)
+        if (
+            (activeButton.contains(e.target)
+            || activeButton === e.target)
+            && activeButton.checked === false
+        ) {
+            activeButton.checked = false;
+            activeContainer.classList.remove("active");
+        } else {
+            activeContainer.classList.add("active");
+            activeContainer.querySelector("input").focus();
+
+            // remove all active inputs containers
+            disabledButton.checked = false;
+            disabledContainer.classList.remove("active");
+
+        }
+
+    });
+}
+const discountPercentageButton  = document.querySelector("[discount-percentage=percentage]");
+const discountValueButton       = document.querySelector("[discount-value=value]");
+const inputContainerDiscountPercentage = document.querySelector("[discount-percentage-input]");
+const inputContainerValuePercentage = document.querySelector("[discount-value-input]");
+
+
+// Active Percentage Discount
+activeAddDiscountSection(
+    discountPercentageButton,
+    discountValueButton,
+    inputContainerDiscountPercentage,
+    inputContainerValuePercentage
+);
+
+// Active Value Discount
+activeAddDiscountSection(
+    discountValueButton,
+    discountPercentageButton,
+    inputContainerValuePercentage,
+    inputContainerDiscountPercentage
+);
+
+// Remove product from
+
+const removeTrProducts = document.querySelectorAll("#remove-td-product");
+
+removeTrProducts.forEach(removeTrProduct => {
+    removeTrProduct.addEventListener("click", () => {
+        removeTrProduct.closest("tr").remove();
+   });
+});
+function addEmptyCartImage(table) {
+    const imgEmptyCart = table.querySelector(".empty-cart-image");
+    const trImage = imgEmptyCart.closest("tr");
+    const parentTable = table.parentElement;
+    if (table.querySelector("tbody").childElementCount <= 1) {
+        trImage.classList.remove("hidden");
+        imgEmptyCart.classList.add("active");
+        parentTable.classList.remove("responsive-table");
+    } else {
+        trImage.classList.add("hidden");
+        imgEmptyCart.classList.remove("active");
+        parentTable.classList.add("responsive-table");
+    }
+}
+
+// Add Info To cart Table
+
+function fetchDataInvolves() {
+    let result = {};
+    const dataInvolves = document.querySelectorAll(".data-involves");
+    dataInvolves.forEach(dataInvolve => {
+        const to = dataInvolve.getAttribute("to");
+        result[to] = [];
+
+        const inputs = dataInvolve.querySelectorAll("input");
+        inputs.forEach(input => {
+
+            if (input.value === '' ){
+                flashMessage("danger",
+                    `Can't filed <b class="bold-font"> ${input.getAttribute("name")}</b> Be Empty Filed`,
+                    5000);
+                return false;
+            }
+            result[to].push( [input.getAttribute("name"), input.value]);
+
+        });
+    });
+
+    return result;
+}
+const addToCartButton = document.getElementById("add-to-cart-button");
+const cartTable = document.querySelector(".products-carts-table");
+const tBodyCartTable = cartTable.querySelector("tbody");
+
+addEmptyCartImage(cartTable)
+
+addToCartButton.addEventListener("click", () => {
+    console.log(fetchDataInvolves() )
+});
