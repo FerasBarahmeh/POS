@@ -301,118 +301,121 @@ tables.forEach(table => {
 
     rows[tableNumber] = getRowsTable(table);
     let trs = rows[tableNumber];
+    if (trs.length > shownRowsNumber) {
 
-    allSlidesNumber = Math.ceil(rows[tableNumber].length / shownRowsNumber);
+        allSlidesNumber = Math.ceil(rows[tableNumber].length / shownRowsNumber);
 
-    // Show First Slide
-    let container = createPaginationContainer(currentSlide, allSlidesNumber, rows[tableNumber]);
-    insertAfter(table, container);
+        // Show First Slide
+        let container = createPaginationContainer(currentSlide, allSlidesNumber, rows[tableNumber]);
+        insertAfter(table, container);
 
-    displaySlide(rows[tableNumber], table.querySelector("tbody"), shownRowsNumber, currentSlide);
-    tBody = table.querySelector("tbody");
+        displaySlide(rows[tableNumber], table.querySelector("tbody"), shownRowsNumber, currentSlide);
+        tBody = table.querySelector("tbody");
 
-    previous = tBody.parentElement.nextElementSibling.querySelector(".previous");
-    next = tBody.parentElement.nextElementSibling.querySelector(".next");
+        previous = tBody.parentElement.nextElementSibling.querySelector(".previous");
+        next = tBody.parentElement.nextElementSibling.querySelector(".next");
 
-    previous.addEventListener("click", () => {
+        previous.addEventListener("click", () => {
 
-        let startPosition = (currentSlide * shownRowsNumber) - (shownRowsNumber * 2);
+            let startPosition = (currentSlide * shownRowsNumber) - (shownRowsNumber * 2);
 
-        let endPosition = startPosition + shownRowsNumber;
+            let endPosition = startPosition + shownRowsNumber;
 
-        let rows = [...trs];
-        rows = rows.slice(startPosition, endPosition);
-
-
-        tBody.innerHTML ='';
-        rows.forEach(row => {
-            tBody.appendChild(row);
-        });
-
-        currentBtn.classList.remove("active");
-        if (startPosition === 0 && endPosition === shownRowsNumber) {
-            previous.classList.add("un-active");
-            currentBtn = container.querySelector(".pagination").firstElementChild;
-        } else {
-            currentBtn = currentBtn.previousElementSibling;
-            previous.classList.remove("un-active");
-        }
-
-        next.classList.remove("un-active");
-        currentBtn.classList.add("active");
-        currentSlide--;
+            let rows = [...trs];
+            rows = rows.slice(startPosition, endPosition);
 
 
-        // Shuffle Buttons
-        shuffleButtons(container, table);
-        let count = table.nextElementSibling.querySelector(".statistics .count");
+            tBody.innerHTML ='';
+            rows.forEach(row => {
+                tBody.appendChild(row);
+            });
 
-        let num  =  count.innerText ;
-        count.innerText = parseInt(num) - 1;
+            currentBtn.classList.remove("active");
+            if (startPosition === 0 && endPosition === shownRowsNumber) {
+                previous.classList.add("un-active");
+                currentBtn = container.querySelector(".pagination").firstElementChild;
+            } else {
+                currentBtn = currentBtn.previousElementSibling;
+                previous.classList.remove("un-active");
+            }
 
-    });
-
-    next.addEventListener("click", () => {
-
-        let startPosition = currentSlide * shownRowsNumber ;
-        let endPosition = startPosition + shownRowsNumber;
-
-        let rows = [...trs];
-
-        rows = rows.slice(startPosition, endPosition);
-
-        tBody.innerHTML ='';
-        rows.forEach(row => {
-            tBody.appendChild(row);
-        });
-
-        currentBtn.classList.remove("active");
-
-        if (endPosition - 1 === trs.length) {
-            next.classList.add("un-active");
-            currentBtn = container.querySelector(".pagination").lastElementChild;
-        } else {
-            currentBtn = currentBtn.nextElementSibling;
             next.classList.remove("un-active");
+            currentBtn.classList.add("active");
+            currentSlide--;
+
+
+            // Shuffle Buttons
+            shuffleButtons(container, table);
+            let count = table.nextElementSibling.querySelector(".statistics .count");
+
+            let num  =  count.innerText ;
+            count.innerText = parseInt(num) - 1;
+
+        });
+
+        next.addEventListener("click", () => {
+
+            let startPosition = currentSlide * shownRowsNumber ;
+            let endPosition = startPosition + shownRowsNumber;
+
+            let rows = [...trs];
+
+            rows = rows.slice(startPosition, endPosition);
+
+            tBody.innerHTML ='';
+            rows.forEach(row => {
+                tBody.appendChild(row);
+            });
+
+            currentBtn.classList.remove("active");
+
+            if (endPosition - 1 === trs.length) {
+                next.classList.add("un-active");
+                currentBtn = container.querySelector(".pagination").lastElementChild;
+            } else {
+                currentBtn = currentBtn.nextElementSibling;
+                next.classList.remove("un-active");
+            }
+
+            previous.classList.remove("un-active");
+            currentBtn.classList.add("active");
+            currentSlide++;
+
+
+            // Shuffle Buttons
+
+            shuffleButtons(container);
+            let count = table.nextElementSibling.querySelector(".statistics .count");
+
+            let num  =  count.innerText ;
+            count.innerText = parseInt(num) + 1;
+
+        });
+        function shuffleButtons(container) {
+            let pagination = container.querySelector(".pagination");
+            pagination.innerHTML = '';
+            let slideCount = Math.ceil(trs.length / shownRowsNumber);
+
+
+            let start = currentSlide - numberPaginationInRow <= 0 ? 1 : currentSlide - numberPaginationInRow ;
+
+            let end = currentSlide + numberPaginationInRow > slideCount ? slideCount : currentSlide + numberPaginationInRow ;
+
+            for (let i = start; i <= end; i++) {
+                let button = paginationButtons(i, trs);
+                pagination.appendChild(button)
+            }
         }
 
-        previous.classList.remove("un-active");
-        currentBtn.classList.add("active");
-        currentSlide++;
+
+        setupPagination(rows[tableNumber], container.querySelector(".pagination"), shownRowsNumber, rows[tableNumber]);
+
+        numberSlideContainer = table.nextElementSibling.querySelector(".statistics .count");
+        numberSlideContainer.innerText = currentSlide + ' ';
 
 
-        // Shuffle Buttons
 
-        shuffleButtons(container);
-        let count = table.nextElementSibling.querySelector(".statistics .count");
-
-        let num  =  count.innerText ;
-        count.innerText = parseInt(num) + 1;
-
-    });
-    function shuffleButtons(container) {
-        let pagination = container.querySelector(".pagination");
-        pagination.innerHTML = '';
-        let slideCount = Math.ceil(trs.length / shownRowsNumber);
-
-
-        let start = currentSlide - numberPaginationInRow <= 0 ? 1 : currentSlide - numberPaginationInRow ;
-
-        let end = currentSlide + numberPaginationInRow > slideCount ? slideCount : currentSlide + numberPaginationInRow ;
-
-        for (let i = start; i <= end; i++) {
-            let button = paginationButtons(i, trs);
-            pagination.appendChild(button)
-        }
+        tableNumber++;
     }
 
-
-    setupPagination(rows[tableNumber], container.querySelector(".pagination"), shownRowsNumber, rows[tableNumber]);
-
-    numberSlideContainer = table.nextElementSibling.querySelector(".statistics .count");
-    numberSlideContainer.innerText = currentSlide + ' ';
-
-
-
-    tableNumber++;
 });
