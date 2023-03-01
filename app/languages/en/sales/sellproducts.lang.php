@@ -40,7 +40,7 @@ $content["text_Tax"]            = "Tax";
 // Popup navigation
 $content["text_nav_products"]   = "Products";
 $content["text_nav_categories"] = "categories";
-$content["text_nav_show_button"] = "Show";
+$content["text_nav_show_button"] = "Select";
 
 $content["text_nav_category_name"]  = "Name category";
 $content["text_nav_price"]          = "Price product";
