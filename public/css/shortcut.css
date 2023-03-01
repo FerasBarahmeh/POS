@@ -21,6 +21,11 @@
     --warning-color-300: #FF9966;
 }
 /* End Variable colors */
+/* Start Colors */
+.danger-color {
+    color: var(--danger-color-300);
+}
+/* End Colors */
 /* Start Type Display */
 .hidden {
     display: none !important;
@@ -107,6 +112,12 @@
 }
 .w-fit {
     width: fit-content;
+}
+.w-h {
+    width: 50%;
+}
+.w-hh {
+    width: 75%;
 }
 /* End Width */
 /* Start Padding */
@@ -315,6 +326,9 @@
 }
 /* End Margin */
 /*Start Top*/
+.t-0 {
+    top: 0 !important;
+}
 .t-5 {
     top: 5px !important;
 }
@@ -346,9 +360,44 @@
     top: -20px !important;
 }
 /*End Top*/
+/* Start right */
+.r-0 {
+    right: 0!important;
+}
+.r-5 {
+    right: 5px !important;
+}
+.r-m5 {
+    right: -5px !important;
+}
+.r-10 {
+    right: 10px !important;
+}
+.r-m10 {
+    right: -10px !important;
+}
+.r-15 {
+    right: 15px !important;
+}
+.r-m15 {
+    right: -15px !important;
+}
+.r-17 {
+    right: 17px !important;
+}
+.r-m17 {
+    right: -17px !important;
+}
+.r-20 {
+    right: 20px !important;
+}
+.r-m20 {
+    right: -20px !important;
+}
+/* End right */
 /* Start Position */
 .relative {
-    position: relative;
+    position: relative !important;
 }
 .absolute {
     position: absolute;
@@ -460,11 +509,15 @@
     font-size: 15px;
     white-space: nowrap;
     color: var(--text-black-700);
+    z-index: 10000;
 }
 /* End Components  */
 /* Start OverFlow */
 .over-h {
     overflow: hidden;
+}
+.overflowX-scroll {
+    overflow-x: scroll;
 }
 .overflowX-auto {
     overflow-x: auto;
@@ -802,3 +855,8 @@
     transform: rotate(180deg);
 }
 /* End Icon */
+/* Start Background */
+.no-bg {
+    background-color: transparent;
+}
+/* End Background */
