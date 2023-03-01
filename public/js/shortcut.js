@@ -5,7 +5,7 @@ function insertAfter(afterTo, newNode) {
 
 // TODO: Convert Structure Delete To AJAX
 const cardPopup = document.querySelector(".card");
-const classCard = [...cardPopup.classList];
+// const classCard = [...cardPopup.classList];
 function hiddenPopup(e) {
     console.log(e)
     e.closest(".card").classList.remove("show");
