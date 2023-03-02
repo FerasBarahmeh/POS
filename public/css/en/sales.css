@@ -307,6 +307,12 @@ label.up {
     color: var(--bg-black-30);
     border-radius: 4px;
     cursor: pointer;
+    pointer-events: none;
+    opacity: .4;
+}
+.add-to-cart-button.active {
+    pointer-events: auto;
+    opacity: 1;
 }
 .add-to-cart-button:hover {
     color: var(--text-black-900);
