@@ -191,8 +191,6 @@ const getMessages = (controller, action, nameFile) => {
  * */
 function activeAddDiscountSection(activeButton, disabledButton, activeContainer, disabledContainer) {
     activeButton.addEventListener("click", (e) => {
-
-        console.log(activeButton.checked === true)
         if (
             (activeButton.contains(e.target)
             || activeButton === e.target)
@@ -243,9 +241,6 @@ function removeProductFromCart(button) {
 const removeTrProducts = document.querySelectorAll("#remove-td-product");
 removeTrProducts.forEach(removeTrProduct => {
     removeProductFromCart(removeTrProduct);
-    // removeTrProduct.addEventListener("click", () => {
-    //     removeTrProduct.closest("tr").remove();
-   // });
 });
 function addEmptyCartImage(table) {
     const imgEmptyCart = table.querySelector(".empty-cart-image");
@@ -409,19 +404,72 @@ function checkIfValidInvolves(tBody, details, newRow) {
 
     return flag;
 }
-function changeTotalPrice(involves) {
-    const inputTotalPrice = document.getElementById("total-price");
+function ifSetDiscount() {
+    return discountPercentageButton.checked === true || discountValueButton.checked === true;
+}
+function getTypeDiscount() {
+    const percentageDiscountInput = document.querySelector("[discount-percentage-input]");
+    const valueDiscountInput = document.querySelector("[discount-value-input]");
+    if (percentageDiscountInput.classList.contains("active")) {
+        return "discount-percentage-input";
+    } else if(valueDiscountInput.classList.contains("active")) {
+        return "discount-value-input";
+    }
+    return false;
+}
+function getInfoTransaction(involves) {
+    let info = {};
     for (const involvesKey in involves) {
+        let key = Object.keys(involves[involvesKey]);
 
-        if (involves[involvesKey][0] ===  "SellPrice") {
-            // let value
-            let newValue = parseFloat(inputTotalPrice.value) + parseFloat(involves[involvesKey][1] );
-            inputTotalPrice.value = '';
-
-            inputTotalPrice.value = newValue.toString();
-            break;
+        if (key[0] ===  "SellPrice") {
+            info["SellPrice"] = parseFloat(involves[involvesKey]["SellPrice"]);
+        }
+        if (key[0] ===  "Tax") {
+            info["Tax"] =  parseFloat(involves[involvesKey]["Tax"]);
+        }
+        if (key[0] ===  "QuantityChoose") {
+            info["Quantity"] = parseFloat(involves[involvesKey]["QuantityChoose"]);
         }
     }
+
+    return info;
+
+}
+function changeTotalPrice(involves) {
+    const inputTotalPrice = document.getElementById("total-price");
+
+
+    let data = getInfoTransaction(involves);
+
+    let sellPrice   = data["SellPrice"];
+    let salesTaxRate = data["Tax"];
+    let quantity    = data["Quantity"];
+    let discount = 0;
+
+    let prevValue = parseFloat(inputTotalPrice.value);
+    let price = ((sellPrice * quantity) + (salesTaxRate * sellPrice));
+    if (ifSetDiscount()) {
+
+        discount = inputContainerDiscountPercentage.querySelector("input");
+        if (parseFloat(discount.value) > 0) {
+            price -= price * parseFloat(discount.value) / 100;
+            price = price <= 0 || discount.value === '' ? 0 : price + prevValue;
+            discount.value = '0';
+            discount.classList.remove("active");
+            inputContainerDiscountPercentage.classList.remove("active");
+        }
+        discount = inputContainerValuePercentage.querySelector("input");
+        if (parseFloat(discount.value) > 0) {
+            price -= parseFloat(discount.value);
+            price = price <= 0 || discount.value === '' ? 0 : price + prevValue;
+            discount.classList.remove("active");
+            discount.value = '0';
+            inputContainerValuePercentage.classList.remove("active");
+        }
+    }
+
+    inputTotalPrice.value = price;
 }
 function setNumberProducts(table) {
     document.getElementById("total-products").value = table.children.length - 1; // -1 the row empty image
