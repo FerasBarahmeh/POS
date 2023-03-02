@@ -50,7 +50,7 @@
 
             <div class="inputs flex mt-15 mb-20">
                 <div class="field relative">
-                    <input type="text" name="Name" id="Name"  class="they-fill" to
+                    <input type="text" name="Name" id="Name"  class="they-fill" to no-change
                            value="<?= $this->getStorePost("Name") ?>"
                            minlength="2" maxlength="30" required autocomplete="off"  />
 
@@ -256,7 +256,7 @@
 
             <div class="inputs flex mt-15 mb-20">
                 <div class="field relative">
-                    <input type="text" name="Name" id="Name"  class="they-fill-product un-clickable"
+                    <input type="text" name="Name" id="Name"  class="they-fill-product un-clickable" no-repeat
                            value="<?= $this->getStorePost("NameProduct") ?>"
                            minlength="2" maxlength="30" required autocomplete="off"  />
 
@@ -421,9 +421,18 @@
 
                                 </div>
                             </div>
-                            <span class="mb-15" id="total-price-container">
-                            <label for="total-price" class="text-900  label-checkbox">Total Price <i class="fa fa-dollar-sign"></i> </label>
-                            <input type="text" value="" id="total-price" class="un-clickable border w-fu">
+                            <div class="totals flex gap-10 w-fu">
+                                <div class="mb-15" id="total-price-container">
+                                    <label for="total-price" class="text-900  label-checkbox">Total Price <i class="fa fa-dollar-sign"></i> </label>
+                                    <input type="text" value="0" id="total-price" class="un-clickable border w-fu">
+                                </div>
+
+                                <div class="total-products">
+                                    <label for="total-products" class="text-900  label-checkbox">Total Products <i class="fa fa-tags"></i> </label>
+                                    <input type="text" value="0" id="total-products" class="un-clickable border w-fu">
+                                </div>
+                            </div>
+
                         </span>
 
 

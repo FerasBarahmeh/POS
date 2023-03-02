@@ -294,7 +294,13 @@ function createRow(details) {
         let count = 0;
         for (const detailKey of details[detailsKey]) {
             let td = document.createElement("td");
-            if (count === 0) td.setAttribute("no-repeat", '');
+            if (count === 0) {
+                if (detailsKey === "transactionParty") {
+                    td.setAttribute("no-change", '');
+                } else if (detailsKey === "involves") {
+                    td.setAttribute("no-repeat", '');
+                }
+            }
             count++;
             td.setAttribute("infoTo", detailsKey);
 
@@ -371,26 +377,52 @@ function checkIfValidInvolves(tBody, details, newRow) {
         const trs = tBody.querySelectorAll("tr");
 
         let content = [];
+        let noChange = [];
         trs.forEach(tr => {
-           if (! tr.classList.contains("img")) {
-               tr.querySelectorAll("[no-repeat]").forEach(td => {
-                  content.push(td.textContent);
-               });
-           }
+            if (! tr.classList.contains("img")) {
+                tr.querySelectorAll("[no-repeat]").forEach(td => {
+                    content.push(td.textContent);
+                });
+                tr.querySelectorAll("[no-change]").forEach(td => {
+                    noChange.push(td.textContent);
+                });
+            }
         });
 
 
         noRepeatedTd.forEach(td => {
-           if (content.includes(td.textContent)) {
-               flag = false;
-               flashMessage("danger", `Can't repeat ${td.textContent}`, 5000);
-           }
+            if (content.includes(td.textContent)) {
+                flag = false;
+                flashMessage("danger", `Can't repeat ${td.textContent}`, 5000);
+            }
+            console.log(noChange)
+
+            if (noChange[0] !== newRow.querySelector("[no-change]").textContent) {
+                flag = false;
+                flashMessage("danger", `Can't change client in the same involves`, 5000);
+            }
         });
     } else {
         tBody.querySelector(".img").classList.add("hidden");
     }
 
     return flag;
+}
+function changeTotalPrice(involves) {
+    const inputTotalPrice = document.getElementById("total-price");
+
+    let sellPrice = null;
+
+    for (const involvesKey in involves) {
+
+        if (involves[involvesKey][0] ===  "SellPrice") {
+            let newValue = +inputTotalPrice.value + involves[involvesKey][1];
+            inputTotalPrice.value = '';
+
+            inputTotalPrice.value = newValue.toString();
+            break;
+        }
+    }
 }
 const addToCartButton = document.getElementById("add-to-cart-button");
 const cartTable = document.querySelector(".products-carts-table");
@@ -409,6 +441,7 @@ addToCartButton.addEventListener("click", () => {
             tBodyCartTable.appendChild(newRow);
             emptyInvolvesInputs();
             emptyTransactionPartyInputs();
+            changeTotalPrice(details["involves"]);
         }
 
     } else {
