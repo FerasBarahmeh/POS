@@ -1,10 +1,12 @@
 .container {
-    display: grid;
+    /*display: grid;*/
     height: 100%;
-    grid-template-columns: repeat(1, 1fr);
+    /*grid-template-columns: repeat(1, 1fr);*/
     /*grid-template-rows: 25% 25% auto;*/
-    grid-template-rows: repeat(3, 1fr);
+    /*grid-template-rows: repeat(3, 1fr);*/
     margin-top: 14px;
+    display: flex;
+    flex-direction: column;
 }
 .container .row {
     position: relative;
@@ -512,6 +514,9 @@ width: 100%;
     border-radius: 5px;
     box-shadow: 1px 1px 5px #a69d9d;
     margin-bottom: 20px;
+}
+.cart .container-table-products-carts .cart-table-container {
+    overflow-x: scroll;
 }
 .cart .empty-cart-image {
     transition: width .3s ease-in-out;

@@ -337,7 +337,7 @@
 
                 <div class="container-table-products-carts">
                     <h5 class="mb-10 bg p-5 br-3"><i class="fa fa-cart-arrow-down mr-10"></i> Products in Cart</h5>
-                    <section class="carts-table responsive-table flex sort-col">
+                    <section class="cart-table-container responsive-table flex sort-col">
                         <table id="pagination-table" class="pagination-table products-carts-table">
                             <thead>
                             <tr>
