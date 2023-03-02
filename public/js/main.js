@@ -280,7 +280,7 @@ function fetchDataInvolves() {
                     5000);
                 return false;
             }
-            result[to].push( [input.getAttribute("name"), input.value]);
+            result[to].push(JSON.parse(`{"${input.getAttribute("name")}":"${input.value}"   }`));
 
         });
     });
@@ -294,6 +294,7 @@ function createRow(details) {
         let count = 0;
         for (const detailKey of details[detailsKey]) {
             let td = document.createElement("td");
+
             if (count === 0) {
                 if (detailsKey === "transactionParty") {
                     td.setAttribute("no-change", '');
@@ -304,7 +305,7 @@ function createRow(details) {
             count++;
             td.setAttribute("infoTo", detailsKey);
 
-            td.innerHTML = detailKey[1];
+            td.innerHTML = Object.entries(detailKey)[0][1];
             tr.appendChild(td);
         }
     }
@@ -413,7 +414,8 @@ function changeTotalPrice(involves) {
     for (const involvesKey in involves) {
 
         if (involves[involvesKey][0] ===  "SellPrice") {
-            let newValue = parseFloat(inputTotalPrice.value) + parseFloat(involves[involvesKey][1]);
+            // let value
+            let newValue = parseFloat(inputTotalPrice.value) + parseFloat(involves[involvesKey][1] );
             inputTotalPrice.value = '';
 
             inputTotalPrice.value = newValue.toString();
@@ -441,7 +443,7 @@ addToCartButton.addEventListener("click", () => {
             tBodyCartTable.appendChild(newRow);
             emptyInvolvesInputs();
             emptyTransactionPartyInputs();
-            changeTotalPrice(details["involves"]);
+            changeTotalPrice(details["involves"], newRow);
             setNumberProducts(tBodyCartTable);
         }
 
