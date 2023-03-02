@@ -45,12 +45,12 @@
 
         </fieldset>
 
-        <fieldset class="content-row sort-col data-involves" to="client">
+        <fieldset class="content-row sort-col data-involves" to="transactionParty">
             <h5 class="mb-10"><i class="fa fa-database mr-10"></i>Client information</h5>
 
             <div class="inputs flex mt-15 mb-20">
                 <div class="field relative">
-                    <input type="text" name="Name" id="Name"  class="they-fill"
+                    <input type="text" name="Name" id="Name"  class="they-fill" to
                            value="<?= $this->getStorePost("Name") ?>"
                            minlength="2" maxlength="30" required autocomplete="off"  />
 
@@ -265,27 +265,11 @@
                 </div>
 
                 <div class="field relative">
-                    <input type="text" name="BuyPrice" id="BuyPrice"  class="they-fill-product un-clickable"
-                           value="<?= $this->getStorePost("BuyPrice") ?>"
-                           minlength="2" maxlength="30" required autocomplete="off"  />
-
-                    <label for="BuyPrice" > <?= $text_BuyPrice ?></label>
-                </div>
-
-                <div class="field relative">
                     <input type="number" name="QuantityChoose" id="QuantityChoose"  class="they-fill-product"
                            value="<?= $this->getStorePost("QuantityChoose") ?>" step="1"
                            required autocomplete="off"  />
 
                     <label for="QuantityChoose" > <?= $text_QuantityChoose ?></label>
-                </div>
-
-                <div class="field relative">
-                    <input type="number" name="Quantity" id="Quantity"  class="they-fill-product un-clickable"
-                           value="<?= $this->getStorePost("Quantity") ?>" step="1"
-                           required autocomplete="off"  />
-
-                    <label for="Quantity" > <?= $text_Quantity ?></label>
                 </div>
 
                 <div class="field relative">
@@ -328,7 +312,7 @@
 
         </fieldset>
 
-        <button class="add-to-cart-button" id="add-to-cart-button">Add To Cart</button>
+        <button class="add-to-cart-button active"  id="add-to-cart-button">Add To Cart</button>
     </section>
 
 
@@ -372,24 +356,10 @@
                             </thead>
 
                             <tbody>
-                                    <tr class="hidden">
+                                    <tr class="hidden img">
                                         <td><img src="<?= IMG ?>emptyCart.png" class="m-200 empty-cart-image" alt=""></td>
                                     </tr>
-                                    <tr>
-                                        <td>Feras</td>
-                                        <td>feras@f.com</td>
-                                        <td>0785102966</td>
-                                        <td>Zarqa-Jordan</td>
-                                        <td>Samsung A23</td>
-                                        <td>3</td>
-                                        <td>822-562-512</td>
-                                        <td>Piece</td>
-                                        <td>152</td>
-                                        <td>0.6</td>
-                                        <td>
-                                            <button class="danger-color no-bg cursor-pointer" id="remove-td-product"><i class="fa fa-trash"></i></button>
-                                        </td>
-                                    </tr>
+
                             </tbody>
                         </table>
                     </section>
@@ -415,7 +385,7 @@
 
                             <div class="value-discount flex sort-col p-5 mt-10">
                                 <h5 class="mb-10 bg p-5 br-3"><i class="fa fa-solid fa-percent mr-10"></i>Value Discount</h5>
-                                <div class="">
+                                <div class="flex">
                                     <div class="input mb-15 br-5" discount-percentage-input>
                                         <label for="percentage-value" class="label-checkbox">Set Discount Percentage %</label>
                                         <input type="number" min="0" id="percentage-value" name="value-discount" placeholder="Discount Percentage" class="border pl-5" value="0"/>

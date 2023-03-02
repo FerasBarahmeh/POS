@@ -46,8 +46,9 @@ class SalesController extends AbstractController
         if (ClientModel::countRow($columnName, $this->filterInt($_POST["primaryKey"]))) {
             $values = ClientModel::getByPK($this->filterInt($_POST["primaryKey"]));
             $values = get_object_vars($values);
-            $values["result"] = true;
-            $values["message"] = $this->language->get("message_client_exist");
+            $values["result"]   = true;
+            $values["id"]       = $this->filterInt($_POST["primaryKey"]);
+            $values["message"]  = $this->language->get("message_client_exist");
             echo  json_encode($values);
         } else {
             $result = [

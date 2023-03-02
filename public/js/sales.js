@@ -184,6 +184,7 @@ function salesProcess(response, classNameInput) {
     const theyFillInputs = document.querySelectorAll('.' + classNameInput);
     theyFillInputs.forEach(fillInput => {
         fillInput.value =  response[fillInput.name];
+        if (fillInput.hasAttribute("to")) fillInput.setAttribute("to", response["ClientId"]);
         fillInput.parentElement.querySelector("label").classList.add("up");
     });
 }
