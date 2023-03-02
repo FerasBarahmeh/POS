@@ -421,6 +421,9 @@ function changeTotalPrice(involves) {
         }
     }
 }
+function setNumberProducts(table) {
+    document.getElementById("total-products").value = table.children.length - 1; // -1 the row empty image
+}
 const addToCartButton = document.getElementById("add-to-cart-button");
 const cartTable = document.querySelector(".products-carts-table");
 const tBodyCartTable = cartTable.querySelector("tbody");
@@ -439,6 +442,7 @@ addToCartButton.addEventListener("click", () => {
             emptyInvolvesInputs();
             emptyTransactionPartyInputs();
             changeTotalPrice(details["involves"]);
+            setNumberProducts(tBodyCartTable);
         }
 
     } else {
