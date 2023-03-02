@@ -235,13 +235,17 @@ activeAddDiscountSection(
 );
 
 // Remove product from
-
+function removeProductFromCart(button) {
+    button.addEventListener("click", () => {
+        button.closest("tr").remove();
+    });
+}
 const removeTrProducts = document.querySelectorAll("#remove-td-product");
-
 removeTrProducts.forEach(removeTrProduct => {
-    removeTrProduct.addEventListener("click", () => {
-        removeTrProduct.closest("tr").remove();
-   });
+    removeProductFromCart(removeTrProduct);
+    // removeTrProduct.addEventListener("click", () => {
+    //     removeTrProduct.closest("tr").remove();
+   // });
 });
 function addEmptyCartImage(table) {
     const imgEmptyCart = table.querySelector(".empty-cart-image");
@@ -283,6 +287,111 @@ function fetchDataInvolves() {
 
     return result;
 }
+function createRow(details) {
+    let tr = document.createElement("tr");
+
+    for (const detailsKey in details) {
+        let count = 0;
+        for (const detailKey of details[detailsKey]) {
+            let td = document.createElement("td");
+            if (count === 0) td.setAttribute("no-repeat", '');
+            count++;
+            td.setAttribute("infoTo", detailsKey);
+
+            td.innerHTML = detailKey[1];
+            tr.appendChild(td);
+        }
+    }
+    let button = document.createElement("button");
+    button.classList.add("danger-color");
+    button.classList.add("no-bg");
+    button.classList.add("cursor-pointer");
+    button.setAttribute("id", "remove-td-product");
+
+    let i = document.createElement('i');
+    i.classList.add('fa');
+    i.classList.add("fa-trash");
+
+    removeProductFromCart(button);
+    button.appendChild(i);
+
+
+    let td = document.createElement("td");
+    td.appendChild(button);
+    tr.appendChild(td);
+
+
+    return tr;
+}
+function emptyTransactionPartyInputs() {
+    const transactionPartyInputs        = document.querySelector("[to=transactionParty]").querySelectorAll("input");
+    transactionPartyInputs.forEach(input => {
+        input.value = '';
+        input.parentElement.querySelector("label").classList.remove("up");
+    });
+}
+function emptyInvolvesInputs() {
+    const sectionInvolves = document.querySelector("[to=involves]");
+
+    // sectionInvolves.parentElement.querySelector(".img img").src = "\\images\\searchProduct.png\\"
+
+    const involvesInputs  = document.querySelector("[to=involves]").querySelectorAll("input");
+    involvesInputs.forEach(input => {
+        input.value = '';
+        input.parentElement.querySelector("label").classList.remove("up");
+    });
+
+}
+function addToCartButtonActive() {
+    const fieldsSectionOneInputs        = document.querySelector("[to=transactionParty]").querySelectorAll("input");
+    const fieldsSectionTowInputsInputs  = document.querySelector("[to=involves]").querySelectorAll("input");
+
+    let flag = true;
+
+    fieldsSectionOneInputs.forEach(input => {
+       if (input.value === '')  {
+           flag = false;
+       }
+    });
+    fieldsSectionTowInputsInputs.forEach(input => {
+       if (input.value === '')  {
+           flag = false;
+       }
+    });
+
+    return flag;
+
+}
+function checkIfValidInvolves(tBody, details, newRow) {
+
+    let flag = true;
+    const noRepeatedTd = newRow.querySelectorAll("[no-repeat]");
+
+    if (tBody.children.length >= 2) {
+        const trs = tBody.querySelectorAll("tr");
+
+        let content = [];
+        trs.forEach(tr => {
+           if (! tr.classList.contains("img")) {
+               tr.querySelectorAll("[no-repeat]").forEach(td => {
+                  content.push(td.textContent);
+               });
+           }
+        });
+
+
+        noRepeatedTd.forEach(td => {
+           if (content.includes(td.textContent)) {
+               flag = false;
+               flashMessage("danger", `Can't repeat ${td.textContent}`, 5000);
+           }
+        });
+    } else {
+        tBody.querySelector(".img").classList.add("hidden");
+    }
+
+    return flag;
+}
 const addToCartButton = document.getElementById("add-to-cart-button");
 const cartTable = document.querySelector(".products-carts-table");
 const tBodyCartTable = cartTable.querySelector("tbody");
@@ -290,5 +399,20 @@ const tBodyCartTable = cartTable.querySelector("tbody");
 addEmptyCartImage(cartTable)
 
 addToCartButton.addEventListener("click", () => {
-    console.log(fetchDataInvolves() )
+
+    if (addToCartButtonActive(addToCartButton) === true) {
+        const details = fetchDataInvolves();
+
+        const newRow = createRow(details);
+
+        if (checkIfValidInvolves(tBodyCartTable, details, newRow)) {
+            tBodyCartTable.appendChild(newRow);
+            emptyInvolvesInputs();
+            emptyTransactionPartyInputs();
+        }
+
+    } else {
+        flashMessage("warning", "all information is required", 5000);
+    }
+
 });
