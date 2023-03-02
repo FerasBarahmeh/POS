@@ -88,8 +88,8 @@ function createSymbol(type) {
             break;
         case "warning":
             const exclamation = document.createElement('i');
-            exclamation.classList.add("fa-solid");
-            exclamation.classList.add("fa-triangle-exclamation");
+            exclamation.classList.add("fa");
+            exclamation.classList.add("fa-radiation");
             containerSymbol.appendChild(exclamation);
             break;
 
