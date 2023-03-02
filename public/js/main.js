@@ -410,13 +410,10 @@ function checkIfValidInvolves(tBody, details, newRow) {
 }
 function changeTotalPrice(involves) {
     const inputTotalPrice = document.getElementById("total-price");
-
-    let sellPrice = null;
-
     for (const involvesKey in involves) {
 
         if (involves[involvesKey][0] ===  "SellPrice") {
-            let newValue = +inputTotalPrice.value + involves[involvesKey][1];
+            let newValue = parseFloat(inputTotalPrice.value) + parseFloat(involves[involvesKey][1]);
             inputTotalPrice.value = '';
 
             inputTotalPrice.value = newValue.toString();
