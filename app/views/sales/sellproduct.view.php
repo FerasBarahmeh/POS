@@ -366,12 +366,12 @@
                 </div>
 
 
-                <div class="footer-add-invoices flex w-fu">
+                <div class="footer-add-invoices gap-10 flex w-fu">
                     <!-- fingerprint section -->
                     <section class="fingerprint flex-1">
                         <h5 class="mb-10 bg p-5 br-3"><i class="fa fa-thumbs-up mr-10"></i>Finger Point</h5>
                         <div class="discount-section">
-                            <div class="discount-type">
+                            <div class="discount-type flex gap-10">
                                 <div class="input-container">
                                     <input type="checkbox" name="discount-percentage" discount-percentage="percentage"  id="percentage">
                                     <label for="percentage" class="text-900  label-checkbox cursor-pointer ">Discount percentage %</label>
@@ -386,12 +386,12 @@
                             <div class="value-discount flex sort-col p-5 mt-10">
                                 <h5 class="mb-10 bg p-5 br-3"><i class="fa fa-solid fa-percent mr-10"></i>Value Discount</h5>
                                 <div class="flex">
-                                    <div class="input mb-15 br-5" discount-percentage-input>
+                                    <div class="input mb-15 br-5 flex-1" discount-percentage-input>
                                         <label for="percentage-value" class="label-checkbox">Set Discount Percentage %</label>
                                         <input type="number" min="0" id="percentage-value" name="value-discount" placeholder="Discount Percentage" class="border pl-5" value="0"/>
                                     </div>
 
-                                    <div class="input mb-15 br-5" discount-value-input>
+                                    <div class="input mb-15 br-5 flex-1"  discount-value-input>
                                         <label for=value-discount"" class="label-checkbox">Set Discount Value</label>
                                         <input type="number" min="0" id="value-discount" name="value-discount" placeholder="Discount value" class="border pl-5" value="0" />
                                     </div>
@@ -399,8 +399,8 @@
                             </div>
                         </div>
 
-                        <section class="statistics-section flex sort-col mt-15">
-                            <div class="payment flex w-fu">
+                        <section class="statistics-section  flex sort-col mt-15 p-15 border text-900">
+                            <div class="payment flex gap-10 w-fu">
                                 <div class="flex w-fu sort-col">
                                     <label for="payment-type" class="text-900  label-checkbox">Payment Type </label>
                                     <select class="payment-type border mb-5 cursor-pointer" id="payment-type">
@@ -421,20 +421,20 @@
 
                                 </div>
                             </div>
-                            <div class="totals flex gap-10 w-fu">
-                                <div class="mb-15" id="total-price-container">
+                        </section>
+
+                        <section class="flex sort-col mt-15 p-15 border text-900">
+                            <div class="totals flex gap-10 w-fu mb-15">
+                                <div class=" flex-1" id="total-price-container">
                                     <label for="total-price" class="text-900  label-checkbox">Total Price <i class="fa fa-dollar-sign"></i> </label>
                                     <input type="text" value="0" id="total-price" class="un-clickable border w-fu">
                                 </div>
 
-                                <div class="total-products">
+                                <div class="total-products flex-1">
                                     <label for="total-products" class="text-900  label-checkbox">Total Products <i class="fa fa-tags"></i> </label>
                                     <input type="text" value="0" id="total-products" class="un-clickable border w-fu">
                                 </div>
                             </div>
-
-                        </span>
-
 
                         </section>
 
@@ -446,12 +446,12 @@
                                     <b>Feras</b>
                                 </span>
                             </div>
-                    </span>
+                        </span>
 
                         <button class="create-invoices w-fu cursor-pointer">Create Invoices</button>
                     </section>
 
-                    <section class="last-deal-client">Last Deal Client</section>
+                    <section class="last-deal-client flex-1">Last Deal Client</section>
                 </div>
 
             </div>
