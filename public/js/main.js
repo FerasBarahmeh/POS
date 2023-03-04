@@ -386,13 +386,6 @@ function createRow(details) {
 
     return tr;
 }
-function emptyTransactionPartyInputs() {
-    const transactionPartyInputs        = document.querySelector("[to=transactionParty]").querySelectorAll("input");
-    transactionPartyInputs.forEach(input => {
-        input.value = '';
-        input.parentElement.querySelector("label").classList.remove("up");
-    });
-}
 function emptyInvolvesInputs() {
     const involvesInputs  = document.querySelector("[to=involves]").querySelectorAll("input");
     involvesInputs.forEach(input => {
@@ -490,7 +483,6 @@ addToCartButton.addEventListener("click", () => {
         if (checkIfValidInvolves(tBodyCartTable, details, newRow)) {
             tBodyCartTable.appendChild(newRow);
             emptyInvolvesInputs();
-            emptyTransactionPartyInputs();
             changeTotalPrice();
             setNumberProducts(tBodyCartTable);
         }
