@@ -189,20 +189,15 @@ const getMessages = (controller, action, nameFile) => {
  * @param {Object} disabledContainer the input we will un set the value by the type chosen in clicked button
  *
  * */
-function activeAddDiscountSection(activeButton, disabledButton, activeContainer, disabledContainer, to) {
+function activeAddDiscountSection(activeButton, disabledButton, activeContainer, disabledContainer) {
     activeButton.addEventListener("click", (e) => {
-        let prevValueInput = parseFloat(inputTotalPrice.value);
-        let value = 0;
-        if (
-            (activeButton.contains(e.target)
-            || activeButton === e.target)
-            && activeButton.checked === false
-        ) {
+        // TODO: Edit Bugs Herer
+        if ( (activeButton.contains(e.target) || activeButton === e.target) && activeButton.checked === false) {
+
             activeButton.checked = false;
             activeContainer.classList.remove("active");
-            value = activeContainer.querySelector("input").value
             activeContainer.querySelector("input").value = '0';
-
+            inputTotalPrice.value = currentPrice;
         } else {
             activeContainer.classList.add("active");
             activeContainer.querySelector("input").focus();
@@ -210,46 +205,27 @@ function activeAddDiscountSection(activeButton, disabledButton, activeContainer,
             // remove all active inputs containers
             disabledButton.checked = false;
             disabledContainer.classList.remove("active");
-            value = disabledContainer.querySelector("input").value
             disabledContainer.querySelector("input").value = '0';
-
+            inputTotalPrice.value = currentPrice;
         }
-
-        // TODO: Edit Bug
-        if (disabledButton.hasAttribute("discount-value")) {
-            inputTotalPrice.value = '';
-            inputTotalPrice.value = prevValueInput + parseFloat(value);
-        } else if(disabledButton.hasAttribute("discount-percentage")) {
-            inputTotalPrice.value = '';
-            if (parseFloat(value) <= 0)
-                inputTotalPrice.value = prevValueInput;
-            else
-                inputTotalPrice.value = prevValueInput /  parseFloat(value) * 100;
-        }
-
     });
 }
-function calcDiscountTotalPrice(currentValue, price) {
-    let discount = 0;
+function calcDiscountTotalPrice(price) {
+    let discount;
     if (ifSetDiscount()) {
 
         discount = inputContainerDiscountPercentage.querySelector("input");
         if (parseFloat(discount.value) > 0) {
-            price -= price * parseFloat(discount.value) / 100;
-            price = price <= 0 || discount.value === '' ? 0 : price + currentValue;
-            // discount.value = '0';
-            // discount.classList.remove("active");
-            // inputContainerDiscountPercentage.classList.remove("active");
+            price -= price * discount.value / 100;
+            price = price <= 0 || discount.value === '' ? 0 : price;
         }
         discount = inputContainerValuePercentage.querySelector("input");
         if (parseFloat(discount.value) > 0) {
             price -= parseFloat(discount.value);
-            price = price <= 0 || discount.value === '' ? 0 : price + currentValue;
-            // discount.classList.remove("active");
-            // discount.value = '0';
-            // inputContainerValuePercentage.classList.remove("active");
+            price = price <= 0 || discount.value === '' ? 0 : price;
         }
     }
+
     return price;
 }
 const discountPercentageButton  = document.querySelector("[discount-percentage=percentage]");
@@ -264,7 +240,6 @@ activeAddDiscountSection(
     discountValueButton,
     inputContainerDiscountPercentage,
     inputContainerValuePercentage,
-    "percentage"
 );
 
 // Active Value Discount
@@ -273,7 +248,6 @@ activeAddDiscountSection(
     discountPercentageButton,
     inputContainerValuePercentage,
     inputContainerDiscountPercentage,
-    "value"
 );
 
 function fetchPriceCard() {
@@ -281,19 +255,22 @@ function fetchPriceCard() {
     let sellPrice = 0;
     let tax = 0;
     let quantity = 0;
-
-    let currentValue = inputTotalPrice.value;
+    let price = 0;
 
     if (rows.length > 1) { //  1 is image row
         rows.forEach(row => {
-
             if (! row.classList.contains("img")) {
                 let tds = row.querySelectorAll("td");
                 tds.forEach(td => {
-                    if (td.hasAttribute("sellprice")) sellPrice = td.getAttribute("sellprice");
-                    if (td.hasAttribute("tax")) tax = td.getAttribute("tax");
-                    if (td.hasAttribute("quantitychoose")) quantity = td.getAttribute("quantitychoose");
+                    if (td.hasAttribute("sellprice"))
+                        sellPrice = parseFloat(td.getAttribute("sellprice"));
+                    if (td.hasAttribute("tax"))
+                        tax = parseFloat(td.getAttribute("tax"));
+                    if (td.hasAttribute("quantitychoose"))
+                        quantity = parseFloat(td.getAttribute("quantitychoose"));
                 });
+                price += ((sellPrice * quantity) + (tax * sellPrice));
+                quantity = 0; tax = 0; sellPrice = 0;
             }
         });
 
@@ -301,11 +278,7 @@ function fetchPriceCard() {
         flashMessage("warning", "No products in cart", 5000);
     }
 
-    let price = ((sellPrice * quantity) + (tax * sellPrice));
-
-    price = calcDiscountTotalPrice(currentValue, price);
-    console.log(price)
-    return price;
+    return calcDiscountTotalPrice(price);
 }
 function liveCalculateDiscountPercentage() {
     inputContainerDiscountPercentage.querySelector("input").addEventListener("input", (e) => {
@@ -354,7 +327,6 @@ function fetchDataInvolves() {
 
         const inputs = dataInvolve.querySelectorAll("input");
         inputs.forEach(input => {
-
             if (input.value === '' ){
                 flashMessage("danger",
                     `Can't filed <b class="bold-font"> ${input.getAttribute("name")}</b> Be Empty Filed`,
@@ -422,10 +394,6 @@ function emptyTransactionPartyInputs() {
     });
 }
 function emptyInvolvesInputs() {
-    const sectionInvolves = document.querySelector("[to=involves]");
-
-    // sectionInvolves.parentElement.querySelector(".img img").src = "\\images\\searchProduct.png\\"
-
     const involvesInputs  = document.querySelector("[to=involves]").querySelectorAll("input");
     involvesInputs.forEach(input => {
         input.value = '';
@@ -480,7 +448,6 @@ function checkIfValidInvolves(tBody, details, newRow) {
                 flag = false;
                 flashMessage("danger", `Can't repeat ${td.textContent}`, 5000);
             }
-            console.log(noChange)
 
             if (noChange[0] !== newRow.querySelector("[no-change]").textContent) {
                 flag = false;
@@ -496,39 +463,12 @@ function checkIfValidInvolves(tBody, details, newRow) {
 function ifSetDiscount() {
     return discountPercentageButton.checked === true || discountValueButton.checked === true;
 }
-function getInfoTransaction(involves) {
-    let info = {};
-    for (const involvesKey in involves) {
-        let key = Object.keys(involves[involvesKey]);
-
-        if (key[0] ===  "SellPrice") {
-            info["SellPrice"] = parseFloat(involves[involvesKey]["SellPrice"]);
-        }
-        if (key[0] ===  "Tax") {
-            info["Tax"] =  parseFloat(involves[involvesKey]["Tax"]);
-        }
-        if (key[0] ===  "QuantityChoose") {
-            info["Quantity"] = parseFloat(involves[involvesKey]["QuantityChoose"]);
-        }
-    }
-
-    return info;
-
+function setCurrentPrice() {
+    currentPrice = fetchPriceCard();
 }
-function changeTotalPrice(involves) {
-
-
-
-    let data = getInfoTransaction(involves);
-
-    let sellPrice   = data["SellPrice"];
-    let salesTaxRate = data["Tax"];
-    let quantity    = data["Quantity"];
-
-    let currentValue = parseFloat(inputTotalPrice.value);
-    let price = ((sellPrice * quantity) + (salesTaxRate * sellPrice));
-    price = calcDiscountTotalPrice(currentValue, price);
-    inputTotalPrice.value = price;
+function changeTotalPrice() {
+    setCurrentPrice();
+    inputTotalPrice.value = currentPrice.toString();
 }
 function setNumberProducts(table) {
     document.getElementById("total-products").value = table.children.length - 1; // -1 the row empty image
@@ -537,6 +477,7 @@ const addToCartButton = document.getElementById("add-to-cart-button");
 const cartTable = document.querySelector(".products-carts-table");
 const tBodyCartTable = cartTable.querySelector("tbody");
 const inputTotalPrice = document.getElementById("total-price");
+let currentPrice = 0;
 addEmptyCartImage(cartTable)
 
 addToCartButton.addEventListener("click", () => {
@@ -550,7 +491,7 @@ addToCartButton.addEventListener("click", () => {
             tBodyCartTable.appendChild(newRow);
             emptyInvolvesInputs();
             emptyTransactionPartyInputs();
-            changeTotalPrice(details["involves"], newRow);
+            changeTotalPrice();
             setNumberProducts(tBodyCartTable);
         }
 
