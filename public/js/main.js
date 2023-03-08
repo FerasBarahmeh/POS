@@ -191,13 +191,12 @@ const getMessages = (controller, action, nameFile) => {
  * */
 function activeAddDiscountSection(activeButton, disabledButton, activeContainer, disabledContainer) {
     activeButton.addEventListener("click", (e) => {
-        // TODO: Edit Bugs Herer
-        if ( (activeButton.contains(e.target) || activeButton === e.target) && activeButton.checked === false) {
+        if (activeButton.contains(e.target) && activeButton.checked === false) {
 
             activeButton.checked = false;
             activeContainer.classList.remove("active");
             activeContainer.querySelector("input").value = '0';
-            inputTotalPrice.value = currentPrice;
+            inputTotalPrice.value = fetchPriceCard();
         } else {
             activeContainer.classList.add("active");
             activeContainer.querySelector("input").focus();
@@ -206,7 +205,7 @@ function activeAddDiscountSection(activeButton, disabledButton, activeContainer,
             disabledButton.checked = false;
             disabledContainer.classList.remove("active");
             disabledContainer.querySelector("input").value = '0';
-            inputTotalPrice.value = currentPrice;
+            inputTotalPrice.value = fetchPriceCard();
         }
     });
 }
