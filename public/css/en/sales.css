@@ -577,6 +577,9 @@ width: 100%;
     background-color: var(--bg-black-900);
     color: var(--text-black-30);
     border-radius: 4px;
+    max-width: 200px;
+    padding: 7px 15px;
+    float: right;
 }
 .create-invoices:hover {
     background-color: var(--bg-black-70);
@@ -584,3 +587,66 @@ width: 100%;
 }
 /* End Cart Section */
 
+/* Start confirm add invoice */
+.confirm-create-invoice {
+    min-width: 200px;
+    width: 30%;
+    min-height: 150px;
+    z-index: 100;
+    position: fixed;
+    background-color: #000000a8;
+    transition: all .3s ease-in-out;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: -50%;
+    border-radius: 4px;
+    padding: 15px;
+}
+.confirm-create-invoice.active {
+    left: 50%;
+}
+.confirm-create-invoice .input {
+    display: flex;
+    justify-content: space-around;
+    z-index: 100;
+    margin: 10px 0;
+    padding: 0 5px;
+    border-radius: 5px;
+    transition: all .3s ease-in-out;
+    flex-direction: column;
+    text-align: left;
+    place-items: flex-end;
+
+}
+.confirm-create-invoice input {
+    width: 100%;
+    padding: 10px 0 10px 10px;
+    background-color: var(--bg-black-900);
+    border: 2px solid var(--bg-black-100);
+    margin-top: 5px;
+    border-radius: 5px;
+    color: var(--text-black-30);
+}
+.confirm-create-invoice input:focus {
+    border-color: var(--bg-black-30);
+}
+.confirm-create-invoice label {
+    width: 100%;
+    text-align: left;
+    color: var(--text-black-30);
+    font-size: 15px;
+}
+.confirm-create-invoice button {
+    cursor: pointer;
+    padding: 3px 4px;
+    border-radius: 4px;
+    color: var(--bg-black-900);
+    background-color: var(--bg-black-30);
+    user-select: none;
+    margin-left: 10px;
+    float: right;
+}
+.confirm-create-invoice button:hover {
+    background-color: var(--bg-black-50);
+}
+/* End confirm add invoice */

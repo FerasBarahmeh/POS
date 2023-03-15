@@ -443,12 +443,12 @@
                                 <i class="fa fa-pen-nib mr-10"></i>
                                 Created By
                                 <span class="name">
-                                    <b>Feras</b>
+                                    <b><?= $this->session->user->extraUserInfo->FirstName ?> <?= $this->session->user->extraUserInfo->LastName ?></b>
                                 </span>
                             </div>
                         </span>
 
-                        <button class="create-invoices w-fu cursor-pointer">Create Invoices</button>
+                        <button class="create-invoices w-fu cursor-pointer" id="create-invoice-button">Create Invoice</button>
                     </section>
 
                     <section class="last-deal-client flex-1">Last Deal Client</section>
@@ -459,32 +459,18 @@
         </section>
 
     </section>
-
+    <div class="confirm-create-invoice" id="confirm-container">
+        <div class="input">
+            <label for="create-invoice-checker-username">Username To confirm</label>
+            <input type="text" id="create-invoice-checker-username" placeholder="Enter your username to confirm create invoice">
+        </div>
+        <div class="input">
+            <label for="create-invoice-checker-password">password To confirm</label>
+            <input type="password" id="create-invoice-checker-password" placeholder="Enter your password to confirm create invoice">
+        </div>
+        <div class="message"></div>
+        <button class="confirm" id="confirm-procedure">Confirm Procedure</button>
+    </div>
 </div>
 
 <?= $this->flashMessage()  ?>
-
-
-
-
-<!-- Show Client Info -->
-<div class="container-table-popup" id="container-table-popup">
-    <div class="table container-table">
-        <button id="remove-container-table-popup">&times;</button>
-        <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-                <td>Play Station 4</td>
-                <td>Image Pic</td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>

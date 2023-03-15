@@ -11,6 +11,7 @@ use APP\LIB\Template\Units;
 use APP\Models\ClientModel;
 use APP\Models\ProductCategoriesModel;
 use APP\Models\ProductModel;
+use APP\Models\UserModel;
 use function APP\pr;
 
 class SalesController extends AbstractController
@@ -141,19 +142,55 @@ class SalesController extends AbstractController
         }
 
     }
-    private function getAppropriateMessageProduct($nameFile, $post)
+    private function getAppropriateMessageProduct($nameFile, $nameMessage)
+    {
+        $this->language->load($nameFile);
+        return $this->language->get($nameMessage);
+    }
+
+    private function addInvoice()
+    {
+        echo json_encode([
+           "message" => $this->language->get("message_success_user"),
+            "result" => true
+        ]);
+    }
+    public function checkIfHasPrivilegeUserAjaxAction()
     {
 
-        $this->language->load($nameFile);
-        $message = null;
+        if (! empty($_POST)) {
+            $namePost = $this->filterStr($_POST["UserName"]);
+            $userExist = UserModel::count("UserName", $this->filterStr($_POST["UserName"]));
+            
+            $password = crypt($this->filterStr($_POST["Password"]), MAIN_SALT);
 
-        switch ($post["name"]) {
-            case "Name":
-                $message = $this->language->get("message_product_not_exist");
-                break;
+            $this->language->load("sales.messages");
+            if ($this->session->user->UserName !== $namePost || $userExist === false ) {
+
+                $message = $this->language->feedKey(
+                    "message_user_cannot_create_invoice",
+                    [$namePost]);
+                $message .= " <b class='bold-font'>OR</b> " . $this->language->feedKey(
+                        "message_user_not_found",
+                        [$namePost]);
+                echo json_encode([
+                    "message" => $message,
+                    "result" => false
+                ]);
+                
+            } elseif ($this->session->user->Password != $password) {
+                $message = $this->language->get("message_un_valid_password");
+                echo json_encode([
+                    "message" => $message,
+                    "result" => false,
+                ]);
+            } else {
+                // prepare To Add invoice
+                $this->addInvoice();
+            }
+
         }
 
-        return $message;
     }
 
     public function getInfoProductAjaxAction()
@@ -162,7 +199,7 @@ class SalesController extends AbstractController
             if ($this->filterInt($_POST["primaryKey"]) == null) {
                 $this->language->load("sales.messages");
 
-                $message = $this->getAppropriateMessageProduct("sales.messages", $_POST);
+                $message = $this->getAppropriateMessageProduct("sales.messages", "message_product_not_exist");
                 echo json_encode([
                     "result" => false,
                     "message" => $message,
@@ -174,7 +211,6 @@ class SalesController extends AbstractController
 
         }
     }
-
     public function getMessagesAjaxAction()
     {
         $this->language->load($_POST["nameFile"]);
