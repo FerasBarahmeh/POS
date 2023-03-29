@@ -50,3 +50,5 @@ $content["text_nav_barcode"]          = "Barcode";
 $content["text_nav_tax"]          = "Tax";
 $content["text_nav_sell_price"]          = "Sell Price";
 
+// Buttons
+$content["button_add_to_cart"]          = "Add To cart";

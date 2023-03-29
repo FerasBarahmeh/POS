@@ -49,6 +49,7 @@
             <h5 class="mb-10"><i class="fa fa-database mr-10"></i>Client information</h5>
 
             <div class="inputs flex mt-15 mb-20">
+
                 <div class="field relative">
                     <input type="text" name="Name" id="Name"  class="they-fill" to no-change
                            value="<?= $this->getStorePost("Name") ?>"
@@ -256,7 +257,7 @@
 
             <div class="inputs flex mt-15 mb-20">
                 <div class="field relative">
-                    <input type="text" name="Name" id="Name"  class="they-fill-product un-clickable" no-repeat
+                    <input type="text" name="Name" id="NameProduct"  class="they-fill-product un-clickable" no-repeat
                            value="<?= $this->getStorePost("NameProduct") ?>"
                            minlength="2" maxlength="30" required autocomplete="off"  />
 
@@ -312,7 +313,7 @@
 
         </fieldset>
 
-        <button class="add-to-cart-button active"  id="add-to-cart-button">Add To Cart</button>
+        <button class="add-to-cart-button active"  id="add-to-cart-button"><?= $button_add_to_cart ?></button>
     </section>
 
 
@@ -369,7 +370,7 @@
                 <div class="footer-add-invoices gap-10 flex w-fu">
                     <!-- fingerprint section -->
                     <section class="fingerprint flex-1">
-                        <h5 class="mb-10 bg p-5 br-3"><i class="fa fa-thumbs-up mr-10"></i>Finger Point</h5>
+                        <h5 class="mb-10 bg p-5 br-3"><i class="fa fa-thumbs-up mr-10"></i>Details  Invoice</h5>
                         <div class="discount-section">
                             <div class="discount-type flex gap-10">
                                 <div class="input-container">
@@ -392,7 +393,7 @@
                                     </div>
 
                                     <div class="input mb-15 br-5 flex-1"  discount-value-input>
-                                        <label for=value-discount"" class="label-checkbox">Set Discount Value</label>
+                                        <label for=value"" class="label-checkbox">Set Discount Value</label>
                                         <input type="number" min="0" id="value-discount" name="value-discount" placeholder="Discount value" class="border pl-5" value="0" />
                                     </div>
                                 </div>
@@ -448,7 +449,7 @@
                             </div>
                         </span>
 
-                        <button class="create-invoices w-fu cursor-pointer" id="create-invoice-button">Create Invoice</button>
+                        <button class="create-invoices w-fu cursor-pointer active" id="create-invoice-button">Create Invoice</button>
                     </section>
 
                     <section class="last-deal-client flex-1">Last Deal Client</section>
@@ -462,11 +463,11 @@
     <div class="confirm-create-invoice" id="confirm-container">
         <div class="input">
             <label for="create-invoice-checker-username">Username To confirm</label>
-            <input type="text" id="create-invoice-checker-username" placeholder="Enter your username to confirm create invoice">
+            <input type="text" id="create-invoice-checker-username" value="bnzz" placeholder="Enter your username to confirm create invoice">
         </div>
         <div class="input">
             <label for="create-invoice-checker-password">password To confirm</label>
-            <input type="password" id="create-invoice-checker-password" placeholder="Enter your password to confirm create invoice">
+            <input type="password" id="create-invoice-checker-password" value="1234567" placeholder="Enter your password to confirm create invoice">
         </div>
         <div class="message"></div>
         <button class="confirm" id="confirm-procedure">Confirm Procedure</button>

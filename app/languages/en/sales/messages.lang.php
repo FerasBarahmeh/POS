@@ -22,3 +22,4 @@ $content["message_user_cannot_create_invoice"]  = "User <b class='bold-font'>%s<
 $content["message_user_not_found"]              = "Can't found <b class='bold-font'>%s</b> Username";
 $content["message_un_valid_password"]           = "Un Valid Password";
 $content["message_success_user"]                = "An invoice is being created";
+$content["message_no_products_in_cart"]                = "No products in cart";

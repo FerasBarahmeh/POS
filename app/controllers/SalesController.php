@@ -9,10 +9,8 @@ use APP\LIB\FilterInput;
 use APP\LIB\Template\TemplateHelper;
 use APP\LIB\Template\Units;
 use APP\Models\ClientModel;
-use APP\Models\ProductCategoriesModel;
 use APP\Models\ProductModel;
 use APP\Models\UserModel;
-use function APP\pr;
 
 class SalesController extends AbstractController
 {
@@ -180,6 +178,12 @@ class SalesController extends AbstractController
                 
             } elseif ($this->session->user->Password != $password) {
                 $message = $this->language->get("message_un_valid_password");
+                echo json_encode([
+                    "message" => $message,
+                    "result" => false,
+                ]);
+            } elseif ($this->filterInt($_POST["numProducts"]) < 1) {
+                $message = $this->language->get("message_no_products_in_cart");
                 echo json_encode([
                     "message" => $message,
                     "result" => false,

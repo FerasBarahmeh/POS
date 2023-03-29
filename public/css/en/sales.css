@@ -574,16 +574,19 @@ width: 100%;
 }
 .create-invoices {
     cursor: pointer;
-    background-color: var(--bg-black-900);
-    color: var(--text-black-30);
+    background-color: var(--bg-black-70);
+    color: var(--text-black-900);
     border-radius: 4px;
     max-width: 200px;
     padding: 7px 15px;
     float: right;
+
+    pointer-events: none;
 }
-.create-invoices:hover {
-    background-color: var(--bg-black-70);
-    color: var(--text-black-900);
+.create-invoices.active {
+    background-color: var(--bg-black-900);
+    color: var(--text-black-30);
+    pointer-events: auto;
 }
 /* End Cart Section */
 

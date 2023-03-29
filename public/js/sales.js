@@ -1,6 +1,6 @@
 
 const searchInputs = document.querySelectorAll(".input-container .search-input");
-
+let clientId = null;
 function whenFocusInput(input, label, ul) {
     input.onfocus = function () {
 
@@ -136,6 +136,7 @@ function whenClickInButtonSearch(input, fetchButton, lis, label, nameClassInputs
 function whenClickLis(lis, input, ul, fetchButton) {
     lis.forEach(li => {
         li.addEventListener("click", () => {
+            clientId = li.getAttribute("primarykey");
             input.value = li.textContent;
             ul.classList.remove("active");
             fetchButton.classList.add("active");
@@ -479,11 +480,11 @@ document.addEventListener("click", (e) => {
 function activeAddDiscountSection(activeButton, disabledButton, activeContainer, disabledContainer) {
     activeButton.addEventListener("click", (e) => {
         if (activeButton.contains(e.target) && activeButton.checked === false) {
-
             activeButton.checked = false;
             activeContainer.classList.remove("active");
             activeContainer.querySelector("input").value = '0';
             inputTotalPrice.value = fetchPriceCard();
+            discountType = null;
         } else {
             activeContainer.classList.add("active");
             activeContainer.querySelector("input").focus();
@@ -493,6 +494,8 @@ function activeAddDiscountSection(activeButton, disabledButton, activeContainer,
             disabledContainer.classList.remove("active");
             disabledContainer.querySelector("input").value = '0';
             inputTotalPrice.value = fetchPriceCard();
+            discountType = activeButton.getAttribute("id");
+            discountType = discountType.split('-')[0];
         }
     });
 }
@@ -501,15 +504,21 @@ function calcDiscountTotalPrice(price) {
     if (ifSetDiscount()) {
 
         discount = inputContainerDiscountPercentage.querySelector("input");
+
         if (parseFloat(discount.value) > 0) {
             price -= price * discount.value / 100;
             price = price <= 0 || discount.value === '' ? 0 : price;
+            discountValue = discount.value;
         }
         discount = inputContainerValuePercentage.querySelector("input");
         if (parseFloat(discount.value) > 0) {
             price -= parseFloat(discount.value);
             price = price <= 0 || discount.value === '' ? 0 : price;
+            discountValue = discount.value;
         }
+
+    } else {
+        discountValue = 0;
     }
 
     return price;
@@ -562,6 +571,7 @@ function fetchPriceCard() {
 
     } else {
         flashMessage("warning", "No products in cart", 5000);
+        return false;
     }
 
     return calcDiscountTotalPrice(price);
@@ -577,10 +587,25 @@ function liveCalculateDiscountPercentage() {
     });
 }
 liveCalculateDiscountPercentage();
-// Remove product from
+
 function removeProductFromCart(button) {
     button.addEventListener("click", () => {
-        button.closest("tr").remove();
+        let tr = button.closest("tr");
+        tr.remove();
+        if (tBodyCartTable.children.length <= 1) {
+            activateCreateInvoiceButton(false);
+        }
+
+        // remove info product from details invoice
+        let newPrice = fetchPriceCard();
+        if (! newPrice) {
+            inputTotalPrice.value = '0';
+        } else {
+            inputTotalPrice.value = '';
+            inputTotalPrice.value = ! newPrice ? 0 : newPrice;
+        }
+
+        setNumberProducts(tBodyCartTable);
     });
 }
 const removeTrProducts = document.querySelectorAll("#remove-td-product");
@@ -752,25 +777,42 @@ function changeTotalPrice() {
 function setNumberProducts(table) {
     document.getElementById("total-products").value = table.children.length - 1; // -1 the row empty image
 }
+function activateCreateInvoiceButton(flag=true) {
+    if (flag) {
+        createInvoiceButton.classList.add("active");
+    } else {
+        createInvoiceButton.classList.remove("active");
+    }
+}
 const addToCartButton = document.getElementById("add-to-cart-button");
 const cartTable = document.querySelector(".products-carts-table");
 const tBodyCartTable = cartTable.querySelector("tbody");
+var productsCart = tBodyCartTable.querySelectorAll("tr");
 const inputTotalPrice = document.getElementById("total-price");
 let currentPrice = 0;
+let details = null;
+let products = [];
+let clientInfo = null;
+let generalInfo = {};
+let discountType = null;
+let discountValue = 0;
 addEmptyCartImage(cartTable)
 
 addToCartButton.addEventListener("click", () => {
 
     if (addToCartButtonActive(addToCartButton) === true) {
-        const details = fetchDataInvolves();
-
+        details = fetchDataInvolves();
+        products.push(details["involves"]);
+        clientInfo = details["transactionParty"];
         const newRow = createRow(details);
 
         if (checkIfValidInvolves(tBodyCartTable, details, newRow)) {
             tBodyCartTable.appendChild(newRow);
+            productsCart = tBodyCartTable.querySelectorAll("tr");
             emptyInvolvesInputs();
             changeTotalPrice();
             setNumberProducts(tBodyCartTable);
+            activateCreateInvoiceButton();
         }
 
     } else {
@@ -780,6 +822,33 @@ addToCartButton.addEventListener("click", () => {
 });
 
 // Create Invoices
+function getPaymentTypeValue() {
+    let select = document.getElementById("payment-type");
+    return select.options[select.selectedIndex].value;
+}
+function getPaymentTypeName() {
+    let select = document.getElementById("payment-type");
+    return select.options[select.selectedIndex].textContent;
+}
+function getPaymentStatusValue() {
+    let select = document.getElementById("payment-status");
+    return select.options[select.selectedIndex].value;
+}
+function getPaymentStatusName() {
+    let select = document.getElementById("payment-status");
+    return select.options[select.selectedIndex].textContent;
+}
+
+function prepareInvoiceInfo() {
+    clientInfo.push({"id": clientId});
+    generalInfo.typePaymentValue = getPaymentTypeValue();
+    generalInfo.typePaymentName = getPaymentTypeName();
+    generalInfo.statusPaymentValue = getPaymentStatusValue();
+    generalInfo.statusPaymentName = getPaymentStatusName();
+    generalInfo.discountType = discountType;
+    generalInfo.discount = discountValue;
+    generalInfo.productsNum = products.length;
+}
 function isHasPrivilege(controller, action, username, password) {
     const xmlRequest = new XMLHttpRequest();
 
@@ -791,6 +860,7 @@ function isHasPrivilege(controller, action, username, password) {
             } else if(request.result === true) {
                 flashMessage("success", request.message, 5000);
                 confirmContainer.classList.remove("active");
+                prepareInvoiceInfo();
             }
         }
     };
@@ -800,7 +870,7 @@ function isHasPrivilege(controller, action, username, password) {
         "Content-Type",
         "application/x-www-form-urlencoded"
     );
-    xmlRequest.send(`UserName=${username}&Password=${password}`);
+    xmlRequest.send(`UserName=${username}&Password=${password}&numProducts=${productsCart.length}`);
 }
 function checkIfStatusConfirmProcedureButton(confirmProcedureButton, inputUsernameConfirmProcedure, inputPasswordConfirmProcedure) {
     confirmProcedureButton.style.pointerEvents = "none";
@@ -826,6 +896,8 @@ const inputPasswordConfirmProcedure = document.getElementById("create-invoice-ch
 const confirmProcedureButton = document.getElementById("confirm-procedure");
 createInvoiceButton.addEventListener("click", () => {
     confirmContainer.classList.toggle("active");
+    // focus First input
+    inputUsernameConfirmProcedure.focus();
 });
 document.addEventListener("click", (e) => {
     if (! confirmContainer.contains(e.target) && ! createInvoiceButton.contains(e.target) && ! confirmProcedureButton.contains(e.target)) {
@@ -839,11 +911,15 @@ confirmProcedureButton.addEventListener("click", () => {
     } else if (inputPasswordConfirmProcedure.value === '' && inputUsernameConfirmProcedure.value !== '') {
         flashMessage("warning", "Can't Set Empty password", 5000);
     } else {
-        // Check if password and user has privilege create invoice
-        isHasPrivilege(
-            "sales",
-            "checkIfHasPrivilegeUserAjax",
-            inputUsernameConfirmProcedure.value,
-            inputPasswordConfirmProcedure.value)
+        if (details == null) {
+            flashMessage("warning", "No Products in carts", 5000);
+        } else {
+            // Check if password and user has privilege create invoice
+            isHasPrivilege(
+                "sales",
+                "checkIfHasPrivilegeUserAjax",
+                inputUsernameConfirmProcedure.value,
+                inputPasswordConfirmProcedure.value);
+        }
     }
 });
