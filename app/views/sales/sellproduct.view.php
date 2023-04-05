@@ -16,7 +16,7 @@
                     <ul class="search-ul">
                         <?php
                         foreach ($clients as $client) {
-                            ?> <li class="active" primaryKey="<?= $client->ClientId ?>"><?= $client->Name ?></li> <?php
+                            ?> <li class="active" primaryKey="<?= $client->ClientId ?>" ClientId="<?= $client->ClientId ?>"><?= $client->Name ?></li> <?php
                         }
                         ?>
                     </ul>

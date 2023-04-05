@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2023 at 01:46 PM
+-- Generation Time: Apr 05, 2023 at 03:21 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -114,9 +114,10 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`, `Tax`, `Status`, `Description`, `Rating`) VALUES
 (1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 501, '350.000', '1589456982', 5, '400.000', '0.50', 1, NULL, NULL),
 (3, 3, 'Fan', '2bf21fc83f5bbb2e7a58a9f7cf7c40.png', 1000, '15.000', '0124585292462', 5, '20.000', '0.00', 2, NULL, NULL),
-(4, 4, 'HP PAVILION', 'c20820aa680e5e28f6950ee120ac35.jpg', 250, '500.000', '12458796315', 5, '580.000', '0.20', 1, 'Gaming Laptop', NULL),
+(4, 4, 'HP PAVILION', 'c20820aa680e5e28f6950ee120ac35.jpg', 250, '400.000', '12458796315', 5, '500.000', '0.50', 1, 'Gaming Laptop', NULL),
 (5, 5, 'SAMSUNG A23', '548017a53025b5abb1f8a3c2c47099.jpg', 230, '150.000', '0452862685', 5, '180.000', '0.20', 1, '', NULL),
-(6, 5, 'Huawel Y9s', '80db229b10e160f2fa86c575ad5e15.jpeg', 100, '150.000', '0129256', 5, '180.000', '0.40', 1, 'New Phone From Huawel', NULL);
+(6, 5, 'Huawel Y9s', '80db229b10e160f2fa86c575ad5e15.jpeg', 100, '150.000', '0129256', 5, '180.000', '0.40', 1, 'New Phone From Huawel', NULL),
+(7, 2, 'Call of Duty', 'ceee04be9ed528ee0bb3856ec5c096.jpg', 100, '25.000', '01256512546521', 5, '30.000', '0.20', 2, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -202,9 +203,11 @@ CREATE TABLE `sales_invoices` (
   `ClientId` int(10) UNSIGNED NOT NULL,
   `PaymentType` tinyint(1) NOT NULL,
   `PaymentStatus` tinyint(1) NOT NULL,
-  `Created` date NOT NULL,
+  `Created` datetime NOT NULL,
   `Discount` decimal(8,2) DEFAULT NULL,
-  `UserId` int(10) UNSIGNED NOT NULL
+  `UserId` int(10) UNSIGNED NOT NULL,
+  `DiscountType` enum('percentage','value') DEFAULT NULL,
+  `NumberProducts` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -309,7 +312,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-02-23 11:21:19', 7, '0785102996', 1),
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-04-05 03:14:28', 7, '0785102996', 1),
 (2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-21 14:50:49', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
@@ -380,7 +383,10 @@ INSERT INTO `users_groups_privileges` (`Id`, `GroupId`, `PrivilegeId`) VALUES
 (84, 7, 65),
 (85, 7, 66),
 (86, 7, 67),
-(87, 7, 68);
+(87, 7, 68),
+(88, 7, 69),
+(89, 7, 70),
+(90, 7, 71);
 
 -- --------------------------------------------------------
 
@@ -427,7 +433,10 @@ INSERT INTO `users_privileges` (`PrivilegeId`, `Privilege`, `PrivilegeTitle`) VA
 (65, '/products/default', 'Products'),
 (66, '/products/edit', 'Edit Product'),
 (67, '/products/add', 'Add Product'),
-(68, '/products/delete', 'Delete Product	');
+(68, '/products/delete', 'Delete Product	'),
+(69, '/sales/default', 'Sales'),
+(70, '/sales/sellproduct', 'Sell a product'),
+(71, '/sales/getInfoClientNameAjax', 'ajax ');
 
 --
 -- Indexes for dumped tables
@@ -594,7 +603,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `products_categories`
@@ -666,13 +675,13 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `users_groups_privileges`
 --
 ALTER TABLE `users_groups_privileges`
-  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `users_privileges`
 --
 ALTER TABLE `users_privileges`
-  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- Constraints for dumped tables

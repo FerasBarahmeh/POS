@@ -10,6 +10,7 @@ use APP\LIB\Template\TemplateHelper;
 use APP\LIB\Template\Units;
 use APP\Models\ClientModel;
 use APP\Models\ProductModel;
+use APP\Models\SalesInvoicesModel;
 use APP\Models\UserModel;
 
 class SalesController extends AbstractController
@@ -146,13 +147,52 @@ class SalesController extends AbstractController
         return $this->language->get($nameMessage);
     }
 
-    private function addInvoice()
+    private function removeParenthesesString(string $str): string
     {
-        echo json_encode([
-           "message" => $this->language->get("message_success_user"),
-            "result" => true
-        ]);
+        $cleanStr = "";
+        for ($i = 0; $i < strlen($str); $i++) {
+            if ($str[$i] !== '{' && $str[$i] !== '}' && $str[$i] !== '[' && $str[$i] !== ']') {
+                $cleanStr .= $str[$i];
+            }
+        }
+
+        return $cleanStr;
     }
+    private function addAction($transactionParty, $detailsInvoice)
+    {
+        $invoice = new SalesInvoicesModel();
+        $invoice->ClientId = $transactionParty->id;
+        $invoice->PaymentType = $detailsInvoice->statusPaymentValue;
+        
+        $paymentTypes = $this->getClassValuesProperties(new PaymentStatus());
+        
+        $invoice->PaymentStatus     = $paymentTypes[strtolower($detailsInvoice->statusPaymentName)];
+        $invoice->Created           = date("Y-m-d H:i:s");
+        $invoice->Discount          = $detailsInvoice->discount;
+        $invoice->UserId            = $this->session->user->UserId;
+        $invoice->DiscountType      = $detailsInvoice->discountType;
+        $invoice->NumberProducts    = $detailsInvoice->productsNum;
+
+        $invoice->save();
+    }
+    public function addInvoiceAjaxAction()
+    {
+
+        
+        $transactionParty = $_POST["transactionParty"];
+        $transactionParty = "{" . $this->removeParenthesesString($transactionParty) . "}";
+
+        $transactionParty = json_decode($transactionParty);
+        
+        $detailsInvoice = $_POST["detailsInvoice"];
+
+        $detailsInvoice = json_decode($detailsInvoice);
+
+
+        $this->addAction($transactionParty, $detailsInvoice);
+
+    }
+
     public function checkIfHasPrivilegeUserAjaxAction()
     {
 
@@ -190,7 +230,10 @@ class SalesController extends AbstractController
                 ]);
             } else {
                 // prepare To Add invoice
-                $this->addInvoice();
+                echo json_encode([
+                    "message" => $this->language->get("message_success_user"),
+                    "result" => true
+                ]);
             }
 
         }

@@ -136,7 +136,9 @@ function whenClickInButtonSearch(input, fetchButton, lis, label, nameClassInputs
 function whenClickLis(lis, input, ul, fetchButton) {
     lis.forEach(li => {
         li.addEventListener("click", () => {
-            clientId = li.getAttribute("primarykey");
+            if (li.hasAttribute("ClientId")) {
+                clientId = Number(li.getAttribute("primarykey"));
+            }
             input.value = li.textContent;
             ul.classList.remove("active");
             fetchButton.classList.add("active");
@@ -849,6 +851,22 @@ function prepareInvoiceInfo() {
     generalInfo.discount = discountValue;
     generalInfo.productsNum = products.length;
 }
+function createInvoice() {
+    const sendDataRequest = new XMLHttpRequest();
+
+    sendDataRequest.onload = () => {
+        if (sendDataRequest.status === 200 && sendDataRequest.readyState === 4) {
+
+        }
+    };
+
+    sendDataRequest.open("POST", "http://estore.local/sales" + '/' + "addInvoiceAjax");
+    sendDataRequest.setRequestHeader(
+        "Content-Type",
+        "application/x-www-form-urlencoded"
+    );
+    sendDataRequest.send(`transactionParty=${JSON.stringify(clientInfo)}&detailsInvoice=${JSON.stringify(generalInfo)}`);
+}
 function isHasPrivilege(controller, action, username, password) {
     const xmlRequest = new XMLHttpRequest();
 
@@ -858,9 +876,10 @@ function isHasPrivilege(controller, action, username, password) {
             if (request.result === false) {
                 flashMessage("danger", request.message, 5000);
             } else if(request.result === true) {
-                flashMessage("success", request.message, 5000);
+                // flashMessage("success", request.message, 5000);
                 confirmContainer.classList.remove("active");
                 prepareInvoiceInfo();
+                createInvoice();
             }
         }
     };
