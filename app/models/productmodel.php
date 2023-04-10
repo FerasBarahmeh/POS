@@ -2,8 +2,11 @@
 
 namespace APP\Models;
 
+use APP\Helpers\PublicHelper\PublicHelper;
+
 class ProductModel extends AbstractModel
 {
+    use PublicHelper;
     public $ProductId;
     public $CategoryId;
 
@@ -63,5 +66,39 @@ class ProductModel extends AbstractModel
         return (new ProductModel)->get($query);
 
 
+    }
+
+    private function ifEqualArray(array $iterOne, array $iterTow): bool | int
+    {
+        $countOne = 0;
+        $countTow = 0;
+
+        while (! $iterOne[$countOne] || $iterTow[$countTow]) {
+            $countOne++;
+            $countTow++;
+        }
+        if ($countOne == $countTow) {
+            return $countOne;
+        } else {
+            return false;
+        }
+    }
+    public function getRequestedProducts(array $products): false|\ArrayIterator
+    {
+        $query = "SELECT 
+                ProductId, Name, Quantity
+            FROM
+                products
+            WHERE
+                
+        ";
+        foreach ($products as $id => $quantityChoose) {
+            $query .= " (ProductId = " . $id . " AND Quantity <= " . $quantityChoose . ") OR ";
+        }
+
+        $this->removeLastWord($query);
+        $query .= " ORDER BY ProductId";
+
+        return (new ProductModel())->get($query);
     }
 }

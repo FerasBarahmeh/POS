@@ -139,6 +139,7 @@ function whenClickLis(lis, input, ul, fetchButton) {
             if (li.hasAttribute("ClientId")) {
                 clientId = Number(li.getAttribute("primarykey"));
             }
+            if (li.hasAttribute("productid")) idProducts.add(li.getAttribute("primarykey"))
             input.value = li.textContent;
             ul.classList.remove("active");
             fetchButton.classList.add("active");
@@ -468,7 +469,7 @@ document.addEventListener("click", (e) => {
 
 
 // Active set discount value section is chosen
-
+// TODO: Refactor From Hear
 /**
  *
  * Description function to active discount section depend on type discount
@@ -593,6 +594,9 @@ liveCalculateDiscountPercentage();
 function removeProductFromCart(button) {
     button.addEventListener("click", () => {
         let tr = button.closest("tr");
+        let pagination = Number(tr.getAttribute("pagination"));
+        idProducts.delete([...idProducts][pagination]);
+        delete productsInformation[String([...idProducts][pagination])];
         tr.remove();
         if (tBodyCartTable.children.length <= 1) {
             activateCreateInvoiceButton(false);
@@ -611,8 +615,11 @@ function removeProductFromCart(button) {
     });
 }
 const removeTrProducts = document.querySelectorAll("#remove-td-product");
+let counterButtonProduct = 0;
 removeTrProducts.forEach(removeTrProduct => {
-    removeProductFromCart(removeTrProduct);
+
+    removeProductFromCart(removeTrProduct, counterButtonProduct);
+    counterButtonProduct++;
 });
 function addEmptyCartImage(table) {
     const imgEmptyCart = table.querySelector(".empty-cart-image");
@@ -688,7 +695,7 @@ function createRow(details) {
     i.classList.add('fa');
     i.classList.add("fa-trash");
 
-    removeProductFromCart(button);
+    removeProductFromCart(button, idProducts.length - 1);
     button.appendChild(i);
 
 
@@ -786,6 +793,9 @@ function activateCreateInvoiceButton(flag=true) {
         createInvoiceButton.classList.remove("active");
     }
 }
+function paginationRowProduct(row, count) {
+    row.setAttribute("pagination", count);
+}
 const addToCartButton = document.getElementById("add-to-cart-button");
 const cartTable = document.querySelector(".products-carts-table");
 const tBodyCartTable = cartTable.querySelector("tbody");
@@ -794,8 +804,10 @@ const inputTotalPrice = document.getElementById("total-price");
 let currentPrice = 0;
 let details = null;
 let products = [];
+let idProducts = new Set();
 let clientInfo = null;
 let generalInfo = {};
+let productsInformation = {};
 let discountType = null;
 let discountValue = 0;
 addEmptyCartImage(cartTable)
@@ -809,6 +821,8 @@ addToCartButton.addEventListener("click", () => {
         const newRow = createRow(details);
 
         if (checkIfValidInvolves(tBodyCartTable, details, newRow)) {
+            paginationRowProduct(newRow, products.length - 1);
+            productsInformation[[...idProducts][products.length - 1]] = products[Number(products.length - 1)];
             tBodyCartTable.appendChild(newRow);
             productsCart = tBodyCartTable.querySelectorAll("tr");
             emptyInvolvesInputs();
@@ -867,6 +881,32 @@ function createInvoice() {
     );
     sendDataRequest.send(`transactionParty=${JSON.stringify(clientInfo)}&detailsInvoice=${JSON.stringify(generalInfo)}`);
 }
+function productsInvoice(callback) {
+    const req = new XMLHttpRequest();
+
+    req.onload = () => {
+        if (req.status === 200 && req.readyState === 4) {
+
+            let response = JSON.parse(req.responseText);
+
+            if (response.result === false) {
+                for (let key in response.messages) {
+                    flashMessage("danger", response.messages[key], 10000);
+                }
+            } else {
+                if (callback) callback(response);
+            }
+        }
+    };
+
+    req.open("POST", "http://estore.local/sales" + '/' + "ifValidProductsAjax");
+    req.setRequestHeader(
+        "Content-Type",
+        "application/x-www-form-urlencoded"
+    );
+
+    req.send(`info=${JSON.stringify(productsInformation)}`);
+}
 function isHasPrivilege(controller, action, username, password) {
     const xmlRequest = new XMLHttpRequest();
 
@@ -874,12 +914,15 @@ function isHasPrivilege(controller, action, username, password) {
         if (xmlRequest.status === 200 && xmlRequest.readyState === 4) {
             let request = JSON.parse(xmlRequest.responseText);
             if (request.result === false) {
-                flashMessage("danger", request.message, 5000);
+                flashMessage("danger", request.message, 6500);
             } else if(request.result === true) {
                 // flashMessage("success", request.message, 5000);
                 confirmContainer.classList.remove("active");
                 prepareInvoiceInfo();
-                createInvoice();
+                productsInvoice(function (result) {
+                    console.log(result)
+                });
+                // createInvoice();
             }
         }
     };

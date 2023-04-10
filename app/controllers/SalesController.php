@@ -193,6 +193,70 @@ class SalesController extends AbstractController
 
     }
 
+    private function getQuantities($info): array
+    {
+        
+        $products = [];
+        foreach ($info as $id => $item) {
+            $products[$id] = json_decode($item[1]->QuantityChoose);
+        }
+        return $products;
+    }
+
+    private function getProductPrice($info): array
+    {
+        $products = [];
+        foreach ($info as $id => $item) {
+            $products[$id] = json_decode($item[4]->SellPrice);
+        }
+        return $products;
+    }
+    private function getInsufficientQuantityProducts($req): array
+    {
+        $rejected = [];
+        foreach ($req as $value) {
+            $rejected[$value->Name] = $value->Quantity;
+        }
+        return $rejected;
+    }
+
+    private function creatMessages($rejectedProducts): array
+    {
+        $this->language->load("sales.messages");
+        $messages = [];
+        foreach ($rejectedProducts as $name => $quantity) {
+            $messages[] = $this->language->feedKey("message_quantity_not_enough", [$name, $quantity]);
+        }
+        return $messages;
+    }
+    public function ifValidProductsAjaxAction()
+    {
+        $info = json_decode($_POST["info"]);
+
+        $quantities = $this->getQuantities($info);
+        $prices = $this->getProductPrice($info);
+        $products = new ProductModel();
+
+        $productQuantitySellable = $products->getRequestedProducts($quantities);
+
+        
+        if (! $productQuantitySellable) { 
+            echo json_encode([
+                "quantities" => $quantities,
+                "prices" => $prices,
+                "result" => true,
+            ]);
+        } else {
+            $rejectedProducts = $this->getInsufficientQuantityProducts($productQuantitySellable);
+            $messages = $this->creatMessages($rejectedProducts);
+
+            echo json_encode([
+                "messages" => $messages,
+                "result"   => false,
+            ]);
+        }
+        
+    }
     public function checkIfHasPrivilegeUserAjaxAction()
     {
 

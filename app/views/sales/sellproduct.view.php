@@ -235,7 +235,7 @@
                     <ul class="search-ul">
                         <?php
                         foreach ($products as $product) {
-                            ?> <li class="active" primaryKey="<?= $product->ProductId ?>"><?= $product->Name ?></li> <?php
+                            ?> <li class="active" primaryKey="<?= $product->ProductId ?>" productid><?= $product->Name ?></li> <?php
                         }
                         ?>
                     </ul>
