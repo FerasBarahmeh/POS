@@ -202,4 +202,18 @@ class AbstractModel
         return (new $calledClass)->get("SELECT " . $column . " FROM " . static::$tableName . " WHERE " . $column . " = '$value'");
 
     }
+    public function allLazy(array $options = null): \Generator
+    {
+        $query = "SELECT * FROM " . static::$tableName;
+        if ($options != null) {
+            foreach ($options as $key => $val) {
+                $query .= " " . $key . " " . $val;
+            }
+        }
+
+        $records = $this->get($query);
+        foreach ($records as $record) {
+            yield $record;
+        }
+    }
 }
