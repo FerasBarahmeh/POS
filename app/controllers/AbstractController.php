@@ -69,4 +69,19 @@ abstract class AbstractController
     {
         $this->_params = $params;
     }
+    /**
+     * Fill object or array (any iterator) in lazy way
+     *
+     * @param mixed $containerValues the element you want fill
+     * @param \Generator $records generator contains all data you want translate in $containerValues
+     *
+     * @return void
+     */
+    public function putLazy(mixed &$containerValues, \Generator $records): void
+    {
+        while ($records->valid()) {
+            $containerValues[] = $records->current();
+            $records->next();
+        }
+    }
 }
