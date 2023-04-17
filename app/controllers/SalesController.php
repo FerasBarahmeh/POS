@@ -1,6 +1,5 @@
 <?php
 namespace APP\Controllers;
-
 use APP\Enums\PaymentStatus;
 use APP\Enums\PaymentType;
 use APP\Enums\StatusProduct;
@@ -12,6 +11,8 @@ use APP\Models\ClientModel;
 use APP\Models\ProductModel;
 use APP\Models\SalesInvoicesModel;
 use APP\Models\UserModel;
+use http\Client;
+use function APP\pr;
 
 class SalesController extends AbstractController
 {
@@ -23,13 +24,20 @@ class SalesController extends AbstractController
     /**
      * @throws \ReflectionException
      */
+    protected $clients ;
+    private function getClients() {
+        // we will Order records to use tree trie search in js
+        $records = (new ClientModel())->allLazy(["ORDER BY " => "Name ASC"]);
+        $this->putLazy($this->clients, $records);
+    }
     public function sellProductAction()
     {
 
         $this->language->load("template.common");
         $this->language->load("sales.sellproducts");
 
-        $this->_info["clients"]         = ClientModel::getAll();
+        $this->getClients();
+        $this->_info["clients"]         = $this->clients;
         $this->_info["products"]        = ProductModel::getProducts();
         $this->_info["units"]           = $this->getClassValuesProperties(new Units());
         $this->_info["paymentType"]     = $this->getClassValuesProperties(new PaymentType());
@@ -43,11 +51,11 @@ class SalesController extends AbstractController
     {
         $this->language->load("sales.messages");
 
-        if (ClientModel::countRow($columnName, $this->filterInt($_POST["primaryKey"]))) {
-            $values = ClientModel::getByPK($this->filterInt($_POST["primaryKey"]));
+        if (ClientModel::countRow($columnName, $_POST["id"])) {
+            $values = ClientModel::getByPK($this->filterInt($_POST["id"]));
             $values = get_object_vars($values);
             $values["result"]   = true;
-            $values["id"]       = $this->filterInt($_POST["primaryKey"]);
+            $values["id"]       = $this->filterInt($_POST["id"]);
             $values["message"]  = $this->language->get("message_client_exist");
             echo  json_encode($values);
         } else {
@@ -78,8 +86,10 @@ class SalesController extends AbstractController
     }
     public function getInfoClientAjaxAction()
     {
+
         if (! empty($_POST)) {
-            if ($this->filterInt($_POST["primaryKey"]) == null) {
+            if ($_POST["id"] == null) {
+
                 $this->language->load("sales.messages");
 
                 $message = $this->getAppropriateMessageClient("sales.messages", $_POST);

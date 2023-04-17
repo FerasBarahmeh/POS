@@ -52,3 +52,6 @@ $content["text_nav_sell_price"]          = "Sell Price";
 
 // Buttons
 $content["button_add_to_cart"]          = "Add To cart";
+
+// Sections
+$content["text_client_info"]          = "Client Information";
