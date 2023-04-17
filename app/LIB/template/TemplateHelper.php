@@ -87,4 +87,9 @@ trait TemplateHelper
             <?php
         }
     }
+    public function encryption($pass): string
+    {
+        return crypt($pass, MAIN_SALT);
+    }
+
 }
