@@ -2,6 +2,7 @@
 
 <div class="sales-container">
 
+    <!-- client -->
     <section class="partisan">
         <h5 class="section-title"><i class="fa fa-table"></i> <?= $text_client ?> </h5>
         <section class="input-search-fields-container header-partisan-section">
@@ -97,6 +98,104 @@
                 </div>
 
             </fieldset>
+        </section>
+
+
+    </section>
+
+    <!-- Products -->
+    <section class="partisan mt-20">
+        <h5 class="section-title"><i class="fa fa-sitemap"></i> <?= $text_nav_products ?> </h5>
+        <section class="input-search-fields-container header-partisan-section revers-r">
+            <div class="container-search-section component-input-js max-w-40-per">
+                <div class="input">
+                    <label for="Name" class="title float">name product</label>
+                    <input type="text"
+                           id="Name"
+                           class="find-client-input search"
+                           autocomplete="off"/>
+
+                </div>
+
+                <ul class="list-identifier" fetchProductBy="Name">
+                    <?php
+                        foreach ($products as $product) {
+                            ?> <li ProductID="<?= $product->ProductId ?>"><?= $product->Name ?></li> <?php
+                        }
+                    ?>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="footer-partisan-section" product>
+            <h5 class="mb-10"><i class="fa fa-database mr-10"></i><?= $text_product_info ?></h5>
+
+            <fieldset class="row-foot-partisan-section">
+                <div class="input w-50-prs">
+                    <label for="Name" class="float tm10 l26"> <?= $text_Name ?></label>
+                    <input type="text" name="Name-Product" id="Name"  class="show-info txt-cn"
+                           minlength="2" maxlength="30" required autocomplete="off"  />
+                </div>
+
+                <div class="input w-25-prs">
+                    <label for="Quantity" class="float tm10 l26"> <?= $text_Quantity ?></label>
+                    <input type="text" name="Quantity" id="Quantity" class="show-info txt-cn"
+                           minlength="4" maxlength="50" required
+                           autocomplete="off"  />
+                </div>
+
+                <div class="input w-25-prs">
+                    <label for="QuantityChoose" class="float tm10 l26"> <?= $text_QuantityChoose ?></label>
+                    <input type="text" name="QuantityChoose" id="QuantityChoose" class="show-info txt-cn"
+                           minlength="4" maxlength="50" required
+                           autocomplete="off"  />
+                </div>
+
+                <div class="input w-25-prs">
+                    <label for="Tax" class="float tm10 l26"> <?= $text_Tax ?></label>
+                    <input type="text" name="Tax" id="Tax"  class="show-info txt-cn"
+                           minlength="2" maxlength="30" required autocomplete="off"  />
+                </div>
+            </fieldset>
+
+            <fieldset class="row-foot-partisan-section">
+
+
+                <div class="input w-25-prs">
+                    <label for="BarCode" class="float tm10 l26"> <?= $text_BarCode ?></label>
+                    <input type="text" name="BarCode" id="BarCode" class="show-info txt-cn"
+                           minlength="15" maxlength="15" required
+                           autocomplete="off"  />
+                </div>
+                <div class="input w-25-prs">
+                    <label for="Unit" class="float tm10 l26"> <?= $text_Unit ?></label>
+                    <input type="text" name="Unit" id="Unit"  class="show-info txt-cn"
+                           minlength="2" maxlength="30" required autocomplete="off"  />
+                </div>
+                <div class="input w-25-prs">
+                    <label for="SellPrice" class="float tm10 l26"> <?= $text_SellPrice ?></label>
+                    <input type="text" name="SellPrice" id="SellPrice" class="show-info txt-cn"
+                           minlength="15" maxlength="15" required
+                           autocomplete="off"  />
+                </div>
+                <div class="input w-25-prs">
+                    <label for="BuyPrice" class="float tm10 l26"> <?= $text_BuyPrice ?></label>
+                    <input type="text" name="BuyPrice" id="BuyPrice"  class="show-info txt-cn"
+                           minlength="2" maxlength="30" required autocomplete="off"  />
+                </div>
+
+
+            </fieldset>
+
+
+
+            <fieldset class="row-foot-partisan-section">
+                <button class="btn btn-footer">Add To cart</button>
+                <button class="btn btn-footer">show Details product</button>
+
+            </fieldset>
+
         </section>
 
 

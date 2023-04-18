@@ -55,3 +55,4 @@ $content["button_add_to_cart"]          = "Add To cart";
 
 // Sections
 $content["text_client_info"]          = "Client Information";
+$content["text_product_info"]          = "Product Information";

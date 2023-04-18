@@ -25,6 +25,7 @@ class SalesController extends AbstractController
      * @throws \ReflectionException
      */
     protected $clients ;
+    protected $products;
     private function getClients() {
         // we will Order records to use tree trie search in js
         $records = (new ClientModel())->allLazy(["ORDER BY " => "Name ASC"]);
@@ -123,11 +124,8 @@ class SalesController extends AbstractController
         $this->language->load("sales.messages");
         $this->language->load("units.units");
 
-        if (ProductModel::countRow($columnName, $this->filterInt($_POST["primaryKey"]))) {
-            $values = ProductModel::getByPK($this->filterInt($_POST["primaryKey"]));
-
-
-            $productsCategory = ProductModel::getBy(["products.CategoryId" => $values->CategoryId]);
+        if (ProductModel::countRow($columnName, $this->filterInt($_POST["id"]))) {
+            $values = ProductModel::getByPK($this->filterInt($_POST["id"]));
 
 
             $values = get_object_vars($values);
@@ -151,23 +149,9 @@ class SalesController extends AbstractController
         }
 
     }
-    private function getAppropriateMessageProduct($nameFile, $nameMessage)
-    {
-        $this->language->load($nameFile);
-        return $this->language->get($nameMessage);
-    }
+   
 
-    private function removeParenthesesString(string $str): string
-    {
-        $cleanStr = "";
-        for ($i = 0; $i < strlen($str); $i++) {
-            if ($str[$i] !== '{' && $str[$i] !== '}' && $str[$i] !== '[' && $str[$i] !== ']') {
-                $cleanStr .= $str[$i];
-            }
-        }
 
-        return $cleanStr;
-    }
     private function addAction($transactionParty, $detailsInvoice)
     {
         $invoice = new SalesInvoicesModel();
@@ -185,88 +169,10 @@ class SalesController extends AbstractController
 
         $invoice->save();
     }
-    public function addInvoiceAjaxAction()
-    {
+    
 
-        
-        $transactionParty = $_POST["transactionParty"];
-        $transactionParty = "{" . $this->removeParenthesesString($transactionParty) . "}";
+  
 
-        $transactionParty = json_decode($transactionParty);
-        
-        $detailsInvoice = $_POST["detailsInvoice"];
-
-        $detailsInvoice = json_decode($detailsInvoice);
-
-
-        $this->addAction($transactionParty, $detailsInvoice);
-
-    }
-
-    private function getQuantities($info): array
-    {
-        
-        $products = [];
-        foreach ($info as $id => $item) {
-            $products[$id] = json_decode($item[1]->QuantityChoose);
-        }
-        return $products;
-    }
-
-    private function getProductPrice($info): array
-    {
-        $products = [];
-        foreach ($info as $id => $item) {
-            $products[$id] = json_decode($item[4]->SellPrice);
-        }
-        return $products;
-    }
-    private function getInsufficientQuantityProducts($req): array
-    {
-        $rejected = [];
-        foreach ($req as $value) {
-            $rejected[$value->Name] = $value->Quantity;
-        }
-        return $rejected;
-    }
-
-    private function creatMessages($rejectedProducts): array
-    {
-        $this->language->load("sales.messages");
-        $messages = [];
-        foreach ($rejectedProducts as $name => $quantity) {
-            $messages[] = $this->language->feedKey("message_quantity_not_enough", [$name, $quantity]);
-        }
-        return $messages;
-    }
-    public function ifValidProductsAjaxAction()
-    {
-        $info = json_decode($_POST["info"]);
-
-        $quantities = $this->getQuantities($info);
-        $prices = $this->getProductPrice($info);
-        $products = new ProductModel();
-
-        $productQuantitySellable = $products->getRequestedProducts($quantities);
-
-        
-        if (! $productQuantitySellable) { 
-            echo json_encode([
-                "quantities" => $quantities,
-                "prices" => $prices,
-                "result" => true,
-            ]);
-        } else {
-            $rejectedProducts = $this->getInsufficientQuantityProducts($productQuantitySellable);
-            $messages = $this->creatMessages($rejectedProducts);
-
-            echo json_encode([
-                "messages" => $messages,
-                "result"   => false,
-            ]);
-        }
-        
-    }
     public function checkIfHasPrivilegeUserAjaxAction()
     {
 
@@ -313,11 +219,15 @@ class SalesController extends AbstractController
         }
 
     }
-
+    private function getAppropriateMessageProduct($nameFile, $nameMessage)
+    {
+        $this->language->load($nameFile);
+        return $this->language->get($nameMessage);
+    }
     public function getInfoProductAjaxAction()
     {
         if (! empty($_POST)) {
-            if ($this->filterInt($_POST["primaryKey"]) == null) {
+            if ($this->filterInt($_POST["id"]) == null) {
                 $this->language->load("sales.messages");
 
                 $message = $this->getAppropriateMessageProduct("sales.messages", "message_product_not_exist");

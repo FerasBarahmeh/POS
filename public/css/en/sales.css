@@ -174,3 +174,13 @@ label.float.flay.l26.tm10 {
     top: -2px;
     transform: translateY(3px) !important;
 }
+.btn-footer {
+    background-color: var(--bg-black-100);
+    padding: 5px 7px;
+    border-radius: 4px;
+    color: var(--text-black-700);
+    cursor: pointer;
+}
+.btn-footer:hover {
+    opacity: .8;
+}

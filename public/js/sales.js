@@ -1,7 +1,8 @@
 // DOM variable
 const findClientInputs = document.querySelectorAll(".find-client-input");
 const searchInputs = document.querySelectorAll(".search");
-const listsIdentifier = document.querySelectorAll(".list-identifier");
+const prominentElement = document.querySelectorAll(".list-identifier");
+const listsIdentifier = document.querySelectorAll("[fetchClientBy]");
 let identifierClient = null;
 let clientInfo = null;
 const clientSectionHTML = document.querySelector("[client]");
@@ -35,7 +36,7 @@ function changeStatusLabelActionInput(input) {
  * */
 function hiddenListIdentifier(ul=null) {
     if (! ul) {
-        listsIdentifier.forEach(listIdentifier => {
+        prominentElement.forEach(listIdentifier => {
             listIdentifier.classList.remove("active");
             listIdentifier.closest(".component-input-js").classList.remove("focus");
         });
@@ -65,10 +66,10 @@ findClientInputs.forEach(findClientInput => {
     whenFocusInFindInput(findClientInput);
 });
 
-function hiddenAllListIdentifierList() {
+function hiddenProminentElements() {
     document.addEventListener("click", (e) => {
 
-        listsIdentifier.forEach(listIdentifier => {
+        prominentElement.forEach(listIdentifier => {
             let container = listIdentifier.closest(".component-input-js");
             if (e.target.contains(container) ) {
                 listIdentifier.classList.remove("active");
@@ -78,7 +79,7 @@ function hiddenAllListIdentifierList() {
 
     });
 }
-hiddenAllListIdentifierList();
+hiddenProminentElements();
 
 async function getInfoClientReq(id) {
 
@@ -95,14 +96,17 @@ async function getInfoClientReq(id) {
         });
 
 }
+function flayLabel(inputLabel) {
+    let label = inputLabel.parentElement.querySelector("label");
+    label.classList.add("flay");
+}
 function setClientInfo() {
     let inputs = clientSectionHTML.querySelectorAll("input");
     inputs.forEach(input => {
         let id = input.getAttribute("id");
-        let label = input.parentElement.querySelector("label");
         input.value = clientInfo[id];
-        label.classList.add("flay");
-        changeStatusLabelActionInput(label, !! input.value);
+        flayLabel(input);
+        // changeStatusLabelActionInput(label, !! input.value);
 
     });
 
@@ -123,8 +127,10 @@ listsIdentifier.forEach(listIdentifier => {
           .finally(() => {
               setClientInfo();
               hiddenListIdentifier(ul);
-              console.log(clientInfo["message"])
               flashMessage("success", clientInfo["message"], 5000);
+
+              // change color border
+              ul.closest(".partisan").style.borderColor = "var(--success-color-300)";
 
               // Scroll window to next section
               window.scrollBy({
@@ -141,4 +147,70 @@ listsIdentifier.forEach(listIdentifier => {
 const showInfoInputs = document.querySelectorAll(".show-info");
 showInfoInputs.forEach(showInfoInput => {
     changeStatusLabelActionInput(showInfoInput);
+});
+
+// Start Products
+let productsIDs = [];
+let productInfo = {};
+const productsListHTML = document.querySelectorAll("[fetchProductBy]");
+
+async function getProductInfo(id) {
+
+    return await fetch("http://estore.local/sales/getInfoProductAjax", {
+        "method": "POST",
+        "headers": {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        "body": `id=${id}`,
+    })
+        .then(function(res){ return res.json(); })
+        .then(function(data){
+            return JSON.stringify(data);
+        });
+
+}
+
+function setProductInfo(product) {
+    let inputs = document.querySelector("[product]").querySelectorAll("input");
+    inputs.forEach(input => {
+        let idInput = input.getAttribute("id");
+        flayLabel(input);
+        input.value = product[idInput];
+    });
+}
+productsListHTML.forEach(ul => {
+
+    let lis = ul.querySelectorAll("li");
+
+    lis.forEach(li => {
+
+        li.addEventListener("click", () => {
+            let id = li.getAttribute("ProductID");
+            let ul = li.parentElement;
+
+
+            getProductInfo(id).then( (res) => {
+                    productInfo[id] = JSON.parse(res);
+                }
+            )
+            .finally(() => {
+                setProductInfo(productInfo[id]);
+                hiddenListIdentifier(ul);
+
+
+                // change color border
+                ul.closest(".partisan").style.borderColor = "var(--success-color-300)";
+
+                flashMessage("success", productInfo[id]["message"], 5000);
+
+                // Scroll window to next section
+                window.scrollBy({
+                    top: 100,
+                    left: 0,
+                    behavior: "smooth",
+                });
+            });
+
+        });
+    });
 });
