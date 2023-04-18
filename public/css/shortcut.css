@@ -119,6 +119,13 @@
 .w-hh {
     width: 75%;
 }
+
+.max-w-40-per {
+    max-width: 40%;
+}
+.max-w-50-per {
+    max-width: 50%;
+}
 /* End Width */
 /* Start Padding */
 .p-0 {
