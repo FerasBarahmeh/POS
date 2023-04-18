@@ -59,6 +59,17 @@ function whenFocusInFindInput(input) {
 
     });
 }
+
+// Activate disabled for all input disabled
+document.querySelectorAll("input[disabled]").forEach(input => {
+    input.addEventListener("click", () => {
+        input.disabled = true;
+    });
+    input.addEventListener("focus", () => {
+        input.disabled = true;
+    });
+});
+
 searchInputs.forEach(searchInput => {
     changeStatusLabelActionInput(searchInput);
 });
@@ -100,6 +111,11 @@ function flayLabel(inputLabel) {
     let label = inputLabel.parentElement.querySelector("label");
     label.classList.add("flay");
 }
+function dropLabel(inputLabel) {
+    let label = inputLabel.parentElement.querySelector("label");
+    label.classList.remove("flay");
+}
+
 function setClientInfo() {
     let inputs = clientSectionHTML.querySelectorAll("input");
     inputs.forEach(input => {

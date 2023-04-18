@@ -71,13 +71,13 @@
             <fieldset class="row-foot-partisan-section">
                 <div class="input w-50-prs">
                     <label for="Name" class="float tm10 l26"> <?= $text_Name ?></label>
-                    <input type="text" name="Name" id="Name"  class="show-info txt-cn"
+                    <input type="text" name="Name" id="Name" disabled="disabled" class="show-info txt-cn"
                            minlength="2" maxlength="30" required autocomplete="off"  />
                 </div>
 
                 <div class="input w-50-prs">
                     <label for="Email" class="float tm10 l26"> <?= $text_Email ?></label>
-                    <input type="text" name="email" id="Email" class="show-info txt-cn"
+                    <input type="text" name="email" id="Email" disabled="disabled" class="show-info txt-cn"
                            minlength="4" maxlength="50" required
                            autocomplete="off"  />
                 </div>
@@ -86,13 +86,13 @@
             <fieldset class="row-foot-partisan-section">
                 <div class="input w-25-prs">
                     <label for="PhoneNumber" class="float tm10 l26"> <?= $text_PhoneNumber ?></label>
-                    <input type="text" name="PhoneNumber" id="PhoneNumber"  class="show-info txt-cn"
+                    <input type="text" name="PhoneNumber" id="PhoneNumber" disabled="disabled"  class="show-info txt-cn"
                            minlength="2" maxlength="30" required autocomplete="off"  />
                 </div>
 
                 <div class="input w-75-prs">
                     <label for="address" class="float tm10 l26"> <?= $text_Address ?></label>
-                    <input type="text" name="address" id="Address" class="show-info txt-cn"
+                    <input type="text" name="address" id="Address" disabled="disabled" class="show-info txt-cn"
                            minlength="15" maxlength="15" required
                            autocomplete="off"  />
                 </div>
@@ -134,20 +134,20 @@
             <fieldset class="row-foot-partisan-section">
                 <div class="input w-50-prs">
                     <label for="Name" class="float tm10 l26"> <?= $text_Name ?></label>
-                    <input type="text" name="Name-Product" id="Name"  class="show-info txt-cn"
+                    <input type="text" name="Name-Product" id="Name" disabled="disabled" class="show-info txt-cn"
                            minlength="2" maxlength="30" required autocomplete="off"  />
                 </div>
 
                 <div class="input w-25-prs">
                     <label for="Quantity" class="float tm10 l26"> <?= $text_Quantity ?></label>
-                    <input type="text" name="Quantity" id="Quantity" class="show-info txt-cn"
+                    <input type="text" name="Quantity" id="Quantity" disabled="disabled" class="show-info txt-cn"
                            minlength="4" maxlength="50" required
                            autocomplete="off"  />
                 </div>
 
                 <div class="input w-25-prs">
                     <label for="QuantityChoose" class="float tm10 l26"> <?= $text_QuantityChoose ?></label>
-                    <input type="text" name="QuantityChoose" id="QuantityChoose" class="show-info txt-cn"
+                    <input type="text" name="QuantityChoose" id="QuantityChoose"  class="show-info txt-cn"
                            minlength="4" maxlength="50" required
                            autocomplete="off"  />
                 </div>
@@ -164,13 +164,13 @@
 
                 <div class="input w-25-prs">
                     <label for="BarCode" class="float tm10 l26"> <?= $text_BarCode ?></label>
-                    <input type="text" name="BarCode" id="BarCode" class="show-info txt-cn"
+                    <input type="text" name="BarCode" id="BarCode" disabled="disabled" class="show-info txt-cn"
                            minlength="15" maxlength="15" required
                            autocomplete="off"  />
                 </div>
                 <div class="input w-25-prs">
                     <label for="Unit" class="float tm10 l26"> <?= $text_Unit ?></label>
-                    <input type="text" name="Unit" id="Unit"  class="show-info txt-cn"
+                    <input type="text" name="Unit" id="Unit" disabled="disabled"  class="show-info txt-cn"
                            minlength="2" maxlength="30" required autocomplete="off"  />
                 </div>
                 <div class="input w-25-prs">
@@ -181,7 +181,7 @@
                 </div>
                 <div class="input w-25-prs">
                     <label for="BuyPrice" class="float tm10 l26"> <?= $text_BuyPrice ?></label>
-                    <input type="text" name="BuyPrice" id="BuyPrice"  class="show-info txt-cn"
+                    <input type="text" name="BuyPrice" id="BuyPrice" disabled="disabled"  class="show-info txt-cn"
                            minlength="2" maxlength="30" required autocomplete="off"  />
                 </div>
 
