@@ -49,6 +49,8 @@ $content["text_nav_quantity"]          = "Quantity";
 $content["text_nav_barcode"]          = "Barcode";
 $content["text_nav_tax"]          = "Tax";
 $content["text_nav_sell_price"]          = "Sell Price";
+$content["text_clear_inputs"]          = "Clear inputs";
+$content["text_details_products"]          = "Details products";
 
 // Buttons
 $content["button_add_to_cart"]          = "Add To cart";

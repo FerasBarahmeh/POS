@@ -103,7 +103,7 @@
 
     </section>
 
-    <!-- Products -->
+    <!-- Start Products -->
     <section class="partisan mt-20">
         <h5 class="section-title"><i class="fa fa-sitemap"></i> <?= $text_nav_products ?> </h5>
         <section class="input-search-fields-container header-partisan-section revers-r">
@@ -128,8 +128,19 @@
 
         </section>
 
-        <section class="footer-partisan-section" product>
+        <section class="footer-partisan-section relative" product>
             <h5 class="mb-10"><i class="fa fa-database mr-10"></i><?= $text_product_info ?></h5>
+
+            <div class="tools-bar">
+                <button class="tools-bar-btn" id="tools-bar-btn">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <ul class="relative">
+                    <li class="description dir-r" description="<?= $text_clear_inputs ?>" id="clear-inputs"><i class="fa fa-trash"></i></li>
+                    <li class="description dir-r" description="<?= $text_details_products ?>"><i class="fa fa-home"></i></li>
+                </ul>
+            </div>
+
 
             <fieldset class="row-foot-partisan-section">
                 <div class="input w-50-prs">
@@ -147,19 +158,20 @@
 
                 <div class="input w-25-prs">
                     <label for="QuantityChoose" class="float tm10 l26"> <?= $text_QuantityChoose ?></label>
-                    <input type="text" name="QuantityChoose" id="QuantityChoose"  class="show-info txt-cn"
+                    <input type="text" name="QuantityChoose" id="QuantityChoose" un-disabled class="show-info txt-cn"
                            minlength="4" maxlength="50" required
                            autocomplete="off"  />
                 </div>
 
                 <div class="input w-25-prs">
                     <label for="Tax" class="float tm10 l26"> <?= $text_Tax ?></label>
-                    <input type="text" name="Tax" id="Tax"  class="show-info txt-cn"
+                    <input type="text" name="Tax" id="Tax" un-disabled  class="show-info txt-cn"
                            minlength="2" maxlength="30" required autocomplete="off"  />
                 </div>
             </fieldset>
 
             <fieldset class="row-foot-partisan-section">
+
 
 
                 <div class="input w-25-prs">
@@ -175,7 +187,7 @@
                 </div>
                 <div class="input w-25-prs">
                     <label for="SellPrice" class="float tm10 l26"> <?= $text_SellPrice ?></label>
-                    <input type="text" name="SellPrice" id="SellPrice" class="show-info txt-cn"
+                    <input type="text" name="SellPrice" id="SellPrice" un-disabled class="show-info txt-cn"
                            minlength="15" maxlength="15" required
                            autocomplete="off"  />
                 </div>
@@ -191,15 +203,45 @@
 
 
             <fieldset class="row-foot-partisan-section">
-                <button class="btn btn-footer">Add To cart</button>
-                <button class="btn btn-footer">show Details product</button>
-
+                <button class="btn btn-footer add-cart-btn disabled" id="add-to-cart-sales" disabled><i class="fa fa-shopping-cart mr-10"></i><?= $button_add_to_cart ?></button>
+<!--                <button class="btn btn-footer">show Details product</button>-->
             </fieldset>
 
         </section>
 
 
     </section>
+    <!-- End Cater -->
+
+    <!-- Start Cater -->
+    <section class="partisan mt-20">
+        <h5 class="mb-10"><i class="fa fa-shopping-cart mr-10"></i>Cart</h5>
+
+        <!-- Start Table Products in Cart -->
+        <section class="responsive-table flex sort-col">
+            <table id="cart-sales" class="pagination-table">
+                <thead>
+                    <tr>
+                        <th>Name Product</th>
+                        <th>Quantity</th>
+                        <th>Barcode</th>
+                        <th>Unit</th>
+                        <th>Sell Price</th>
+                        <th>Tax</th>
+                        <th>control</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+        <!-- End Table Products in Cart -->
+
+
+
+    </section>
+    <!-- End Cater -->
+
 </div>
 
 <?= $this->flashMessage()  ?>

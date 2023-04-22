@@ -1,4 +1,3 @@
-// DOM variable
 const findClientInputs = document.querySelectorAll(".find-client-input");
 const searchInputs = document.querySelectorAll(".search");
 const prominentElement = document.querySelectorAll(".list-identifier");
@@ -11,6 +10,18 @@ function addFlayClassToLabelWhenFocus(label, hasValue) {
     if (! hasValue && ! label.classList.contains("flay")) {
         label.classList.add("flay");
     }
+}
+function removeFlayClassToLabel(input) {
+    let inputContainer = input.parentElement;
+    let label = inputContainer.querySelector("label");
+
+    label.classList.remove("flay");
+}
+function addFlayToLabel(input) {
+    let inputContainer = input.parentElement;
+    let label = inputContainer.querySelector("label");
+    label.classList.add("flay");
+
 }
 function addFlayClassToLabelWhenBlur(label, hasValue) {
     if (!hasValue && label.classList.contains("flay")) {
@@ -166,8 +177,11 @@ showInfoInputs.forEach(showInfoInput => {
 });
 
 // Start Products
-let productsIDs = [];
-let productInfo = {};
+let products = {};
+let productsHTML = {};
+let currentProductSelected = null;
+let idCurrentProductSelected = null;
+
 const productsListHTML = document.querySelectorAll("[fetchProductBy]");
 
 async function getProductInfo(id) {
@@ -183,7 +197,6 @@ async function getProductInfo(id) {
         .then(function(data){
             return JSON.stringify(data);
         });
-
 }
 
 function setProductInfo(product) {
@@ -205,19 +218,26 @@ productsListHTML.forEach(ul => {
             let ul = li.parentElement;
 
 
-            getProductInfo(id).then( (res) => {
-                    productInfo[id] = JSON.parse(res);
+            getProductInfo(id).then((res) => {
+                    let info = JSON.parse(res);
+
+                    if (info.result) {
+                        idCurrentProductSelected = info["ProductId"];
+                        currentProductSelected = {"id":info["ProductId"], info:info};
+                        activationAddToCartBtn();
+                        setProductInfo(info);
+                    } else {
+                        flashMessage("danger", info.message, 5000);
+                    }
                 }
             )
             .finally(() => {
-                setProductInfo(productInfo[id]);
                 hiddenListIdentifier(ul);
-
 
                 // change color border
                 ul.closest(".partisan").style.borderColor = "var(--success-color-300)";
 
-                flashMessage("success", productInfo[id]["message"], 5000);
+                flashMessage("success", currentProductSelected["message"], 5000);
 
                 // Scroll window to next section
                 window.scrollBy({
@@ -230,3 +250,183 @@ productsListHTML.forEach(ul => {
         });
     });
 });
+
+// Add To Cart
+const addToCartSalesHTML = document.getElementById("add-to-cart-sales");
+const cartSalesHTML = document.getElementById("cart-sales");
+const productsInputs = document.querySelector("[product]").querySelectorAll("input");
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+function cleanInputs(inputs) {
+    inputs.forEach(input => {
+       input.value = '';
+        removeFlayClassToLabel(input);
+    });
+}
+function removeProductFromOrder(id) {
+    productsHTML[id].remove();
+    delete productsHTML[id];
+    delete products[id];
+}
+function addEventRemoveOrder(btn, id) {
+    btn.addEventListener("click", () => {
+        removeProductFromOrder(id);
+    });
+}
+function createBtnEdit() {
+
+    let btnEdit = document.createElement("button");
+    btnEdit.classList.add("edit-icon");
+
+    let iEdit = document.createElement("i");
+    iEdit.classList.add("fa");
+    iEdit.classList.add("fa-edit");
+    iEdit.setAttribute("aria-hidden", "true");
+
+    btnEdit.appendChild(iEdit);
+    return btnEdit;
+}
+function createBtnDelete() {
+    let btnDel = document.createElement("button");
+    btnDel.classList.add("del-icon");
+    btnDel.classList.add("del-from-cart-sales");
+
+    let iEdit = document.createElement("i");
+    iEdit.classList.add("fa");
+    iEdit.classList.add("fa-trash");
+    iEdit.setAttribute("aria-hidden", "true");
+
+    btnDel.appendChild(iEdit);
+    return btnDel;
+}
+function addEventEditOrder(btn, id) {
+    btn.addEventListener("click", () => {
+
+        let inputs = document.querySelector("[product]").querySelectorAll("input");
+        let product = products[id]
+        inputs.forEach(input => {
+            let nameId = input.getAttribute("id");
+            input.value = product[nameId];
+            addFlayToLabel(input);
+        });
+
+        idCurrentProductSelected = id;
+        currentProductSelected = {"id":id, "info":product};
+        activationAddToCartBtn();
+        removeProductFromOrder(id);
+    });
+}
+function createRowProduct(info) {
+    let tr = document.createElement("tr");
+    let id = info["ProductId"];
+    tr.setAttribute("id", id);
+
+    let name = document.createElement("th");
+    name.innerText = info["Name"];
+
+    let quantity = document.createElement("th");
+    quantity.innerText = info["QuantityChoose"];
+
+    let barcode = document.createElement("th");
+    barcode.innerText = info["BarCode"];
+
+    let unit = document.createElement("th");
+    unit.innerText = info["Unit"];
+
+    let sellPrice = document.createElement("th");
+    sellPrice.innerText = info["SellPrice"];
+
+
+    let tax = document.createElement("th");
+    tax.innerText = info["Tax"];
+
+    let control = document.createElement("th");
+
+    let btnEdit = createBtnEdit();
+    addEventEditOrder(btnEdit, id);
+
+    let btnDel = createBtnDelete();
+    addEventRemoveOrder(btnDel, id);
+
+    control.appendChild(btnEdit);
+    control.appendChild(btnDel);
+
+
+    tr.appendChild(name);
+    tr.appendChild(quantity);
+    tr.appendChild(barcode);
+    tr.appendChild(unit);
+    tr.appendChild(sellPrice);
+    tr.appendChild(tax);
+    tr.appendChild(control);
+
+    productsHTML[id] = tr;
+
+    return tr;
+}
+function addProductsToCartSales() {
+    let tBodyCart = cartSalesHTML.querySelector("tbody");
+    removeAllChildNodes(tBodyCart);
+    for (const id in products) {
+        let row = createRowProduct(products[id]);
+        tBodyCart.appendChild(row);
+    }
+}
+function resitCurrentProduct() {
+    currentProductSelected = null;
+    idCurrentProductSelected = null;
+}
+function disabledAddToCartBtn() {
+    addToCartSalesHTML.setAttribute("disabled", "disabled");
+    addToCartSalesHTML.classList.add("disabled");
+    addToCartSalesHTML.classList.remove("activation");
+}
+function activationAddToCartBtn() {
+    addToCartSalesHTML.removeAttribute( "disabled");
+    addToCartSalesHTML.classList.add("activation");
+    addToCartSalesHTML.classList.remove("disabled");
+}
+addToCartSalesHTML.addEventListener("click", () => {
+
+    if (idCurrentProductSelected !== null && currentProductSelected !== null) {
+        products[currentProductSelected.id] = currentProductSelected.info;
+        setChangeDefaultValuesInInputs();
+        addProductsToCartSales();
+        resitCurrentProduct();
+        cleanInputs(productsInputs);
+        disabledAddToCartBtn();
+    }
+});
+
+// change information product before add to cart
+const unDisabledInputsProduct = document.querySelector("[product]").querySelectorAll("[un-disabled]");
+
+function changeInfoProduct(input) {
+    let newVal = input.value;
+    let idName = input.getAttribute("id");
+
+    if (idCurrentProductSelected !== null && currentProductSelected != null) {
+        products[idCurrentProductSelected][idName] = newVal;
+    }
+}
+function setChangeDefaultValuesInInputs() {
+    unDisabledInputsProduct.forEach(input => {
+        changeInfoProduct(input);
+    });
+}
+
+// Tools Bar Button
+const toolsBarBtn = document.getElementById("tools-bar-btn");
+const clearInputsBtn = document.getElementById("clear-inputs");
+toolsBarBtn.addEventListener("click", () => {
+    let ul = toolsBarBtn.parentElement.querySelector("ul").classList.toggle("active");
+});
+
+if (clearInputsBtn != null) {
+    clearInputsBtn.addEventListener("click", () => {
+        cleanInputs(productsInputs);
+    });
+}

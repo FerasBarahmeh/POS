@@ -397,10 +397,10 @@ table tbody tr {
     opacity: 1;
     transition: opacity .3s ease-in-out;
 }
-table tbody tr:nth-child(odd) {
+table tbody tr:nth-child(even) {
     background-color: var(--bg-black-30);
 }
- table tbody tr:nth-child(even) {
+ table tbody tr:nth-child(odd) {
     background-color: var(--bg-black-70);
 }
 table tbody tr.un-visible {

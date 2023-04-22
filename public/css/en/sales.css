@@ -128,6 +128,44 @@
     padding: 20px;
     overflow: hidden;
 }
+.sales-container .footer-partisan-section .tools-bar {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 10px;
+    margin-top: 3px;
+}
+.sales-container .footer-partisan-section .tools-bar button.tools-bar-btn {
+    background-color: transparent;
+    font-size: 20px;
+    color: var(--bg-black-900);
+    cursor: pointer;
+    z-index: 99;
+}
+.sales-container .footer-partisan-section .tools-bar ul {
+
+    display: flex;
+    gap: 4px;
+    background-color: var(--bg-black-70);
+    border-radius: 3px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .4s ease-in-out;
+}
+.sales-container .footer-partisan-section .tools-bar ul.active {
+    opacity: 1;
+    pointer-events: auto;
+
+}
+.sales-container .footer-partisan-section .tools-bar ul li {
+    color: var(--bg-black-900);
+    margin: 4px;
+    cursor: pointer;
+    text-transform: capitalize;
+}
 .sales-container section.partisan .footer-partisan-section .row-foot-partisan-section {
     width: 100%;
     display: flex;
@@ -183,4 +221,42 @@ label.float.flay.l26.tm10 {
 }
 .btn-footer:hover {
     opacity: .8;
+}
+.add-cart-btn {
+    max-width: 200px;
+    align-self: end;
+    padding: 5px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: var(--bg-black-30);
+    white-space: nowrap;
+    background-color: var(--bg-black-900);
+    text-transform: capitalize;
+    font-size: 14px;
+}
+.add-cart-btn.disabled {
+    pointer-events: none;
+    opacity: .4;
+}
+.add-cart-btn.activation {
+    pointer-events: auto;
+    opacity: 1;
+}
+.add-cart-btn.activation:hover {
+    opacity: .8;
+}
+.sales-container .edit-icon,
+.sales-container .del-icon {
+    background-color: unset;
+    cursor: pointer;
+}
+.sales-container .edit-icon:not(:last-child),
+.sales-container .del-icon:not(:last-child) {
+    margin-right: 5px;
+}
+.sales-container .edit-icon {
+    color: var(--success-color-300);
+}
+.sales-container .del-icon {
+    color: var(--danger-color-300);
 }
