@@ -237,7 +237,7 @@ productsListHTML.forEach(ul => {
                 // change color border
                 ul.closest(".partisan").style.borderColor = "var(--success-color-300)";
 
-                flashMessage("success", currentProductSelected["message"], 5000);
+                flashMessage("success", currentProductSelected.info["message"], 5000);
 
                 // Scroll window to next section
                 window.scrollBy({
