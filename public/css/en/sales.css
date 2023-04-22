@@ -6,14 +6,18 @@
     border-radius: 5px;
 }
 .sales-container section.partisan {
-    border-bottom: 2px solid var(--bg-black-70);
-    border-left: 2px solid var(--bg-black-70);
+    border-bottom: 2px solid var(--bg-black-50);
+    border-left: 2px solid var(--bg-black-50);
     padding-left: 10px;
     padding-bottom: 20px;
 }
 .sales-container section.partisan .section-title {
     color: var(--bg-black-900);
     font-size: 20px;
+}
+.sales-container section.partisan .section-title svg,
+.sales-container section.partisan .section-title i {
+    color: var(--bg-black-70);
 }
 .sales-container section.partisan .input-search-fields-container {
     margin-top: 10px;
@@ -44,8 +48,8 @@
     box-shadow: 0 0 2px #eee;
 }
 .sales-container section.partisan .input-search-fields-container .input input {
-    border-left: 2px solid #eee;
-    border-bottom: 2px solid #eee;
+    border-left: 2px solid var(--bg-black-100);
+    border-bottom: 2px solid var(--bg-black-100);
     padding: 0 0 5px 5px;
     width: 100%;
 }
@@ -128,6 +132,10 @@
     padding: 20px;
     overflow: hidden;
 }
+.sales-container section.partisan .footer-partisan-section svg,
+.sales-container section.partisan .footer-partisan-section i {
+    color: var(--bg-black-100);
+}
 .sales-container .footer-partisan-section .tools-bar {
     position: absolute;
     right: 10px;
@@ -146,10 +154,9 @@
     z-index: 99;
 }
 .sales-container .footer-partisan-section .tools-bar ul {
-
     display: flex;
     gap: 4px;
-    background-color: var(--bg-black-70);
+    background-color: var(--bg-black-60);
     border-radius: 3px;
     opacity: 0;
     pointer-events: none;

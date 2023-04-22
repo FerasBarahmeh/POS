@@ -1,5 +1,5 @@
 <nav class="main_navigation p-20 hide-mobile" id="main_navigation">
-    <div class="employee_info">
+    <div class="header-nav">
         <div class="profile_picture">
             <img src="<?= IMG ?>avatar.png" class="s-img" alt="User Profile Picture">
         </div>

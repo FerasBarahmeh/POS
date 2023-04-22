@@ -46,14 +46,25 @@ b.bold-font {
 }
 /* Start Colors */
 :root body {
-    --bg-black-900   : #3E4142;
-    --bg-black-100   : #9FACB3;
-    --bg-black-70    : #E3E3E3;
-    --bg-black-50    : #D6E8F0;
-    --bg-black-30    : #ffffff;
-    --text-black-900 : #586266;
-    --text-black-700 : #3E4142;
-    --text-black-30  : #eee;
+    /*--bg-black-900   : #3E4142;*/
+    /*--bg-black-100   : #9FACB3;*/
+    /*--bg-black-70    : #E3E3E3;*/
+    /*--bg-black-50    : #D6E8F0;*/
+    /*--bg-black-30    : #ffffff;*/
+    /*--text-black-900 : #586266;*/
+    /*--text-black-700 : #3E4142;*/
+    /*--text-black-30  : #eee;*/
+    --bg-black-900: #222831;
+    --bg-black-100: #00ADB5;
+    --bg-black-70: #00FFCA;
+    --bg-black-80: #393E46;
+    --bg-black-60: #D3D6DB;
+
+    --bg-black-50: #EEEEEE;
+    --bg-black-30: #ffffff;
+    --text-black-900: #0A4D68;
+    --text-black-700: #3E4142;
+    --text-black-30: #eee;
 }
 body.dark {
     --bg-black-900: #151515;
@@ -94,7 +105,7 @@ header.main {
     padding: 10px 13px;
     background-color: var(--bg-black-100);
     font-size: 22px;
-    box-shadow: 1px 1px 6px grey;
+    color: var(--bg-black-30);
 }
 header.main .title p {
     margin-left: 0;
@@ -238,13 +249,11 @@ div.body {
 }
 nav.main_navigation {
     text-align: center;
-    background-color: var(--bg-black-70);
-    box-shadow: inset 4px 4px 3px #80808066;;
+    background-color: var(--bg-black-60);
+    color: var(--text-black-30);
 }
-nav.main_navigation {
-    text-align: center;
-    background-color: var(--bg-black-70);
-    box-shadow: inset 4px 4px 3px #80808066;
+nav.main_navigation .header-nav span {
+    color: var(--bg-black-900);
 }
 nav .search-session .search-icon  {
     position: absolute;
@@ -310,7 +319,7 @@ nav.main_navigation ul.app_navigation button {
     padding: 10px;
     transition: all .3s ease-out;
     border-radius: 5px;
-    background: rgba(225, 225, 225, 0.13);
+    background: transparent;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #666e;
@@ -341,17 +350,18 @@ nav.main_navigation ul.app_navigation .main-li:hover {
 nav.main_navigation ul.app_navigation .main-li span {
     font-size: 19px;
     margin-left: 5px;
-    color: dimgray;
+    color: var(--text-black-700);
 }
 nav.main_navigation ul.app_navigation .main-li:hover span {
-    color: #eee;
+    color: var(--text-black-30);
 }
 nav.main_navigation ul.app_navigation .main-li svg {
-    color: var(--bg-black-900);
+    color: var(--text-black-900);
     /*margin-left: 6px;*/
 }
 nav.main_navigation ul.app_navigation .main-li a {
     width: 100%;
+    color: var(--text-black-700);
 }
 /* Start Sub menu Nav */
 nav.main_navigation ul.app_navigation .main-li .angle {
@@ -456,8 +466,8 @@ table th {
     white-space: nowrap;
 }
 table thead th {
-    background-color: #EEE;
-    color: gray;
+    background-color: var(--bg-black-100);
+    color: var(--bg-black-30);
     font-size: 16px;
 }
 table tbody tr {
