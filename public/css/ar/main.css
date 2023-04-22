@@ -154,11 +154,10 @@ header.main .options .container-drop-down-main-header.visible {
     overflow: auto;
 }
 header.main .options ul.drop-down-main-header {
-    background: var(--bg-black-50);
-    padding: 20px;
+    background: var(--bg-black-100);
+    padding: 5px;
     left: 0;
     top: 42px;
-    width: 150px;
     box-shadow: 5px 4px 3px lightgrey;
 }
 header.main .options ul.drop-down-main-header:before {
@@ -166,24 +165,28 @@ header.main .options ul.drop-down-main-header:before {
     display: block;
     border-right: 25px solid transparent;
     border-bottom: 25px solid transparent;
-    border-top: 25px solid var(--bg-black-50);
+    border-top: 25px solid var(--bg-black-100);
     position: absolute;
     left: 4px;
     top: -11px;
     transform: rotate(45deg);
     background-color: transparent;
 }
+header.main .options ul.drop-down-main-header li,
+header.main .options ul.drop-down-main-header li a {
+    color: var(--text-black-900);
+}
 header.main .options ul.drop-down-main-header li {
-    border-bottom: 1px solid #9b9494;
-    width: 100%;
+    max-width: 100%;
     font-size: 15px;
     cursor: pointer;
-    margin-bottom: 10px;
     text-align: center;
-    border-radius: 5px;
+    padding: 10px 5px;
     transition: .3s;
     display: flex;
     align-items: center;
+    color: var(--text-black-700);
+    position: relative;
  }
 header.main .options ul.drop-down-main-header li:last-child {
     border-bottom: 0;
@@ -194,6 +197,10 @@ header.main .options ul.drop-down-main-header li:hover {
 }
 header.main .options ul.drop-down-main-header li svg {
     margin-left: 10px;
+}
+header.main .options ul.drop-down-main-header li a.content {
+    padding: 0;
+    margin: 0;
 }
 header.main .options ul.drop-down-main-header li .content {
     padding-bottom: 5px;
