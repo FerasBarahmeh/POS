@@ -590,6 +590,9 @@
 .opacity-low {
     opacity: 0;
 }
+.opacity-half {
+    opacity: .5;
+}
 /* End opacity */
 /* Start Rotate*/
 .rout-90 {

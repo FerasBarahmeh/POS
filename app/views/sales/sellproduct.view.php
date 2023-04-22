@@ -215,7 +215,7 @@
 
     <!-- Start Cater -->
     <section class="partisan mt-20">
-        <h5 class="mb-10"><i class="fa fa-shopping-cart mr-10"></i>Cart</h5>
+        <h5 class="mb-10 section-title"><i class="fa fa-shopping-cart mr-10"></i>Cart</h5>
 
         <!-- Start Table Products in Cart -->
         <section class="responsive-table flex sort-col">
