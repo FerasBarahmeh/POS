@@ -1,4 +1,4 @@
-<nav class="main_navigation p-20 hide-mobile" id="main_navigation">
+<nav class="main_navigation" id="main_navigation">
     <div class="header-nav">
         <div class="profile_picture">
             <img src="<?= IMG ?>avatar.png" class="s-img" alt="User Profile Picture">
@@ -109,7 +109,7 @@
 
     </ul>
 </nav>
-    <div class="action-view pt-20 pl-20 pr-20" id="action-view">
+    <div class="action-view" id="action-view">
 
         <?php
             $messages = $this->message->getMessage();

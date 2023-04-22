@@ -106,6 +106,9 @@ header.main {
     background-color: var(--bg-black-100);
     font-size: 22px;
     color: var(--bg-black-30);
+    z-index: 3;
+    position: fixed;
+    width: 98%;
 }
 header.main .title p {
     margin-left: 0;
@@ -251,6 +254,16 @@ nav.main_navigation {
     text-align: center;
     background-color: var(--bg-black-60);
     color: var(--text-black-30);
+    position: fixed;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    height: 100%;
+    width: 200px;
+    z-index: 1;
+    top: 0;
+    padding: 50px 20px 20px;
 }
 nav.main_navigation .header-nav span {
     color: var(--bg-black-900);
@@ -320,6 +333,7 @@ nav.main_navigation ul.app_navigation button {
     transition: all .3s ease-out;
     border-radius: 5px;
     background: transparent;
+    cursor: pointer;
     display: flex;
     align-items: center;
     border-bottom: 1px solid #666e;
@@ -401,6 +415,7 @@ nav.main_navigation ul.sub-menu li.li-level-2:hover {
 }
 nav.main_navigation ul.sub-menu li.li-level-2 a.sub-link {
     color: var(--text-black-900);
+    font-size: 13px;
 }
 
 li.selected {
@@ -441,7 +456,8 @@ input[type="search"]::-webkit-search-results-decoration {
     -webkit-appearance:none;
 }
 div.action-view {
-    overflow-x: hidden;
+    margin-right: 240px;
+    padding: 50px 20px 20px;
 }
 h1.title-header {
     font-size: 40px;
@@ -475,7 +491,7 @@ table tbody tr {
     transition: opacity .3s ease-in-out;
 }
 table tbody tr:nth-child(odd) {
-    background-color: var(--bg-black-30);
+    background-color: var(--bg-black-60);
 }
 table tbody tr:nth-child(even) {
     background-color: var(--bg-black-70);
