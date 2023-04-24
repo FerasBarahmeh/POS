@@ -12,7 +12,6 @@
                     <input type="text"
                            id="name"
                            class="find-client-input search"
-                           type-request="name"
                            autocomplete="off"/>
 
                 </div>
@@ -31,7 +30,6 @@
                     <input type="email"
                            id="email"
                            class="find-client-input search"
-                           type-request="email"
                            autocomplete="off"/>
                 </div>
                  <ul class="list-identifier" fetchClientBy="email">
@@ -49,7 +47,6 @@
                     <input type="number"
                            id="id"
                            class="find-client-input search"
-                           type-request="id"
                            autocomplete="off"/>
                 </div>
                 <ul class="list-identifier" fetchClientBy="id">
@@ -204,7 +201,6 @@
 
             <fieldset class="row-foot-partisan-section">
                 <button class="btn btn-footer add-cart-btn disabled" id="add-to-cart-sales" disabled><i class="fa fa-shopping-cart mr-10"></i><?= $button_add_to_cart ?></button>
-<!--                <button class="btn btn-footer">show Details product</button>-->
             </fieldset>
 
         </section>
@@ -215,7 +211,7 @@
 
     <!-- Start Cater -->
     <section class="partisan mt-20">
-        <h5 class="mb-10 section-title"><i class="fa fa-shopping-cart mr-10"></i>Cart</h5>
+        <h5 class="mb-10 section-title"><i class="fa fa-shopping-cart mr-10"></i><?= $text_cart ?></h5>
 
         <!-- Start Table Products in Cart -->
         <section class="responsive-table flex sort-col">
@@ -241,6 +237,138 @@
 
     </section>
     <!-- End Cater -->
+
+    <!-- Start invoice details -->
+    <section class="partisan mt-20 invoice" invoice>
+        <h5 class="mb-10 section-title"><i class="fa fa-shopping-cart mr-10"></i><?= $text_invoice ?></h5>
+        <div class="content">
+            <section class="main-data">
+                <!-- Box 1 -->
+                <div class="box amount-info">
+                    <div class="info">
+                        <h6 class="title">Total Received</h6>
+                        <span class="amount"><span class="dollar">$</span> <span class="price">84,354 <span class="fraction">.58</span></span></span>
+                    </div>
+                    <div class="status-payment">
+                        <div class="pending status-type">
+                            <div class="type">
+                                <div class="title"><span class="dot"></span> <p>Pending</p></div>
+                                <span class="value"><span class="">$</span> 450 <span class="fraction">.59</span></span>
+                            </div>
+                        </div>
+
+                        <div class="draft status-type">
+                            <div class="type">
+                                <div class="title"><span class="dot"></span> <p>Draft</p></div>
+                                <span class="value"><span class="">$</span> 00 <span class="fraction">.00</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Box 2 -->
+                <div class="box note">
+                    <div class="header">
+                        <h6>Public Not</h6>
+                        <div class="tools">
+                            <button class="edit"><i class="fa fa-edit"></i></button>
+                            <button class="copy"><i class="fa fa-copy"></i></button>
+                        </div>
+                    </div>
+                    <div class="content-note">
+                        <label for=""></label><textarea placeholder="Write Note For This Invoice" name="" id=""></textarea>
+                    </div>
+                </div>
+
+                <!-- Box 3 -->
+                <div class="box create-new-invoice">
+                    <h6>Create New Invoices</h6>
+                    <div class="between-ele mtb-10 num-inv">
+                        <span class="num">Number Invoice <span class="symbol">#</span> <span class="value">AL3545</span></span>
+                        <button> <span class="mr-5">Copy</span> <i class="fa fa-copy"></i></button>
+                    </div>
+                    <div class="date-inv">
+                        <div class="inputs">
+                            <div class="input">
+                                <label for="issued-on">issued on</label>
+                                <input type="date" id="issued-on">
+                            </div>
+                            <div class="input">
+                                <label for="issued-on">Duo on</label>
+                                <input type="date" id="issued-on">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="invoice">
+                <h5>Invoice</h5>
+                <div class="info-client">
+                    <span class="name-client">Khaled</span>
+                    <span class="address">Amman-Jordan</span>
+                </div>
+                <div class="snippet-products">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Phone</td>
+                            <td>2</td>
+                            <td>$ 300</td>
+                            <td>$ 600</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="total-amount">
+                    <span>Total Amount</span>
+
+                    <span><span class="symbol-dollar">$</span> 1400</span>
+                </div>
+
+                <div class="payment-type payment">
+                    <div class="types">
+                        <label for="TypePayment">Choose Type Payment</label>
+                        <select name="TypePayment" id="TypePayment" class="type-payment">
+                            <?php
+
+                                foreach ($paymentTypes as $key => $value) {
+                                    ?> <option value="<?= $value ?>"><?= $key ?></option> <?php
+                                }
+                            ?>
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="payment-status payment">
+                    <div class="types">
+                        <label for="TypePayment">Choose Status Invoice</label>
+
+                        <select name="TypePayment" id="TypePayment" class="type-payment">
+                            <?php
+
+                                foreach ($paymentStatus as $key => $val) {
+                                    ?> <option value="<?= $val ?>" <?= $this->setSpecificAttribute($val, $intPaymentStatus, "selected") ?> ><?= $key ?></option> <?php
+                                }
+                            ?>
+                        </select>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+    <!-- End invoice details -->
 
 </div>
 
