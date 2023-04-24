@@ -5,6 +5,7 @@ namespace APP\Helpers\PublicHelper;
 
 
 use ReflectionClass;
+use ReflectionException;
 
 trait PublicHelper
 {
@@ -16,7 +17,7 @@ trait PublicHelper
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function getClassProperties($obj, $getClassName=true): array
     {
@@ -34,9 +35,37 @@ trait PublicHelper
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
+     * @author Feras Barahmeh
+     * @version 1.2 From getClassValuesProperties() method
+     * To get name and value for each property class
+     *
+     * @param object $obj object from class, you want fetch name properties
+     * @param array|string|null $exceptionPropertiesName if you want exception specific property
+     *
+     * @return ?array associative array the key is a name property the value is a value of property
      */
-    public function getClassValuesProperties($obj, $getClassName=true): array
+    public function getSpecificPropagates(object $obj, array|string|null $exceptionPropertiesName=null): ?array
+    {
+        if ($exceptionPropertiesName == null) return (new ReflectionClass($obj::class))->getDefaultProperties();
+
+        if (! is_array($exceptionPropertiesName)) $exceptionPropertiesName = [$exceptionPropertiesName];
+
+        $props = (new ReflectionClass($obj::class))->getDefaultProperties();
+
+        foreach ($props as $key => $val) {
+            if (in_array($key, $exceptionPropertiesName)) {
+                unset($props[$key]);
+                return $props;
+            }
+        }
+        return null;
+    }
+    /**
+     * @throws ReflectionException
+     * @deprecated use the new version getSpecificPropagates()
+     */
+    public function getClassValuesProperties($obj): array
     {
         return (new ReflectionClass($obj::class))->getDefaultProperties();
     }
