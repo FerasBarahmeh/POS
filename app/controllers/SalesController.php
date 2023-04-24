@@ -2,17 +2,15 @@
 namespace APP\Controllers;
 use APP\Enums\PaymentStatus;
 use APP\Enums\PaymentType;
+use APP\Enums\Units;
 use APP\Enums\StatusProduct;
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\FilterInput;
 use APP\LIB\Template\TemplateHelper;
-use APP\LIB\Template\Units;
 use APP\Models\ClientModel;
 use APP\Models\ProductModel;
 use APP\Models\SalesInvoicesModel;
 use APP\Models\UserModel;
-use http\Client;
-use function APP\pr;
 
 class SalesController extends AbstractController
 {
@@ -31,6 +29,36 @@ class SalesController extends AbstractController
         $records = (new ClientModel())->allLazy(["ORDER BY " => "Name ASC"]);
         $this->putLazy($this->clients, $records);
     }
+
+    /**
+     * @throws \ReflectionException
+     */
+    private function setTemplateVariableSellProductAction()
+    {
+        $units = new Units();
+        $initUnit = $units->getDefault();
+        $paymentTypes = new PaymentType();
+        $initPaymentType =$paymentTypes->getDefault();
+
+        $paymentStatus = new PaymentStatus();
+        $intPaymentStatus = $paymentStatus->getDefault();
+        $statusProduct = new StatusProduct();
+        $initStatusProduct = $statusProduct->getDefault();
+
+        $this->_info["products"]            = ProductModel::getProducts();
+
+        $this->_info["units"]               = $this->getSpecificPropagates($units);
+        $this->_info["initUnits"]           = $initUnit;
+
+        $this->_info["paymentTypes"]        = $this->getSpecificPropagates($paymentTypes, "default");
+        $this->_info["initPaymentType"]     = $initPaymentType;
+
+        $this->_info["paymentStatus"]       = $this->getSpecificPropagates($paymentStatus, "default");
+        $this->_info["intPaymentStatus"]    = $intPaymentStatus;
+
+        $this->_info["status"]              = $this->getSpecificPropagates($statusProduct, "default");
+        $this->_info["initStatusProduct"]   = $initStatusProduct;
+    }
     public function sellProductAction()
     {
 
@@ -39,11 +67,8 @@ class SalesController extends AbstractController
 
         $this->getClients();
         $this->_info["clients"]         = $this->clients;
-        $this->_info["products"]        = ProductModel::getProducts();
-        $this->_info["units"]           = $this->getClassValuesProperties(new Units());
-        $this->_info["paymentType"]     = $this->getClassValuesProperties(new PaymentType());
-        $this->_info["paymentStatus"]   = $this->getClassValuesProperties(new PaymentStatus());
-        $this->_info["status"]          = $this->getClassValuesProperties(new StatusProduct());
+
+        $this->setTemplateVariableSellProductAction();
 
         $this->_renderView();
     }

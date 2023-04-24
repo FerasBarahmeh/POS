@@ -11,7 +11,7 @@
 }
 .sales-container section.partisan .section-title {
     font-size: 20px;
-    background-color: var(--bg-black-70);
+    background-color: var(--bg-black-50);
     padding: 5px 10px;
     color: var(--text-black-700);
     border-radius: 3px;
@@ -269,3 +269,256 @@ label.float.flay.l26.tm10 {
 .sales-container .del-icon {
     color: var(--danger-color-300);
 }
+
+/* Start Create invoices */
+.sales-container section.invoice .content {
+    display: flex;
+    gap: 30px;
+    background-color: #e8eaf6;
+    padding: 20px;
+}
+.sales-container section.invoice .main-data {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 2;
+}
+.sales-container section.invoice .main-data .box,
+.sales-container section.invoice .invoice {
+    padding: 20px;
+}
+.sales-container section.invoice .main-data .box {
+    background-color: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.sales-container section.invoice .main-data .box.amount-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sales-container section.invoice .main-data .box .info h6 {
+
+}
+.sales-container section.invoice .main-data .box h6 {
+    color: var(--text-black-700);
+    text-transform: uppercase;
+    opacity: .7;
+    font-size: 13px;
+}
+.sales-container section.invoice .main-data .box .info .amount {
+    position: relative;
+}
+.sales-container section.invoice .dollar {
+    position: absolute;
+    left: -13px;
+    color: var(--bg-black-80);
+    font-size: 15px;
+}
+.sales-container section.invoice .main-data .box .info .amount .price {
+    font-size: 25px;
+    font-weight: bold;
+    color: var(--bg-black-100);
+}
+.sales-container section.invoice .fraction {
+    display: inline;
+    position: absolute;
+    color: gray;
+}
+.sales-container section.invoice .main-data .box .status-payment {
+    display: flex;
+    flex-direction: column;
+}
+.sales-container section.invoice .main-data .box .status-payment .status-type  .type {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0 10px 0;
+    position: relative;
+}
+.sales-container section.invoice .main-data .box .status-payment .status-type  .type .title {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.sales-container section.invoice .main-data .box .status-payment .status-type  .type .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+.sales-container section.invoice .main-data .box .status-payment .status-type.pending .title {
+    color: #1976d2;
+}
+.sales-container section.invoice .main-data .box .status-payment .status-type.pending .dot {
+    background-color: #1976d2;
+}
+.sales-container section.invoice .main-data .box .status-payment .status-type.draft .title {
+    color: #fbc02d;
+}
+.sales-container section.invoice .main-data .box .status-payment .status-type.draft .dot {
+    background-color: #fbc02d;
+}
+.sales-container section.invoice .main-data .box .status-payment .status-type  .type .title p {
+    font-size: 16px;
+}
+.sales-container section.invoice .main-data .box .status-payment .status-type  .type .value {
+    position: relative;
+    text-align: end;
+    left: -16px;
+}
+.sales-container section.invoice .main-data .box.note {
+    overflow: hidden;
+    padding: 20px;
+}
+.sales-container section.invoice .main-data .box.note .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+.sales-container section.invoice .main-data .box.note .header h5 {
+    color: var(--text-black-700);
+}
+.sales-container section.invoice .main-data .box.note .header .tools {
+    display: flex;
+    gap: 5px;
+}
+.sales-container section.invoice .main-data .box.note .header button {
+    background-color: transparent;
+    cursor: pointer;
+    color: var(--bg-black-100);
+}
+.sales-container section.invoice .main-data .box.note .header .edit {
+
+}
+.sales-container section.invoice .main-data .box.note .header .copy {
+
+}
+.sales-container section.invoice .main-data .box.note .content-note {
+    background-color: #ebf2fd;
+}
+.sales-container section.invoice .main-data .box.note .content-note textarea {
+    width: 100%;
+    resize: none;
+    overflow-y: scroll;
+    padding: 5px;
+    background-color: inherit;
+}
+.sales-container section.invoice .main-data .box.create-new-invoice {
+
+}
+.sales-container section.invoice .main-data .box.create-new-invoice .num-inv,
+.sales-container section.invoice .main-data .box.create-new-invoice .num-inv button {
+    color: var(--text-black-900);
+}
+.sales-container section.invoice .main-data .box.create-new-invoice .num-inv .num {
+    font-size: 12px;
+}
+.sales-container section.invoice .symbol-dollar,
+.sales-container section.invoice .symbol {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--bg-black-100);
+}
+.sales-container section.invoice .main-data .box.create-new-invoice .num-inv .num .value {
+    color: var(--text-black-700);
+}
+.sales-container section.invoice .main-data .box.create-new-invoice .num-inv button {
+    cursor: pointer;
+    background-color: transparent;
+}
+.sales-container section.invoice .main-data .box.create-new-invoice .date-inv {
+
+}
+.sales-container section.invoice .main-data .box.create-new-invoice .date-inv .inputs {
+    display: flex;
+    gap: 10px;
+}
+.sales-container section.invoice .main-data .box.create-new-invoice .date-inv .input {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.sales-container section.invoice .main-data .box.create-new-invoice .date-inv label {
+    text-transform: capitalize;
+    font-size: 14px;
+    color: var(--text-black-900);
+}
+.sales-container section.invoice .main-data .box.create-new-invoice .date-inv input {
+    margin-top: 1px;
+    border: 2px solid var(--bg-black-50);
+    padding: 10px;
+    border-radius: 3px;
+}
+.sales-container section.invoice .invoice {
+    flex: 1;
+    background-color: #ffffff;
+    border-radius: 4px;
+    position: relative;
+}
+.sales-container section.invoice .invoice h5,
+.sales-container section.invoice .payment label,
+.sales-container section.invoice .invoice .info-client .address {
+    color: var(--text-black-700);
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+.sales-container section.invoice .invoice .info-client {
+    display: flex;
+    flex-direction: column;
+}
+.sales-container section.invoice .invoice .info-client .name-client {
+    color: var(--bg-black-100);
+    font-weight: bold;
+    font-size: 20px;
+}
+.sales-container section.invoice .invoice .info-client {
+
+}
+.sales-container section.invoice .invoice .snippet-products {
+
+}
+.sales-container section.invoice .invoice .snippet-products table {
+    width: 100%;
+}
+.sales-container section.invoice .total-amount,
+.sales-container section.invoice .payment {
+    padding: 0 10px;
+}
+.sales-container section.invoice .total-amount {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 10px;
+    color: var(--bg-black-900);
+}
+.sales-container section.invoice .payment {
+    margin-top: 15px;
+}
+
+/* Style for the label */
+.sales-container section.invoice .payment label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style for the select input */
+select.type-payment {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Style for the select input when it's in focus */
+select.type-payment:focus {
+    outline: none;
+    border-color: var(--bg-black-100);
+}
+
+/* End Create invoices */
