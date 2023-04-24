@@ -2,7 +2,6 @@
 
 namespace APP\LIB\Template;
 
-use function APP\pr;
 
 trait TemplateHelper
 {
@@ -91,5 +90,17 @@ trait TemplateHelper
     {
         return crypt($pass, MAIN_SALT);
     }
-
+    /**
+     * Usually use this method if you want to add attribute HTML in element if value equal another value
+     *
+     * @param mixed $value fist value
+     * @param mixed $comp second value
+     * @param mixed $attributeName name attribute will be returned
+     *
+     * @return ?string return selected if you find value in array
+     */
+    public function setSpecificAttribute(mixed $value, mixed $comp, mixed $attributeName): ?string
+    {
+        return $value == $comp ? $attributeName : '';
+    }
 }
