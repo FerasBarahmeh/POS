@@ -135,7 +135,11 @@
     overflow: hidden;
 }
 .sales-container section.partisan .footer-partisan-section svg,
-.sales-container section.partisan .footer-partisan-section i {
+.sales-container section.partisan .footer-partisan-section i,
+.discount button.btn-apply i,
+.discount button.btn-apply svg,
+.main-data button.create-invoice svg,
+.main-data button.create-invoice i {
     color: var(--bg-black-100);
 }
 .sales-container .footer-partisan-section .tools-bar {
@@ -231,7 +235,9 @@ label.float.flay.l26.tm10 {
 .btn-footer:hover {
     opacity: .8;
 }
-.add-cart-btn {
+.add-cart-btn,
+.discount button.btn-apply,
+.main-data button.create-invoice {
     max-width: 200px;
     align-self: end;
     padding: 5px 15px;
@@ -243,15 +249,21 @@ label.float.flay.l26.tm10 {
     text-transform: capitalize;
     font-size: 14px;
 }
-.add-cart-btn.disabled {
+.add-cart-btn.disabled,
+.discount button.btn-apply.disabled,
+.main-data button.create-invoice.disabled {
     pointer-events: none;
     opacity: .4;
 }
-.add-cart-btn.activation {
+.add-cart-btn.activation,
+.discount button.btn-apply.activation,
+.main-data button.create-invoice.activation {
     pointer-events: auto;
     opacity: 1;
 }
-.add-cart-btn.activation:hover {
+.add-cart-btn.activation:hover,
+.discount button.btn-apply.activation:hover,
+.main-data button.create-invoice.activation:hover {
     opacity: .8;
 }
 .sales-container .edit-icon,
@@ -449,6 +461,12 @@ label.float.flay.l26.tm10 {
     padding: 10px;
     border-radius: 3px;
 }
+.main-data .box .created-by {
+    color: var(--text-black-900);
+}
+.main-data .box .created-by .name-employee {
+    color: var(--bg-black-100);
+}
 .sales-container section.invoice .invoice {
     flex: 1;
     background-color: #ffffff;
@@ -513,12 +531,66 @@ select.type-payment {
     box-sizing: border-box;
     transition: border-color 0.3s ease-in-out;
     cursor: pointer;
+    text-transform: capitalize;
 }
 
 /* Style for the select input when it's in focus */
 select.type-payment:focus {
     outline: none;
     border-color: var(--bg-black-100);
+}
+
+.discount {
+    background-color: transparent;
+    padding: 10px;
+    text-align: center;
+    border: 2px solid var(--bg-black-50);
+    margin: 15px 10px 0 10px;
+    border-radius: 4px;
+}
+
+.discount h3 {
+    color: var(--bg-black-100);
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.discount form {
+    display: inline-block;
+    text-align: left;
+}
+.discount .input-discount {
+    margin-bottom: 10px;
+    position: relative;
+}
+.discount .input-discount label {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 10px;
+    color: var(--text-black-900);
+}
+
+.discount input[type="text"] {
+    padding: 0 0 0 5px;
+    font-size: 18px;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+}
+.discount .input-group-append {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+.discount .input-group-text input[type="radio"] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.discount .input-group-text label {
+    font-size: 14px;
+    color: var(--text-black-700);
+    cursor: pointer;
 }
 
 /* End Create invoices */

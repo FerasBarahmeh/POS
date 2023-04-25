@@ -11,6 +11,7 @@ use APP\Models\ClientModel;
 use APP\Models\ProductModel;
 use APP\Models\SalesInvoicesModel;
 use APP\Models\UserModel;
+use ReflectionException;
 
 class SalesController extends AbstractController
 {
@@ -20,7 +21,7 @@ class SalesController extends AbstractController
 
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     protected $clients ;
     protected $products;
@@ -31,7 +32,7 @@ class SalesController extends AbstractController
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     private function setTemplateVariableSellProductAction()
     {
@@ -47,16 +48,16 @@ class SalesController extends AbstractController
 
         $this->_info["products"]            = ProductModel::getProducts();
 
-        $this->_info["units"]               = $this->getSpecificPropagates($units);
+        $this->_info["units"]               = $this->getSpecificProperties($units);
         $this->_info["initUnits"]           = $initUnit;
 
-        $this->_info["paymentTypes"]        = $this->getSpecificPropagates($paymentTypes, "default");
+        $this->_info["paymentTypes"]        = $this->getSpecificProperties($paymentTypes, "default", true);
         $this->_info["initPaymentType"]     = $initPaymentType;
 
-        $this->_info["paymentStatus"]       = $this->getSpecificPropagates($paymentStatus, "default");
+        $this->_info["paymentStatus"]       = $this->getSpecificProperties($paymentStatus, "default", true);
         $this->_info["intPaymentStatus"]    = $intPaymentStatus;
 
-        $this->_info["status"]              = $this->getSpecificPropagates($statusProduct, "default");
+        $this->_info["status"]              = $this->getSpecificProperties($statusProduct, "default", true);
         $this->_info["initStatusProduct"]   = $initStatusProduct;
     }
     public function sellProductAction()

@@ -301,6 +301,21 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Box 4 -->
+                <div class="box flex f-sp-between">
+                    <div class="created-by" id="created-by">
+                            <div class="">
+                                <i class="fa fa-pen-nib mr-10"></i>
+                                Created By
+                                <span class="name-employee ml-5" id="name-employee">
+                                    <?= $this->session->user->extraUserInfo->FirstName ?> <?= $this->session->user->extraUserInfo->LastName ?>
+                                </span>
+                            </div>
+                    </div>
+
+                    <button class="btn btn-footer create-invoice disabled" id="create-invoice" disabled=""><i class="fa fa-check"></i> Create Invoice</button>
+                </div>
             </section>
 
             <section class="invoice">
@@ -365,6 +380,33 @@
 
                     </div>
                 </div>
+
+                <!-- Start Discount -->
+                <section class="discount">
+                    <h3>Special Offer!</h3>
+
+                    <div class="input-group">
+                        <div class="input-discount">
+                            <label for="discount">Enter Discount:</label>
+                            <input type="text" id="discount" name="discount" class="form-control" placeholder="0.00">
+                        </div>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                              <input type="radio" id="percent" name="discount-type" value="percent">
+                              <label for="percent">Percentage</label>
+                            </div>
+
+                            <div class="input-group-text">
+                              <input type="radio" id="fixed" name="discount-type" value="fixed">
+                              <label for="fixed">Fixed Amount</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-footer btn-apply disabled" id="apply-discount" disabled=""><i class="fa fa-check"></i> Apply Discount</button>
+                </section>
+
+                <!-- End Discount -->
             </section>
         </div>
     </section>

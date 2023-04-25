@@ -224,7 +224,7 @@ productsListHTML.forEach(ul => {
                     if (info.result) {
                         idCurrentProductSelected = info["ProductId"];
                         currentProductSelected = {"id":info["ProductId"], info:info};
-                        activationAddToCartBtn();
+                        activationDisabledBtn(addToCartSalesHTML);
                         setProductInfo(info);
                     } else {
                         flashMessage("danger", info.message, 5000);
@@ -315,7 +315,7 @@ function addEventEditOrder(btn, id) {
 
         idCurrentProductSelected = id;
         currentProductSelected = {"id":id, "info":product};
-        activationAddToCartBtn();
+        activationDisabledBtn(addToCartSalesHTML);
         removeProductFromOrder(id);
     });
 }
@@ -379,15 +379,15 @@ function resitCurrentProduct() {
     currentProductSelected = null;
     idCurrentProductSelected = null;
 }
-function disabledAddToCartBtn() {
-    addToCartSalesHTML.setAttribute("disabled", "disabled");
-    addToCartSalesHTML.classList.add("disabled");
-    addToCartSalesHTML.classList.remove("activation");
+function disabledActiveBtn(disableBtn) {
+    disableBtn.setAttribute("disabled", "disabled");
+    disableBtn.classList.add("disabled");
+    disableBtn.classList.remove("activation");
 }
-function activationAddToCartBtn() {
-    addToCartSalesHTML.removeAttribute( "disabled");
-    addToCartSalesHTML.classList.add("activation");
-    addToCartSalesHTML.classList.remove("disabled");
+function activationDisabledBtn(disableBtn) {
+    disableBtn.removeAttribute( "disabled");
+    disableBtn.classList.add("activation");
+    disableBtn.classList.remove("disabled");
 }
 addToCartSalesHTML.addEventListener("click", () => {
 
@@ -397,7 +397,7 @@ addToCartSalesHTML.addEventListener("click", () => {
         addProductsToCartSales();
         resitCurrentProduct();
         cleanInputs(productsInputs);
-        disabledAddToCartBtn();
+        disabledActiveBtn(addToCartSalesHTML);
     }
 });
 
