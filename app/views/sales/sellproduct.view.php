@@ -292,11 +292,14 @@
                         <div class="inputs">
                             <div class="input">
                                 <label for="issued-on">issued on</label>
-                                <input type="date" id="issued-on">
+                                <?php
+                                    $dt = new DateTime();
+                                ?>
+                                <input type="date" id="issued-on" value="<?= $dt->format('Y-m-d')?>">
                             </div>
                             <div class="input">
                                 <label for="issued-on">Duo on</label>
-                                <input type="date" id="issued-on">
+                                <input type="date" id="issued-on" value="<?= $dt->format('Y-m-d')?>">
                             </div>
                         </div>
                     </div>
@@ -343,7 +346,7 @@
                 <div class="total-amount">
                     <span>Total Amount</span>
 
-                    <span><span class="symbol-dollar">$</span>  <span id="total-price">00.00</span></span>
+                    <span><span class="symbol-dollar">$</span>  <span id="total-price">0.000</span></span>
                 </div>
 
                 <div class="payment-type payment">
@@ -379,7 +382,10 @@
 
                 <!-- Start Discount -->
                 <section class="discount">
-                    <h3>Special Offer!</h3>
+                    <h3 class="between-ele">
+                        <span>Special Offer !</span>
+                        <span class="cursor-pointer description dir-r" id="cansel-offer" description="remove offer"><i class="fa fa-trash"></i></span>
+                    </h3>
 
                     <div class="input-group">
                         <div class="input-discount">

@@ -2,6 +2,7 @@ const DiscountType = {
     fixed:1,
     percentage: 0,
 }
+let messages = null;
 const findClientInputs = document.querySelectorAll(".find-client-input");
 const searchInputs = document.querySelectorAll(".search");
 const prominentElement = document.querySelectorAll(".list-identifier");
@@ -30,6 +31,17 @@ let totalPriceAfterDiscount = null;
 const totalPriceHtml = document.getElementById("total-price");
 let totalPriceWithTax = 0;
 let totalPriceWithoutTax = 0;
+
+function lenObj(obj) {
+    return Object.keys(obj).length;
+}
+function getLanguage() {
+    getMessages("sales", "getMessagesAjax", "sales.messages").then((result) => {
+        messages = result;
+        return result;
+    });
+}
+getLanguage();
 function addFlayClassToLabelWhenFocus(label, hasValue) {
     if (! hasValue && ! label.classList.contains("flay")) {
         label.classList.add("flay");
@@ -321,7 +333,7 @@ productsListHTML.forEach(ul => {
                 hiddenListIdentifier(ul);
 
                 // change color border
-                ul.closest(".partisan").style.borderColor = "var(--success-color-300)";
+                ul.closest(".partisan").style.borderColor = "#65cd65";
 
                 flashMessage("success", currentProductSelected.info["message"], 5000);
 
@@ -360,7 +372,16 @@ function removeProductFromOrder(id) {
 function addEventRemoveOrder(btn, id) {
     btn.addEventListener("click", () => {
         removeProductFromOrder(id);
+        if (lenObj(products) === 0) {
+            resitDiscountVariable();
+            resitDiscountInput();
+            unCheckInputs(checkInputsHtml);
+            disabledActiveBtn(applyDiscountBtn);
+        }
+        calcTotalPrice();
         fillSnippetProductsTable();
+        calculateDiscount(getTypeDiscount());
+        fillTotalPriceWithDiscountInput();
     });
 }
 function createBtnEdit() {
@@ -478,7 +499,13 @@ function activationDisabledBtn(disableBtn) {
     disableBtn.classList.remove("disabled");
 }
 function fillTotalPriceInput() {
-    totalPriceHtml.textContent = totalPriceWithTax;
+    totalPriceHtml.textContent = totalPriceWithTax.toFixed(3);
+}
+function fillTotalPriceWithDiscountInput() {
+    totalPriceHtml.textContent = parseFloat(totalPriceAfterDiscount).toFixed(3);
+}
+function resitDiscountInput() {
+    discountHtml.value = '';
 }
 addToCartSalesHTML.addEventListener("click", () => {
 
@@ -565,7 +592,10 @@ function changeStatusActiveDiscount() {
         disabledActiveBtn(applyDiscountBtn);
     }
 }
-
+function resitDiscountVariable() {
+    totalPriceAfterDiscount = null;
+    discountValue = 0;
+}
 // type discount inputs
 checkInputsHtml.forEach(input => {
     input.addEventListener("click", () => {
@@ -573,35 +603,60 @@ checkInputsHtml.forEach(input => {
         unCheckInputs(checkInputsHtml);
         input.checked = !!inputChecked;
         changeStatusActiveDiscount();
+        if (! ifHasDiscount()) {
+            resitDiscountVariable();
+            fillTotalPriceInput();
+            resitDiscountInput();
+        }
     });
 });
 discountHtml.addEventListener("keyup", (e) => {
     changeStatusActiveDiscount();
     if (e.target.value === '') {
-        discountValue = 0;
+        resitDiscountVariable();
+        fillTotalPriceInput();
+        resitDiscountInput();
     } else {
         discountValue = parseFloat(e.target.value);
     }
 });
-function calculateDiscount() {
-    let v = getTypeDiscount();
+function calculateDiscount(valueTypeDiscount) {
     totalPriceAfterDiscount = totalPriceWithTax;
 
-    if (v === DiscountType.fixed || v === DiscountType.percentage) {
-        if (v === DiscountType.fixed) {
-            totalPriceAfterDiscount -= discountValue;
+    if (valueTypeDiscount === DiscountType.fixed) {
+        totalPriceAfterDiscount -= discountValue;
+    } else if(valueTypeDiscount === DiscountType.percentage) {
+        totalPriceAfterDiscount *= discountValue / 100.0;
+    }
+}
 
-        } else if(v === DiscountType.percentage) {
+function isValidDiscount() {
+    let valueTypeDiscount = getTypeDiscount();
 
-            totalPriceAfterDiscount *= discountValue;
-        }
-
-    } else {
-        flashMessage("danger", "Can't change type discount", 5000);
+    if (lenObj(products) === 0) {
+        console.log("in products")
+        flashMessage("danger", messages["message_no_products_in_cart"], 5000);
+        return false;
+    }
+    if (! (valueTypeDiscount === DiscountType.fixed || valueTypeDiscount === DiscountType.percentage)) {
+        flashMessage("danger", messages["message_cant_change_type_discount"], 5000);
+        return false;
     }
 
+    return true;
 }
 applyDiscountBtn.addEventListener("click", () => {
-    calculateDiscount();
-    console.log(totalPriceAfterDiscount)
+    if (isValidDiscount()) {
+        calculateDiscount(getTypeDiscount());
+        totalPriceHtml.textContent = totalPriceAfterDiscount.toFixed(3);
+    }
+});
+const canselOfferBtn = document.getElementById("cansel-offer");
+canselOfferBtn.addEventListener("click", () => {
+    resitDiscountInput();
+    resitDiscountVariable();
+    unCheckInputs(checkInputsHtml);
+    changeStatusActiveDiscount();
+    // totalPriceHtml.textContent = totalPriceWithTax;
+    fillTotalPriceInput()
 });
