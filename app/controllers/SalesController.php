@@ -1,5 +1,6 @@
 <?php
 namespace APP\Controllers;
+use APP\Enums\DiscountType;
 use APP\Enums\PaymentStatus;
 use APP\Enums\PaymentType;
 use APP\Enums\Units;
@@ -46,6 +47,9 @@ class SalesController extends AbstractController
         $statusProduct = new StatusProduct();
         $initStatusProduct = $statusProduct->getDefault();
 
+        $discountType = new DiscountType();
+
+
         $this->_info["products"]            = ProductModel::getProducts();
 
         $this->_info["units"]               = $this->getSpecificProperties($units);
@@ -59,7 +63,14 @@ class SalesController extends AbstractController
 
         $this->_info["status"]              = $this->getSpecificProperties($statusProduct, "default", true);
         $this->_info["initStatusProduct"]   = $initStatusProduct;
+
+        $this->_info["discountTypes"] = $this->getSpecificProperties($discountType, null, true);
     }
+
+    /**
+     * @throws ReflectionException
+     */
+    #[GET('/sales/sellproduct')]
     public function sellProductAction()
     {
 
@@ -132,13 +143,17 @@ class SalesController extends AbstractController
         }
     }
 
+    /**
+     * @throws ReflectionException
+     */
     private function setAnomalyValues(&$values)
     {
         $values["Unit"] = $this->language->get(
             $this->getNameByNumber(
                 "unit",
                     $values["Unit"],
-                    $this->getClassValuesProperties(new Units())));
+                    $this->getSpecificProperties(new Units(), 'default', true),
+            ));
 
         $values["QuantityChoose"] = 1;
         $values["result"] = true;

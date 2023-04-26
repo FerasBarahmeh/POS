@@ -1,3 +1,7 @@
+const DiscountType = {
+    fixed:1,
+    percentage: 0,
+}
 const findClientInputs = document.querySelectorAll(".find-client-input");
 const searchInputs = document.querySelectorAll(".search");
 const prominentElement = document.querySelectorAll(".list-identifier");
@@ -5,11 +9,37 @@ const listsIdentifier = document.querySelectorAll("[fetchClientBy]");
 let identifierClient = null;
 let clientInfo = null;
 const clientSectionHTML = document.querySelector("[client]");
+const clientInfoHtml = document.querySelector(".info-client");
+const snippetProductsTableHtml = document.getElementById("snippet-products");
+const typePaymentHtml = document.getElementById("TypePayment");
+const statusInvoiceHtml = document.getElementById("statusInvoice");
 
+let  typePaymentValue = getValueOptionSection(typePaymentHtml)
+let typePaymentName = getNameOptionSelection(typePaymentHtml);
+
+let statusInvoiceValue = getValueOptionSection(statusInvoiceHtml);
+let statusInvoiceName = getNameOptionSelection(statusInvoiceHtml);
+
+const checkInputsHtml = document.querySelectorAll("input[type=checkbox]");
+const discountHtml = document.getElementById("discount");
+const applyDiscountBtn = document.getElementById("apply-discount");
+
+let discountValue = null;
+
+let totalPriceAfterDiscount = null;
+const totalPriceHtml = document.getElementById("total-price");
+let totalPriceWithTax = 0;
+let totalPriceWithoutTax = 0;
 function addFlayClassToLabelWhenFocus(label, hasValue) {
     if (! hasValue && ! label.classList.contains("flay")) {
         label.classList.add("flay");
     }
+}
+function getValueOptionSection(selection) {
+    return selection.options[selection.selectedIndex].value;
+}
+function getNameOptionSelection(selection) {
+    return selection.options[selection.selectedIndex].text;
 }
 function removeFlayClassToLabel(input) {
     let inputContainer = input.parentElement;
@@ -98,7 +128,6 @@ function hiddenProminentElements() {
                 container.classList.remove("focus");
             }
         });
-
     });
 }
 hiddenProminentElements();
@@ -127,16 +156,72 @@ function dropLabel(inputLabel) {
     label.classList.remove("flay");
 }
 
-function setClientInfo() {
+function fillInputsClientInfo() {
     let inputs = clientSectionHTML.querySelectorAll("input");
     inputs.forEach(input => {
         let id = input.getAttribute("id");
         input.value = clientInfo[id];
         flayLabel(input);
-        // changeStatusLabelActionInput(label, !! input.value);
-
     });
+}
+function setClientInfo() {
+    let nameClient = clientInfoHtml.querySelector(".name-client");
+    let addressClient = clientInfoHtml.querySelector(".address");
+    nameClient.textContent = clientInfo.Name;
+    addressClient.textContent = clientInfo["Address"];
+}
+function calcTotalPrice() {
+    totalPriceWithTax = 0;
+    totalPriceWithoutTax = 0;
+    for (const productsKey in products) {
+        let price = parseFloat(products[productsKey]["SellPrice"]);
+        let tax = parseFloat(products[productsKey]["Tax"]);
 
+        totalPriceWithTax += price + (price * tax);
+        totalPriceWithoutTax += price;
+    }
+}
+function calcTax(price, tax) {
+    return  parseFloat(price) + (parseFloat(price) * parseFloat(tax));
+}
+function createRowSnippetProductTable(rowInfo, currency) {
+
+    let tr = document.createElement("tr");
+
+    let name = document.createElement("td");
+    name.textContent = rowInfo.Name;
+
+    tr.appendChild(name);
+
+    let qty = document.createElement("td");
+    qty.textContent = rowInfo["QuantityChoose"] + " " + rowInfo["Unit"];
+    tr.appendChild(qty);
+
+    let tax = document.createElement("td");
+    tax.textContent = rowInfo["Tax"];
+    tr.appendChild(tax);
+
+    let price = document.createElement("td");
+    let priceWithTax = calcTax(rowInfo["SellPrice"], rowInfo["Tax"]);
+
+
+    price.textContent = currency + " " + rowInfo["SellPrice"];
+    tr.appendChild(price);
+
+    let total = document.createElement("td");
+    total.textContent = currency + " " + parseFloat(priceWithTax) * parseFloat(rowInfo["QuantityChoose"]);
+    tr.appendChild(total);
+
+    return tr;
+
+}
+function fillSnippetProductsTable(currency='$') {
+    let tbody = snippetProductsTableHtml.querySelector("tbody");
+    removeAllChildNodes(tbody);
+    for (const id in products) {
+        let row = createRowSnippetProductTable(products[id], currency)
+        tbody.appendChild(row);
+    }
 }
 listsIdentifier.forEach(listIdentifier => {
 
@@ -152,7 +237,7 @@ listsIdentifier.forEach(listIdentifier => {
             }
           )
           .finally(() => {
-              setClientInfo();
+              fillInputsClientInfo();
               hiddenListIdentifier(ul);
               flashMessage("success", clientInfo["message"], 5000);
 
@@ -165,6 +250,7 @@ listsIdentifier.forEach(listIdentifier => {
                   left: 0,
                   behavior: "smooth",
               });
+              setClientInfo();
           });
 
       });
@@ -274,6 +360,7 @@ function removeProductFromOrder(id) {
 function addEventRemoveOrder(btn, id) {
     btn.addEventListener("click", () => {
         removeProductFromOrder(id);
+        fillSnippetProductsTable();
     });
 }
 function createBtnEdit() {
@@ -317,6 +404,7 @@ function addEventEditOrder(btn, id) {
         currentProductSelected = {"id":id, "info":product};
         activationDisabledBtn(addToCartSalesHTML);
         removeProductFromOrder(id);
+        fillSnippetProductsTable();
     });
 }
 function createRowProduct(info) {
@@ -389,15 +477,21 @@ function activationDisabledBtn(disableBtn) {
     disableBtn.classList.add("activation");
     disableBtn.classList.remove("disabled");
 }
+function fillTotalPriceInput() {
+    totalPriceHtml.textContent = totalPriceWithTax;
+}
 addToCartSalesHTML.addEventListener("click", () => {
 
     if (idCurrentProductSelected !== null && currentProductSelected !== null) {
         products[currentProductSelected.id] = currentProductSelected.info;
         setChangeDefaultValuesInInputs();
         addProductsToCartSales();
+        calcTotalPrice();
+        fillSnippetProductsTable();
         resitCurrentProduct();
         cleanInputs(productsInputs);
         disabledActiveBtn(addToCartSalesHTML);
+        fillTotalPriceInput();
     }
 });
 
@@ -430,3 +524,84 @@ if (clearInputsBtn != null) {
         cleanInputs(productsInputs);
     });
 }
+
+// Change Status Radio inputs
+function uncheckInput(input) {
+    input.checked = false;
+}
+function unCheckInputs(inputs) {
+    inputs.forEach(input => {
+       uncheckInput(input);
+    });
+}
+function ifHasDiscount() {
+    let value = Number(discountHtml.value);
+    let flag = null;
+    for (let i = 0; i < checkInputsHtml.length; i++) {
+        if (checkInputsHtml[i].checked === true) {
+            flag = true;
+            break;
+        } else {
+            flag = false;
+        }
+    }
+    return value > 0 && flag;
+}
+function getTypeDiscount() {
+    let checkedValue = null;
+    if (ifHasDiscount()) {
+        checkInputsHtml.forEach(input => {
+           if (input.checked) {
+               checkedValue = parseInt(input.value);
+           }
+        });
+    }
+    return checkedValue;
+}
+function changeStatusActiveDiscount() {
+    if (ifHasDiscount()) {
+        activationDisabledBtn(applyDiscountBtn);
+    } else {
+        disabledActiveBtn(applyDiscountBtn);
+    }
+}
+
+// type discount inputs
+checkInputsHtml.forEach(input => {
+    input.addEventListener("click", () => {
+        let inputChecked = input.checked;
+        unCheckInputs(checkInputsHtml);
+        input.checked = !!inputChecked;
+        changeStatusActiveDiscount();
+    });
+});
+discountHtml.addEventListener("keyup", (e) => {
+    changeStatusActiveDiscount();
+    if (e.target.value === '') {
+        discountValue = 0;
+    } else {
+        discountValue = parseFloat(e.target.value);
+    }
+});
+function calculateDiscount() {
+    let v = getTypeDiscount();
+    totalPriceAfterDiscount = totalPriceWithTax;
+
+    if (v === DiscountType.fixed || v === DiscountType.percentage) {
+        if (v === DiscountType.fixed) {
+            totalPriceAfterDiscount -= discountValue;
+
+        } else if(v === DiscountType.percentage) {
+
+            totalPriceAfterDiscount *= discountValue;
+        }
+
+    } else {
+        flashMessage("danger", "Can't change type discount", 5000);
+    }
+
+}
+applyDiscountBtn.addEventListener("click", () => {
+    calculateDiscount();
+    console.log(totalPriceAfterDiscount)
+});

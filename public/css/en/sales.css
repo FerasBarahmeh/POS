@@ -508,6 +508,9 @@ label.float.flay.l26.tm10 {
     position: relative;
     margin-top: 10px;
     color: var(--bg-black-900);
+    padding: 10px 5px;
+    border-radius: 4px;
+    border: 2px solid var(--bg-black-50);
 }
 .sales-container section.invoice .payment {
     margin-top: 15px;
@@ -573,7 +576,7 @@ select.type-payment:focus {
 
 .discount input[type="text"] {
     padding: 0 0 0 5px;
-    font-size: 18px;
+    font-size: 14px;
     border-left: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     width: 100%;
@@ -583,7 +586,7 @@ select.type-payment:focus {
     justify-content: space-around;
     margin-bottom: 10px;
 }
-.discount .input-group-text input[type="radio"] {
+.discount .input-group-text input[type="checkbox"] {
     margin-right: 5px;
     cursor: pointer;
 }

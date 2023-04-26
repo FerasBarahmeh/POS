@@ -321,33 +321,29 @@
             <section class="invoice">
                 <h5>Invoice</h5>
                 <div class="info-client">
-                    <span class="name-client">Khaled</span>
-                    <span class="address">Amman-Jordan</span>
+                    <span class="name-client">Name Client</span>
+                    <span class="address">Client Address</span>
                 </div>
-                <div class="snippet-products">
+                <div class="snippet-products" id="snippet-products">
                     <table>
                         <thead>
                         <tr>
                             <th>Product</th>
                             <th>Qty</th>
+                            <th>Tax</th>
                             <th>Price</th>
                             <th>Total</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Phone</td>
-                            <td>2</td>
-                            <td>$ 300</td>
-                            <td>$ 600</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>
                 <div class="total-amount">
                     <span>Total Amount</span>
 
-                    <span><span class="symbol-dollar">$</span> 1400</span>
+                    <span><span class="symbol-dollar">$</span>  <span id="total-price">00.00</span></span>
                 </div>
 
                 <div class="payment-type payment">
@@ -367,9 +363,9 @@
 
                 <div class="payment-status payment">
                     <div class="types">
-                        <label for="TypePayment">Choose Status Invoice</label>
+                        <label for="statusInvoice">Choose Status Invoice</label>
 
-                        <select name="TypePayment" id="TypePayment" class="type-payment">
+                        <select name="statusInvoice" id="statusInvoice" class="type-payment">
                             <?php
 
                                 foreach ($paymentStatus as $key => $val) {
@@ -391,15 +387,17 @@
                             <input type="text" id="discount" name="discount" class="form-control" placeholder="0.00">
                         </div>
                         <div class="input-group-append">
-                            <div class="input-group-text">
-                              <input type="radio" id="percent" name="discount-type" value="percent">
-                              <label for="percent">Percentage</label>
-                            </div>
+                            <?php
+                                foreach ($discountTypes as $name => $value) {
+                                    ?>
+                                        <div class="input-group-text flex">
+                                            <input type="checkbox" id="<?= $name ?>" name="discount-type" value="<?= $value ?>">
+                                            <label for="<?= $name ?>"><?= $name ?></label>
+                                        </div>
+                                    <?php
+                                }
+                            ?>
 
-                            <div class="input-group-text">
-                              <input type="radio" id="fixed" name="discount-type" value="fixed">
-                              <label for="fixed">Fixed Amount</label>
-                            </div>
                         </div>
                     </div>
 
