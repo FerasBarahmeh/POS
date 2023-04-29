@@ -551,6 +551,7 @@ select.type-payment:focus {
     border: 2px solid var(--bg-black-50);
     margin: 15px 10px 0 10px;
     border-radius: 4px;
+    position: relative;
 }
 
 .discount h3 {
@@ -596,5 +597,45 @@ select.type-payment:focus {
     color: var(--text-black-700);
     cursor: pointer;
 }
-
+.discount .hint {
+    color: var(--text-black-30);
+    padding: 10px 3px;
+    width: 100%;
+    left: 0;
+    border-radius: 4px;
+    opacity: 0;
+    z-index: -100;
+    pointer-events: none;
+    transition: opacity .6s ease-in-out;
+}
+.discount .hint.active {
+    z-index: 100;
+    opacity: 1;
+    pointer-events: auto;
+}
+.discount .hint.success {
+    background-color: #8cca8c;
+}
+.discount .hint.danger {
+    background-color: #bd6161;
+}
+.discount .hint:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    border-radius: 3px;
+}
+.discount .hint.success:after {
+    background-color: var(--success-color-900);
+}
+.discount .hint.danger:after {
+    background-color: var(--danger-color-900);
+}
+.discount .hint .message {
+    color: var(--text-black-30);
+}
 /* End Create invoices */

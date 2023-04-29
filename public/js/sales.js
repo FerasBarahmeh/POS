@@ -661,9 +661,17 @@ function isValidDiscount() {
     return true;
 }
 applyDiscountBtn.addEventListener("click", () => {
+    let message = document.getElementById("discount-hint");
+    message.classList.add("active");
     if (isValidDiscount()) {
         calculateDiscount();
         totalPriceHtml.textContent = totalPriceAfterDiscount.toFixed(3);
+        message.classList.add("success");
+        message.querySelector(".message").textContent = messages["message_discount_apply_success"];
+        setTimeout(() => {
+            message.classList.remove("success");
+            message.classList.remove("active");
+        }, 5000);
     }
 });
 const canselOfferBtn = document.getElementById("cansel-offer");

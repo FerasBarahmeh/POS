@@ -149,7 +149,7 @@ function flashMessage(type, message, time) {
 
     setTimeout(() => {
         flashMessageContainer.removeChild(flashMessage);
-    }, 25000);
+    }, time);
 }
 // End Flash Message
 

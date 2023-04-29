@@ -30,3 +30,4 @@ $content["message_cant_change_type_discount"]         = "this all available type
 
 // Invoice Section
 $content["message_discount_apply_success"]         = "Success Applied Discount";
+$content["message_discount_apply_un_success"]         = "Un Success Applied Discount";
