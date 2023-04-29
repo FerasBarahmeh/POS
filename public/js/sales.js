@@ -31,7 +31,8 @@ let totalPriceAfterDiscount = null;
 const totalPriceHtml = document.getElementById("total-price");
 let totalPriceWithTax = 0;
 let totalPriceWithoutTax = 0;
-
+let hasDiscount = false;
+let price = 0;
 function lenObj(obj) {
     return Object.keys(obj).length;
 }
@@ -186,11 +187,11 @@ function calcTotalPrice() {
     totalPriceWithTax = 0;
     totalPriceWithoutTax = 0;
     for (const productsKey in products) {
-        let price = parseFloat(products[productsKey]["SellPrice"]);
+        let amount = parseFloat(products[productsKey]["SellPrice"]);
         let tax = parseFloat(products[productsKey]["Tax"]);
 
-        totalPriceWithTax += price + (price * tax);
-        totalPriceWithoutTax += price;
+        totalPriceWithTax += (amount + (amount * tax)) * Number(products[productsKey]["QuantityChoose"]) ;
+        totalPriceWithoutTax += amount * Number(products[productsKey]["QuantityChoose"]);
     }
 }
 function calcTax(price, tax) {
@@ -369,19 +370,19 @@ function removeProductFromOrder(id) {
     delete productsHTML[id];
     delete products[id];
 }
+function resitDiscountContainer() {
+    resitDiscountInput();
+    unCheckInputs(checkInputsHtml);
+    disabledActiveBtn(applyDiscountBtn);
+}
 function addEventRemoveOrder(btn, id) {
     btn.addEventListener("click", () => {
         removeProductFromOrder(id);
-        if (lenObj(products) === 0) {
-            resitDiscountVariable();
-            resitDiscountInput();
-            unCheckInputs(checkInputsHtml);
-            disabledActiveBtn(applyDiscountBtn);
-        }
-        calcTotalPrice();
         fillSnippetProductsTable();
-        calculateDiscount(getTypeDiscount());
+
+        resitPrice();
         fillTotalPriceWithDiscountInput();
+
     });
 }
 function createBtnEdit() {
@@ -410,9 +411,17 @@ function createBtnDelete() {
     btnDel.appendChild(iEdit);
     return btnDel;
 }
+function resitPrice() {
+    calcTotalPrice();
+    calculateDiscount();
+
+    // Resit Discount inputs if no products in cart
+    if (lenObj(products) === 0) {
+        resitDiscountContainer();
+    }
+}
 function addEventEditOrder(btn, id) {
     btn.addEventListener("click", () => {
-
         let inputs = document.querySelector("[product]").querySelectorAll("input");
         let product = products[id]
         inputs.forEach(input => {
@@ -420,12 +429,14 @@ function addEventEditOrder(btn, id) {
             input.value = product[nameId];
             addFlayToLabel(input);
         });
-
         idCurrentProductSelected = id;
         currentProductSelected = {"id":id, "info":product};
         activationDisabledBtn(addToCartSalesHTML);
         removeProductFromOrder(id);
         fillSnippetProductsTable();
+
+        resitPrice();
+        fillTotalPriceWithDiscountInput();
     });
 }
 function createRowProduct(info) {
@@ -514,6 +525,7 @@ addToCartSalesHTML.addEventListener("click", () => {
         setChangeDefaultValuesInInputs();
         addProductsToCartSales();
         calcTotalPrice();
+        calculateDiscount();
         fillSnippetProductsTable();
         resitCurrentProduct();
         cleanInputs(productsInputs);
@@ -567,8 +579,10 @@ function ifHasDiscount() {
     for (let i = 0; i < checkInputsHtml.length; i++) {
         if (checkInputsHtml[i].checked === true) {
             flag = true;
+            hasDiscount = true;
             break;
         } else {
+            hasDiscount = false;
             flag = false;
         }
     }
@@ -620,21 +634,22 @@ discountHtml.addEventListener("keyup", (e) => {
         discountValue = parseFloat(e.target.value);
     }
 });
-function calculateDiscount(valueTypeDiscount) {
+function calculateDiscount() {
     totalPriceAfterDiscount = totalPriceWithTax;
+    let typeDiscount = getTypeDiscount();
 
-    if (valueTypeDiscount === DiscountType.fixed) {
+    if (typeDiscount === DiscountType.fixed) {
         totalPriceAfterDiscount -= discountValue;
-    } else if(valueTypeDiscount === DiscountType.percentage) {
-        totalPriceAfterDiscount *= discountValue / 100.0;
+    } else if(typeDiscount === DiscountType.percentage) {
+        totalPriceAfterDiscount -= totalPriceAfterDiscount * discountValue / 100.0;
     }
+    if (totalPriceAfterDiscount < 0 ) totalPriceAfterDiscount = 0;
 }
 
 function isValidDiscount() {
     let valueTypeDiscount = getTypeDiscount();
 
     if (lenObj(products) === 0) {
-        console.log("in products")
         flashMessage("danger", messages["message_no_products_in_cart"], 5000);
         return false;
     }
@@ -647,7 +662,7 @@ function isValidDiscount() {
 }
 applyDiscountBtn.addEventListener("click", () => {
     if (isValidDiscount()) {
-        calculateDiscount(getTypeDiscount());
+        calculateDiscount();
         totalPriceHtml.textContent = totalPriceAfterDiscount.toFixed(3);
     }
 });
@@ -658,5 +673,5 @@ canselOfferBtn.addEventListener("click", () => {
     unCheckInputs(checkInputsHtml);
     changeStatusActiveDiscount();
     // totalPriceHtml.textContent = totalPriceWithTax;
-    fillTotalPriceInput()
+    fillTotalPriceInput();
 });

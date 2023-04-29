@@ -27,3 +27,6 @@ $content["message_quantity_not_enough"]         = "Quantity product <b class='bo
 
 // Create Invoices
 $content["message_cant_change_type_discount"]         = "this all available types discount";
+
+// Invoice Section
+$content["message_discount_apply_success"]         = "Success Applied Discount";

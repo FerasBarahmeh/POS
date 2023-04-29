@@ -384,6 +384,12 @@
                 <section class="discount">
                     <h3 class="between-ele">
                         <span>Special Offer !</span>
+                        <!--TODO: Set Message When Add Discount  -->
+                        <div class="message absolute">
+                            <div class="span">
+                                <div class="message "><?= $message_discount_apply_success ?></div>
+                            </div>
+                        </div>
                         <span class="cursor-pointer description dir-r" id="cansel-offer" description="remove offer"><i class="fa fa-trash"></i></span>
                     </h3>
 

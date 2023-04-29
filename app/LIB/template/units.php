@@ -1,7 +1,9 @@
 <?php
 
 namespace APP\LIB\Template;
-
+/**
+ * @deprecated Use a new version in Enums
+ */
 class Units
 {
     public $kilo        = 1;

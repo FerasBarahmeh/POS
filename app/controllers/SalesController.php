@@ -76,6 +76,7 @@ class SalesController extends AbstractController
 
         $this->language->load("template.common");
         $this->language->load("sales.sellproducts");
+        $this->language->load("sales.messages");
 
         $this->getClients();
         $this->_info["clients"]         = $this->clients;
