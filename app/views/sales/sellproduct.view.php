@@ -280,7 +280,7 @@
                         </div>
                     </div>
                     <div class="content-note">
-                        <label for=""></label><textarea placeholder="Write Note For This Invoice" name="" id=""></textarea>
+                        <label for=""></label><textarea placeholder="Write Note For This Invoice" name="" id="note"></textarea>
                     </div>
                 </div>
 
@@ -301,8 +301,8 @@
                                 <input type="date" id="issued-on" value="<?= $dt->format('Y-m-d')?>">
                             </div>
                             <div class="input">
-                                <label for="issued-on">Duo on</label>
-                                <input type="date" id="issued-on" value="<?= $dt->format('Y-m-d')?>">
+                                <label for="duo-on">Duo on</label>
+                                <input type="date" id="duo-on" value="<?= $dt->format('Y-m-d')?>">
                             </div>
                         </div>
                     </div>

@@ -32,6 +32,11 @@ const totalPriceHtml = document.getElementById("total-price");
 let totalPriceWithTax = 0;
 let totalPriceWithoutTax = 0;
 let hasDiscount = false;
+
+
+const invoiceInfo = {};
+const createNewInvoiceBtn = document.getElementById("create-invoice");
+
 let price = 0;
 function lenObj(obj) {
     return Object.keys(obj).length;
@@ -376,6 +381,8 @@ productsListHTML.forEach(ul => {
                     left: 0,
                     behavior: "smooth",
                 });
+
+                changeStatusCreateInvoiceBtn();
             });
 
         });
@@ -414,7 +421,7 @@ function addEventRemoveOrder(btn, id) {
 
         resitPrice();
         fillTotalPriceWithDiscountInput();
-
+        changeStatusCreateInvoiceBtn();
     });
 }
 function createBtnEdit() {
@@ -469,6 +476,8 @@ function addEventEditOrder(btn, id) {
 
         resitPrice();
         fillTotalPriceWithDiscountInput();
+        changeStatusCreateInvoiceBtn();
+
     });
 }
 function createRowProduct(info) {
@@ -550,6 +559,21 @@ function fillTotalPriceWithDiscountInput() {
 function resitDiscountInput() {
     discountHtml.value = '';
 }
+function changeStatusCreateInvoiceBtn() {
+    if (lenObj(products) === 0) {
+        disabledActiveBtn(createNewInvoiceBtn);
+        return false;
+    }
+
+    if (clientInfo == null ) {
+        disabledActiveBtn(createNewInvoiceBtn);
+        return false;
+    }
+
+    activationDisabledBtn(createNewInvoiceBtn);
+    return true;
+
+}
 addToCartSalesHTML.addEventListener("click", () => {
 
     if (idCurrentProductSelected !== null && currentProductSelected !== null) {
@@ -563,6 +587,7 @@ addToCartSalesHTML.addEventListener("click", () => {
         cleanInputs(productsInputs);
         disabledActiveBtn(addToCartSalesHTML);
         fillTotalPriceInput();
+        changeStatusCreateInvoiceBtn();
     }
 });
 
@@ -714,4 +739,42 @@ canselOfferBtn.addEventListener("click", () => {
     changeStatusActiveDiscount();
     // totalPriceHtml.textContent = totalPriceWithTax;
     fillTotalPriceInput();
+});
+
+
+// Create New Invoice
+function getNoteContent() {
+    return document.getElementById("note").value;
+}
+function getIssuedOn() {
+    return document.getElementById("issued-on").value;
+}
+function getDuoOn() {
+    return document.getElementById("duo-on").value;
+}
+function getInfoInvoice() {
+    let invoiceInfo = {};
+    invoiceInfo["totalPriceAfterDiscount"]  = totalPriceAfterDiscount
+    invoiceInfo["totalPriceWithoutTax"]     = totalPriceWithoutTax;
+    invoiceInfo["totalPriceWithTax"]        = totalPriceWithTax;
+    invoiceInfo["typePaymentName"]          = typePaymentName;
+    invoiceInfo["typePaymentValue"]         = typePaymentValue;
+    invoiceInfo["DiscountType"]             = getTypeDiscount();
+    invoiceInfo["statusInvoiceName"]        = statusInvoiceName;
+    invoiceInfo["statusInvoiceValue"]        = statusInvoiceValue;
+    invoiceInfo["Note"]        = getNoteContent();
+    invoiceInfo["IssuedOn"]        = getIssuedOn();
+    invoiceInfo["IssuedOn"]        = getIssuedOn();
+    invoiceInfo["DuoOn"]        = getDuoOn();
+    return invoiceInfo;
+
+
+}
+function createInvoice() {
+
+}
+createNewInvoiceBtn.addEventListener("click", () => {
+    let invoiceInfo = getInfoInvoice();
+    createInvoice();
+
 });

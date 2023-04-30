@@ -140,7 +140,7 @@ function createFlashMessage(type, message) {
  *
  * @return void
  * */
-function flashMessage(type, message, time) {
+function flashMessage(type, message, time=5000) {
     const flashMessageContainer = document.querySelector(".flash-message-container");
     const flashMessage = createFlashMessage(type, message);
     flashMessageContainer.appendChild(flashMessage);
