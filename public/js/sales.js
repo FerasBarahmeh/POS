@@ -177,11 +177,42 @@ function fillInputsClientInfo() {
         flayLabel(input);
     });
 }
+function formatPrice(price) {
+    let str = price.toString().split('.');
+    let fraction = str[1];
+    let num = (Number(str[0])).toLocaleString();
+    return {
+        num : num,
+        fraction: fraction,
+    }
+}
+
+function fillExtraInfo(element, price) {
+
+    let containerHtml = document.querySelector("[" + element + "]" );
+
+    containerHtml.classList.remove("hidden");
+
+    let alterMess = containerHtml.parentElement.querySelector("[alter-mess]");
+    alterMess.classList.add("hidden");
+    alterMess.classList.add("absolute");
+
+    let pending = formatPrice(price);
+
+    containerHtml.querySelector("[price]").textContent = pending.num;
+
+    containerHtml.querySelector("[fraction]").textContent = '.' + pending.fraction;
+}
+
 function setClientInfo() {
     let nameClient = clientInfoHtml.querySelector(".name-client");
     let addressClient = clientInfoHtml.querySelector(".address");
     nameClient.textContent = clientInfo.Name;
     addressClient.textContent = clientInfo["Address"];
+
+    fillExtraInfo("total-received", clientInfo["TotalReceived"]);
+    fillExtraInfo("pending-value", clientInfo["Pending"]);
+    fillExtraInfo("draft-value", clientInfo["Draft"]);
 }
 function calcTotalPrice() {
     totalPriceWithTax = 0;
@@ -263,6 +294,7 @@ listsIdentifier.forEach(listIdentifier => {
                   left: 0,
                   behavior: "smooth",
               });
+
               setClientInfo();
           });
 

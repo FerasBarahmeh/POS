@@ -247,20 +247,23 @@
                 <div class="box amount-info">
                     <div class="info">
                         <h6 class="title">Total Received</h6>
-                        <span class="amount"><span class="dollar">$</span> <span class="price">84,354 <span class="fraction">.58</span></span></span>
+                        <span class="amount hidden" total-received><span class="dollar">$</span> <span class="price" price>84,354</span> <span class="fraction" fraction>.58</span> </span>
+                        <span class="hint" alter-mess>No Selected Client</span>
                     </div>
                     <div class="status-payment">
                         <div class="pending status-type">
                             <div class="type">
                                 <div class="title"><span class="dot"></span> <p>Pending</p></div>
-                                <span class="value"><span class="">$</span> 450 <span class="fraction">.59</span></span>
+                                <span class="value hidden" pending-value><span class="">$</span> <span class="price" price>450</span> <span class="fraction" fraction>.59</span></span>
+                                <span class="pending-message" alter-mess>No Select Client Yet</span>
                             </div>
                         </div>
 
                         <div class="draft status-type">
                             <div class="type">
                                 <div class="title"><span class="dot"></span> <p>Draft</p></div>
-                                <span class="value"><span class="">$</span> 00 <span class="fraction">.00</span></span>
+                                <span class="value hidden" draft-value><span class="">$</span> <span class="price" price>00</span> <span class="fraction" fraction>.00</span></span>
+                                <span class="pending-message" alter-mess>No Select Client Yet</span>
                             </div>
                         </div>
                     </div>

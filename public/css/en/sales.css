@@ -376,8 +376,7 @@ label.float.flay.l26.tm10 {
 }
 .sales-container section.invoice .main-data .box .status-payment .status-type  .type .value {
     position: relative;
-    text-align: end;
-    left: -16px;
+    text-align: center;
 }
 .sales-container section.invoice .main-data .box.note {
     overflow: hidden;
