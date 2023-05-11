@@ -301,6 +301,7 @@ listsIdentifier.forEach(listIdentifier => {
               });
 
               setClientInfo();
+              changeStatusCreateInvoiceBtn();
           });
 
       });
@@ -770,11 +771,61 @@ function getInfoInvoice() {
 
 
 }
-function createInvoice() {
+function getEmployeeID() {
+    return document.querySelector("[id=name-employee]").getAttribute("id-employee");
+
+}
+function checkIfValidEmployee() {
+
+   return fetch("http://estore.local/sales/isHasPrivilegeUserAjax", {
+        "method": "POST",
+        "headers": {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        "body": `id=${getEmployeeID()}`,
+    })
+       .then(function(res){ return res.json(); })
+       .then(function(data){
+           let r =  JSON.stringify(data);
+           r = JSON.parse(r);
+           return r["result"];
+       });
+}
+function validProducts() {
+    return fetch("http://estore.local/sales/checkIsValidProductAjax", {
+        "method": "POST",
+        "headers": {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        "body": `products=${products}`,
+    })
+        .then(function(res){
+            console.log(res.json()) })
+        // .then(function(data){
+        //     let r =  JSON.stringify(data);
+        //     r = JSON.parse(r);
+        //     console.log(r)
+        // });
+}
+function isValidInvoice() {
+    checkIfValidEmployee()
+        .then((hasPrivilegeEmployee) => {
+            if (hasPrivilegeEmployee === true) {
+                // Check If Products Valid
+
+                let r = validProducts();
+            } else {
+                flashMessage("danger",
+                    messages["message_user_cannot_create_invoice"].replace("%s", getEmployeeID())
+                );
+                return false;
+            }
+        });
+
 
 }
 createNewInvoiceBtn.addEventListener("click", () => {
     let invoiceInfo = getInfoInvoice();
-    createInvoice();
+    isValidInvoice();
 
 });

@@ -20,7 +20,7 @@ $content["message_status_message"]              = " The status of the product ca
 $content["message_empty_field"]              = "Can't Add empty field to cart";
 
 // Create Invoice
-$content["message_user_cannot_create_invoice"]  = "User <b class='bold-font'>%s</b> can't create invoice";
+$content["message_user_cannot_create_invoice"]  = "The employee with the <b class='bold-font'>%s</b> ID cannot create this invoice";
 $content["message_user_not_found"]              = "Can't found <b class='bold-font'>%s</b> Username";
 $content["message_un_valid_password"]           = "Un Valid Password";
 $content["message_success_user"]                = "An invoice is being created";

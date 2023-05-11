@@ -314,7 +314,7 @@
                             <div class="">
                                 <i class="fa fa-pen-nib mr-10"></i>
                                 Created By
-                                <span class="name-employee ml-5" id="name-employee">
+                                <span class="name-employee ml-5" id="name-employee" id-employee="<?= $this->session->user->UserId ?>">
                                     <?= $this->session->user->extraUserInfo->FirstName ?> <?= $this->session->user->extraUserInfo->LastName ?>
                                 </span>
                             </div>
