@@ -192,7 +192,7 @@ function formatPrice(price) {
     }
 }
 
-function fillExtraInfo(element, price) {
+function fillExtraInfo(element, price=0) {
 
     let containerHtml = document.querySelector("[" + element + "]" );
 
@@ -288,7 +288,7 @@ listsIdentifier.forEach(listIdentifier => {
           .finally(() => {
               fillInputsClientInfo();
               hiddenListIdentifier(ul);
-              flashMessage("success", clientInfo["message"], 5000);
+              flashMessage("success", clientInfo["message"], 5000)
 
               // change color border
               ul.closest(".partisan").style.borderColor = "var(--success-color-300)";
@@ -767,6 +767,15 @@ function getInfoInvoice() {
     invoiceInfo["IssuedOn"]        = getIssuedOn();
     invoiceInfo["IssuedOn"]        = getIssuedOn();
     invoiceInfo["DuoOn"]        = getDuoOn();
+    // Client
+    invoiceInfo["client"]        = clientInfo;
+    // Employee
+    invoiceInfo["employee"]        = getEmployeeID();
+    // Products
+    invoiceInfo["products"]        = products;
+
+
+
     return invoiceInfo;
 
 
@@ -775,9 +784,9 @@ function getEmployeeID() {
     return document.querySelector("[id=name-employee]").getAttribute("id-employee");
 
 }
-function checkIfValidEmployee() {
+function isValidEmployee() {
 
-   return fetch("http://estore.local/sales/isHasPrivilegeUserAjax", {
+    fetch("http://estore.local/sales/isHasPrivilegeUserAjax", {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -789,43 +798,75 @@ function checkIfValidEmployee() {
            let r =  JSON.stringify(data);
            r = JSON.parse(r);
            return r["result"];
-       });
-}
-function validProducts() {
-    return fetch("http://estore.local/sales/checkIsValidProductAjax", {
-        "method": "POST",
-        "headers": {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        "body": `products=${products}`,
-    })
-        .then(function(res){
-            console.log(res.json()) })
-        // .then(function(data){
-        //     let r =  JSON.stringify(data);
-        //     r = JSON.parse(r);
-        //     console.log(r)
-        // });
-}
-function isValidInvoice() {
-    checkIfValidEmployee()
-        .then((hasPrivilegeEmployee) => {
-            if (hasPrivilegeEmployee === true) {
-                // Check If Products Valid
+       })
+       .then((hasPrivilegeEmployee) => {
+           if (hasPrivilegeEmployee === false) {
+               flashMessage("danger",
+                   messages["message_user_cannot_create_invoice"].replace("%s", getEmployeeID())
+               );
+           }
+           return hasPrivilegeEmployee;
+       })
 
-                let r = validProducts();
-            } else {
-                flashMessage("danger",
-                    messages["message_user_cannot_create_invoice"].replace("%s", getEmployeeID())
-                );
-                return false;
+
+}
+
+
+createNewInvoiceBtn.addEventListener("click", () => {
+    let invoiceInfo = getInfoInvoice();
+    console.log(invoiceInfo)
+    function fetchData() {
+        return fetch("http://estore.local/sales/isHasPrivilegeUserAjax", {
+            "method": "POST",
+            "headers": {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            "body": `id=${getEmployeeID()}`,
+        })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                let r = JSON.stringify(data);
+                r = JSON.parse(r);
+                return r["result"];
+            });
+    }
+
+    fetchData()
+        .then((hasPrivilegeEmployee) => {
+            if (hasPrivilegeEmployee === false) {
+                flashMessage("danger", messages["message_user_cannot_create_invoice"].replace("%s", getEmployeeID()));
             }
+            // Use the hasPrivilegeEmployee value here or return it to another function
+
+            // Check If Productis valid
+            fetch("http://estore.local/sales/checkIsValidProductAjax", {
+                "method": "POST",
+                "headers": {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                "body": `products=${JSON.stringify(products)}`,
+            })
+                .then(function(res){
+                    return res.json();
+                })
+                .then(function(data){
+                    let res =  JSON.stringify(data);
+                    res = JSON.parse(res);
+
+                    if (res["result"] === false) {
+                        flashMessage("danger", res["message"], 7000);
+                        return false;
+                    }
+
+                    // Create Invoice
+
+                });
+
+        })
+        .catch((error) => {
+            // Handle errors here
         });
 
 
-}
-createNewInvoiceBtn.addEventListener("click", () => {
-    let invoiceInfo = getInfoInvoice();
-    isValidInvoice();
 
 });

@@ -25,7 +25,7 @@ $content["message_user_not_found"]              = "Can't found <b class='bold-fo
 $content["message_un_valid_password"]           = "Un Valid Password";
 $content["message_success_user"]                = "An invoice is being created";
 $content["message_no_products_in_cart"]         = "No products in cart";
-$content["message_quantity_not_enough"]         = "Quantity product <b class='bold-font'>%s</b> not enough the quantity in store is  <b class='bold-font'>%s</b>";
+$content["message_quantity_not_enough"]         = "Quantity product <b class='bold-font'>%s</b> are <b class='bold-font'>%s</b> not enough the quantity in store is  <b class='bold-font'>%s</b>";
 
 // Create Invoices
 $content["message_cant_change_type_discount"]         = "this all available types discount";

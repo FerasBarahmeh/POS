@@ -277,37 +277,59 @@ class SalesController extends AbstractController
     }
 
     /**
+     * Check if Quantity Choose less than Quantity is store
      *
+     * @param $product
+     * @version 1.0
+     * @return bool true if valid(Quantity choose less than stored) false else
+     */
+    public function isValidProduct($product): bool
+    {
+        return $product->QuantityChoose < $product->Quantity;
+    }
+    /**
+     * If valid product Quantity return message success else return error message
      *
+     * @param $product
+     * @version 1.0
+     * @return bool|string true if valid and encode json else
+     */
+    private function ifValidQuantity($product): bool|string
+    {
+        if (! $this->isValidProduct($product)) {
+            $m = $this->language->feedKey(
+                "message_quantity_not_enough",
+                [$product->Name, $product->QuantityChoose, $product->Quantity]
+            );
+            return json_encode([
+                "result" => false,
+                "message" => $m
+            ]);
+        }
+        return true;
+    }
+
+    /**
+     * To check if quantity is valid or not
+     *
+     * @param http://estore.local/sales/checkIsValidProductAjax
      * @return void
      */
     public function checkIsValidProductAjaxAction(): void
     {
         $this->language->load("sales.messages");
         $products = json_decode($_POST["products"]);
-        foreach ($products as $id => $product) {
-//            $m = $this->language->feedKey(
-//                "message_quantity_not_enough",
-//                [$product["QuantityChoose"], $product["Quantity"]]
-//            );
-//            echo "<pre>";
-//            var_dump($m);
-//            echo "</pre>";
-            
-            echo  json_encode(["res" => $product]);
-            
-//            if ($product["QuantityChoose"] > $product["Quantity"]) {
-//                echo json_encode([
-//                    "result" => false,
-//                    "message" => $this->language->feedKey(
-//                        $this->language->get("message_quantity_not_enough"),
-//                        [$product["QuantityChoose"], $product["Quantity"]]
-//                    )
-//                ]);
-//
-//                return;
-//            }
+
+        foreach ($products as $product) {
+
+            if (! $this->isValidProduct($product)) {
+                echo $this->ifValidQuantity($product);
+                return;
+            }
         }
+        echo json_encode([
+            "result" => true
+        ]);
 
     }
     /**
