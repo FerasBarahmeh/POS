@@ -524,7 +524,8 @@ label.float.flay.l26.tm10 {
 }
 
 /* Style for the select input */
-select.type-payment {
+select.type-payment,
+input.type-payment {
     display: block;
     width: 100%;
     padding: 10px;

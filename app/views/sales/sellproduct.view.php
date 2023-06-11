@@ -367,6 +367,14 @@
                     </div>
                 </div>
 
+                <div class="payment-amount payment">
+                    <div class="types">
+                        <label for="PaymentAmount">Payment Amount</label>
+                        <input name="PaymentAmount" type="number" placeholder="Amount Payment" positive step="any" id="PaymentAmount" class="type-payment"/>
+                    </div>
+                </div>
+
+
                 <div class="payment-status payment">
                     <div class="types">
                         <label for="statusInvoice">Choose Status Invoice</label>

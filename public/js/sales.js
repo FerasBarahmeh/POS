@@ -753,6 +753,9 @@ function getIssuedOn() {
 function getDuoOn() {
     return document.getElementById("duo-on").value;
 }
+function getPaymentAmount() {
+    return document.getElementById("PaymentAmount").value;
+}
 function getInfoInvoice() {
     let invoiceInfo = {};
     invoiceInfo["totalPriceAfterDiscount"]  = totalPriceAfterDiscount
@@ -765,7 +768,6 @@ function getInfoInvoice() {
     invoiceInfo["statusInvoiceValue"]        = statusInvoiceValue;
     invoiceInfo["Note"]        = getNoteContent();
     invoiceInfo["IssuedOn"]        = getIssuedOn();
-    invoiceInfo["IssuedOn"]        = getIssuedOn();
     invoiceInfo["DuoOn"]        = getDuoOn();
     // Client
     invoiceInfo["client"]        = clientInfo;
@@ -773,6 +775,10 @@ function getInfoInvoice() {
     invoiceInfo["employee"]        = getEmployeeID();
     // Products
     invoiceInfo["products"]        = products;
+    // Discount
+    invoiceInfo["discount"]        = discountValue;
+    // Payment Amount
+    invoiceInfo["paymentAmount"]        = getPaymentAmount();
 
 
 
@@ -811,10 +817,22 @@ function isValidEmployee() {
 
 }
 
+function createInvoice() {
+    fetch("http://estore.local/sales/createInvoiceAjax", {
+        "method": "POST",
+        "headers": {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        "body": `invoice=${JSON.stringify(getInfoInvoice())}`,
+    })
+        .then((res) => {
+            console.log("in")
+        })
+}
 
 createNewInvoiceBtn.addEventListener("click", () => {
     let invoiceInfo = getInfoInvoice();
-    console.log(invoiceInfo)
+
     function fetchData() {
         return fetch("http://estore.local/sales/isHasPrivilegeUserAjax", {
             "method": "POST",
@@ -857,10 +875,41 @@ createNewInvoiceBtn.addEventListener("click", () => {
                         flashMessage("danger", res["message"], 7000);
                         return false;
                     }
+                    return res["result"]
 
-                    // Create Invoice
+                })
+                .then((r) => {
+                    if (r) {
+                        const data = new URLSearchParams();
+                        data.append('invoice', JSON.stringify(getInfoInvoice()));
 
+                        fetch("http://estore.local/sales/createInvoiceAjax", {
+                            method: "POST",
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded',
+                            },
+                            body: data.toString(),
+                        })
+                            .then(response => response.text())
+                            .then(result => {
+                                console.log(result); // Process the response here
+                                result = JSON.parse(result);
+                                if (result["result"])
+                                    flashMessage("success", result["message"])
+                                else
+                                    flashMessage("danger", result["message"]);
+                            })
+                            .catch(error => {
+                                console.log(error); // Handle any errors that occur during the request
+                            })
+                            .finally(() => {
+                               // Reset all
+
+                            });
+                    }
                 });
+
+
 
         })
         .catch((error) => {

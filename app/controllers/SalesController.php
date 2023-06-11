@@ -12,7 +12,9 @@ use APP\LIB\FilterInput;
 use APP\LIB\Template\TemplateHelper;
 use APP\Models\ClientModel;
 use APP\Models\ProductModel;
+use APP\Models\SalesInvoicesDetailsModel;
 use APP\Models\SalesInvoicesModel;
+use APP\Models\SalesInvoicesReceiptsModel;
 use APP\Models\UserModel;
 use ReflectionException;
 
@@ -207,25 +209,6 @@ class SalesController extends AbstractController
 
     }
 
-
-    private function addAction($transactionParty, $detailsInvoice)
-    {
-        $invoice = new SalesInvoicesModel();
-        $invoice->ClientId = $transactionParty->id;
-        $invoice->PaymentType = $detailsInvoice->statusPaymentValue;
-
-        $paymentTypes = $this->getClassValuesProperties(new PaymentStatus());
-
-        $invoice->PaymentStatus = $paymentTypes[strtolower($detailsInvoice->statusPaymentName)];
-        $invoice->Created = date("Y-m-d H:i:s");
-        $invoice->Discount = $detailsInvoice->discount;
-        $invoice->UserId = $this->session->user->UserId;
-        $invoice->DiscountType = $detailsInvoice->discountType;
-        $invoice->NumberProducts = $detailsInvoice->productsNum;
-
-        $invoice->save();
-    }
-
     /**
      *
      * Check if employee will create has privilege to create invoice
@@ -331,6 +314,124 @@ class SalesController extends AbstractController
             "result" => true
         ]);
 
+    }
+
+    /**
+     * create Sale Invoice
+     * @param $invoiceInfo object  all invoice information
+     * @return array
+     */
+    private function addInvoiceAction(object $invoiceInfo): array
+    {
+        $products = $invoiceInfo->products;
+        $client = $invoiceInfo->client;
+
+        $invoice = new SalesInvoicesModel();
+        $invoice->ClientId = $client->ClientId;
+        $invoice->PaymentType = $invoiceInfo->typePaymentValue;
+
+
+        $invoice->PaymentStatus = $invoiceInfo->statusInvoiceValue;
+        $invoice->Created = date("Y-m-d H:i:s");
+
+        if ($invoiceInfo->DiscountType != null) {
+            $invoice->DiscountType = $invoiceInfo->DiscountType;
+            $invoice->Discount = $invoiceInfo->discount;
+        } else {
+            $invoice->DiscountType = NULL;
+            $invoice->Discount = 0;
+        }
+
+        $invoice->UserId = $this->session->user->UserId;
+
+        $invoice->NumberProducts = count((array)$products);
+
+        $result = $invoice->save();
+
+        return [
+            "result" => $result,
+            "invoice" => $invoice
+        ];
+
+    }
+
+    /**
+     * @param $products object The products we will add To Invoice
+     * @param $idInvoice int The invoice that we want to add the products to
+     * @return bool
+     */
+    private function addDetailsToSaleInvoice(object $products, int $idInvoice): bool
+    {
+        foreach ($products as $product) {
+            $details = new SalesInvoicesDetailsModel();
+            $details->ProductId = $this->filterInt($product->ProductId);
+            $details->ProductPrice = $this->filterFloat($product->SellPrice);
+            $details->Quantity = $this->filterInt($product->QuantityChoose);
+            $details->InvoiceId = $idInvoice;
+            if (!$details->save()) {
+                return false;
+            }
+        }
+        return true;
+
+    }
+
+    /**
+     * @param $invoiceId int id invoice you want to create receipts
+     * @param $infoInvoice object all information to invoice
+     * @return bool
+     */
+    private function createReceiptsToSaleInvoice(int $invoiceId, object $infoInvoice): bool
+    {
+        $receipts = new SalesInvoicesReceiptsModel();
+
+        
+        
+        $receipts->InvoiceId = $invoiceId;
+
+        $receipts->PaymentType = $infoInvoice->typePaymentValue;
+        $receipts->PaymentAmount = $infoInvoice->paymentAmount;
+        $receipts->PaymentLiteral = (string) ((float)$infoInvoice->totalPriceWithTax - (float)$infoInvoice->paymentAmount);
+        $receipts->BankName = NULL;
+        $receipts->BankAccountNumber = NULL;
+        $receipts->CheckNumber = NULL;
+        $receipts->TransferredTo = NULL;
+        $receipts->created = $infoInvoice->IssuedOn;
+        $receipts->UserId = $infoInvoice->employee;
+
+        return $receipts->save();
+
+
+    }
+    /**
+     * Create Invoice 
+     * http://estore.local/createInvoiceAjax
+     * @return void
+     */
+    public function createInvoiceAjaxAction(): void
+    {
+
+       $invoice = json_decode($_POST["invoice"]);
+       
+       $precipitate = $this->addInvoiceAction($invoice);
+       if ($precipitate) {
+           $isDone = $this->addDetailsToSaleInvoice($invoice->products, $precipitate["invoice"]->InvoiceId);
+           if ($isDone) {
+               // Create receipt
+               $r = $this->createReceiptsToSaleInvoice($precipitate["invoice"]->InvoiceId, $invoice);
+               if ($r) {
+                   $message = $this->getAppropriateMessageProduct("sales.messages", "message_create_invoice_success");
+
+               } else {
+                   $message = $this->getAppropriateMessageProduct("sales.messages", "message_create_invoice_failed");
+               }
+
+               echo json_encode([
+                   "result" => true,
+                   "message" => $message,
+               ]);
+           }
+       }
     }
     /**
      *

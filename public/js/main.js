@@ -174,3 +174,11 @@ const getMessages = (controller, action, nameFile) => {
     });
 };
 
+// Covert inputs min = 0 to abs
+document.querySelectorAll('input[positive]').forEach((inp) => {
+    inp.addEventListener("keyup", (e) => {
+        if (e.target.value < 0 ) {
+            e.target.value = e.target.value  * -1;
+        }
+    });
+})
