@@ -61,6 +61,15 @@ class AbstractModel
     }
 
     /**
+     * @param $query string the query you want execute
+     * @return mixed
+     */
+    public static function executeQuery(string $query): mixed
+    {
+        $stmt = DatabaseHandler::factory()->prepare($query);
+        return $stmt->execute();
+    }
+    /**
      * @param bool $isSubProcess if you want to use save method to model subset from another model such as user model
      * and subset info model (check if set primary key manual)
      * @return bool

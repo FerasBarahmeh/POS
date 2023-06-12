@@ -364,10 +364,11 @@ class SalesController extends AbstractController
     {
         foreach ($products as $product) {
             $details = new SalesInvoicesDetailsModel();
-            $details->ProductId = $this->filterInt($product->ProductId);
-            $details->ProductPrice = $this->filterFloat($product->SellPrice);
-            $details->Quantity = $this->filterInt($product->QuantityChoose);
-            $details->InvoiceId = $idInvoice;
+            $details->ProductId     = $this->filterInt($product->ProductId);
+            $details->ProductPrice  = $this->filterFloat($product->SellPrice);
+            $details->Quantity      = $this->filterInt($product->QuantityChoose);
+            $details->InvoiceId     = $idInvoice;
+            ProductModel::discountProductsQty($product->ProductId, $product->QuantityChoose);
             if (!$details->save()) {
                 return false;
             }

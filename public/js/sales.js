@@ -911,6 +911,20 @@ createNewInvoiceBtn.addEventListener("click", () => {
 
                                 // Resit total RECEIVED
 
+                                function scrollToTop() {
+                                    if (window.scrollTo) {
+                                        window.scrollTo({
+                                            top: 0,
+                                            behavior: 'smooth' // You can change this to 'auto' for instant scrolling
+                                        });
+                                    } else {
+                                        document.body.scrollTop = 0; // Fallback for older browsers
+                                        document.documentElement.scrollTop = 0; // Fallback for older browsers
+                                    }
+                                }
+                                scrollToTop();
+
+
                             });
                     }
                 });

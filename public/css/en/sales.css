@@ -6,8 +6,10 @@
     border-radius: 5px;
 }
 .sales-container section.partisan {
-    padding-left: 10px;
-    padding-bottom: 20px;
+
+    border: 1px solid var(--bg-black-70);
+    overflow: hidden;
+    padding: 10px;
 }
 .sales-container section.partisan .section-title {
     font-size: 20px;
