@@ -253,19 +253,19 @@
                     <div class="status-payment">
                         <div class="pending status-type">
                             <div class="type">
-                                <div class="title"><span class="dot"></span> <p>Pending</p></div>
-                                <span class="value hidden" pending-value><span class="">$</span> <span class="price" price>450</span> <span class="fraction" fraction>.59</span></span>
+                                <div class="title"><span class="dot"></span> <p>Literal</p></div>
+                                <span class="value hidden" pending-value><span class="dollar">$</span> <span class="price" price>450</span> <span class="fraction" fraction>.59</span></span>
                                 <span class="pending-message" alter-mess>No Select Client Yet</span>
                             </div>
                         </div>
 
-                        <div class="draft status-type">
-                            <div class="type">
-                                <div class="title"><span class="dot"></span> <p>Draft</p></div>
-                                <span class="value hidden" draft-value><span class="">$</span> <span class="price" price>00</span> <span class="fraction" fraction>.00</span></span>
-                                <span class="pending-message" alter-mess>No Select Client Yet</span>
-                            </div>
-                        </div>
+<!--                        <div class="draft status-type">-->
+<!--                            <div class="type">-->
+<!--                                <div class="title"><span class="dot"></span> <p>Draft</p></div>-->
+<!--                                <span class="value hidden" draft-value><span class="">$</span> <span class="price" price>00</span> <span class="fraction" fraction>.00</span></span>-->
+<!--                                <span class="pending-message" alter-mess>No Select Client Yet</span>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
 

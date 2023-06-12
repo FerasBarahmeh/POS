@@ -310,9 +310,12 @@ label.float.flay.l26.tm10 {
     justify-content: space-around;
     align-items: center;
 }
-
+.sales-container section.invoice .main-data .box .info {
+    display: flex;
+    flex-direction: column;
+}
 .sales-container section.invoice .main-data .box .info h6 {
-
+    margin-bottom: 10px;
 }
 .sales-container section.invoice .main-data .box h6 {
     color: var(--text-black-700);
@@ -322,6 +325,8 @@ label.float.flay.l26.tm10 {
 }
 .sales-container section.invoice .main-data .box .info .amount {
     position: relative;
+    align-self: flex-end;
+    margin-right: 10px;
 }
 .sales-container section.invoice .dollar {
     position: absolute;
@@ -329,7 +334,7 @@ label.float.flay.l26.tm10 {
     color: var(--bg-black-80);
     font-size: 15px;
 }
-.sales-container section.invoice .main-data .box .info .amount .price {
+.sales-container section.invoice  .price {
     font-size: 25px;
     font-weight: bold;
     color: var(--bg-black-100);
@@ -361,6 +366,7 @@ label.float.flay.l26.tm10 {
 }
 .sales-container section.invoice .main-data .box .status-payment .status-type.pending .title {
     color: #1976d2;
+    margin-bottom: 10px;
 }
 .sales-container section.invoice .main-data .box .status-payment .status-type.pending .dot {
     background-color: #1976d2;

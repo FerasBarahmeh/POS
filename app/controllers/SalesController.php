@@ -433,6 +433,27 @@ class SalesController extends AbstractController
            }
        }
     }
+
+    /**
+     * To Get Extra information to client like TOTAL RECEIVED, pending and draft
+     * http://estore.local/sales/getExtraClientInfoAjax
+     * @return void
+     */
+    public function getExtraClientInfoAjaxAction(): void
+    {
+        $idClient = $this->filterInt($_POST["id"]);
+        
+        $totalReceived = SalesInvoicesReceiptsModel::getTotalReceivedFromClient($idClient);
+        
+        $totalReceived = $totalReceived[0]->totalReceived;
+        $literalClient = SalesInvoicesReceiptsModel::getLiteralForClient($idClient);
+        $literalClient = $literalClient[0]->Literal;
+
+        echo json_encode([
+           "totalReceived"  => $totalReceived,
+           "literal"        => $literalClient,
+        ]);
+    }
     /**
      *
      * Get Word Language by get specific name file

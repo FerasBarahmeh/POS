@@ -10,6 +10,7 @@ const listsIdentifier = document.querySelectorAll("[fetchClientBy]");
 let identifierClient = null;
 let clientInfo = null;
 const clientSectionHTML = document.querySelector("[client]");
+const clientInputs = clientSectionHTML.querySelectorAll("input");
 const clientInfoHtml = document.querySelector(".info-client");
 const snippetProductsTableHtml = document.getElementById("snippet-products");
 const typePaymentHtml = document.getElementById("TypePayment");
@@ -183,7 +184,9 @@ function fillInputsClientInfo() {
     });
 }
 function formatPrice(price) {
-    let str = price.toString().split('.');
+    price = price.toString();
+
+    let str = price.split('.');
     let fraction = str[1];
     let num = (Number(str[0])).toLocaleString();
     return {
@@ -192,8 +195,7 @@ function formatPrice(price) {
     }
 }
 
-function fillExtraInfo(element, price=0) {
-
+function  fillExtraInfo(element, price=0) {
     let containerHtml = document.querySelector("[" + element + "]" );
 
     containerHtml.classList.remove("hidden");
@@ -206,18 +208,32 @@ function fillExtraInfo(element, price=0) {
 
     containerHtml.querySelector("[price]").textContent = pending.num;
 
+    if (pending.fraction === undefined) {
+        pending.fraction = "00";
+    }
+
     containerHtml.querySelector("[fraction]").textContent = '.' + pending.fraction;
 }
-
+function getExtraClientInfo(id) {
+    return fetch("http://estore.local/sales/getExtraClientInfoAjax", {
+        "method": "POST",
+        "headers": {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        "body": `id=${id}`,
+    })
+        .then((r) => {return r.json()})
+}
 function setClientInfo() {
     let nameClient = clientInfoHtml.querySelector(".name-client");
     let addressClient = clientInfoHtml.querySelector(".address");
     nameClient.textContent = clientInfo.Name;
     addressClient.textContent = clientInfo["Address"];
 
-    fillExtraInfo("total-received", clientInfo["TotalReceived"]);
-    fillExtraInfo("pending-value", clientInfo["Pending"]);
-    fillExtraInfo("draft-value", clientInfo["Draft"]);
+    getExtraClientInfo(clientInfo["ClientId"]).then((r) => {
+        fillExtraInfo("total-received", Number(r["totalReceived"]));
+        fillExtraInfo("pending-value", Number(r["literal"]));
+    });
 }
 function calcTotalPrice() {
     totalPriceWithTax = 0;
@@ -738,7 +754,6 @@ canselOfferBtn.addEventListener("click", () => {
     resitDiscountVariable();
     unCheckInputs(checkInputsHtml);
     changeStatusActiveDiscount();
-    // totalPriceHtml.textContent = totalPriceWithTax;
     fillTotalPriceInput();
 });
 
@@ -789,45 +804,6 @@ function getInfoInvoice() {
 function getEmployeeID() {
     return document.querySelector("[id=name-employee]").getAttribute("id-employee");
 
-}
-function isValidEmployee() {
-
-    fetch("http://estore.local/sales/isHasPrivilegeUserAjax", {
-        "method": "POST",
-        "headers": {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        "body": `id=${getEmployeeID()}`,
-    })
-       .then(function(res){ return res.json(); })
-       .then(function(data){
-           let r =  JSON.stringify(data);
-           r = JSON.parse(r);
-           return r["result"];
-       })
-       .then((hasPrivilegeEmployee) => {
-           if (hasPrivilegeEmployee === false) {
-               flashMessage("danger",
-                   messages["message_user_cannot_create_invoice"].replace("%s", getEmployeeID())
-               );
-           }
-           return hasPrivilegeEmployee;
-       })
-
-
-}
-
-function createInvoice() {
-    fetch("http://estore.local/sales/createInvoiceAjax", {
-        "method": "POST",
-        "headers": {
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        "body": `invoice=${JSON.stringify(getInfoInvoice())}`,
-    })
-        .then((res) => {
-            console.log("in")
-        })
 }
 
 createNewInvoiceBtn.addEventListener("click", () => {
@@ -892,7 +868,6 @@ createNewInvoiceBtn.addEventListener("click", () => {
                         })
                             .then(response => response.text())
                             .then(result => {
-                                console.log(result); // Process the response here
                                 result = JSON.parse(result);
                                 if (result["result"])
                                     flashMessage("success", result["message"])
@@ -900,10 +875,41 @@ createNewInvoiceBtn.addEventListener("click", () => {
                                     flashMessage("danger", result["message"]);
                             })
                             .catch(error => {
-                                console.log(error); // Handle any errors that occur during the request
+                                console.log(error);
                             })
                             .finally(() => {
                                // Reset all
+                                resitDiscountInput()
+                                products = {}
+                                totalPriceAfterDiscount = 0;
+                                totalPriceWithoutTax = 0;
+                                resitCurrentProduct()
+                                resitPrice()
+                                cleanInputs(productsInputs);
+                                cleanInputs(clientInputs);
+                                removeAllChildNodes(cartSalesHTML.querySelector("tbody"))
+                                removeAllChildNodes(snippetProductsTableHtml.querySelector("tbody"))
+                                totalPriceHtml.value = 0.00;
+                                unCheckInputs(checkInputsHtml);
+
+                                setChangeDefaultValuesInInputs();
+                                addProductsToCartSales();
+                                calcTotalPrice();
+                                calculateDiscount();
+                                fillSnippetProductsTable();
+                                resitCurrentProduct();
+                                cleanInputs(productsInputs);
+                                disabledActiveBtn(addToCartSalesHTML);
+                                fillTotalPriceInput();
+                                changeStatusCreateInvoiceBtn();
+
+
+                                let nameClient = clientInfoHtml.querySelector(".name-client");
+                                let addressClient = clientInfoHtml.querySelector(".address");
+                                nameClient.textContent = "Name Client";
+                                addressClient.textContent = "Client Address";
+
+                                // Resit total RECEIVED
 
                             });
                     }
