@@ -22,6 +22,8 @@
 .sales-container section.partisan .section-title svg,
 .sales-container section.partisan .section-title i {
     color: var(--bg-black-100);
+    margin-left: 10px;
+    margin-right: 0;
 }
 .sales-container section.partisan .input-search-fields-container {
     margin-top: 10px;
@@ -30,10 +32,11 @@
     gap: 10px;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: right;
 }
 .img-flag-section,
 .img-flag-section img {
-    right: 0;
+    left: 0;
     position: absolute;
     max-width: 100px;
     max-height: 100px;
@@ -52,7 +55,7 @@
     box-shadow: 0 0 2px #eee;
 }
 .sales-container section.partisan .input-search-fields-container .input input {
-    border-left: 2px solid var(--bg-black-100);
+    border-right: 2px solid var(--bg-black-100);
     border-bottom: 2px solid var(--bg-black-100);
     padding: 0 0 5px 5px;
     width: 100%;
@@ -64,10 +67,11 @@
     transform: translate(-50%, -50%);
     color: var(--text-black-700);
     font-size: 14px;
+    transition: all .3s ease-in;
     text-transform: capitalize;
 }
 .sales-container section.partisan .input-search-fields-container .input label.title.flay {
-    left: 14%;
+    right: -160px;
     font-size: 12px;
     top: -10px !important;
 }
@@ -143,10 +147,11 @@
 .main-data button.create-invoice svg,
 .main-data button.create-invoice i {
     color: var(--bg-black-100);
+    margin-left: 10px
 }
 .sales-container .footer-partisan-section .tools-bar {
     position: absolute;
-    right: 10px;
+    left: 10px;
     top: 0;
     display: flex;
     align-items: center;
@@ -186,6 +191,7 @@
     display: flex;
     gap: 10px;
     margin-top: 17px;
+    justify-content: left;
 }
 .sales-container .footer-partisan-section .row-foot-partisan-section .input {
     position: relative;
@@ -251,6 +257,10 @@ label.float.flay.l26.tm10 {
     text-transform: capitalize;
     font-size: 14px;
     display: flex;
+    flex-direction: row-reverse;
+}
+.main-data button.create-invoice div {
+    margin-left: 5px;
 }
 .add-cart-btn.disabled,
 .discount button.btn-apply.disabled,
@@ -276,7 +286,7 @@ label.float.flay.l26.tm10 {
 }
 .sales-container .edit-icon:not(:last-child),
 .sales-container .del-icon:not(:last-child) {
-    margin-right: 5px;
+    margin-left: 5px;
 }
 .sales-container .edit-icon {
     color: var(--success-color-300);
@@ -586,9 +596,9 @@ select.type-payment:focus {
 }
 
 .discount input[type="text"] {
-    padding: 0 0 0 5px;
+    padding: 0 5px 0 0px;
     font-size: 14px;
-    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     width: 100%;
 }
@@ -596,6 +606,9 @@ select.type-payment:focus {
     display: flex;
     justify-content: space-around;
     margin-bottom: 10px;
+}
+.discount .input-group-append div {
+    flex-direction: row-reverse;
 }
 .discount .input-group-text input[type="checkbox"] {
     margin-right: 5px;

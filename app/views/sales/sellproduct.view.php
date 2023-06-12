@@ -8,7 +8,7 @@
         <section class="input-search-fields-container header-partisan-section">
             <div class="container-search-section component-input-js">
                 <div class="input">
-                    <label for="name" class="title float">name client</label>
+                    <label for="name" class="title float"><?= $text_search_name_client ?></label>
                     <input type="text"
                            id="name"
                            class="find-client-input search"
@@ -26,7 +26,7 @@
 
             <div class="container-search-section component-input-js">
                 <div class="input">
-                    <label for="email" class="title float">email client</label>
+                    <label for="email" class="title float"><?= $text_search_email_client ?></label>
                     <input type="email"
                            id="email"
                            class="find-client-input search"
@@ -43,7 +43,7 @@
 
             <div class="container-search-section component-input-js">
                 <div class="input">
-                    <label for="id" class="title">ID client</label>
+                    <label for="id" class="title"><?= $text_id_client ?></label>
                     <input type="number"
                            id="id"
                            class="find-client-input search"
@@ -106,7 +106,7 @@
         <section class="input-search-fields-container header-partisan-section revers-r">
             <div class="container-search-section component-input-js max-w-40-per">
                 <div class="input">
-                    <label for="Name" class="title float">name product</label>
+                    <label for="Name" class="title float"><?= $text_name_product ?></label>
                     <input type="text"
                            id="Name"
                            class="find-client-input search"
@@ -218,13 +218,13 @@
             <table id="cart-sales" class="pagination-table">
                 <thead>
                     <tr>
-                        <th>Name Product</th>
-                        <th>Quantity</th>
-                        <th>Barcode</th>
-                        <th>Unit</th>
-                        <th>Sell Price</th>
-                        <th>Tax</th>
-                        <th>control</th>
+                        <th><?= $text_name_product ?></th>
+                        <th><?= $text_nav_quantity ?></th>
+                        <th><?= $text_nav_barcode ?></th>
+                        <th><?= $text_Unit ?></th>
+                        <th><?= $text_SellPrice ?></th>
+                        <th><?= $text_Tax ?></th>
+                        <th><?= $text_control ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -246,16 +246,16 @@
                 <!-- Box 1 -->
                 <div class="box amount-info">
                     <div class="info">
-                        <h6 class="title">Total Received</h6>
+                        <h6 class="title"><?= $text_total_received ?></h6>
                         <span class="amount hidden" total-received><span class="dollar">$</span> <span class="price" price>84,354</span> <span class="fraction" fraction>.58</span> </span>
-                        <span class="hint" alter-mess>No Selected Client</span>
+                        <span class="hint" alter-mess><?= $text_no_selected_client ?></span>
                     </div>
                     <div class="status-payment">
                         <div class="pending status-type">
                             <div class="type">
-                                <div class="title"><span class="dot"></span> <p>Literal</p></div>
+                                <div class="title"><span class="dot"></span> <p><?= $text_literal ?></p></div>
                                 <span class="value hidden" pending-value><span class="dollar">$</span> <span class="price" price>450</span> <span class="fraction" fraction>.59</span></span>
-                                <span class="pending-message" alter-mess>No Select Client Yet</span>
+                                <span class="pending-message" alter-mess><?= $text_no_selected_client ?></span>
                             </div>
                         </div>
 
@@ -273,35 +273,35 @@
                 <!-- Box 2 -->
                 <div class="box note">
                     <div class="header">
-                        <h6>Public Not</h6>
+                        <h6><?= $text_note ?></h6>
                         <div class="tools">
                             <button class="edit"><i class="fa fa-edit"></i></button>
                             <button class="copy"><i class="fa fa-copy"></i></button>
                         </div>
                     </div>
                     <div class="content-note">
-                        <label for=""></label><textarea placeholder="Write Note For This Invoice" name="" id="note"></textarea>
+                        <label for=""></label><textarea placeholder="<?= $text_note_placeholder ?>" name="" id="note"></textarea>
                     </div>
                 </div>
 
                 <!-- Box 3 -->
                 <div class="box create-new-invoice">
-                    <h6>Create New Invoices</h6>
+                    <h6></h6>
                     <div class="between-ele mtb-10 num-inv">
-                        <span class="num">Number Invoice <span class="symbol">#</span> <span class="value">AL3545</span></span>
-                        <button> <span class="mr-5">Copy</span> <i class="fa fa-copy"></i></button>
+                        <span class="num"><?= $text_number_invoice ?> <span class="symbol">#</span> <span class="value">AL3545</span></span>
+                        <button> <span class="mr-5"><?= $text_copy ?></span> <i class="fa fa-copy"></i></button>
                     </div>
                     <div class="date-inv">
                         <div class="inputs">
                             <div class="input">
-                                <label for="issued-on">issued on</label>
+                                <label for="issued-on"><?= $text_issued_on ?></label>
                                 <?php
                                     $dt = new DateTime();
                                 ?>
                                 <input type="date" id="issued-on" value="<?= $dt->format('Y-m-d')?>">
                             </div>
                             <div class="input">
-                                <label for="duo-on">Duo on</label>
+                                <label for="duo-on"><?= $text_duo_on ?></label>
                                 <input type="date" id="duo-on" value="<?= $dt->format('Y-m-d')?>">
                             </div>
                         </div>
@@ -313,32 +313,32 @@
                     <div class="created-by" id="created-by">
                             <div class="">
                                 <i class="fa fa-pen-nib mr-10"></i>
-                                Created By
+                                <?= $text_created_by ?>
                                 <span class="name-employee ml-5" id="name-employee" id-employee="<?= $this->session->user->UserId ?>">
                                     <?= $this->session->user->extraUserInfo->FirstName ?> <?= $this->session->user->extraUserInfo->LastName ?>
                                 </span>
                             </div>
                     </div>
 
-                    <button class="btn btn-footer create-invoice disabled" id="create-invoice" disabled=""><i class="fa fa-check"></i> Create Invoice</button>
+                    <button class="btn btn-footer create-invoice disabled" id="create-invoice" disabled=""><i class="fa fa-check"></i><div> <?= $text_create_new_invoices ?></div></button>
                 </div>
             </section>
 
             <section class="invoice">
-                <h5>Invoice</h5>
+                <h5><?= $text_invoice ?></h5>
                 <div class="info-client">
-                    <span class="name-client">Name Client</span>
-                    <span class="address">Client Address</span>
+                    <span class="name-client"><?= $text_search_name_client ?></span>
+                    <span class="address"><?= $text_Address ?></span>
                 </div>
                 <div class="snippet-products" id="snippet-products">
                     <table>
                         <thead>
                         <tr>
-                            <th>Product</th>
-                            <th>Qty</th>
-                            <th>Tax</th>
-                            <th>Price</th>
-                            <th>Total</th>
+                            <th><?= $text_nav_product ?></th>
+                            <th><?= $text_nav_qty ?></th>
+                            <th><?= $text_Tax ?></th>
+                            <th><?= $text_nav_price ?></th>
+                            <th><?= $text_total ?></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -347,14 +347,14 @@
                     </table>
                 </div>
                 <div class="total-amount">
-                    <span>Total Amount</span>
+                    <span><?= $text_total_amount ?></span>
 
                     <span><span class="symbol-dollar">$</span>  <span id="total-price">0.000</span></span>
                 </div>
 
                 <div class="payment-type payment">
                     <div class="types">
-                        <label for="TypePayment">Choose Type Payment</label>
+                        <label for="TypePayment"><?= $text_choose_type_payment ?></label>
                         <select name="TypePayment" id="TypePayment" class="type-payment">
                             <?php
 
@@ -369,7 +369,7 @@
 
                 <div class="payment-amount payment">
                     <div class="types">
-                        <label for="PaymentAmount">Payment Amount</label>
+                        <label for="PaymentAmount"><?= $text_amount_payment ?></label>
                         <input name="PaymentAmount" type="number" placeholder="Amount Payment" positive step="any" id="PaymentAmount" class="type-payment"/>
                     </div>
                 </div>
@@ -377,7 +377,7 @@
 
                 <div class="payment-status payment">
                     <div class="types">
-                        <label for="statusInvoice">Choose Status Invoice</label>
+                        <label for="statusInvoice"><?= $text_choose_status_amount ?></label>
 
                         <select name="statusInvoice" id="statusInvoice" class="type-payment">
                             <?php
@@ -394,7 +394,7 @@
                 <!-- Start Discount -->
                 <section class="discount">
                     <h3 class="between-ele">
-                        <span>Special Offer !</span>
+                        <span><?= $text_special_offer ?></span>
                         <!--TODO: Set Message When Add Discount  -->
                         <div class="hint absolute" id="discount-hint">
                             <div class="span relative">
@@ -406,7 +406,7 @@
 
                     <div class="input-group">
                         <div class="input-discount">
-                            <label for="discount">Enter Discount:</label>
+                            <label for="discount"><?= $text_enter_discount ?></label>
                             <input type="text" id="discount" name="discount" class="form-control" placeholder="0.00">
                         </div>
                         <div class="input-group-append">
@@ -424,7 +424,7 @@
                         </div>
                     </div>
 
-                    <button class="btn btn-footer btn-apply disabled" id="apply-discount" disabled=""><i class="fa fa-check"></i> Apply Discount</button>
+                    <button class="btn btn-footer btn-apply disabled" id="apply-discount" disabled=""><i class="fa fa-check"></i> <?= $text_apply_discount ?></button>
                 </section>
 
                 <!-- End Discount -->

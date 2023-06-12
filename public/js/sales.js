@@ -389,6 +389,8 @@ productsListHTML.forEach(ul => {
 
                 // change color border
                 ul.closest(".partisan").style.borderColor = "#65cd65";
+                console.log(currentProductSelected)
+
 
                 flashMessage("success", currentProductSelected.info["message"], 5000);
 
