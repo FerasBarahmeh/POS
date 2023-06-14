@@ -76,10 +76,12 @@ trait PublicHelper
      * @param array|string|null $exceptionPropertiesName if you want exception specific property
      * @param bool $split if you want split name properties to words for example name property is `nameProperties`
      *       will return name properties as `name Properties`
+     * @param bool $flip if you need flipping value with key
+     *      for example ["complete" => 0] converted to ["0" => "completed"] default no flipping
      *
      * @return ?array associative array the key is a name property the value is a value of property
      *
-     * @version 1.2
+     * @version 1.3
      *
      * To get name and value for each property class
      *
@@ -90,10 +92,14 @@ trait PublicHelper
      * @author Feras Barahmeh
      *
      */
-    public function getSpecificProperties(object $obj, array|string|null $exceptionPropertiesName=null, bool $split=false): ?array
+    public function getSpecificProperties(object $obj, array|string|null $exceptionPropertiesName=null, bool $split=false, bool $flip=false): ?array
     {
         if ($exceptionPropertiesName == null && ! $split)
-            return (new ReflectionClass($obj::class))->getDefaultProperties();
+
+            return
+                $flip ?
+                    array_flip((new ReflectionClass($obj::class))->getDefaultProperties())
+                    : (new ReflectionClass($obj::class))->getDefaultProperties();
 
         if (! is_array($exceptionPropertiesName))
             $exceptionPropertiesName = [$exceptionPropertiesName];
@@ -109,9 +115,15 @@ trait PublicHelper
                 $word = implode(' ', $word);
                 $new[$word] = $val;
             }
+            if ($flip) {
+                return  array_flip($new);
+            }
             return $new;
         }
 
+        if ($flip) {
+            return array_flip($props);
+        }
         return $props;
     }
     /**
