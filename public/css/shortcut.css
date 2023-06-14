@@ -516,12 +516,25 @@
     white-space: nowrap;
     color: var(--text-black-700);
     z-index: 10000;
+    pointer-events: none;
 }
 .description.dir-l:hover::after {
     left: 0;
 }
 .description.dir-r:hover::after {
     right: 0;
+}
+.description.top-0:hover::after {
+    top: 0;
+}
+.description.top-5:hover::after {
+    top: 5px;
+}
+.description.top-10:hover::after {
+    top: 10px;
+}
+.description.top-20:hover::after {
+    top: 20px;
 }
 /* End Components  */
 /* Start OverFlow */

@@ -1,0 +1,174 @@
+.transactions-container {
+    margin-top: 30px;
+}
+.transactions-container .options {
+    display: flex;
+    padding: 10px 10px 10px 40px;
+    border-radius: 6px;
+    gap: 10px;
+    align-items: center;
+    background-color: var(--bg-black-100);
+}
+.transactions-container .options .filters {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+.transactions-container .options .filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.transactions-container .options .filter button {
+    background-color: var(--bg-black-60);
+    color: var(--text-black-700);
+    padding: 5px 10px;
+    width: 100px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.transactions-container .options .filter button:hover {
+    opacity: .5;
+}
+.transactions-container .types {
+    position: relative;
+    min-width: 200px;
+    flex: 1;
+}
+.transactions-container .types button.select-input {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    background-color: var(--bg-black-60);
+    border-radius: 4px;
+    min-height: 30px;
+}
+.transactions-container .types button.select-input .angles {
+    display: flex;
+}
+.transactions-container .types button.select-input .angle {
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    pointer-events: none;
+    right: 0;
+}
+.transactions-container .types button.select-input .angle.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.transactions-container .types button.select-input .angles i,
+.transactions-container .types button.select-input .angles svg {
+    color: var(--bg-black-100);
+    font-size: 20px;
+}
+
+.transactions-container .types ul {
+    position: absolute;
+    background-color: var(--bg-black-60);
+    width: 100%;
+    margin-top: 5px;
+    border-radius: 3px;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease-in-out;
+;
+}
+.transactions-container .types ul.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.transactions-container .types li {
+    padding: 5px 10px;
+    cursor: pointer;
+    color: var(--text-black-700);
+    min-height: 20px;
+}
+.transactions-container .types li:nth-child(odd) {
+    background-color: var(--bg-black-100);
+}
+
+.transactions-container .types li:hover {
+    opacity: .6;
+}
+.filters label {
+    font-size: 13px;
+}
+
+.transactions-container .from-to {
+    display: flex;
+    gap: 30px;
+    justify-content: space-around;
+    flex: 1;
+}
+.transactions-container .from-to .date-input {
+    position: relative;
+    width: 100%;
+}
+.transactions-container .from-to .date-input i,
+.transactions-container .from-to .date-input svg {
+    color: var(--bg-black-100);
+    font-size: 13px;
+}
+.fa-filter {
+    margin-right: 5px;
+    color: var(--bg-black-30);
+}
+.transactions-container .from-to .date-input i,
+.transactions-container .from-to .date-input svg {
+
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+/* Hide the default arrow button */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+/* Style the custom date input */
+.custom-date-input {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 14px;
+    background-color: var(--bg-black-60);
+    width: calc(100% - 5px);
+}
+
+.transactions-container .print-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+.transactions-container .print-buttons button {
+    min-width: 100px;
+    padding: 4px 6px;
+    border-radius: 3px;
+    background-color: var(--text-black-900);
+    color: var(--text-black-30);
+    cursor: pointer;
+}
+.transactions-container .print-buttons button:hover {
+    color: var(--bg-black-100);
+    background-color: var(--bg-black-60);
+}
+.fa-print {
+    color: var(--bg-black-100);
+    cursor: pointer;
+}
+table tbody tr:hover td .fa-print {
+    color: var(--bg-black-30);
+}

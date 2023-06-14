@@ -317,11 +317,29 @@ class SalesController extends AbstractController
     }
 
     /**
+     * @param $invoice SalesInvoicesModel invoice object you want set discount information
+     * @param $invoiceInfo object object contain all information invoice
+     * @return void
+     * @throws ReflectionException
+     */
+    private function setDiscountInvoice(SalesInvoicesModel &$invoice, object $invoiceInfo): void
+    {
+        if ($invoiceInfo->DiscountType !== NULL && $invoiceInfo->discount > 0) {
+            $discountTypes = $this->getSpecificProperties((new DiscountType()), flip: true);
+            $invoice->DiscountType = $discountTypes[$invoiceInfo->DiscountType];
+            $invoice->Discount = $invoiceInfo->discount;
+        } else {
+            $invoice->DiscountType = NULL;
+            $invoice->Discount = 0;
+        }
+    }
+    /**
      * create Sale Invoice
      * @param $invoiceInfo object  all invoice information
      * @return array
+     * @throws ReflectionException
      */
-    private function addInvoiceAction(object $invoiceInfo): array
+    private function addInvoice(object $invoiceInfo): array
     {
         $products = $invoiceInfo->products;
         $client = $invoiceInfo->client;
@@ -334,13 +352,7 @@ class SalesController extends AbstractController
         $invoice->PaymentStatus = $invoiceInfo->statusInvoiceValue;
         $invoice->Created = date("Y-m-d H:i:s");
 
-        if ($invoiceInfo->DiscountType != null) {
-            $invoice->DiscountType = $invoiceInfo->DiscountType;
-            $invoice->Discount = $invoiceInfo->discount;
-        } else {
-            $invoice->DiscountType = NULL;
-            $invoice->Discount = 0;
-        }
+        $this->setDiscountInvoice($invoice, $invoiceInfo);
 
         $invoice->UserId = $this->session->user->UserId;
 
@@ -404,17 +416,19 @@ class SalesController extends AbstractController
 
 
     }
+
     /**
-     * Create Invoice 
+     * Create Invoice
      * http://estore.local/createInvoiceAjax
      * @return void
+     * @throws ReflectionException
      */
     public function createInvoiceAjaxAction(): void
     {
 
        $invoice = json_decode($_POST["invoice"]);
-       
-       $precipitate = $this->addInvoiceAction($invoice);
+
+       $precipitate = $this->addInvoice($invoice);
        if ($precipitate) {
            $isDone = $this->addDetailsToSaleInvoice($invoice->products, $precipitate["invoice"]->InvoiceId);
            if ($isDone) {

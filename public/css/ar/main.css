@@ -58,7 +58,7 @@ b.bold-font {
     --bg-black-100: #00ADB5;
     --bg-black-70: #00FFCA;
     --bg-black-80: #393E46;
-    --bg-black-60: #D3D6DB;
+    --bg-black-60: #e8eaf6;
 
     --bg-black-50: #EEEEEE;
     --bg-black-30: #ffffff;
@@ -469,6 +469,10 @@ div.action-view {
 h1.title-header {
     font-size: 40px;
     color: #777;
+}
+h1.title-header i,
+h1.title-header svg {
+    margin-left: 10px;
 }
 /* End Action View */
 

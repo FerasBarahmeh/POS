@@ -64,7 +64,7 @@ input {
     --bg-black-100: #00ADB5;
     --bg-black-70: #00FFCA;
     --bg-black-80: #393E46;
-    --bg-black-60: #D3D6DB;
+    --bg-black-60: #e8eaf6;
 
     --bg-black-50: #EEEEEE;
     --bg-black-30: #ffffff;
@@ -381,12 +381,14 @@ nav.main_navigation ul.sub-menu.un-visible {
     opacity: 0;
 }
 nav.main_navigation ul.sub-menu li.li-level-2 {
-    padding-left: 20px;
-    padding-right: 10px;
     border-radius: 3px;
     margin-bottom: 5px;
     opacity: 1;
     transition: height .3s ease-in-out;
+    white-space: nowrap;
+    justify-content: space-between;
+    width: 100%;
+    padding: 4px 0 4px 1px;
 }
 nav.main_navigation ul.sub-menu li.li-level-2.un-visible {
     height: 0;
@@ -410,6 +412,10 @@ div.action-view {
 h1.title-header {
     font-size: 40px;
     color: #777;
+}
+h1.title-header i,
+h1.title-header svg {
+    margin-right: 10px;
 }
 /* End Action View */
 
@@ -455,6 +461,7 @@ table tbody td {
     border-left: 1px solid #eee;
     transition: all .3s ease-in-out;
     color: var(--text-black-700);
+    text-align: center;
 }
 
  table tbody td:last-child {

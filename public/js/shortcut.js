@@ -354,41 +354,49 @@ tables.forEach(table => {
         });
 
         next.addEventListener("click", () => {
-
-            let startPosition = currentSlide * shownRowsNumber ;
-            let endPosition = startPosition + shownRowsNumber;
-
-            let rows = [...trs];
-
-            rows = rows.slice(startPosition, endPosition);
-
-            tBody.innerHTML ='';
-            rows.forEach(row => {
-                tBody.appendChild(row);
-            });
-
-            currentBtn.classList.remove("active");
-
-            if (endPosition - 1 === trs.length) {
-                next.classList.add("un-active");
-                currentBtn = container.querySelector(".pagination").lastElementChild;
-            } else {
-                currentBtn = currentBtn.nextElementSibling;
+            console.log(currentSlide)
+            if (currentSlide + 1 !== shownRowsNumber) {
+                next.classList.remove("un-visible");
                 next.classList.remove("un-active");
+                let startPosition = currentSlide * shownRowsNumber ;
+                let endPosition = startPosition + shownRowsNumber;
+
+                let rows = [...trs];
+
+                rows = rows.slice(startPosition, endPosition);
+
+                tBody.innerHTML ='';
+                rows.forEach(row => {
+                    tBody.appendChild(row);
+                });
+
+                currentBtn.classList.remove("active");
+
+                if (endPosition - 1 === trs.length) {
+                    next.classList.add("un-active");
+                    currentBtn = container.querySelector(".pagination").lastElementChild;
+                } else {
+                    currentBtn = currentBtn.nextElementSibling;
+                    next.classList.remove("un-active");
+                }
+
+                previous.classList.remove("un-active");
+                currentBtn.classList.add("active");
+                currentSlide++;
+
+
+                // Shuffle Buttons
+
+                shuffleButtons(container);
+                let count = table.nextElementSibling.querySelector(".statistics .count");
+
+                let num  =  count.innerText ;
+                count.innerText = parseInt(num) + 1;
+
+            } else {
+                next.classList.add("un-visible");
+                next.classList.add("un-active");
             }
-
-            previous.classList.remove("un-active");
-            currentBtn.classList.add("active");
-            currentSlide++;
-
-
-            // Shuffle Buttons
-
-            shuffleButtons(container);
-            let count = table.nextElementSibling.querySelector(".statistics .count");
-
-            let num  =  count.innerText ;
-            count.innerText = parseInt(num) + 1;
 
         });
         function shuffleButtons(container) {
