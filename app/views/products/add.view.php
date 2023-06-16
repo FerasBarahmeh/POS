@@ -117,8 +117,13 @@
             <select name="Status" id="Status" required autocomplete="off">
                 <?php
                     foreach ($status as $nameStatus => $valueStatus) {
-                        $n = "status_" . ucfirst($nameStatus);
-                        ?> <option value="<?= $valueStatus ?>"><?= $$n ?></option> <?php
+//                        $n = "status_" . ucfirst($nameStatus);
+//                        ?><!-- <option value="--><?php //= $valueStatus ?><!--">--><?php //= $$n ?><!--</option> --><?php
+//                        $n = "status_" . ucfirst($nameStatus);
+
+                        if ($valueStatus != 0) {
+                            ?> <option value="<?= $valueStatus ?>"><?= $nameStatus ?></option> <?php
+                        }
                     }
                 ?>
             </select>

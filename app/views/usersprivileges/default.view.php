@@ -1,7 +1,7 @@
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
-    <a href="/usersprivileges/add" class=""><?= $text_content_add_privilege ?> <i class="fa fa-plus ml-10"></i></a>
+    <a href="/usersprivileges/add" class="stander-btn"><?= $text_content_add_privilege ?> <i class="fa fa-plus ml-10"></i></a>
     <div class="search">
         <label for="find-user"></label><input type="search"   placeholder="<?= $text_content_search_privilege ?>">
         <i class="fa fa-search lens"></i>

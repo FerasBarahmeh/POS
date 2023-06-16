@@ -1,7 +1,26 @@
 <?php
+/**
+ * Name File Css and Js Must be same controller name
+ */
 
-// prepare CSS File
 $cssLang = $_SESSION["lang"] == "ar" ? "ar" . DS : "en" . DS;
+$t = explode('/', $_SERVER["REQUEST_URI"]);
+$shiftedArray = array_shift($t);
+
+$CSS = [
+    "main"          => CSS . $cssLang . "main"     . ".css",
+    "shortcut"      => CSS . "shortcut" . ".css",
+
+];
+
+$CSS[$t[0]] = CSS . $cssLang . $t[0] . ".css";
+
+$JS = [
+    "shortcut"      => JS . "shortcut"  . ".js",
+    "main"          => JS . "main"      . ".js",
+];
+
+$JS[$t[0]] = JS . $t[0] . ".js";
 
 return [
     NAME_TEMPLATE_BLOCK_KEY => [
@@ -12,30 +31,13 @@ return [
         "wrapper_end"                           => TEMPLATE_PATH    . "wrapperend"      .   ".php",
     ],
     NAME_TEMPLATE_HEADER_RESOURCES => [
-        "css" => [
-            "main"          => CSS . $cssLang . "main"     . ".css",
-            "shortcut"      => CSS . "shortcut" . ".css",
-            "user"          => CSS . $cssLang . "user" . ".css",
-            "employee"      => CSS . $cssLang . "employee" . ".css",
-            "privilege"     => CSS . $cssLang . "privilege" . ".css",
-            "group"         => CSS . $cssLang . "group" . ".css",
-            "sales"         => CSS . $cssLang . "sales" . ".css",
-            "transactions"  => CSS . $cssLang . "transactions" . ".css",
-        ],
+        "css" => $CSS,
         "js" => [
             "fontawesome"   =>  "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.js"
         ],
     ],
 
     NAME_TEMPLATE_FOOTER_RESOURCES => [
-        "js" => [
-            "shortcut"      => JS . "shortcut"  . ".js",
-            "main"          => JS . "main"      . ".js",
-            "employee"      => JS . "employee"  . ".js",
-            "user"          => JS . "user"      . ".js",
-            "privileges"    => JS . "privileges"      . ".js",
-            "sales"         => JS . "sales"      . ".js",
-            "transactions"  => JS . "transactions"      . ".js",
-        ],
+        "js" => $JS,
     ],
 ];

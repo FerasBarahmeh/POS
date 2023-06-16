@@ -650,3 +650,63 @@ svg.rejected-value-input {
     color: var(--success-color-300);
 }
 /* End Table Add */
+/* Start Black Btn */
+.stander-btn {
+    max-width: 200px;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+    color: var(--bg-black-30);
+    white-space: nowrap;
+    background-color: var(--bg-black-900);
+    text-transform: capitalize;
+    font-size: 14px;
+    display: flex;
+}
+.stander-btn.disabled {
+    pointer-events: none;
+    opacity: .4;
+}
+.stander-btn.w100 {
+    width: 100px;
+}
+.stander-btn.w150 {
+    width: 150px;
+}
+.stander-btn.miw100 {
+    min-width: 100px;
+}
+.stander-btn.maw100 {
+    max-width: 100px;
+}
+.stander-btn svg,
+.stander-btn i {
+    color: var(--bg-black-100);
+    margin-right: 5px;
+}
+/* End Black Btn */
+/* Start stander Search Input*/
+.search {
+    margin-left: 10px;
+    position: relative;
+}
+.search input {
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 200px;
+    transition: width .3s ease-in-out;
+}
+.search .lens {
+    color: var(--bg-black-100);
+    position: absolute;
+    right: 8px;
+    display: block;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.header-option .search input:focus {
+    width: 250px;
+}
+/* End stander Search Input*/

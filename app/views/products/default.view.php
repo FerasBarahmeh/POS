@@ -2,7 +2,7 @@
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
-    <a href="/products/add" class="add-user"><?= $text_content_add_product ?> <i class="fa fa-plus ml-10"></i></a>
+    <a href="/products/add" class="stander-btn"><?= $text_content_add_product ?> <i class="fa fa-plus ml-10"></i></a>
     <div class="search">
         <label for="find-user"></label><input type="search" id="find-user"  placeholder="<?= $text_content_search_product ?>">
         <i class="fa fa-search lens"></i>

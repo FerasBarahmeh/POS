@@ -1,7 +1,7 @@
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
-    <a href="/clients/add" class="add-client"><?= $text_content_add_client ?> <i class="fa fa-plus ml-10"></i></a>
+    <a href="/clients/add" class="stander-btn"><?= $text_content_add_client ?> <i class="fa fa-plus ml-10"></i></a>
     <div class="search">
         <label for="find-client"></label><input type="search" id="find-client"  placeholder="<?= $text_content_search_client ?>">
         <i class="fa fa-search lens"></i>
