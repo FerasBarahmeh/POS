@@ -1,3 +1,8 @@
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
 // Switch Main nav
 const menuSwitch    = document.getElementById("menu-switch");
 const mainNav       = document.getElementById("main_navigation");
