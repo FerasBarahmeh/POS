@@ -84,4 +84,17 @@ abstract class AbstractController
             $records->next();
         }
     }
+    /**
+     *
+     * Get Word Language by get specific name file
+     *
+     * http://estore.local/getMessagesAjax/{Name File}
+     * @return void
+     */
+    public function getMessagesAjaxAction(): void
+    {
+        $this->language->load($_POST["nameFile"]);
+        $messages = $this->language->getDictionary();
+        echo json_encode($messages);
+    }
 }
