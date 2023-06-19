@@ -176,6 +176,7 @@ class PaginationTable {
         this.prevBtn = null;
         this.nextBtn = null;
         this.currentSlideDiv = null;
+        this.paginationSection = null;
     }
     getRowsAsHtmlObj() {
         return this.tBody.querySelectorAll("tr");
@@ -388,8 +389,17 @@ class PaginationTable {
 
     }
     appendPaginationSectionInTable() {
-        let paginationSection = this.createPaginationBar();
-        this.table.parentElement.appendChild(paginationSection);
+        this.paginationSection = this.createPaginationBar();
+
+        // remove all previous pagination section
+        if (this.paginationSection != null) {
+            let bars = this.table.parentElement.querySelectorAll(".bar-pagination");
+            bars.forEach((bar) => {
+                bar.remove()
+            });
+        }
+        this.table.parentElement.appendChild(this.paginationSection);
+
     }
     changeSlideNumberInStatisticsSection() {
         this.currentSlideDiv.textContent = '';
