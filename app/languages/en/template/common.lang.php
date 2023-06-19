@@ -39,3 +39,7 @@ $content["text_deny_authorize_access_description"]      =  "A web server may ret
 // Table
 $content["text_add_btn"]      =  "Add";
 $content["text_edit_btn"]      =  "Edit";
+$content["text_edit_btn"]      =  "Edit";
+
+$content["text_number_rerecord_in_slide"]      =  "Number Rerecord In Slide";
+$content["text_from"]      =  "From";

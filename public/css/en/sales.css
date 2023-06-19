@@ -56,6 +56,7 @@
     border-bottom: 2px solid var(--bg-black-100);
     padding: 0 0 5px 5px;
     width: 100%;
+    position: initial;
 }
 .sales-container section.partisan .input-search-fields-container .input label {
     position: absolute;
@@ -143,6 +144,7 @@
 .main-data button.create-invoice svg,
 .main-data button.create-invoice i {
     color: var(--bg-black-100);
+    margin-right: 5px;
 }
 .sales-container .footer-partisan-section .tools-bar {
     position: absolute;
@@ -241,7 +243,7 @@ label.float.flay.l26.tm10 {
 .discount button.btn-apply,
 .main-data button.create-invoice {
     max-width: 200px;
-    align-self: end;
+    align-items: center;
     padding: 5px 15px;
     border-radius: 3px;
     cursor: pointer;
