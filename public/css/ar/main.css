@@ -147,6 +147,7 @@ header.main .options .container-drop-down-main-header {
     height: 0;
     opacity: 0;
     transition: height 0.3ms 400ms, opacity 400ms 0.3ms;
+    pointer-events: none;
 }
 header.main .options .container-drop-down-main-header.visible {
     height: auto;
@@ -435,15 +436,10 @@ li.selected {
     align-items: center;
 }
 .header-option a {
-    background-color: #878282;
-    color: #EEEEEE;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
     font-size: 17px;
 }
 .header-option .search {
-    margin-left: 10px;
+    margin-right: 10px;
     position: relative;
 }
 .header-option .search input {
@@ -455,6 +451,14 @@ li.selected {
 }
 .header-option .search input:focus {
     width: 250px;
+}
+.header-option .search svg,
+.header-option .search i {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--bg-black-100);
 }
 input[type="search"]::-webkit-search-decoration,
 input[type="search"]::-webkit-search-cancel-button,
@@ -550,152 +554,92 @@ table tbody .controller-btns span.danger-style {
 }
 /* End Main Table */
 
-/* Start Table Add */
-.add-form {
-    border: 3px solid #eee;
+/* Start form */
+.container-form {
+    padding: 10px;
     width: 100%;
-    padding: 30px 0 0 0;
+}
+.stander-form {
+    border: 3px solid #eee;
+    padding: 30px;
     margin-top: 15px;
 }
-
-form.add-form fieldset.row {
+.rows-inputs {
     display: flex;
-    padding: 15px;
-    margin-bottom: 10px;
-}
-form.add-form fieldset.row:last-child {
-    padding: 5px;
-    flex-direction: row-reverse;
-}
-form.add-form fieldset.row div.field {
     position: relative;
-    flex: 1;
-    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    gap: 10px;
+    margin: 20px 0 20px 0;
+}
+.rows-inputs .row-input {
+    position: relative;
     width: 100%;
-    border-right: 3px solid #eee;
-    padding-right: 5px;
+    border-right: 2px solid var(--bg-black-100);
+    border-bottom: 2px solid var(--bg-black-100);
+    padding: 10px 10px 2px 0;
 }
-form.add-form fieldset.row label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: var(--text-black-900);
-    transition: all 0.3s ease-in-out;
-    pointer-events: none;
+.rows-inputs .row-input input,
+.rows-inputs .row-input select,
+.rows-inputs .row-input textarea {
     width: 100%;
-}
-form.add-form fieldset.row input[type="text"],
-form.add-form fieldset.row input[type="password"],
-form.add-form fieldset.row input[type="number"],
-form.add-form fieldset.row input[type="file"],
-form.add-form fieldset.row input[type="email"]  {
-    width: 100%;
-    color: var(--text-black-700);
-    padding: 3px;
-    text-align: right;
-}
-form.add-form fieldset.row input[type="text"]:focus-within,
-form.add-form fieldset.row input[type="number"]:focus-within,
-form.add-form fieldset.row input[type="file"]:focus-within,
-form.add-form fieldset.row input[type="password"]:focus-within,
-form.add-form fieldset.row input[type="email"]:focus-within {
-    border-bottom: 2px solid #746a6a;
-}
-form.add-form fieldset.row input[type="text"]:focus + label,
-form.add-form fieldset.row input[type="password"]:focus + label,
-form.add-form fieldset.row input[type="number"]:focus + label,
-form.add-form fieldset.row input[type="email"]:focus + label,
-form.add-form fieldset.row input[type="file"] + label,
-form.add-form fieldset.row input[type="text"]:not(:placeholder-shown)  + label,
-form.add-form fieldset.row input[type="file"]:not(:placeholder-shown)  + label,
-form.add-form fieldset.row input[type="password"]:not(:placeholder-shown)  + label,
-form.add-form fieldset.row input[type="number"]:not(:placeholder-shown)  + label,
-form.add-form fieldset.row input[type="email"]:not(:placeholder-shown)  + label {
-    transform: translateY(-20px);
-    left: 0;
-    font-size: 15px;
-}
-form.add-form fieldset.row textarea {
-    width: 100%;
-    border: 1px solid;
-    min-height: 100px;
-    padding: 10px;
-    color: var(--text-black-700);
-    font-size: 18px;
-}
-form.add-form fieldset.row select {
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    width: 100%;
-    font-size: 15px;
-    cursor: pointer;
-    color: var(--text-black-900);
-    padding-left: 10px;
-}
-form.add-form fieldset.row select option {
-    cursor: pointer;
-    color: var(--text-black-900);
-    outline: none;
-    background-color: var(--bg-black-70);
-}
-
-form.add-form .submit-btn-container {
-    flex-direction: row;
-}
-form.add-form .submit-btn {
-    margin: 0 0 10px 10px;
-    padding: .3% 3.1%;
-    cursor: pointer;
-    opacity: 1;
-    box-shadow: 2px 2px rgba(2, 2, 2, 0.44);
-    color: var(--text-black-900);
-    border-radius: 3px;
-}
-form.add-form .submit-btn:hover {
-    opacity: 0.7;
-}
-@media (max-width: 550px) {
-    form.add-form fieldset.row {
-        margin-bottom: 0;
-    }
-    form.add-form fieldset.row {
-        flex-direction: column;
-        padding: 10px 0 0 10px;
-    }
-    form.add-form fieldset.row div.field {
-        margin-bottom: 30px;
-    }
-    form.add-form fieldset.row div.field {
-        border-left: 1px solid var(--bg-black-100);
-    }
-}
-.rejected-value-input {
-    position: absolute;
-}
-i.rejected-value-input,
-svg.rejected-value-input {
-    left: 0;
-    margin-left: 10px;
-    top: 0;
-}
-.rejected-value-input.message {
-    font-size: 15px;
-    position: absolute;
-    top: -17px;
-    right: 0;
-    background-color: var(--danger-color-300);
+    height: 100%;
+    padding: 0;
     margin: 0;
+    color: var(--text-black-700);
+}
+.rows-inputs .row-input label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 15px;
+    color: var(--text-black-700);
+}
+.rows-inputs .row-input label.float {
+    left: 10%;
+    top: -50%;
+    font-size: 10px;
+}
+.rows-inputs .row-input label.float.floor {
+    top: -20%;
+}
+.rows-inputs .row-input label.float.left-3-per {
+    left: 3%;
+}
+/* End form */
+/* Start Black Btn */
+.stander-btn {
+    max-width: 200px;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 3px;
+    cursor: pointer;
     color: var(--bg-black-30);
+    white-space: nowrap;
+    background-color: var(--bg-black-900);
+    text-transform: capitalize;
+    font-size: 14px;
+    display: flex;
+}
+.stander-btn.disabled {
+    pointer-events: none;
+    opacity: .4;
+}
+.stander-btn.w100 {
+    width: 100px;
+}
+.stander-btn.w150 {
+    width: 150px;
+}
+.stander-btn.miw100 {
     min-width: 100px;
-    padding: 2px 1px;
-    border-radius: 4px;
-    line-height: 14px;
 }
-.rejected-value-input.danger {
-    color: var(--danger-color-700);
+.stander-btn.maw100 {
+    max-width: 100px;
 }
-.rejected-value-input.success {
-    color: var(--success-color-300);
+.stander-btn svg,
+.stander-btn i {
+    color: var(--bg-black-100);
+    margin-right: 5px;
 }
-/* End Table Add */
+/* End Black Btn */
