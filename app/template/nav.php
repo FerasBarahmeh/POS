@@ -22,7 +22,7 @@
 
             <button class="between-ele w-fu">
                 <span class="inline-block"><a href="/sales"><i class="fa fa-chart-area"></i><?= $text_nav_sales ?></a></span>
-                <i class="fa fa-angle-double-down angle "></i>
+                <i class="fa fa-angle-down angle "></i>
             </button>
 
             <ul class="sub-menu w-fu mtb-10 un-visible">
@@ -34,7 +34,7 @@
 
             <button class="between-ele w-fu">
                 <span class="inline-block"><a href="/transactions"><i class="fas fa-exchange-alt"></i><?= $text_nav_transactions ?></a></span>
-<!--                <i class="fa fa-angle-double-down angle "></i>-->
+<!--                <i class="fa fa-angle-down angle "></i>-->
             </button>
 
 <!--            <ul class="sub-menu w-fu mtb-10 un-visible">-->
@@ -51,7 +51,7 @@
         <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/store') === true ? 'selected' : '' ?>">
             <button class="between-ele w-fu">
                 <span class="inline-block"><a href="/store"><i class="fa fa-store" aria-hidden="true"></i><?= $text_nav_store ?></a></span>
-                <i class="fa fa-angle-double-down angle "></i>
+                <i class="fa fa-angle-down angle "></i>
             </button>
 
             <ul class="sub-menu w-fu mtb-10 un-visible">
@@ -65,7 +65,7 @@
 
             <button class="between-ele w-fu">
                 <span class="inline-block"><a href="/expenses"><i class="fa fa-wallet" aria-hidden="true"></i><?= $text_nav_expenses ?></a></span>
-                <i class="fa fa-angle-double-down angle "></i>
+                <i class="fa fa-angle-down angle "></i>
             </button>
 
             <ul class="sub-menu w-fu mtb-10 un-visible">
@@ -79,7 +79,7 @@
 
             <button class="between-ele w-fu">
                 <span class="inline-block"><a href="/users/"><i class="fa fa-users" aria-hidden="true"></i><?= $text_nav_users ?></a></span>
-                <i class="fa fa-angle-double-down angle"></i>
+                <i class="fa fa-angle-down angle"></i>
             </button>
 
             <ul class="sub-menu w-fu mtb-10 un-visible">
