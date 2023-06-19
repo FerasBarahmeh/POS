@@ -187,3 +187,30 @@ document.querySelectorAll('input[positive]').forEach((inp) => {
         }
     });
 })
+
+// Up labels when focus input
+let inputsHtml = document.querySelectorAll(".up-label-focus");
+if (inputsHtml != null) {
+    inputsHtml.forEach((input) => {
+        let label = input.parentElement.querySelector("label");
+        if (input.value !== '') {
+            label.classList.add("float")
+
+        }
+
+        input.addEventListener("focus", () => {
+            let label = input.parentElement.querySelector("label");
+
+            if (input.value === '') {
+                label.classList.add("float")
+            }
+        });
+        input.addEventListener("blur", () => {
+            let label = input.parentElement.querySelector("label");
+
+            if (input.value === '') {
+                label.classList.remove("float")
+            }
+        });
+    });
+}

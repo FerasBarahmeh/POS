@@ -10,8 +10,8 @@
 </div>
 
     <!-- Show Privileges -->
-    <div class="container-table responsive-table mt-20" id="employees-table">
-        <table class="">
+    <div class="container-table responsive-table mt-20" id="">
+        <table class="pagination-table upper">
             <thead>
                 <tr>
                     <th><?= $text_table_name_product ?></th>
@@ -37,8 +37,8 @@
                     if (! empty($products)) {
                         foreach ($products as $product) {
                             ?>
-                                <tr class="row-each-employee">
-                                    <td class="name-user-row"><?= $product->Name ?></td>
+                                <tr>
+                                    <td ><?= $product->Name ?></td>
                                     <td ><?= $product->CategoryName ?></td>
                                     <td ><?= $product->Quantity ?></td>
                                     <td ><?= ${$this->getNameByNumber("unit", $product->Unit, $units)} ?></td>
@@ -50,7 +50,7 @@
                                     <td ><?= ${$this->getNameByNumber("status", $product->Status, $status)} ?></td>
                                     <td ><?= $product->Tax ?></td>
                                     <td ><?= $product->Description ?></td>
-                                    <td ><?= $product->Image ?></td>
+                                    <td ><img src="<?= UPLOAD_FOLDER_IMAGE . $product->Image ?>"  class="img-table" alt="image product" ></td>
                                     <td class="controller-btns">
                                         <a href="/products/edit/<?= $product->ProductId ?>">
                                             <i class="fa fa-edit" aria-hidden="true"></i>

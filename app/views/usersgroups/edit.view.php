@@ -1,12 +1,12 @@
 <h1 class="title-header"><?= $title_header ?></h1>
 
-<form class="add-form" method="POST" enctype="application/x-www-form-urlencoded">
-    <fieldset class="row pb-10">
-        <div class="field ">
-            <!-- Must Set space in placeholder to apply label animation -->
+<form class="stander-form" method="POST" enctype="application/x-www-form-urlencoded">
+    <fieldset class="rows-inputs">
+        <div class="row-input">
             <input type="text" value="<?= $group->GroupName ?>"
+                   class="up-label-focus"
                    name="GroupName" id="PrivilegeTitle"
-                   placeholder=" " required autocomplete="off"/>
+                   required autocomplete="off"/>
             <label for="GroupName"> <?= $text_name_group; ?> </label>
         </div>
     </fieldset>
@@ -33,6 +33,6 @@
     </fieldset>
 
     <fieldset class="row submit-btn-container">
-        <input type="submit" class="submit-btn" value="<?= $text_choose_save ?>" name="edit">
+        <input type="submit" class="stander-btn" value="<?= $text_choose_save ?>" name="edit">
     </fieldset>
 </form>

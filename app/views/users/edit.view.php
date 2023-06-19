@@ -1,9 +1,9 @@
 <h1 class="title-header"><?= $title_header ?></h1>
 
-<form class="add-form" method="POST" enctype="application/x-www-form-urlencoded">
+<form class="stander-form" method="POST" enctype="application/x-www-form-urlencoded">
 
-    <fieldset class="row">
-        <div class="field">
+    <fieldset class="rows-inputs">
+        <div class="row-input">
             <!-- Must Set space in placeholder to apply label animation -->
             <select name="GroupId" id="GroupId" required autocomplete="off">
                 <?php
@@ -17,11 +17,13 @@
 
                 ?>
             </select>
+            <label for="GroupId" class="floor float "> <?= $table_GroupName ?> </label>
         </div>
 
-        <div class="field">
+        <div class="row-input">
             <!-- Must Set space in placeholder to apply label animation -->
             <input type="text" name="PhoneNumber"  id="PhoneNumber"
+                   class="up-label-focus"
                    value="<?= $this->getStorePost("PhoneNumber", $user) ?>"
                    placeholder=" " minlength="3" maxlength="15"
                    required autocomplete="off"/>
@@ -31,7 +33,7 @@
     </fieldset>
 
 
-    <fieldset class="row submit-btn-container">
-        <input type="submit" class="submit-btn" value="Edit" name="edit">
+    <fieldset class="rows-inputs submit-btn-container">
+        <input type="submit" class="stander-btn" value="Edit" name="edit">
     </fieldset>
 </form>

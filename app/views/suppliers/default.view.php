@@ -1,7 +1,7 @@
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
-    <a href="/suppliers/add" class="add-supplier"><?= $text_content_add_supplier ?> <i class="fa fa-plus ml-10"></i></a>
+    <a href="/suppliers/add" class="stander-btn"><?= $text_content_add_supplier ?> <i class="fa fa-plus ml-10"></i></a>
     <div class="search">
         <label for="find-supplier"></label><input type="search" id="find-supplier"  placeholder="<?= $text_content_search_supplier ?>">
         <i class="fa fa-search lens"></i>

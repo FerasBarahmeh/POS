@@ -571,6 +571,10 @@
     max-width: 400px;
     max-height: 250px;
 }
+.img-table {
+    max-width: 50px;
+    max-height: 30px;
+}
 /* End Images */
 
 /* Start Buttons */
@@ -839,6 +843,9 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
+}
+.bar-pagination.upper {
+    margin-bottom: 10px !important;
 }
 .bar-pagination .statistics {
     display: flex;

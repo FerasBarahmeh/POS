@@ -1,7 +1,7 @@
 <h1 class="title-header"><?= $title_header ?></h1>
 
 <div class="header-option flex mt-10">
-    <a href="/productscategories/add" class="add-user"><?= $text_content_add_category ?> <i class="fa fa-plus ml-10"></i></a>
+    <a href="/productscategories/add" class="stander-btn"><?= $text_content_add_category ?> <i class="fa fa-plus ml-10"></i></a>
     <div class="search">
         <label for="find-user"></label><input type="search" id="find-user"  placeholder="<?= $text_content_search_category ?>">
         <i class="fa fa-search lens"></i>
@@ -10,7 +10,7 @@
 
     <!-- Show Privileges -->
     <div class="container-table responsive-table mt-20" id="employees-table">
-        <table class="">
+        <table class="pagination-table">
             <thead>
                 <tr>
                     <th><?= $text_table_name_category ?></th>

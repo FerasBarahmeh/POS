@@ -16,3 +16,4 @@ $content["table_confirm_email"]         = "تأكيد البريد الاالك�
 $content["table_SubscriptionDate"]      = "تاريخ تسجيل الدخول";
 $content["table_PhoneNumber"]           = "رقم الهاتف";
 $content["table_GroupId"]               = "مجموعة المستخدم";
+$content["table_GroupName"]               = "مجموعة المستخدم";

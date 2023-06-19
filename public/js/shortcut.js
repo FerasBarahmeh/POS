@@ -177,6 +177,8 @@ class PaginationTable {
         this.nextBtn = null;
         this.currentSlideDiv = null;
         this.paginationSection = null;
+        this.isUpperBar = this.table.classList.contains("upper");
+        this.fromDiv = null;
     }
     getRowsAsHtmlObj() {
         return this.tBody.querySelectorAll("tr");
@@ -203,6 +205,8 @@ class PaginationTable {
     whenChangeShowRowsValue(e) {
         //TODO: add value to local storage
         this.resitALl(e)
+        this.fromDiv.textContent = '';
+        this.fromDiv.textContent = this.countSlides;
         this.shuffleButtons();
         this.showSlide()
     }
@@ -256,6 +260,7 @@ class PaginationTable {
         // create from div
         let fromDiv = document.createElement("div");
         fromDiv.textContent = this.countSlides;
+        this.fromDiv = fromDiv;
         counterDiv.appendChild(fromDiv);
 
         statisticsDiv.appendChild(counterDiv);
@@ -288,6 +293,9 @@ class PaginationTable {
         buttonsDiv.appendChild(nextBtn);
 
         barPaginationDiv.appendChild(buttonsDiv);
+        if (this.isUpperBar) {
+            barPaginationDiv.classList.add("upper")
+        }
         return barPaginationDiv;
 
     }
@@ -398,7 +406,11 @@ class PaginationTable {
                 bar.remove()
             });
         }
-        this.table.parentElement.appendChild(this.paginationSection);
+        if (this.isUpperBar) {
+            this.table.parentElement.prepend(this.paginationSection);
+        }  else {
+            this.table.parentElement.appendChild(this.paginationSection);
+        }
 
     }
     changeSlideNumberInStatisticsSection() {

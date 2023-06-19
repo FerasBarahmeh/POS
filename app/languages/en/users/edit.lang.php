@@ -16,3 +16,4 @@ $content["table_confirm_email"]         = "Confirm Email";
 $content["table_SubscriptionDate"]      = "Subscription Date";
 $content["table_PhoneNumber"]           = "Phone Number";
 $content["table_GroupId"]               = "Pleas Choose Group Name";
+$content["table_GroupName"]               = "Choose Group Name";

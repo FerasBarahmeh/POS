@@ -1,0 +1,27 @@
+/* Start Check Box in Add Groups */
+.privileges-to-groups {
+
+}
+.privileges-to-groups .label-privilege-add-group {
+    font-size: 18px;
+    color: var(--text-black-900);
+    font-weight: bold;
+}
+.set-group-user {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+}
+.set-group-user input {
+    margin-right: 10px;
+}
+.set-group-user label {
+    display: block;
+    width: 100%;
+}
+.set-group-user div {
+    display: flex;
+    align-items: center;
+}
+/* End Check Box in Add Groups */

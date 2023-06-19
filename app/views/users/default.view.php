@@ -10,7 +10,7 @@
 
 <!-- Show Employees -->
 <div class="container-table responsive-table mt-20" id="employees-table">
-    <table class="">
+    <table class="pagination-table">
         <thead>
         <tr>
             <th><?= $text_table_name_user ?></th>
