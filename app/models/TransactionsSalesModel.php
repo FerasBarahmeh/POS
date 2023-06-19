@@ -3,10 +3,11 @@
 namespace APP\Models;
 
 use ArrayIterator;
+use Exception;
 
 class TransactionsSalesModel extends AbstractModel
 {
-
+    use TraitTransactionsModel;
     private SalesInvoicesModel $salesInvoicesModel;
     private SalesInvoicesDetailsModel $salesInvoicesDetailsModel;
     private SalesInvoicesReceiptsModel $salesInvoicesReceiptsModel;
@@ -20,9 +21,11 @@ class TransactionsSalesModel extends AbstractModel
 
     /**
      * To get all information you need to show invoice in transaction page
+     * @param array|NULL $filters
      * @return false|ArrayIterator
+     * @throws Exception
      */
-    public function getInfoSalesInvoice(): false|\ArrayIterator
+    public function getInfoSalesInvoice(NULL | array $filters = null): false|\ArrayIterator
     {
         $sql = "
             SELECT 
@@ -38,7 +41,13 @@ class TransactionsSalesModel extends AbstractModel
             ON 
                 I.ClientId = C.ClientId
         ";
+
+        if ($filters != null) {
+
+            $this->addFilterToQuery($sql, $filters);
+        }
         return $this->get($sql);
     }
+
 
 }

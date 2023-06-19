@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="Create products categories model, controller, category and all you need for this">
+    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="simple edit">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/ar/authentication/login.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/authentication/login.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/en/authentication/login.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/authentication/login.lang.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/TransactionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/TransactionsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/TransactionsSalesModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/TransactionsSalesModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/transactions.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/transactions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +23,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -28,7 +31,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/app/controllers/userscontroller.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/controllers/UsersController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -42,10 +45,11 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/XAMPP/htdocs/estore/app/languages/ar/messages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/XAMPP/htdocs/estore/public/js&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -62,12 +66,22 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\XAMPP\htdocs\estore\app\languages\ar\messages" />
-      <recent name="E:\XAMPP\htdocs\estore\app\languages\ar" />
-      <recent name="E:\XAMPP\htdocs\estore\app\languages\ar\productscategories" />
+      <recent name="E:\XAMPP\htdocs\estore\public\js" />
+      <recent name="E:\XAMPP\htdocs\estore\public\css\en" />
       <recent name="E:\XAMPP\htdocs\estore\app\views" />
       <recent name="E:\XAMPP\htdocs\estore\app\languages\en" />
+      <recent name="E:\XAMPP\htdocs\estore\app\languages\ar" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="sellproduct.view.php" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/estore/app/views/sales/sellproduct.view.php" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.sellproduct.view.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -102,351 +116,412 @@
       <workItem from="1676644352841" duration="15319000" />
       <workItem from="1676720531637" duration="19913000" />
       <workItem from="1676750364099" duration="391000" />
+      <workItem from="1678640218041" duration="1732000" />
+      <workItem from="1678658220075" duration="3671000" />
+      <workItem from="1678815862715" duration="14053000" />
+      <workItem from="1678860218318" duration="2435000" />
+      <workItem from="1679067458604" duration="10000" />
+      <workItem from="1679067582369" duration="382000" />
+      <workItem from="1679173488796" duration="5417000" />
+      <workItem from="1679435498306" duration="8000" />
+      <workItem from="1679754539815" duration="3187000" />
+      <workItem from="1680112295630" duration="12998000" />
+      <workItem from="1680165604440" duration="3000" />
+      <workItem from="1680636165485" duration="19746000" />
+      <workItem from="1680729205980" duration="5580000" />
+      <workItem from="1680811150596" duration="11229000" />
+      <workItem from="1681066935246" duration="202000" />
+      <workItem from="1681139992352" duration="20656000" />
+      <workItem from="1681339145250" duration="493000" />
+      <workItem from="1681497989463" duration="16193000" />
+      <workItem from="1681553364711" duration="12418000" />
+      <workItem from="1681737413004" duration="24858000" />
+      <workItem from="1682103916944" duration="14967000" />
+      <workItem from="1682150773129" duration="284000" />
+      <workItem from="1682154073801" duration="11923000" />
+      <workItem from="1682178154065" duration="3712000" />
+      <workItem from="1682192633301" duration="5255000" />
+      <workItem from="1682201930956" duration="5806000" />
+      <workItem from="1682358767384" duration="14776000" />
+      <workItem from="1682444409528" duration="10777000" />
+      <workItem from="1682483863765" duration="18501000" />
+      <workItem from="1682509503954" duration="4161000" />
+      <workItem from="1682519031751" duration="2521000" />
+      <workItem from="1682523512832" duration="4955000" />
+      <workItem from="1682702658836" duration="9496000" />
+      <workItem from="1682769004568" duration="146000" />
+      <workItem from="1682776954731" duration="3070000" />
+      <workItem from="1682792094209" duration="4040000" />
+      <workItem from="1682802289066" duration="2719000" />
+      <workItem from="1682874397761" duration="12089000" />
+      <workItem from="1682950343721" duration="232000" />
+      <workItem from="1682976829675" duration="2844000" />
+      <workItem from="1683362077075" duration="178000" />
+      <workItem from="1683818465199" duration="35000" />
+      <workItem from="1683825183596" duration="43000" />
+      <workItem from="1683825470578" duration="5863000" />
+      <workItem from="1683961395620" duration="32000" />
+      <workItem from="1683988535068" duration="3994000" />
+      <workItem from="1684486376402" duration="25000" />
+      <workItem from="1684578869796" duration="826000" />
+      <workItem from="1686473550620" duration="29397000" />
+      <workItem from="1686551680080" duration="36989000" />
+      <workItem from="1686636529441" duration="24430000" />
+      <workItem from="1686720399544" duration="20819000" />
+      <workItem from="1686834942636" duration="10800000" />
+      <workItem from="1686923327157" duration="73000" />
+      <workItem from="1686923668173" duration="16061000" />
+      <workItem from="1687006285193" duration="6864000" />
+      <workItem from="1687026117563" duration="1031000" />
+      <workItem from="1687027202912" duration="7084000" />
+      <workItem from="1687091953464" duration="8612000" />
+      <workItem from="1687114297428" duration="11244000" />
+      <workItem from="1687173888319" duration="16977000" />
     </task>
-    <task id="LOCAL-00137" summary="create authentication controller class">
-      <created>1676404669044</created>
-      <option name="number" value="00137" />
-      <option name="presentableId" value="LOCAL-00137" />
+    <task id="LOCAL-00189" summary="finish create invoice">
+      <created>1680657756921</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
       <option name="project" value="LOCAL" />
-      <updated>1676404669044</updated>
+      <updated>1680657756922</updated>
     </task>
-    <task id="LOCAL-00138" summary="create main salt constant and create UserStatus trait">
-      <created>1676404721294</created>
-      <option name="number" value="00138" />
-      <option name="presentableId" value="LOCAL-00138" />
+    <task id="LOCAL-00190" summary="create getLastWord and posLastWord and removeLastWord in helper trait">
+      <created>1681168022441</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
       <option name="project" value="LOCAL" />
-      <updated>1676404721294</updated>
+      <updated>1681168022441</updated>
     </task>
-    <task id="LOCAL-00139" summary="add authentication in front controller and use in dispatch">
-      <created>1676404782697</created>
-      <option name="number" value="00139" />
-      <option name="presentableId" value="LOCAL-00139" />
+    <task id="LOCAL-00191" summary="add fetcher check if number product in store less than sale quantity in sales page">
+      <created>1681168162973</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
       <option name="project" value="LOCAL" />
-      <updated>1676404782697</updated>
+      <updated>1681168162973</updated>
     </task>
-    <task id="LOCAL-00140" summary="add some words in languages files">
-      <created>1676404807230</created>
-      <option name="number" value="00140" />
-      <option name="presentableId" value="LOCAL-00140" />
+    <task id="LOCAL-00192" summary="Create allLazy method in abstract model">
+      <created>1681555537290</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
       <option name="project" value="LOCAL" />
-      <updated>1676404807230</updated>
+      <updated>1681555537291</updated>
     </task>
-    <task id="LOCAL-00141" summary="create version one in view login">
-      <created>1676404835502</created>
-      <option name="number" value="00141" />
-      <option name="presentableId" value="LOCAL-00141" />
+    <task id="LOCAL-00193" summary="Create putLazy method in abstract controller">
+      <created>1681556748196</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
       <option name="project" value="LOCAL" />
-      <updated>1676404835502</updated>
+      <updated>1681556748197</updated>
     </task>
-    <task id="LOCAL-00142" summary="change font family body">
-      <created>1676404857515</created>
-      <option name="number" value="00142" />
-      <option name="presentableId" value="LOCAL-00142" />
+    <task id="LOCAL-00194" summary="add encryption method in TemplateHelper.php">
+      <created>1681760004325</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
       <option name="project" value="LOCAL" />
-      <updated>1676404857515</updated>
+      <updated>1681760004326</updated>
     </task>
-    <task id="LOCAL-00143" summary="create choosePartsUI method version one">
-      <created>1676404887528</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
+    <task id="LOCAL-00195" summary="finish find Client section in sales page">
+      <created>1681762041597</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
       <option name="project" value="LOCAL" />
-      <updated>1676404887528</updated>
+      <updated>1681762041597</updated>
     </task>
-    <task id="LOCAL-00144" summary="create authentication method, apply Main slat constant in encryptionPassword method and ifUserRegistration method">
-      <created>1676404982451</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
+    <task id="LOCAL-00196" summary="add max-w class in shortcut.css">
+      <created>1681778355122</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
       <option name="project" value="LOCAL" />
-      <updated>1676404982451</updated>
+      <updated>1681778355123</updated>
     </task>
-    <task id="LOCAL-00145" summary="edit bug ifUserRegistration encryption password before check if exist">
-      <created>1676464443064</created>
-      <option name="number" value="00145" />
-      <option name="presentableId" value="LOCAL-00145" />
+    <task id="LOCAL-00197" summary="finish search product sales page">
+      <created>1681778478001</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
       <option name="project" value="LOCAL" />
-      <updated>1676464443064</updated>
+      <updated>1681778478001</updated>
     </task>
-    <task id="LOCAL-00146" summary="create logout action in authentication controller">
-      <created>1676468463589</created>
-      <option name="number" value="00146" />
-      <option name="presentableId" value="LOCAL-00146" />
+    <task id="LOCAL-00198" summary="some edit  in disabled input in sales page">
+      <created>1681780049975</created>
+      <option name="number" value="00198" />
+      <option name="presentableId" value="LOCAL-00198" />
       <option name="project" value="LOCAL" />
-      <updated>1676468463589</updated>
+      <updated>1681780049975</updated>
     </task>
-    <task id="LOCAL-00147" summary="add logout link in menu">
-      <created>1676468507111</created>
-      <option name="number" value="00147" />
-      <option name="presentableId" value="LOCAL-00147" />
+    <task id="LOCAL-00199" summary="edit description class direction in shortcut">
+      <created>1682174003695</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
       <option name="project" value="LOCAL" />
-      <updated>1676468507111</updated>
+      <updated>1682174003695</updated>
     </task>
-    <task id="LOCAL-00148" summary="change class table users groups users to container-table">
-      <created>1676468559634</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
+    <task id="LOCAL-00200" summary="end add to cart section in sales page">
+      <created>1682174040829</created>
+      <option name="number" value="00200" />
+      <option name="presentableId" value="LOCAL-00200" />
       <option name="project" value="LOCAL" />
-      <updated>1676468559634</updated>
+      <updated>1682174040829</updated>
     </task>
-    <task id="LOCAL-00149" summary="add edit group name in users groups controller">
-      <created>1676468596882</created>
-      <option name="number" value="00149" />
-      <option name="presentableId" value="LOCAL-00149" />
+    <task id="LOCAL-00201" summary="change colors design">
+      <created>1682180832197</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
       <option name="project" value="LOCAL" />
-      <updated>1676468596882</updated>
+      <updated>1682180832197</updated>
     </task>
-    <task id="LOCAL-00150" summary="some edit in main table">
-      <created>1676469290367</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
+    <task id="LOCAL-00202" summary="edit message error when chose product in sales page">
+      <created>1682180971885</created>
+      <option name="number" value="00202" />
+      <option name="presentableId" value="LOCAL-00202" />
       <option name="project" value="LOCAL" />
-      <updated>1676469290367</updated>
+      <updated>1682180971885</updated>
     </task>
-    <task id="LOCAL-00151" summary="add class to password cell to design it">
-      <created>1676469329099</created>
-      <option name="number" value="00151" />
-      <option name="presentableId" value="LOCAL-00151" />
+    <task id="LOCAL-00203" summary="some edit in colors in sales page">
+      <created>1682181899344</created>
+      <option name="number" value="00203" />
+      <option name="presentableId" value="LOCAL-00203" />
       <option name="project" value="LOCAL" />
-      <updated>1676469329099</updated>
+      <updated>1682181899344</updated>
     </task>
-    <task id="LOCAL-00152" summary="edit title and header words content">
-      <created>1676469356259</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
+    <task id="LOCAL-00204" summary="redesign template">
+      <created>1682197013042</created>
+      <option name="number" value="00204" />
+      <option name="presentableId" value="LOCAL-00204" />
       <option name="project" value="LOCAL" />
-      <updated>1676469356259</updated>
+      <updated>1682197013042</updated>
     </task>
-    <task id="LOCAL-00153" summary="add fetcher in dispatch if user go to authentication and already login redirect to current page">
-      <created>1676471618209</created>
-      <option name="number" value="00153" />
-      <option name="presentableId" value="LOCAL-00153" />
+    <task id="LOCAL-00205" summary="redesign drop down menu">
+      <created>1682197930690</created>
+      <option name="number" value="00205" />
+      <option name="presentableId" value="LOCAL-00205" />
       <option name="project" value="LOCAL" />
-      <updated>1676471618209</updated>
+      <updated>1682197930690</updated>
     </task>
-    <task id="LOCAL-00154" summary="add fetcher login width email">
-      <created>1676471936330</created>
-      <option name="number" value="00154" />
-      <option name="presentableId" value="LOCAL-00154" />
+    <task id="LOCAL-00206" summary="create setSpecificAttribute in TemplateHelper.php">
+      <created>1682376022518</created>
+      <option name="number" value="00206" />
+      <option name="presentableId" value="LOCAL-00206" />
       <option name="project" value="LOCAL" />
-      <updated>1676471936330</updated>
+      <updated>1682376022518</updated>
     </task>
-    <task id="LOCAL-00155" summary="update method save in abstraction model">
-      <created>1676484137341</created>
-      <option name="number" value="00155" />
-      <option name="presentableId" value="LOCAL-00155" />
+    <task id="LOCAL-00207" summary="upgrade getClassValuesProperties to new version getSpecificPropagates in publichelper.phpc">
+      <created>1682376106455</created>
+      <option name="number" value="00207" />
+      <option name="presentableId" value="LOCAL-00207" />
       <option name="project" value="LOCAL" />
-      <updated>1676484137341</updated>
+      <updated>1682376106455</updated>
     </task>
-    <task id="LOCAL-00156" summary="rename method getAll from user model to getUser and add condition where to not fetch current users">
-      <created>1676484219044</created>
-      <option name="number" value="00156" />
-      <option name="presentableId" value="LOCAL-00156" />
+    <task id="LOCAL-00208" summary="create AbstractionEnum.php">
+      <created>1682376181177</created>
+      <option name="number" value="00208" />
+      <option name="presentableId" value="LOCAL-00208" />
       <option name="project" value="LOCAL" />
-      <updated>1676484219044</updated>
+      <updated>1682376181177</updated>
     </task>
-    <task id="LOCAL-00157" summary="add first name and last name users controller">
-      <created>1676484328366</created>
-      <option name="number" value="00157" />
-      <option name="presentableId" value="LOCAL-00157" />
+    <task id="LOCAL-00209" summary="create AbstractionEnum.php">
+      <created>1682376192820</created>
+      <option name="number" value="00209" />
+      <option name="presentableId" value="LOCAL-00209" />
       <option name="project" value="LOCAL" />
-      <updated>1676484328366</updated>
+      <updated>1682376192820</updated>
     </task>
-    <task id="LOCAL-00158" summary="re export db">
-      <created>1676484352119</created>
-      <option name="number" value="00158" />
-      <option name="presentableId" value="LOCAL-00158" />
+    <task id="LOCAL-00210" summary="design frontend version one Invoice section in sales">
+      <created>1682376233339</created>
+      <option name="number" value="00210" />
+      <option name="presentableId" value="LOCAL-00210" />
       <option name="project" value="LOCAL" />
-      <updated>1676484352120</updated>
+      <updated>1682376233339</updated>
     </task>
-    <task id="LOCAL-00159" summary="add name user in welcome message">
-      <created>1676493346518</created>
-      <option name="number" value="00159" />
-      <option name="presentableId" value="LOCAL-00159" />
+    <task id="LOCAL-00211" summary="design frontend version one Invoice section in sales">
+      <created>1682376244538</created>
+      <option name="number" value="00211" />
+      <option name="presentableId" value="LOCAL-00211" />
       <option name="project" value="LOCAL" />
-      <updated>1676493346518</updated>
+      <updated>1682376244538</updated>
     </task>
-    <task id="LOCAL-00160" summary="set names in privileges in nav and header dynamically">
-      <created>1676493423599</created>
-      <option name="number" value="00160" />
-      <option name="presentableId" value="LOCAL-00160" />
+    <task id="LOCAL-00212" summary="update getSpecificProperties method in publichelper.php and split option">
+      <created>1682450297293</created>
+      <option name="number" value="00212" />
+      <option name="presentableId" value="LOCAL-00212" />
       <option name="project" value="LOCAL" />
-      <updated>1676493423599</updated>
+      <updated>1682450297294</updated>
     </task>
-    <task id="LOCAL-00161" summary="add constraint current user can't delete himself">
-      <created>1676493487963</created>
-      <option name="number" value="00161" />
-      <option name="presentableId" value="LOCAL-00161" />
+    <task id="LOCAL-00213" summary="update PaymentStatus.php and documentation foreach prop and add PaymentType.php props">
+      <created>1682450369998</created>
+      <option name="number" value="00213" />
+      <option name="presentableId" value="LOCAL-00213" />
       <option name="project" value="LOCAL" />
-      <updated>1676493487963</updated>
+      <updated>1682450369998</updated>
     </task>
-    <task id="LOCAL-00162" summary="add messages when deleted, edit and add group">
-      <created>1676493534534</created>
-      <option name="number" value="00162" />
-      <option name="presentableId" value="LOCAL-00162" />
+    <task id="LOCAL-00214" summary="finished design invoice section html css">
+      <created>1682455402493</created>
+      <option name="number" value="00214" />
+      <option name="presentableId" value="LOCAL-00214" />
       <option name="project" value="LOCAL" />
-      <updated>1676493534534</updated>
+      <updated>1682455402493</updated>
     </task>
-    <task id="LOCAL-00163" summary="edit ifUserRegistration method query fetch user(new fetch group name)">
-      <created>1676493622627</created>
-      <option name="number" value="00163" />
-      <option name="presentableId" value="LOCAL-00163" />
+    <task id="LOCAL-00215" summary="add some functionality in sales page">
+      <created>1682513692201</created>
+      <option name="number" value="00215" />
+      <option name="presentableId" value="LOCAL-00215" />
       <option name="project" value="LOCAL" />
-      <updated>1676493622627</updated>
+      <updated>1682513692201</updated>
     </task>
-    <task id="LOCAL-00164" summary="add some words in languages files">
-      <created>1676493679096</created>
-      <option name="number" value="00164" />
-      <option name="presentableId" value="LOCAL-00164" />
+    <task id="LOCAL-00216" summary="fish design sales page">
+      <created>1682531778638</created>
+      <option name="number" value="00216" />
+      <option name="presentableId" value="LOCAL-00216" />
       <option name="project" value="LOCAL" />
-      <updated>1676493679096</updated>
+      <updated>1682531778640</updated>
     </task>
-    <task id="LOCAL-00165" summary="edit bug in edit groups messages(Set error messages else group not save not is not set POST[&quot;edit&quot;]">
-      <created>1676494690548</created>
-      <option name="number" value="00165" />
-      <option name="presentableId" value="LOCAL-00165" />
+    <task id="LOCAL-00217" summary="fix calculate total price function in sales.js,&#10;and edit, delete product">
+      <created>1682796170843</created>
+      <option name="number" value="00217" />
+      <option name="presentableId" value="LOCAL-00217" />
       <option name="project" value="LOCAL" />
-      <updated>1676494690548</updated>
+      <updated>1682796170843</updated>
     </task>
-    <task id="LOCAL-00166" summary="add method getPrivilegesByGroup to get privileges urls">
-      <created>1676498249129</created>
-      <option name="number" value="00166" />
-      <option name="presentableId" value="LOCAL-00166" />
+    <task id="LOCAL-00218" summary="add message when apply discount success">
+      <created>1682805591569</created>
+      <option name="number" value="00218" />
+      <option name="presentableId" value="LOCAL-00218" />
       <option name="project" value="LOCAL" />
-      <updated>1676498249129</updated>
+      <updated>1682805591570</updated>
     </task>
-    <task id="LOCAL-00167" summary="set getPrivilegesByGroup object in user from session">
-      <created>1676498289615</created>
-      <option name="number" value="00167" />
-      <option name="presentableId" value="LOCAL-00167" />
+    <task id="LOCAL-00219" summary="Fill Extra client information input in sales.js">
+      <created>1682879609548</created>
+      <option name="number" value="00219" />
+      <option name="presentableId" value="LOCAL-00219" />
       <option name="project" value="LOCAL" />
-      <updated>1676498289615</updated>
+      <updated>1682879609549</updated>
     </task>
-    <task id="LOCAL-00168" summary="remove urls privileges from privileges/default">
-      <created>1676541362068</created>
-      <option name="number" value="00168" />
-      <option name="presentableId" value="LOCAL-00168" />
+    <task id="LOCAL-00220" summary="prepare information invoice">
+      <created>1682888092296</created>
+      <option name="number" value="00220" />
+      <option name="presentableId" value="LOCAL-00220" />
       <option name="project" value="LOCAL" />
-      <updated>1676541362068</updated>
+      <updated>1682888092296</updated>
     </task>
-    <task id="LOCAL-00169" summary="change font family, bold-font class">
-      <created>1676558282573</created>
-      <option name="number" value="00169" />
-      <option name="presentableId" value="LOCAL-00169" />
+    <task id="LOCAL-00221" summary="check if employee can crete invoice">
+      <created>1683831328164</created>
+      <option name="number" value="00221" />
+      <option name="presentableId" value="LOCAL-00221" />
       <option name="project" value="LOCAL" />
-      <updated>1676558282573</updated>
+      <updated>1683831328164</updated>
     </task>
-    <task id="LOCAL-00170" summary="change privilege size to 30 character">
-      <created>1676558326337</created>
-      <option name="number" value="00170" />
-      <option name="presentableId" value="LOCAL-00170" />
+    <task id="LOCAL-00222" summary="Check if it has privilege employee to create invoice and Qty products">
+      <created>1686482426047</created>
+      <option name="number" value="00222" />
+      <option name="presentableId" value="LOCAL-00222" />
       <option name="project" value="LOCAL" />
-      <updated>1676558326337</updated>
+      <updated>1686482426047</updated>
     </task>
-    <task id="LOCAL-00171" summary="update addMessage method to savePrivilege method">
-      <created>1676558429503</created>
-      <option name="number" value="00171" />
-      <option name="presentableId" value="LOCAL-00171" />
+    <task id="LOCAL-00223" summary="create invoice finished (V1)">
+      <created>1686511107749</created>
+      <option name="number" value="00223" />
+      <option name="presentableId" value="LOCAL-00223" />
       <option name="project" value="LOCAL" />
-      <updated>1676558429503</updated>
+      <updated>1686511107749</updated>
     </task>
-    <task id="LOCAL-00172" summary="create authorizedAccess, isNotAuthenticated and denyAccessLogin methods">
-      <created>1676558615275</created>
-      <option name="number" value="00172" />
-      <option name="presentableId" value="LOCAL-00172" />
+    <task id="LOCAL-00224" summary="finish sale products page">
+      <created>1686569592780</created>
+      <option name="number" value="00224" />
+      <option name="presentableId" value="LOCAL-00224" />
       <option name="project" value="LOCAL" />
-      <updated>1676558615275</updated>
+      <updated>1686569592780</updated>
     </task>
-    <task id="LOCAL-00173" summary="add word in files language to privileges page">
-      <created>1676558703162</created>
-      <option name="number" value="00173" />
-      <option name="presentableId" value="LOCAL-00173" />
+    <task id="LOCAL-00225" summary="fix bug apply discount qty products when sale">
+      <created>1686581995390</created>
+      <option name="number" value="00225" />
+      <option name="presentableId" value="LOCAL-00225" />
       <option name="project" value="LOCAL" />
-      <updated>1676558703162</updated>
+      <updated>1686581995390</updated>
     </task>
-    <task id="LOCAL-00174" summary="create authorizedAccess method">
-      <created>1676558730363</created>
-      <option name="number" value="00174" />
-      <option name="presentableId" value="LOCAL-00174" />
+    <task id="LOCAL-00226" summary="add arabic language to sales page">
+      <created>1686592822357</created>
+      <option name="number" value="00226" />
+      <option name="presentableId" value="LOCAL-00226" />
       <option name="project" value="LOCAL" />
-      <updated>1676558730363</updated>
+      <updated>1686592822357</updated>
     </task>
-    <task id="LOCAL-00175" summary="reset show privileges urls in table">
-      <created>1676558800752</created>
-      <option name="number" value="00175" />
-      <option name="presentableId" value="LOCAL-00175" />
+    <task id="LOCAL-00227" summary="update version 1.3 getSpecificProperties in publichelper.php">
+      <created>1686725079475</created>
+      <option name="number" value="00227" />
+      <option name="presentableId" value="LOCAL-00227" />
       <option name="project" value="LOCAL" />
-      <updated>1676558800752</updated>
+      <updated>1686725079475</updated>
     </task>
-    <task id="LOCAL-00176" summary="create Deny Authorize Access controller and view">
-      <created>1676558836941</created>
-      <option name="number" value="00176" />
-      <option name="presentableId" value="LOCAL-00176" />
+    <task id="LOCAL-00228" summary="Create Transaction page">
+      <created>1686744553802</created>
+      <option name="number" value="00228" />
+      <option name="presentableId" value="LOCAL-00228" />
       <option name="project" value="LOCAL" />
-      <updated>1676558836941</updated>
+      <updated>1686744553802</updated>
     </task>
-    <task id="LOCAL-00177" summary="edit format messages in users groups">
-      <created>1676563220032</created>
-      <option name="number" value="00177" />
-      <option name="presentableId" value="LOCAL-00177" />
+    <task id="LOCAL-00229" summary="refactor template configuration">
+      <created>1686927060858</created>
+      <option name="number" value="00229" />
+      <option name="presentableId" value="LOCAL-00229" />
       <option name="project" value="LOCAL" />
-      <updated>1676563220032</updated>
+      <updated>1686927060858</updated>
     </task>
-    <task id="LOCAL-00178" summary="change class container-table to table">
-      <created>1676563316193</created>
-      <option name="number" value="00178" />
-      <option name="presentableId" value="LOCAL-00178" />
+    <task id="LOCAL-00230" summary="add removeAllChildNodes function to main.js">
+      <created>1686939804436</created>
+      <option name="number" value="00230" />
+      <option name="presentableId" value="LOCAL-00230" />
       <option name="project" value="LOCAL" />
-      <updated>1676563316193</updated>
+      <updated>1686939804436</updated>
     </task>
-    <task id="LOCAL-00179" summary="finish suppliers section (add, edit, delete)">
-      <created>1676573756466</created>
-      <option name="number" value="00179" />
-      <option name="presentableId" value="LOCAL-00179" />
+    <task id="LOCAL-00231" summary="create TransactionsSalesModel.php">
+      <created>1687100713035</created>
+      <option name="number" value="00231" />
+      <option name="presentableId" value="LOCAL-00231" />
       <option name="project" value="LOCAL" />
-      <updated>1676573756466</updated>
+      <updated>1687100713035</updated>
     </task>
-    <task id="LOCAL-00180" summary="add columns address in table suppliers">
-      <created>1676574211722</created>
-      <option name="number" value="00180" />
-      <option name="presentableId" value="LOCAL-00180" />
+    <task id="LOCAL-00232" summary="add getMessagesAjaxAction method in AbstractController.php">
+      <created>1687100739977</created>
+      <option name="number" value="00232" />
+      <option name="presentableId" value="LOCAL-00232" />
       <option name="project" value="LOCAL" />
-      <updated>1676574211722</updated>
+      <updated>1687100739977</updated>
     </task>
-    <task id="LOCAL-00181" summary="Add Client section (add, edit, delete) model and controller">
-      <created>1676652720973</created>
-      <option name="number" value="00181" />
-      <option name="presentableId" value="LOCAL-00181" />
+    <task id="LOCAL-00233" summary="re design load filter button in transactions page">
+      <created>1687100832855</created>
+      <option name="number" value="00233" />
+      <option name="presentableId" value="LOCAL-00233" />
       <option name="project" value="LOCAL" />
-      <updated>1676652720973</updated>
+      <updated>1687100832855</updated>
     </task>
-    <task id="LOCAL-00182" summary="edit path categories in navigation">
-      <created>1676741001237</created>
-      <option name="number" value="00182" />
-      <option name="presentableId" value="LOCAL-00182" />
+    <task id="LOCAL-00234" summary="change angle icon">
+      <created>1687174052062</created>
+      <option name="number" value="00234" />
+      <option name="presentableId" value="LOCAL-00234" />
       <option name="project" value="LOCAL" />
-      <updated>1676741001237</updated>
+      <updated>1687174052062</updated>
     </task>
-    <task id="LOCAL-00183" summary="add path to upload folder, images uploaded and docs uploaded">
-      <created>1676741080713</created>
-      <option name="number" value="00183" />
-      <option name="presentableId" value="LOCAL-00183" />
+    <task id="LOCAL-00235" summary="refactor table pagination code">
+      <created>1687189377613</created>
+      <option name="number" value="00235" />
+      <option name="presentableId" value="LOCAL-00235" />
       <option name="project" value="LOCAL" />
-      <updated>1676741080713</updated>
+      <updated>1687189377613</updated>
     </task>
-    <task id="LOCAL-00184" summary="create upload class and files languages">
-      <created>1676741148542</created>
-      <option name="number" value="00184" />
-      <option name="presentableId" value="LOCAL-00184" />
+    <task id="LOCAL-00236" summary="remove all previous pagination section appendPaginationSectionInTable method">
+      <created>1687191596373</created>
+      <option name="number" value="00236" />
+      <option name="presentableId" value="LOCAL-00236" />
       <option name="project" value="LOCAL" />
-      <updated>1676741148542</updated>
+      <updated>1687191596373</updated>
     </task>
-    <task id="LOCAL-00185" summary="Create products categories model, controller, category and all you need for this">
-      <created>1676741279093</created>
-      <option name="number" value="00185" />
-      <option name="presentableId" value="LOCAL-00185" />
+    <task id="LOCAL-00237" summary="simple edit">
+      <created>1687191721531</created>
+      <option name="number" value="00237" />
+      <option name="presentableId" value="LOCAL-00237" />
       <option name="project" value="LOCAL" />
-      <updated>1676741279093</updated>
+      <updated>1687191721531</updated>
     </task>
-    <option name="localTasksCounter" value="186" />
+    <option name="localTasksCounter" value="238" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -464,32 +539,32 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add constraint current user can't delete himself" />
-    <MESSAGE value="add messages when deleted, edit and add group" />
-    <MESSAGE value="edit ifUserRegistration method query fetch user(new fetch group name)" />
-    <MESSAGE value="add some words in languages files" />
-    <MESSAGE value="edit bug in edit groups messages(Set error messages else group not save not is not set POST[&quot;edit&quot;]" />
-    <MESSAGE value="add method getPrivilegesByGroup to get privileges urls" />
-    <MESSAGE value="set getPrivilegesByGroup object in user from session" />
-    <MESSAGE value="remove urls privileges from privileges/default" />
-    <MESSAGE value="change font family, bold-font class" />
-    <MESSAGE value="change privilege size to 30 character" />
-    <MESSAGE value="update addMessage method to savePrivilege method" />
-    <MESSAGE value="create authorizedAccess, isNotAuthenticated and denyAccessLogin methods" />
-    <MESSAGE value="add word in files language to privileges page" />
-    <MESSAGE value="create authorizedAccess method" />
-    <MESSAGE value="reset show privileges urls in table" />
-    <MESSAGE value="create Deny Authorize Access controller and view" />
-    <MESSAGE value="edit format messages in users groups" />
-    <MESSAGE value="change class container-table to table" />
-    <MESSAGE value="finish suppliers section (add, edit, delete)" />
-    <MESSAGE value="add columns address in table suppliers" />
-    <MESSAGE value="Add Client section (add, edit, delete) model and controller" />
-    <MESSAGE value="edit path categories in navigation" />
-    <MESSAGE value="add path to upload folder, images uploaded and docs uploaded" />
-    <MESSAGE value="create upload class and files languages" />
-    <MESSAGE value="Create products categories model, controller, category and all you need for this" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create products categories model, controller, category and all you need for this" />
+    <MESSAGE value="update PaymentStatus.php and documentation foreach prop and add PaymentType.php props" />
+    <MESSAGE value="finished design invoice section html css" />
+    <MESSAGE value="add some functionality in sales page" />
+    <MESSAGE value="fish design sales page" />
+    <MESSAGE value="fix calculate total price function in sales.js,&#10;and edit, delete product" />
+    <MESSAGE value="add message when apply discount success" />
+    <MESSAGE value="Fill Extra client information input in sales.js" />
+    <MESSAGE value="prepare information invoice" />
+    <MESSAGE value="check if employee can crete invoice" />
+    <MESSAGE value="Check if it has privilege employee to create invoice and Qty products" />
+    <MESSAGE value="create invoice finished (V1)" />
+    <MESSAGE value="finish sale products page" />
+    <MESSAGE value="fix bug apply discount qty products when sale" />
+    <MESSAGE value="add arabic language to sales page" />
+    <MESSAGE value="update version 1.3 getSpecificProperties in publichelper.php" />
+    <MESSAGE value="Create Transaction page" />
+    <MESSAGE value="refactor template configuration" />
+    <MESSAGE value="add removeAllChildNodes function to main.js" />
+    <MESSAGE value="create TransactionsSalesModel.php" />
+    <MESSAGE value="add getMessagesAjaxAction method in AbstractController.php" />
+    <MESSAGE value="re design load filter button in transactions page" />
+    <MESSAGE value="change angle icon" />
+    <MESSAGE value="refactor table pagination code" />
+    <MESSAGE value="remove all previous pagination section appendPaginationSectionInTable method" />
+    <MESSAGE value="simple edit" />
+    <option name="LAST_COMMIT_MESSAGE" value="simple edit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
