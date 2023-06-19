@@ -16,8 +16,8 @@ $CSS = [
 $CSS[$t[0]] = CSS . $cssLang . $t[0] . ".css";
 
 $JS = [
-    "shortcut"      => JS . "shortcut"  . ".js",
     "main"          => JS . "main"      . ".js",
+    "shortcut"      => JS . "shortcut"  . ".js",
 ];
 
 $JS[$t[0]] = JS . $t[0] . ".js";

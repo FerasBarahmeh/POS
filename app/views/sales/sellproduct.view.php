@@ -215,7 +215,7 @@
 
         <!-- Start Table Products in Cart -->
         <section class="responsive-table flex sort-col">
-            <table id="cart-sales" class="pagination-table">
+            <table id="cart-sales" class="">
                 <thead>
                     <tr>
                         <th><?= $text_name_product ?></th>

@@ -1,4 +1,8 @@
-// global funstions
+let mess = null;
+
+getMessages("index", "getMessagesAjax", "template.common").then((res) => {
+    mess = res; return res;})
+// global functions
 function insertAfter(afterTo, newNode) {
     afterTo.parentNode.insertBefore(newNode, afterTo.nextSibling);
 }
@@ -7,7 +11,6 @@ function insertAfter(afterTo, newNode) {
 const cardPopup = document.querySelector(".card");
 // const classCard = [...cardPopup.classList];
 function hiddenPopup(e) {
-    console.log(e)
     e.closest(".card").classList.remove("show");
 }
 function showPopup(e) {
@@ -101,7 +104,7 @@ function createSymbol(type) {
     symbol.appendChild(containerSymbol);
     return symbol;
 }
-var flashMessageContainer = document.querySelector(".flash-message-container");
+
 function createFlashMessage(type, message) {
     const p = document.createElement('p');
     p.classList.add("flash-message")
@@ -154,276 +157,270 @@ function flashMessage(type, message, time=5000) {
 // End Flash Message
 
 // start pagination table
-function createPreviousBtn() {
-    let previousBtn = document.createElement("button");
-    previousBtn.classList.add("previous");
-    previousBtn.innerText = "previous";
-
-    if (currentSlide === 1) previousBtn.classList.add("un-active"); else  previousBtn.classList.remove("un-active");
-
-    return previousBtn;
-}
-function createPaginationContainer(currentSlide=1, allSlidesNumber='100', rows=null) {
-    let containerDiv = document.createElement("div");
-    containerDiv.classList.add("pagination-container");
-
-    // Statistics
-    let divStatistics = document.createElement("div");
-    divStatistics.classList.add("statistics");
-    let spanNum = document.createElement("span");
-    spanNum.classList.add("count");
-    spanNum.innerText = currentSlide + ' ';
-    divStatistics.appendChild(spanNum);
-
-    // create from word
-    let spanWord = document.createElement("span");
-    spanWord.innerText = "from";
-    divStatistics.appendChild(spanWord);
-
-    let spanFrom = document.createElement("span");
-    spanFrom.classList.add("from");
-    spanFrom.innerText = ' ' + allSlidesNumber;
-
-    divStatistics.appendChild(spanFrom);
-
-    containerDiv.appendChild(divStatistics);
-
-    // Create Bar
-    let divBar = document.createElement("div");
-    divBar.classList.add("bar");
-
-
-    // previous button
-    let previousBnt = createPreviousBtn(currentSlide)
-    divBar.appendChild(previousBnt);
-
-    // create pagination
-    let divPagination = document.createElement("div");
-    divPagination.classList.add("pagination");
-
-    // Add Number In pagination
-
-    divBar.appendChild(divPagination);
-
-    // Next Button
-    let nextBtn = document.createElement("button");
-    nextBtn.classList.add("next");
-    nextBtn.innerText = "Next";
-    divBar.appendChild(nextBtn);
-
-    containerDiv.appendChild(divBar);
-
-    return containerDiv;
-}
-function getRowsTable(table) {
-    return table.querySelectorAll("tbody tr");
-}
-function displaySlide(rows, tBody, rowsBerSlid, pageNumber) {
-    tBody.innerHTML = '';
-    pageNumber --;
-
-    let start = rowsBerSlid * pageNumber;
-    let end  = start + rowsBerSlid;
-
-    let rowsSlide = Array.from(rows).slice(start, end);
-
-    rowsSlide.forEach(row => {
-        tBody.appendChild(row);
-    });
-}
-function paginationButtons(slideNumber, rows) {
-    let button = document.createElement("button");
-    button.classList.add("num");
-    button.textContent = slideNumber;
-
-    if (currentSlide === slideNumber) {
-        button.classList.add("active");
-        currentBtn = button;
-    }
-
-    if (slideNumber === 1 || slideNumber === '1') {
-        previous.classList.remove("un-visible");
-    } else {
-        previous.classList.add("un-visible");
-    }
-
-
-
-    button.addEventListener("click", () => {
-        currentBtn.classList.remove("active");
-        currentSlide = slideNumber;
-        currentBtn = button;
-        currentBtn.classList.add("active")
-
-        if (currentSlide === 1) {
-            previous.classList.add("un-active");
-        } else {
-            previous.classList.remove("un-active");
-        }
-
-        setupPagination(rows, tBody.parentElement.nextElementSibling.querySelector('.pagination'), shownRowsNumber)
-        displaySlide(rows, tBody, shownRowsNumber, currentSlide);
-        numberSlideContainer.innerText = slideNumber + ' ';
-    });
-
-    return button
-}
-
-function setupPagination(rows, pagination, rowsBerSlid) {
-
-    pagination.innerHTML = '';
-    let slideCount = Math.ceil(rows.length / rowsBerSlid);
-
-    let start = currentSlide - numberPaginationInRow <= 0 ? 1 : currentSlide - numberPaginationInRow ;
-
-    let end = currentSlide + numberPaginationInRow > slideCount ? slideCount : currentSlide + numberPaginationInRow ;
-
-    for (let i = start; i <= end; i++) {
-        let button = paginationButtons(i, rows);
-        pagination.appendChild(button)
-    }
-}
-let rows        = [];
-let tableNumber = 0;
-const shownRowsNumber = 5;
-let currentSlide        = 1;
-let allSlidesNumber = null;
-let tBody = null;
-let currentBtn = null;
-let numberSlideContainer = null;
-let numberPaginationInRow = 5;
-let previous = null;
-let next = null;
 
 const tables = document.querySelectorAll(".pagination-table");
-tables.forEach(table => {
 
 
-    rows[tableNumber] = getRowsTable(table);
-    let trs = rows[tableNumber];
-    if (trs.length > shownRowsNumber) {
 
-        allSlidesNumber = Math.ceil(rows[tableNumber].length / shownRowsNumber);
+class PaginationTable {
 
-        // Show First Slide
-        let container = createPaginationContainer(currentSlide, allSlidesNumber, rows[tableNumber]);
-        insertAfter(table, container);
-
-        displaySlide(rows[tableNumber], table.querySelector("tbody"), shownRowsNumber, currentSlide);
-        tBody = table.querySelector("tbody");
-
-        previous = tBody.parentElement.nextElementSibling.querySelector(".previous");
-        next = tBody.parentElement.nextElementSibling.querySelector(".next");
-
-        previous.addEventListener("click", () => {
-
-            let startPosition = (currentSlide * shownRowsNumber) - (shownRowsNumber * 2);
-
-            let endPosition = startPosition + shownRowsNumber;
-
-            let rows = [...trs];
-            rows = rows.slice(startPosition, endPosition);
-
-
-            tBody.innerHTML ='';
-            rows.forEach(row => {
-                tBody.appendChild(row);
-            });
-
-            currentBtn.classList.remove("active");
-            if (startPosition === 0 && endPosition === shownRowsNumber) {
-                previous.classList.add("un-active");
-                currentBtn = container.querySelector(".pagination").firstElementChild;
-            } else {
-                currentBtn = currentBtn.previousElementSibling;
-                previous.classList.remove("un-active");
-            }
-
-            next.classList.remove("un-active");
-            currentBtn.classList.add("active");
-            currentSlide--;
-
-
-            // Shuffle Buttons
-            shuffleButtons(container, table);
-            let count = table.nextElementSibling.querySelector(".statistics .count");
-
-            let num  =  count.innerText ;
-            count.innerText = parseInt(num) - 1;
-
-        });
-
-        next.addEventListener("click", () => {
-            console.log(currentSlide)
-            if (currentSlide + 1 !== shownRowsNumber) {
-                next.classList.remove("un-visible");
-                next.classList.remove("un-active");
-                let startPosition = currentSlide * shownRowsNumber ;
-                let endPosition = startPosition + shownRowsNumber;
-
-                let rows = [...trs];
-
-                rows = rows.slice(startPosition, endPosition);
-
-                tBody.innerHTML ='';
-                rows.forEach(row => {
-                    tBody.appendChild(row);
-                });
-
-                currentBtn.classList.remove("active");
-
-                if (endPosition - 1 === trs.length) {
-                    next.classList.add("un-active");
-                    currentBtn = container.querySelector(".pagination").lastElementChild;
-                } else {
-                    currentBtn = currentBtn.nextElementSibling;
-                    next.classList.remove("un-active");
-                }
-
-                previous.classList.remove("un-active");
-                currentBtn.classList.add("active");
-                currentSlide++;
-
-
-                // Shuffle Buttons
-
-                shuffleButtons(container);
-                let count = table.nextElementSibling.querySelector(".statistics .count");
-
-                let num  =  count.innerText ;
-                count.innerText = parseInt(num) + 1;
-
-            } else {
-                next.classList.add("un-visible");
-                next.classList.add("un-active");
-            }
-
-        });
-        function shuffleButtons(container) {
-            let pagination = container.querySelector(".pagination");
-            pagination.innerHTML = '';
-            let slideCount = Math.ceil(trs.length / shownRowsNumber);
-
-
-            let start = currentSlide - numberPaginationInRow <= 0 ? 1 : currentSlide - numberPaginationInRow ;
-
-            let end = currentSlide + numberPaginationInRow > slideCount ? slideCount : currentSlide + numberPaginationInRow ;
-
-            for (let i = start; i <= end; i++) {
-                let button = paginationButtons(i, trs);
-                pagination.appendChild(button)
+    constructor(table) {
+        this.table = table;
+        this.tBody = this.getTBody();
+        this.currentRow = 0;
+        this.currentSlidePos = 1;
+        this.ulBtns = null;
+        this.rows = this.getRowsAsArray();
+        this.numberRowsInSlide = 4;
+        this.countSlides = Math.ceil(this.rows.length / this.numberRowsInSlide);
+        this.prevBtn = null;
+        this.nextBtn = null;
+        this.currentSlideDiv = null;
+    }
+    getRowsAsHtmlObj() {
+        return this.tBody.querySelectorAll("tr");
+    }
+    getRowsAsArray() {
+        let trs = [];
+        let rows = this.getRowsAsHtmlObj()
+        for (const rowsKey in rows) {
+            if (rows.hasOwnProperty(rowsKey)) {
+                trs.push(rows[rowsKey]);
             }
         }
-
-
-        setupPagination(rows[tableNumber], container.querySelector(".pagination"), shownRowsNumber, rows[tableNumber]);
-
-        numberSlideContainer = table.nextElementSibling.querySelector(".statistics .count");
-        numberSlideContainer.innerText = currentSlide + ' ';
-
-
-
-        tableNumber++;
+        return trs;
     }
+    getTBody() {
+        return this.table.querySelector("tbody");
+    }
+    resitALl (e=null) {
+        this.numberRowsInSlide = Number(e.target.value)
+        this.currentRow = 0;
+        this.currentSlidePos = 1;
+        this.countSlides = Math.ceil(this.rows.length / this.numberRowsInSlide);
+    }
+    whenChangeShowRowsValue(e) {
+        //TODO: add value to local storage
+        this.resitALl(e)
+        this.shuffleButtons();
+        this.showSlide()
+    }
+    createPaginationBar() {
 
+        let barPaginationDiv = document.createElement("div");
+        barPaginationDiv.classList.add("bar-pagination");
+
+        // Create statistics div
+        let statisticsDiv = document.createElement("div");
+        statisticsDiv.classList.add("statistics");
+        let numberSlideDiv = document.createElement("number-slide");
+        let label = document.createElement("label");
+        // label.textContent = mess["text_number_rerecord_in_slide"];
+        label.textContent = "Number Rerecord In Slide";
+        numberSlideDiv.appendChild(label);
+
+        // Create select
+        let select = document.createElement("select");
+        select.addEventListener("change", (e) => {this.whenChangeShowRowsValue(e)})
+
+
+        // Create Options
+        for (let i = 1; i <= 5; i++) {
+            let opt = document.createElement("option");
+            opt.value = i * 2;
+            if ( i * 2 === 4) {
+                opt.selected = true;
+            }
+            opt.textContent = i * 2;
+            select.appendChild(opt);
+        }
+
+        numberSlideDiv.appendChild(select);
+        statisticsDiv.appendChild(numberSlideDiv);
+        barPaginationDiv.appendChild(statisticsDiv);
+
+        // create counter hint
+        let counterDiv = document.createElement("div");
+        counterDiv.classList.add("counter");
+        // create number current slide div
+        let currentSlideDiv = document.createElement("div");
+        currentSlideDiv.textContent = this.currentSlidePos;
+        this.currentSlideDiv = currentSlideDiv;
+        counterDiv.appendChild(currentSlideDiv);
+        // create from span
+        let fromSpan = document.createElement("span");
+        // fromSpan.textContent = mess["text_from"];
+        fromSpan.textContent = "from";
+        counterDiv.appendChild(fromSpan)
+        // create from div
+        let fromDiv = document.createElement("div");
+        fromDiv.textContent = this.countSlides;
+        counterDiv.appendChild(fromDiv);
+
+        statisticsDiv.appendChild(counterDiv);
+
+        // start buttons
+        let buttonsDiv = document.createElement("div");
+        buttonsDiv.classList.add("buttons");
+
+        // create previous button
+        let previousBtn = document.createElement("button");
+        previousBtn.classList.add("previous");
+        previousBtn.textContent = "Previous"
+        buttonsDiv.appendChild(previousBtn);
+        this.prevBtn  = previousBtn;
+
+        // create next button
+        let nextBtn = document.createElement("button");
+        nextBtn.classList.add("next");
+        nextBtn.classList.add("active");
+        nextBtn.textContent = "Next";
+        this.nextBtn = nextBtn;
+
+        // create ul
+        let ul = document.createElement("ul");
+        this.ulBtns = ul;
+        buttonsDiv.appendChild(ul)
+        this.shuffleButtons();
+
+
+        buttonsDiv.appendChild(nextBtn);
+
+        barPaginationDiv.appendChild(buttonsDiv);
+        return barPaginationDiv;
+
+    }
+    createNodesNumber(content, count=null) {
+        let li = document.createElement("li");
+        if (count != null) {
+            li.setAttribute("count", count);
+            li.addEventListener("click", () => {
+                if (this.currentSlidePos > count) {
+                    this.currentRow = (count * this.numberRowsInSlide) -this.numberRowsInSlide;
+                } else if(this.currentSlidePos < count) {
+                    this.currentRow += this.numberRowsInSlide;
+                }
+                this.currentSlidePos = count;
+                li.classList.add("current-slide");
+                this.showSlide()
+                this.shuffleButtons();
+            });
+        } else {
+            li.classList.add("pointer-e-non");
+        }
+        // Check if this an active slide
+        if (count === this.currentSlidePos) {
+            li.classList.add("current-slide");
+        }
+
+        li.textContent = content;
+        return li;
+    }
+    checkActivationPrevNextBtn() {
+        if (this.countSlides === 1) {
+            this.nextBtn.classList.remove("active")
+            this.prevBtn.classList.remove("active")
+            return;
+        }
+        if (this.currentSlidePos === this.countSlides) {
+            this.nextBtn.classList.remove("active")
+            this.prevBtn.classList.add("active")
+        }
+        if (this.currentSlidePos === 1) {
+            this.prevBtn.classList.remove("active")
+            this.nextBtn.classList.add("active")
+        } else {
+            this.prevBtn.classList.add("active")
+        }
+    }
+    shuffleButtons() {
+        removeAllChildNodes(this.ulBtns);
+
+        if (this.countSlides <= 6) {
+            for (let i = 1; i <= this.countSlides; i++) {
+                let li = this.createNodesNumber(i, i);
+                this.ulBtns.appendChild(li);
+            }
+            this.checkActivationPrevNextBtn();
+            return true;
+        }
+
+        // If current slide not override half slides I will create nodes (1 to 6) (...) (lasNode)
+        let halfSlidesCount = Math.floor(this.countSlides / 2);
+        if (this.currentSlidePos < halfSlidesCount && this.currentSlidePos <= 6) {
+            for(let i = 1; i < 6; i++) {
+                let li = this.createNodesNumber(i, i);
+                this.ulBtns.appendChild(li);
+            }
+            // Create Dot node
+            this.ulBtns.appendChild(this.createNodesNumber("..."));
+            // Create Last Node
+            this.ulBtns.appendChild(this.createNodesNumber(this.countSlides, this.countSlides));
+
+            this.checkActivationPrevNextBtn();
+        }
+
+        // If current slide not override half slides I will create nodes (1) (...) (lasNode - 6 to last node)
+        if (this.currentSlidePos <= this.countSlides && this.currentSlidePos >= this.countSlides - 6) {
+            this.ulBtns.appendChild(this.createNodesNumber(1, 1));
+            // Create Dot node
+            this.ulBtns.appendChild(this.createNodesNumber("..."));
+            for(let i = this.countSlides - 5; i <= this.countSlides; i++) {
+                let li = this.createNodesNumber(i, i);
+                this.ulBtns.appendChild(li);
+            }
+            this.checkActivationPrevNextBtn();
+        }
+
+        // If current slide in medium
+        if (this.currentSlidePos > 6 && this.currentSlidePos < this.countSlides - 6) {
+            this.ulBtns.appendChild(this.createNodesNumber(1, 1));
+            // Create Dot node
+            this.ulBtns.appendChild(this.createNodesNumber("..."));
+
+            for(let i = this.currentSlidePos; i < this.currentSlidePos + 4; i++) {
+                this.ulBtns.appendChild(this.createNodesNumber(i, i));
+            }
+            this.ulBtns.appendChild(this.createNodesNumber("..."));
+            this.ulBtns.appendChild(this.createNodesNumber(this.countSlides, this.countSlides));
+            this.checkActivationPrevNextBtn();
+        }
+
+    }
+    appendPaginationSectionInTable() {
+        let paginationSection = this.createPaginationBar();
+        this.table.parentElement.appendChild(paginationSection);
+    }
+    changeSlideNumberInStatisticsSection() {
+        this.currentSlideDiv.textContent = '';
+        this.currentSlideDiv.textContent = this.currentSlidePos;
+    }
+    showSlide() {
+        removeAllChildNodes(this.tBody);
+        this.rows.slice(this.currentRow, this.currentRow + this.numberRowsInSlide).forEach((row) => {
+           this.tBody.appendChild(row);
+        });
+        this.changeSlideNumberInStatisticsSection()
+        this.shuffleButtons()
+    }
+    pagination() {
+        this.appendPaginationSectionInTable();
+        this.showSlide();
+        this.nextBtn.addEventListener("click", () => {
+            this.currentSlidePos++;
+            this.currentRow += this.numberRowsInSlide;
+            this.showSlide();
+        });
+        this.prevBtn.addEventListener("click", () => {
+            this.currentSlidePos--;
+            this.currentRow -= this.numberRowsInSlide;
+            this.showSlide();
+        });
+    }
+}
+tables.forEach(table => {
+    let pagination = new PaginationTable(table);
+    pagination.pagination()
 });
+
+// End Pagination table

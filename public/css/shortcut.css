@@ -474,6 +474,11 @@
     border-radius: 50%;
 }
 /* End Border */
+/*Start Pointer event*/
+.pointer-e-non {
+    pointer-events: none;
+}
+/*End Pointer event*/
 /* Start Box Shadow */
 .box-sh-op10-wh { /* op : opacity 10; wh : color white  */
     box-shadow: 0 0 10px #DDD;
@@ -713,69 +718,6 @@
 }
 /* End popup */
 
-/* start pagination container */
-.pagination-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    background-color: #f5f2f2;
-    margin-bottom: 3px;
-    align-items: center;
-    user-select: none;
-}
-.pagination-container .statistics {
-    color: #42464d;
-    margin-left: 5px;
-}
-.pagination-container .statistics .count  {
-    margin-right: 4px;
-}
-.pagination-container .bar {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    margin: 5px 10px 5px 5px;
-    border: 1px solid #cecdcd;
-    border-radius: 3px;
-    overflow: hidden;
-}
-.pagination-container .bar button {
-    transition: background-color .3s ease-in-out;
-}
-.pagination-container .bar button.previous,
-.pagination-container .bar button.next {
-    background-color: #E8E8E8;
-    padding: 4px;
-    cursor: pointer;
-    height: 30px;
-    min-width: 70px;
-    text-align: center;
-}
-.pagination-container .bar button.previous.un-active,
-.pagination-container .bar button.next.un-active {
-    opacity: 0.2;
-    pointer-events: none;
-    cursor: not-allowed;
-}
-.pagination-container .bar button.previous:hover,
-.pagination-container .bar button.next:hover {
-    background-color: #eaeeff;
-}
-.pagination-container .bar button.num {
-    background-color: #BBBFCA;
-    width: 30px;
-    height: 30px;
-    color: #F4F4F2;
-    cursor: pointer;
-}
-.pagination-container .bar button.num.active {
-    background-color: #495464;
-}
-.pagination-container .bar button.num:hover {
-    background-color: #495464;
-}
-/* end pagination container */
-
 /* Start Flush Messages */
 .flash-message-container {
     position: fixed;
@@ -889,3 +831,104 @@
     background-color: transparent;
 }
 /* End Background */
+
+/*Start Pagination*/
+.bar-pagination {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.bar-pagination .statistics {
+    display: flex;
+    align-items: center;
+}
+.bar-pagination .statistics label {
+    font-size: 14px;
+    text-transform: capitalize;
+    color: var(--text-black-700);
+}
+.bar-pagination .statistics select {
+    width: 18%;
+    border: 1px solid var(--bg-black-60);
+    margin: 0 10px;
+    padding: 0 2px;
+    cursor: pointer;
+    color: var(--text-black-700);
+}
+.bar-pagination .statistics select option {
+    cursor: pointer;
+    color: var(--text-black-700);
+
+}
+.bar-pagination .statistics .counter {
+    display: flex;
+}
+.bar-pagination .statistics .counter .count {
+    color: var(--text-black-700);
+
+}
+.bar-pagination .statistics .counter .from {
+    color: var(--text-black-700);
+
+}
+.bar-pagination .statistics .counter span {
+    margin: 0 6px;
+    color: var(--text-black-700);
+    
+}
+.bar-pagination .buttons {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.bar-pagination .buttons .previous,
+.bar-pagination .buttons .next,
+.bar-pagination .buttons ul li {
+    cursor: pointer;
+    height: 30px;
+    min-width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bar-pagination .buttons .next.active,
+.bar-pagination .buttons .previous.active {
+    pointer-events: auto;
+    opacity: 1;
+    cursor: pointer;
+}
+.bar-pagination .buttons .next,
+.bar-pagination .buttons .previous {
+    background-color: var(--bg-black-100);
+    cursor: no-drop;
+    padding: 0 3px;
+    border-radius: 2px;
+    opacity: .5;
+    pointer-events: none;
+    min-width: 70px;
+    color: var(--bg-black-30);
+}
+.bar-pagination .buttons .next.active:hover,
+.bar-pagination .buttons .previous.active:hover {
+    opacity: 0.5;
+    color: var(--text-black-700);
+}
+.bar-pagination .buttons ul {
+    display: flex;
+    gap: 1px;
+}
+.bar-pagination .buttons ul li {
+    background-color: var(--bg-black-900);
+    color: var(--text-black-30);
+    opacity: .6;
+}
+.bar-pagination .buttons ul li.current-slide,
+.bar-pagination .buttons ul li:hover {
+    opacity: 1;
+}
+.bar-pagination .buttons ul li.current-slide:hover {
+    opacity: .6;
+}
+/*End Pagination*/
