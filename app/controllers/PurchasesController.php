@@ -6,17 +6,17 @@ namespace APP\Controllers;
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\FilterInput;
 use APP\LIB\Template\TemplateHelper;
-use APP\Models\ClientModel;
 use APP\Models\ProductModel;
-use APP\Models\SalesInvoicesDetailsModel;
-use APP\Models\SalesInvoicesModel;
-use APP\Models\SalesInvoicesReceiptsModel;
+use APP\Models\PurchasesInvoicesDetailsModel;
+use APP\Models\PurchasesInvoicesModel;
+use APP\Models\PurchasesInvoicesReceiptsModel;
+use APP\Models\SupplierModel;
 use ReflectionException;
 
 /**
  *
  */
-class SalesController extends AbstractController
+class PurchasesController extends AbstractController
 {
     use FilterInput;
     use PublicHelper;
@@ -27,31 +27,29 @@ class SalesController extends AbstractController
     /**
      * @throws ReflectionException
      */
-    protected $clients;
+    protected $suppliers;
     protected $products;
 
-    private function getClients()
+    private function getSupplier()
     {
         // we will Order records to use tree trie search in js
-        $records = (new ClientModel())->allLazy(["ORDER BY " => "Name ASC"]);
-        $this->putLazy($this->clients, $records);
+        $records = (new SupplierModel())->allLazy(["ORDER BY " => "Name ASC"]);
+        $this->putLazy($this->suppliers, $records);
     }
-
 
 
     /**
      * @throws ReflectionException
      */
-    #[GET('/sales/sellproduct')]
-    public function sellProductAction()
+    #[GET('/purchases')]
+    public function  defaultAction()
     {
-
         $this->language->load("template.common");
-        $this->language->load("sales.sellproducts");
-        $this->language->load("sales.messages");
+        $this->language->load("purchases.purchases");
+        $this->language->load("purchases.messages");
 
-        $this->getClients();
-        $this->_info["clients"] = $this->clients;
+        $this->getSupplier();
+        $this->_info["suppliers"] = $this->suppliers;
 
         $this->setTemplateVariableProductAction();
 
@@ -60,10 +58,10 @@ class SalesController extends AbstractController
 
     private function sendJsonClient($columnName)
     {
-        $this->language->load("sales.messages");
+        $this->language->load("purchases.messages");
 
-        if (ClientModel::countRow($columnName, $_POST["id"])) {
-            $values = ClientModel::getByPK($this->filterInt($_POST["id"]));
+        if (SupplierModel::countRow($columnName, $_POST["id"])) {
+            $values = SupplierModel::getByPK($this->filterInt($_POST["id"]));
             $values = get_object_vars($values);
             $values["result"] = true;
             $values["id"] = $this->filterInt($_POST["id"]);
@@ -108,16 +106,16 @@ class SalesController extends AbstractController
         if (!empty($_POST)) {
             if ($_POST["id"] == null) {
 
-                $this->language->load("sales.messages");
+                $this->language->load("purchases.messages");
 
-                $message = $this->getAppropriateMessageClient("sales.messages", $_POST);
+                $message = $this->getAppropriateMessageClient("purchases.messages", $_POST);
                 echo json_encode([
                     "result" => false,
                     "message" => $message,
                 ]);
 
             } else {
-                $this->sendJsonClient("ClientId");
+                $this->sendJsonClient("SupplierId");
             }
 
         }
@@ -127,9 +125,9 @@ class SalesController extends AbstractController
     /**
      * @throws ReflectionException
      */
-    private function sendJsonProduct($columnName)
+    protected function sendJsonProduct($columnName)
     {
-        $this->language->load("sales.messages");
+        $this->language->load("purchases.messages");
         $this->prepareProducts($columnName);
     }
 
@@ -169,9 +167,9 @@ class SalesController extends AbstractController
     {
         if (!empty($_POST)) {
             if ($this->filterInt($_POST["id"]) == null) {
-                $this->language->load("sales.messages");
+                $this->language->load("purchases.messages");
 
-                $message = $this->getAppropriateMessageProduct("sales.messages", "message_product_not_exist");
+                $message = $this->getAppropriateMessageProduct("purchases.messages", "message_product_not_exist");
                 echo json_encode([
                     "result" => false,
                     "message" => $message,
@@ -225,7 +223,7 @@ class SalesController extends AbstractController
      */
     public function checkIsValidProductAjaxAction(): void
     {
-        $this->language->load("sales.messages");
+        $this->language->load("purchases.messages");
         $products = json_decode($_POST["products"]);
 
         foreach ($products as $product) {
@@ -242,12 +240,12 @@ class SalesController extends AbstractController
     }
 
     /**
-     * @param $invoice SalesInvoicesModel invoice object you want set discount information
+     * @param $invoice PurchasesInvoicesModel invoice object you want set discount information
      * @param $invoiceInfo object object contain all information invoice
      * @return void
      * @throws ReflectionException
      */
-    private function setDiscountInvoice(SalesInvoicesModel &$invoice, object $invoiceInfo): void
+    private function setDiscountInvoice(PurchasesInvoicesModel &$invoice, object $invoiceInfo): void
     {
         $this->applyDiscount($invoice, $invoiceInfo);
     }
@@ -261,10 +259,12 @@ class SalesController extends AbstractController
     private function addInvoice(object $invoiceInfo): array
     {
         $products = $invoiceInfo->products;
-        $client = $invoiceInfo->client;
 
-        $invoice = new SalesInvoicesModel();
-        $invoice->ClientId = $client->ClientId;
+        $supplier = $invoiceInfo->client;
+
+        $invoice = new PurchasesInvoicesModel();
+        $invoice->SupplierId = $supplier->ClientId;
+
         return $this->addCommonInvoice($invoice, $invoiceInfo, $products);
     }
 
@@ -273,15 +273,15 @@ class SalesController extends AbstractController
      * @param $idInvoice int The invoice that we want to add the products to
      * @return bool
      */
-    private function addDetailsToSaleInvoice(object $products, int $idInvoice): bool
+    private function addDetailsToPurchasesInvoice(object $products, int $idInvoice): bool
     {
         foreach ($products as $product) {
-            $details = new SalesInvoicesDetailsModel();
+            $details = new PurchasesInvoicesDetailsModel();
             $details->ProductId     = $this->filterInt($product->ProductId);
             $details->ProductPrice  = $this->filterFloat($product->SellPrice);
             $details->Quantity      = $this->filterInt($product->QuantityChoose);
             $details->InvoiceId     = $idInvoice;
-            ProductModel::discountProductsQty($product->ProductId, $product->QuantityChoose);
+            ProductModel::increaseProductsQty($product->ProductId, $product->QuantityChoose);
             if (!$details->save()) {
                 return false;
             }
@@ -295,9 +295,9 @@ class SalesController extends AbstractController
      * @param $infoInvoice object all information to invoice
      * @return bool
      */
-    private function createReceiptsToSaleInvoice(int $invoiceId, object $infoInvoice): bool
+    private function createReceiptsToPurchasesInvoice(int $invoiceId, object $infoInvoice): bool
     {
-        $receipts = new SalesInvoicesReceiptsModel();
+        $receipts = new PurchasesInvoicesReceiptsModel();
         return $this->receiptsInvoice($receipts, $invoiceId, $infoInvoice);
     }
 
@@ -314,15 +314,15 @@ class SalesController extends AbstractController
 
        $precipitate = $this->addInvoice($invoice);
        if ($precipitate) {
-           $isDone = $this->addDetailsToSaleInvoice($invoice->products, $precipitate["invoice"]->InvoiceId);
+           $isDone = $this->addDetailsToPurchasesInvoice($invoice->products, $precipitate["invoice"]->InvoiceId);
            if ($isDone) {
                // Create receipt
-               $r = $this->createReceiptsToSaleInvoice($precipitate["invoice"]->InvoiceId, $invoice);
+               $r = $this->createReceiptsToPurchasesInvoice($precipitate["invoice"]->InvoiceId, $invoice);
                if ($r) {
-                   $message = $this->getAppropriateMessageProduct("sales.messages", "message_create_invoice_success");
+                   $message = $this->getAppropriateMessageProduct("purchases.messages", "message_create_invoice_success");
 
                } else {
-                   $message = $this->getAppropriateMessageProduct("sales.messages", "message_create_invoice_failed");
+                   $message = $this->getAppropriateMessageProduct("purchases.messages", "message_create_invoice_failed");
                }
 
                echo json_encode([
@@ -340,30 +340,17 @@ class SalesController extends AbstractController
      */
     public function getExtraClientInfoAjaxAction(): void
     {
-        $idClient = $this->filterInt($_POST["id"]);
+        $idSupplier= $this->filterInt($_POST["id"]);
         
-        $totalReceived = SalesInvoicesReceiptsModel::getTotalReceivedFromClient($idClient);
+        $totalReceived = PurchasesInvoicesReceiptsModel::getTotalReceivedFromSupplier($idSupplier);
         
         $totalReceived = $totalReceived[0]->totalReceived;
-        $literalClient = SalesInvoicesReceiptsModel::getLiteralForClient($idClient);
-        $literalClient = $literalClient[0]->Literal;
+        $literalSupplier = PurchasesInvoicesReceiptsModel::getLiteralForSupplier($idSupplier);
+        $literalSupplier = $literalSupplier[0]->Literal;
 
         echo json_encode([
            "totalReceived"  => $totalReceived,
-           "literal"        => $literalClient,
+           "literal"        => $literalSupplier,
         ]);
-    }
-    /**
-     *
-     * Get Word Language by get specific name file
-     *
-     * http://estore.local/getMessagesAjax/{Name File}
-     * @return void
-     */
-    public function getMessagesAjaxAction(): void
-    {
-        $this->language->load($_POST["nameFile"]);
-        $messages = $this->language->getDictionary();
-        echo json_encode($messages);
     }
 }

@@ -107,4 +107,9 @@ class ProductModel extends AbstractModel
         $sql = "UPDATE " . static::$tableName . " SET  Quantity = Quantity - " . $qty . " WHERE  ProductId = " . $id;
         return (new ProductModel())->executeQuery($sql);
     }
+    public static function increaseProductsQty(int $id, int $qty)
+    {
+        $sql = "UPDATE " . static::$tableName . " SET  Quantity = Quantity + " . $qty . " WHERE  ProductId = " . $id;
+        return (new ProductModel())->executeQuery($sql);
+    }
 }

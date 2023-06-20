@@ -30,6 +30,13 @@
             </ul>
         </li>
 
+        <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/purchases') === true || $this->compareURL('/purchases')  ? 'selected' : '' ?> ">
+
+            <button class="between-ele w-fu">
+                <span class="inline-block"><a href="/purchases"><i class="fa fa-cash-register"></i><?= $text_nav_purchases ?></a></span>
+            </button>
+        </li>
+
         <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/transactions') === true ? 'selected' : '' ?> ">
 
             <button class="between-ele w-fu">
