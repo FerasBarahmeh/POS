@@ -1,3 +1,4 @@
+// TODO: Merge With sales
 const DiscountType = {
     fixed:1,
     percentage: 0,
@@ -215,7 +216,7 @@ function  fillExtraInfo(element, price=0) {
     containerHtml.querySelector("[fraction]").textContent = '.' + pending.fraction;
 }
 function getExtraClientInfo(id) {
-    return fetch("http://estore.local/sales/getExtraClientInfoAjax", {
+    return fetch("http://estore.local/purchases/getExtraClientInfoAjax", {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/x-www-form-urlencoded',
