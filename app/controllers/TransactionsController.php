@@ -42,7 +42,7 @@ class TransactionsController extends AbstractController
         $purchases = $transactionsPurchases->getInfoPurchasesInvoice();
 
 
-        $this->_info["transactionsSales"] = $this->mergeArraysRandomly(iterator_to_array($sales), iterator_to_array($purchases));
+        $this->_info["transactions"] = $this->mergeArraysRandomly(iterator_to_array($sales), iterator_to_array($purchases));
 
         // Get Type Transaction
         $this->_info["transactionsTypes"] = $this->getSpecificProperties(obj: (new TransactionType()), flip: true);
@@ -68,7 +68,7 @@ class TransactionsController extends AbstractController
 
         $transactionsSales = new TransactionsPurchasesModel();
 
-        $this->_info["transactionsSales"] = $transactionsSales->getInfoSalesInvoice();
+        $this->_info["transactionsPurchases"] = $transactionsSales->getInfoPurchasesInvoice();
 
         // Get Type Transaction
         $this->_info["transactionsTypes"] = $this->getSpecificProperties(obj: (new TransactionType()), flip: true);

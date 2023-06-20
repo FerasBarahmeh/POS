@@ -70,20 +70,19 @@
 
                 <tbody>
                     <?php
-                        if ($transactionsSales) {
-                            foreach ($transactionsSales as $transactionsSale) {
+                        if ($transactions) {
+                            foreach ($transactions as $transaction) {
                                 ?>
                                     <tr class="">
-                                        <td><?= $transactionsSale->InvoiceId ?></td>
-<!--                                        <td>--><?php //= $transactionsTypes[$transactionsSale->TypeInvoice] ?><!--</td>-->
-                                        <td><?= $transactionsSale->TypeInvoice ?></td>
-                                        <td><?= (float)$transactionsSale->PaymentAmount + (float) $transactionsSale->PaymentLiteral ?></td>
-                                        <td><?= $transactionsSale->Created ?></td>
-                                        <td><?= $transactionsSale->NumberProducts ?></td>
-                                        <td><?= $transactionsSale->Discount ?></td>
-                                        <td><?= $transactionsSale->DiscountType  == null ? $text_no_disc : $transactionsSale->DiscountType ?></td>
-                                        <td><?= $transactionsSale->Name ?></td>
-                                        <td><?= $paymentsStatus[$transactionsSale->PaymentStatus] ?></td>
+                                        <td><?= $transaction->InvoiceId ?></td>
+                                        <td><?= $transaction->TypeInvoice ?></td>
+                                        <td><?= (float)$transaction->PaymentAmount + (float) $transaction->PaymentLiteral ?></td>
+                                        <td><?= $transaction->Created ?></td>
+                                        <td><?= $transaction->NumberProducts ?></td>
+                                        <td><?= $transaction->Discount ?></td>
+                                        <td><?= $transaction->DiscountType  == null ? $text_no_disc : $transaction->DiscountType ?></td>
+                                        <td><?= $transaction->Name ?></td>
+                                        <td><?= $paymentsStatus[$transaction->PaymentStatus] ?></td>
                                         <td>
                                             <div class="icons">
                                                 <span class="description dir-r top-5" description="show"><i class="fa fa-print"></i></span>

@@ -71,23 +71,23 @@
 
                 <tbody>
                 <?php
-                if ($transactionsSales) {
+                if ($transactionsPurchases) {
                     $i = 0;
-                    foreach ($transactionsSales as $transactionsSale) {
+                    foreach ($transactionsPurchases as $transactionsPurchase) {
                         $i++;
                         ?>
                         <tr class="">
                             <td><?= $i ?></td>
-                            <td><?= $transactionsSale->InvoiceId ?></td>
-                            <!--                                        <td>--><?php //= $transactionsTypes[$transactionsSale->TypeInvoice] ?><!--</td>-->
-                            <td><?= $transactionsSale->TypeInvoice ?></td>
-                            <td><?= (float)$transactionsSale->PaymentAmount + (float) $transactionsSale->PaymentLiteral ?></td>
-                            <td><?= $transactionsSale->Created ?></td>
-                            <td><?= $transactionsSale->NumberProducts ?></td>
-                            <td><?= $transactionsSale->Discount ?></td>
-                            <td><?= $transactionsSale->DiscountType  == null ? $text_no_disc : $transactionsSale->DiscountType ?></td>
-                            <td><?= $transactionsSale->Name ?></td>
-                            <td><?= $paymentsStatus[$transactionsSale->PaymentStatus] ?></td>
+                            <td><?= $transactionsPurchase->InvoiceId ?></td>
+                            <!--                                        <td>--><?php //= $transactionsTypes[$transactionsPurchase->TypeInvoice] ?><!--</td>-->
+                            <td><?= $transactionsPurchase->TypeInvoice ?></td>
+                            <td><?= (float)$transactionsPurchase->PaymentAmount + (float) $transactionsPurchase->PaymentLiteral ?></td>
+                            <td><?= $transactionsPurchase->Created ?></td>
+                            <td><?= $transactionsPurchase->NumberProducts ?></td>
+                            <td><?= $transactionsPurchase->Discount ?></td>
+                            <td><?= $transactionsPurchase->DiscountType  == null ? $text_no_disc : $transactionsPurchase->DiscountType ?></td>
+                            <td><?= $transactionsPurchase->Name ?></td>
+                            <td><?= $paymentsStatus[$transactionsPurchase->PaymentStatus] ?></td>
                             <td>
                                 <div class="icons">
                                     <span class="description dir-r top-5" description="show"><i class="fa fa-print"></i></span>
