@@ -1,6 +1,6 @@
 <?php
 // Title
-$content["title"] = "Sales Transaction";
+$content["title"] = "Purchases Transaction";
 
 // Title Header
 $content["title_header"] = "Transaction";

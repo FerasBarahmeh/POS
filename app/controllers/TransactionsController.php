@@ -65,6 +65,7 @@ class TransactionsController extends AbstractController
     {
         $this->language->load("template.common");
         $this->language->load("transactions.default");
+        $this->language->load("transactions.purchases");
 
         $transactionsSales = new TransactionsPurchasesModel();
 

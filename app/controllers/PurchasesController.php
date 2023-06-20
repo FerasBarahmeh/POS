@@ -46,7 +46,6 @@ class PurchasesController extends AbstractController
     {
         $this->language->load("template.common");
         $this->language->load("purchases.purchases");
-        $this->language->load("purchases.messages");
 
         $this->getSupplier();
         $this->_info["suppliers"] = $this->suppliers;

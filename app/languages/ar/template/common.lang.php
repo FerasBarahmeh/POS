@@ -24,10 +24,13 @@ $content["text_nav_expenses"]               =  "نفقات";
 $content["text_nav_expenses_categories"]    =  "مصروفات الاصناف";
 $content["text_nav_daily_expenses"]         =  "المصروفات اليومية";
 $content["text_nav_transactions"]           =  "المعاملات";
+$content["text_nav_transactions_all"]       =  "جميع المعاملات";
 $content["text_nav_transactions_purchases"] =  "معاملات المشتريات";
 $content["text_nav_transactions_sales"]     =  "معاملات المبيعات";
 $content["text_nav_sales"]                  =  "بيع";
+$content["text_nav_purchases"]              =  "الشرائات";
 $content["text_nav_sell_product"]          =  "بيع منتج";
+$content["text_nav_buy_product"]          =  "شراء منتج";
 $content["text_nav_reports"]                =  "تقارير";
 $content["text_nav_Notifications"]          =  "الاشعارات";
 
