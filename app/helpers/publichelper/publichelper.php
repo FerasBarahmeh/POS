@@ -169,4 +169,28 @@ trait PublicHelper
     {
         $str = substr($str, 0, $this->posLastWord($str));
     }
+
+    /**
+     * Method to merge to array not sequential merge
+     *
+     * @version 1.0
+     * @author Feras Barahmeh
+     * @param array $array1 the first array you need merged
+     * @param array $array2 the second array you need merged
+     * @return array
+     */
+    public function mergeArraysRandomly(array $array1, array $array2): array
+    {
+        $mergedArray = array_merge($array1, $array2);
+        $randomizedArray = [];
+
+        while (!empty($mergedArray)) {
+            $randomIndex = array_rand($mergedArray);
+            $randomizedArray[] = $mergedArray[$randomIndex];
+            unset($mergedArray[$randomIndex]);
+        }
+
+        return $randomizedArray;
+    }
+
 }
