@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2023 at 03:21 AM
+-- Generation Time: Jun 20, 2023 at 12:14 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -112,12 +112,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`, `Tax`, `Status`, `Description`, `Rating`) VALUES
-(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 501, '350.000', '1589456982', 5, '400.000', '0.50', 1, NULL, NULL),
+(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 428, '350.000', '1589456982', 5, '400.000', '0.50', 1, NULL, NULL),
 (3, 3, 'Fan', '2bf21fc83f5bbb2e7a58a9f7cf7c40.png', 1000, '15.000', '0124585292462', 5, '20.000', '0.00', 2, NULL, NULL),
-(4, 4, 'HP PAVILION', 'c20820aa680e5e28f6950ee120ac35.jpg', 250, '400.000', '12458796315', 5, '500.000', '0.50', 1, 'Gaming Laptop', NULL),
-(5, 5, 'SAMSUNG A23', '548017a53025b5abb1f8a3c2c47099.jpg', 230, '150.000', '0452862685', 5, '180.000', '0.20', 1, '', NULL),
-(6, 5, 'Huawel Y9s', '80db229b10e160f2fa86c575ad5e15.jpeg', 100, '150.000', '0129256', 5, '180.000', '0.40', 1, 'New Phone From Huawel', NULL),
-(7, 2, 'Call of Duty', 'ceee04be9ed528ee0bb3856ec5c096.jpg', 100, '25.000', '01256512546521', 5, '30.000', '0.20', 2, '', NULL);
+(4, 4, 'HP PAVILION', 'c20820aa680e5e28f6950ee120ac35.jpg', 181, '400.000', '12458796315', 5, '500.000', '0.50', 1, 'Gaming Laptop', NULL),
+(5, 5, 'SAMSUNG A23', '548017a53025b5abb1f8a3c2c47099.jpg', 165, '150.000', '0452862685', 5, '180.000', '0.20', 1, '', NULL),
+(6, 5, 'Huawel Y9s', '80db229b10e160f2fa86c575ad5e15.jpeg', 61, '150.000', '0129256', 5, '180.000', '0.40', 1, 'New Phone From Huawel', NULL),
+(7, 2, 'Call of Duty', 'ceee04be9ed528ee0bb3856ec5c096.jpg', 100, '25.000', '01256512546521', 5, '30.000', '0.20', 2, '', NULL),
+(8, 3, 'Earbuds ', '80f33bd9304127bc4df203c12e30bb.jpg', 150, '100.000', '2568722428', 5, '110.000', '0.20', 1, 'Earbuds HUAWEI', NULL);
 
 -- --------------------------------------------------------
 
@@ -155,8 +156,21 @@ CREATE TABLE `purchases_invoices` (
   `PaymentStatus` tinyint(1) NOT NULL,
   `Created` date NOT NULL,
   `Discount` decimal(8,2) DEFAULT NULL,
-  `UserId` int(10) UNSIGNED NOT NULL
+  `UserId` int(10) UNSIGNED NOT NULL,
+  `NumberProducts` int(6) NOT NULL,
+  `TypeInvoice` binary(1) DEFAULT '1',
+  `DiscountType` enum('percentage','value') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `purchases_invoices`
+--
+
+INSERT INTO `purchases_invoices` (`InvoiceId`, `SupplierId`, `PaymentType`, `PaymentStatus`, `Created`, `Discount`, `UserId`, `NumberProducts`, `TypeInvoice`, `DiscountType`) VALUES
+(1, 1, 0, 0, '2023-06-20', '10.00', 1, 1, 0x31, 'percentage'),
+(2, 1, 0, 0, '2023-06-20', '0.00', 1, 1, 0x31, NULL),
+(3, 1, 0, 0, '2023-06-20', '0.00', 1, 1, 0x31, NULL),
+(4, 1, 0, 0, '2023-06-20', '0.00', 1, 1, 0x31, NULL);
 
 -- --------------------------------------------------------
 
@@ -171,6 +185,16 @@ CREATE TABLE `purchases_invoices_details` (
   `Quantity` smallint(6) NOT NULL,
   `InvoiceId` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `purchases_invoices_details`
+--
+
+INSERT INTO `purchases_invoices_details` (`Id`, `ProductId`, `ProductPrice`, `Quantity`, `InvoiceId`) VALUES
+(1, 1, '400.00', 5, 1),
+(2, 1, '400.00', 1, 2),
+(3, 1, '400.00', 1, 3),
+(4, 1, '400.00', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -187,10 +211,17 @@ CREATE TABLE `purchases_invoices_receipts` (
   `BankName` varchar(30) DEFAULT NULL,
   `BankAccountNumber` varchar(30) DEFAULT NULL,
   `CheckNumber` varchar(15) DEFAULT NULL,
-  `TransferedTo` varchar(30) DEFAULT NULL,
+  `TransferredTo` varchar(30) DEFAULT NULL,
   `created` date NOT NULL,
   `UserId` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `purchases_invoices_receipts`
+--
+
+INSERT INTO `purchases_invoices_receipts` (`ReceiptId`, `InvoiceId`, `PaymentType`, `PaymentAmount`, `PaymentLiteral`, `BankName`, `BankAccountNumber`, `CheckNumber`, `TransferredTo`, `created`, `UserId`) VALUES
+(1, 4, 0, '0.00', '600', NULL, NULL, NULL, NULL, '2023-06-20', 1);
 
 -- --------------------------------------------------------
 
@@ -207,8 +238,16 @@ CREATE TABLE `sales_invoices` (
   `Discount` decimal(8,2) DEFAULT NULL,
   `UserId` int(10) UNSIGNED NOT NULL,
   `DiscountType` enum('percentage','value') DEFAULT NULL,
-  `NumberProducts` int(6) NOT NULL
+  `NumberProducts` int(6) NOT NULL,
+  `TypeInvoice` binary(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sales_invoices`
+--
+
+INSERT INTO `sales_invoices` (`InvoiceId`, `ClientId`, `PaymentType`, `PaymentStatus`, `Created`, `Discount`, `UserId`, `DiscountType`, `NumberProducts`, `TypeInvoice`) VALUES
+(1, 2, 0, 0, '2023-06-20 12:06:19', '10.00', 1, 'value', 1, 0x30);
 
 -- --------------------------------------------------------
 
@@ -223,6 +262,13 @@ CREATE TABLE `sales_invoices_details` (
   `Quantity` smallint(6) NOT NULL,
   `InvoiceId` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sales_invoices_details`
+--
+
+INSERT INTO `sales_invoices_details` (`Id`, `ProductId`, `ProductPrice`, `Quantity`, `InvoiceId`) VALUES
+(1, 1, '400.00', 5, 1);
 
 -- --------------------------------------------------------
 
@@ -239,10 +285,17 @@ CREATE TABLE `sales_invoices_receipts` (
   `BankName` varchar(30) DEFAULT NULL,
   `BankAccountNumber` varchar(30) DEFAULT NULL,
   `CheckNumber` varchar(15) DEFAULT NULL,
-  `TransferedTo` varchar(30) DEFAULT NULL,
+  `TransferredTo` varchar(30) DEFAULT NULL,
   `created` date NOT NULL,
   `UserId` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `sales_invoices_receipts`
+--
+
+INSERT INTO `sales_invoices_receipts` (`ReceiptId`, `InvoiceId`, `PaymentType`, `PaymentAmount`, `PaymentLiteral`, `BankName`, `BankAccountNumber`, `CheckNumber`, `TransferredTo`, `created`, `UserId`) VALUES
+(1, 1, 0, '2900.00', '100', NULL, NULL, NULL, NULL, '2023-06-20', 1);
 
 -- --------------------------------------------------------
 
@@ -312,7 +365,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-04-05 03:14:28', 7, '0785102996', 1),
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-06-20 11:50:51', 7, '0785102996', 1),
 (2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-21 14:50:49', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
@@ -386,7 +439,9 @@ INSERT INTO `users_groups_privileges` (`Id`, `GroupId`, `PrivilegeId`) VALUES
 (87, 7, 68),
 (88, 7, 69),
 (89, 7, 70),
-(90, 7, 71);
+(90, 7, 71),
+(93, 7, 74),
+(95, 7, 76);
 
 -- --------------------------------------------------------
 
@@ -436,7 +491,9 @@ INSERT INTO `users_privileges` (`PrivilegeId`, `Privilege`, `PrivilegeTitle`) VA
 (68, '/products/delete', 'Delete Product	'),
 (69, '/sales/default', 'Sales'),
 (70, '/sales/sellproduct', 'Sell a product'),
-(71, '/sales/getInfoClientNameAjax', 'ajax ');
+(71, '/sales/getInfoClientNameAjax', 'ajax '),
+(74, '/transactions/default', 'Transactions'),
+(76, '/purchases/default', ' Purchases');
 
 --
 -- Indexes for dumped tables
@@ -603,7 +660,7 @@ ALTER TABLE `notifications`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ProductId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `products_categories`
@@ -615,37 +672,37 @@ ALTER TABLE `products_categories`
 -- AUTO_INCREMENT for table `purchases_invoices`
 --
 ALTER TABLE `purchases_invoices`
-  MODIFY `InvoiceId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `InvoiceId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `purchases_invoices_details`
 --
 ALTER TABLE `purchases_invoices_details`
-  MODIFY `Id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `purchases_invoices_receipts`
 --
 ALTER TABLE `purchases_invoices_receipts`
-  MODIFY `ReceiptId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ReceiptId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sales_invoices`
 --
 ALTER TABLE `sales_invoices`
-  MODIFY `InvoiceId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `InvoiceId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sales_invoices_details`
 --
 ALTER TABLE `sales_invoices_details`
-  MODIFY `Id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sales_invoices_receipts`
 --
 ALTER TABLE `sales_invoices_receipts`
-  MODIFY `ReceiptId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `ReceiptId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subset_information_users`
@@ -675,13 +732,13 @@ ALTER TABLE `users_groups`
 -- AUTO_INCREMENT for table `users_groups_privileges`
 --
 ALTER TABLE `users_groups_privileges`
-  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `Id` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT for table `users_privileges`
 --
 ALTER TABLE `users_privileges`
-  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `PrivilegeId` tinyint(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- Constraints for dumped tables
@@ -738,8 +795,8 @@ ALTER TABLE `sales_invoices`
 -- Constraints for table `sales_invoices_details`
 --
 ALTER TABLE `sales_invoices_details`
-  ADD CONSTRAINT `sales_invoices_details_details_ibfk_1` FOREIGN KEY (`ProductId`) REFERENCES `products` (`ProductId`),
-  ADD CONSTRAINT `sales_invoices_details_details_ibfk_2` FOREIGN KEY (`InvoiceId`) REFERENCES `purchases_invoices` (`InvoiceId`);
+  ADD CONSTRAINT `sales_invoices_details_details_ibfk_1` FOREIGN KEY (`ProductId`) REFERENCES `products` (`ProductId`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `sales_invoices_details_details_ibfk_2` FOREIGN KEY (`InvoiceId`) REFERENCES `sales_invoices` (`InvoiceId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `sales_invoices_receipts`
