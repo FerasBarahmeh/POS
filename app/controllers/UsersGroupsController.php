@@ -138,6 +138,7 @@ class UsersGroupsController extends AbstractController
 
                 }
                 $this->setMessage($group, "text_message_edit_success");
+                $this->setMessage($group, "text_message_tip");
 
             } else {
                 $this->setMessage($group, "text_message_edit_field", Messenger::MESSAGE_DANGER);
