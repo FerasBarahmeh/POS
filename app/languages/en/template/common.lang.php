@@ -23,11 +23,13 @@ $content["text_nav_expenses"]                   =  "Expenses";
 $content["text_nav_expenses_categories"]        =  "Expenses Categories";
 $content["text_nav_daily_expenses"]             =  "Daily Expenses";
 $content["text_nav_transactions"]               =  "Transactions";
+$content["text_nav_transactions_all"]           =  "All Transactions";
 $content["text_nav_transactions_purchases"]     =  "Transactions Purchases";
 $content["text_nav_transactions_sales"]         =  "Transactions Sales";
 $content["text_nav_sales"]                      =  "Sales";
-$content["text_nav_purchases"]                      =  "Purchases";
+$content["text_nav_purchases"]                  =  "Purchases";
 $content["text_nav_sell_product"]              =  "Sell Product";
+$content["text_nav_buy_product"]              =  "Buy Product";
 $content["text_nav_reports"]                    =  "Reports";
 $content["text_nav_Notifications"]              =  "Notifications";
 

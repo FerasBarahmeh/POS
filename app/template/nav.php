@@ -13,10 +13,7 @@
     </div>
 
     <ul class="app_navigation mt-15 txt-l" id="app_navigation">
-        <li class="cursor-pointer main-li <?= $this->compareURL('/') === true ? 'selected' : '' ?>">
-            <i class="fa fa-cog" aria-hidden="true"></i>
-            <a href="/"><span class="inline-block"><?= $text_nav_general_setting  ?></span></a>
-        </li>
+
 
         <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/sales') === true || $this->compareURL('/sales/sellproduct')  ? 'selected' : '' ?> ">
 
@@ -34,20 +31,25 @@
 
             <button class="between-ele w-fu">
                 <span class="inline-block"><a href="/purchases"><i class="fa fa-cash-register"></i><?= $text_nav_purchases ?></a></span>
+                <i class="fa fa-angle-down angle "></i>
             </button>
+            <ul class="sub-menu w-fu mtb-10 un-visible">
+                <li class="li-level-2 between-ele"><a href="/purchases" class="sub-link"><?= $text_nav_buy_product ?></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
+            </ul>
         </li>
 
         <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/transactions') === true ? 'selected' : '' ?> ">
 
             <button class="between-ele w-fu">
                 <span class="inline-block"><a href="/transactions"><i class="fas fa-exchange-alt"></i><?= $text_nav_transactions ?></a></span>
-<!--                <i class="fa fa-angle-down angle "></i>-->
+                <i class="fa fa-angle-down angle "></i>
             </button>
 
-<!--            <ul class="sub-menu w-fu mtb-10 un-visible">-->
-<!--                <li class="li-level-2 between-ele"><a href="/transactionspurchases" class="sub-link">--><?php //= $text_nav_transactions_purchases ?><!--</a><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>-->
-<!--                <li class="li-level-2 between-ele"><a href="/transactions" class="sub-link">--><?php //= $text_nav_transactions_sales ?><!--</a> <i class="fas fa-comment-dollar"></i></li>-->
-<!--            </ul>-->
+            <ul class="sub-menu w-fu mtb-10 un-visible">
+                <li class="li-level-2 between-ele"><a href="/transactions" class="sub-link"><?= $text_nav_transactions_all ?></a><i class="fa fa-arrows-alt"></i></li>
+                <li class="li-level-2 between-ele"><a href="/transactions/purchases" class="sub-link"><?= $text_nav_transactions_purchases ?></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
+                <li class="li-level-2 between-ele"><a href="/transactions/sales" class="sub-link"><?= $text_nav_transactions_sales ?></a> <i class="fas fa-comment-dollar"></i></li>
+            </ul>
         </li>
 
         <li class="cursor-pointer main-li <?= $this->compareURL('/reports') === true ? 'selected' : '' ?>">
@@ -113,6 +115,10 @@
             <a href="/notifications"><span class="inline-block"><?= $text_nav_Notifications ?></span></a>
         </li>
 
+        <li class="cursor-pointer main-li <?= $this->compareURL('/') === true ? 'selected' : '' ?>">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+            <a href="/"><span class="inline-block"><?= $text_nav_general_setting  ?></span></a>
+        </li>
 
     </ul>
 </nav>
