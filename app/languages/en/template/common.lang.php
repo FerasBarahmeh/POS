@@ -9,6 +9,7 @@ $content["text_nav_logout"]                         =  "Logout";
 
 // Start Navigation
 $content["text_nav_search_session"]             = "Search Session";
+$content["text_nav_dashboard"]                  = "Dashboard";
 $content["text_nav_general_setting"]            = "General Setting";
 $content["text_nav_users"]                      =  "users";
 $content["text_nav_users_list"]                 =  "Users List";

@@ -74,6 +74,10 @@
                 if ($transactionsPurchases) {
                     $i = 0;
                     foreach ($transactionsPurchases as $transactionsPurchase) {
+                        echo "<pre>";
+                        var_dump($transactionsPurchase);
+                        echo "</pre>";
+                        
                         $i++;
                         ?>
                         <tr class="">

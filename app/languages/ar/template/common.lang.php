@@ -11,6 +11,7 @@ $content["text_nav_logout"]                 =  "تسجيل الخروج";
 // Start Navigation
 $content["text_nav_search_session"]        = "ابحث عن خانة";
 $content["text_nav_general_setting"]        = "اعدادات عامة";
+$content["text_nav_dashboard"]              = "لوحة التحكم";
 $content["text_nav_users"]                  =  "المستخدمين";
 $content["text_nav_users_list"]             =  "قائمة المستخدمين";
 $content["text_nav_users_groups"]           =  "درجات المستخدمين";

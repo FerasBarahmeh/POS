@@ -15,6 +15,11 @@
     <ul class="app_navigation mt-15 txt-l" id="app_navigation">
 
 
+        <li class="cursor-pointer main-li <?= $this->compareURL('/') === true ? 'selected' : '' ?>">
+            <i class="fa fa-chart-line" aria-hidden="true"></i>
+            <a href="/"><span class="inline-block"><?= $text_nav_dashboard  ?></span></a>
+        </li>
+
         <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/sales') === true || $this->compareURL('/sales/sellproduct')  ? 'selected' : '' ?> ">
 
             <button class="between-ele w-fu">
@@ -115,7 +120,7 @@
             <a href="/notifications"><span class="inline-block"><?= $text_nav_Notifications ?></span></a>
         </li>
 
-        <li class="cursor-pointer main-li <?= $this->compareURL('/') === true ? 'selected' : '' ?>">
+        <li class="cursor-pointer main-li <?= $this->compareURL('/setting') === true ? 'selected' : '' ?>">
             <i class="fa fa-cog" aria-hidden="true"></i>
             <a href="/"><span class="inline-block"><?= $text_nav_general_setting  ?></span></a>
         </li>

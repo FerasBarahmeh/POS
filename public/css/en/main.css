@@ -316,7 +316,6 @@ nav.main_navigation ul.app_navigation .main-li,
 nav.main_navigation ul.app_navigation button {
     padding: 10px;
     transition: all .3s ease-out;
-    border-radius: 5px;
     cursor: pointer;
     background: transparent;
     display: flex;
@@ -324,6 +323,9 @@ nav.main_navigation ul.app_navigation button {
     border-bottom: 1px solid #666e;
     margin-bottom: 15px;
     opacity: 1;
+}
+nav.main_navigation ul.app_navigation .main-li:last-child {
+    border-bottom: none;
 }
 nav.main_navigation ul.app_navigation .main-li.un-visible {
     opacity: 0;

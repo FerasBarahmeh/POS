@@ -339,7 +339,6 @@ nav.main_navigation ul.app_navigation .main-li,
 nav.main_navigation ul.app_navigation button {
     padding: 10px;
     transition: all .3s ease-out;
-    border-radius: 5px;
     background: transparent;
     cursor: pointer;
     display: flex;
