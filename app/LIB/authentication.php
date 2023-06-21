@@ -2,7 +2,6 @@
 
 namespace APP\LIB;
 
-use function APP\pr;
 
 class Authentication
 {
@@ -13,6 +12,7 @@ class Authentication
         "/authentication/logout",
         "/denyauthorizeaccess/default",
         "/notfound/notfound",
+        "/settings/default",
     ];
     private $_session;
     private function __construct($_session)

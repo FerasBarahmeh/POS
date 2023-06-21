@@ -106,6 +106,9 @@
     }
 }
 /* End Type Disply */
+button {
+    cursor: pointer;
+}
 /* Start Width */
 .w-fu {
     width: 100%;

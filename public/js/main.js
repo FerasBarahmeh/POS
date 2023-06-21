@@ -3,6 +3,7 @@ function removeAllChildNodes(parent) {
         parent.removeChild(parent.firstChild);
     }
 }
+// TODO: set active first one in nav
 // Switch Main nav
 const menuSwitch    = document.getElementById("menu-switch");
 const mainNav       = document.getElementById("main_navigation");

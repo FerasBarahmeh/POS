@@ -120,9 +120,9 @@
             <a href="/notifications"><span class="inline-block"><?= $text_nav_Notifications ?></span></a>
         </li>
 
-        <li class="cursor-pointer main-li <?= $this->compareURL('/setting') === true ? 'selected' : '' ?>">
+        <li class="cursor-pointer main-li <?= $this->compareURL('/settings') === true ? 'selected' : '' ?>">
             <i class="fa fa-cog" aria-hidden="true"></i>
-            <a href="/"><span class="inline-block"><?= $text_nav_general_setting  ?></span></a>
+            <a href="/settings"><span class="inline-block"><?= $text_nav_general_setting  ?></span></a>
         </li>
 
     </ul>

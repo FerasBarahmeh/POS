@@ -1,0 +1,196 @@
+.header-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.header-container .content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--bg-black-100);
+    opacity: .8;
+    position: relative;
+    z-index: 2;
+    padding: 20px 20px 100px;
+    width: 99%;
+}
+
+.header-container .content .full-name,
+.header-container .content .user-name  {
+
+}
+.header-container .content .user-name {
+
+}
+.header-container .content .full-name .title,
+.header-container .content .user-name .title{
+    font-size: 14px;
+    text-transform: capitalize;
+    margin-right: 10px;
+    color: var(--text-black-30);
+}
+
+.header-container .content .full-name .value,
+.header-container .content .user-name  .value {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.navs-content {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    z-index: 2;
+    display: flex;
+    width: 50%;
+}
+.navs-content .side {
+    width: 30%;
+    margin-right: 10%;
+}
+.navs-content .side ul {
+    width: 100%;
+    color: var(--text-black-700);
+    margin-top: 15px;
+    padding: 20px;
+}
+.navs-content .side li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: color .1s ease-in-out !important;
+}
+.navs-content .side li.active,
+.navs-content .side li:hover {
+    background-color: var(--bg-black-100);
+    color: var(--bg-black-30);
+}
+
+.navs-content .side li .text {
+    white-space: nowrap;
+}
+.navs-content .side li svg,
+.navs-content .side li i {
+    color: var(--bg-black-100);
+    font-size: 20px;
+    transition: color .1s ease-in-out !important;
+
+}
+.navs-content .side li.active svg,
+.navs-content .side li.active i,
+.navs-content .side li:hover svg,
+.navs-content .side li:hover i {
+    color: var(--bg-black-30);
+}
+
+.navs-content .section {
+    min-width: 70%;
+    height: 600px;
+    margin-top: -60px;
+    padding: 30px;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+    background-color: var(--bg-black-60);
+    border-radius: 10px;
+    top: 100px;
+    display: none;
+}
+.navs-content .section.active {
+    display: block;
+}
+.section  h4 {
+    color: var(--bg-black-100);
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-left: 12px;
+}
+.section .parts {
+
+}
+.section .parts .part {
+
+}
+.section .fields {
+
+}
+.section .field {
+    border-bottom: 1px solid var(--bg-black-100);
+    position: relative;
+}
+.section .field:last-child {
+    border-bottom: none;
+}
+.section .field:not(:nth-child(1)) {
+    margin-top: 15px;
+}
+.section .fields .field .main-layer {
+    border-bottom: 1px solid #eeeeee;
+    display: flex;
+    width: 100%;
+    font-size: 14px;
+    padding: 12px 12px 0 0;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.1s ease-in-out;
+}
+
+.section .fields .field .main-layer.un-active {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+}
+
+.section .fields .field .secondary-layer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+    transition: all 0.1s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+}
+.section .fields .field .secondary-layer.active {
+    opacity: 1;
+    pointer-events: auto;
+    height: auto;
+}
+.section .fields .field .secondary-layer .cont-fie-ed {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.section .fields .field .secondary-layer .cont-fie-ed input {
+    background-color: transparent;
+    border-radius: 3px;
+    border: 1px solid var(--bg-black-100);
+    padding: 3px 10px;
+    color: var(--text-black-700);
+    font-size: 13px;
+    width: 100%;
+}
+.section .fields .title {
+font-size: 12px;
+color: var(--text-black-900);
+}
+.section .fields .value {
+color: var(--text-black-700);
+}
+.section .fields button {
+    color: var(--bg-black-30);
+    background-color: var(--bg-black-100);
+    padding: 3px 10px;
+    border-radius: 2px;
+}
+.section .fields button:hover {
+    background-color: var(--text-black-900);
+}
