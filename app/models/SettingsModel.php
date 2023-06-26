@@ -33,4 +33,27 @@ class SettingsModel extends AbstractModel
 
         return $this->getRow($sql);
     }
+
+    /**
+     * method to change language in database
+     * @param int $userId the id user he wants change language
+     * @param string $lang the current language
+     * @return mixed
+     */
+    public static function changeLanguage(int $userId, string $lang): mixed
+    {
+        $sql = "UPDATE " . static::$tableName . " SET Language = '" . $lang . "' WHERE UserId = " . $userId;
+        return AbstractModel::executeQuery($sql);
+    }
+
+    /**
+     * Get Language User From Database
+     * @param int $userId
+     * @return mixed
+     */
+    public static function getLanguage(int $userId): mixed
+    {
+        $sql = "SELECT `Language` FROM " . static::$tableName . " WHERE `UserId` = " . $userId;
+        return (new SettingsModel())->getRow($sql);
+    }
 }

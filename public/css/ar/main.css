@@ -470,7 +470,7 @@ div.action-view {
     padding-top: 80px;
     min-height: 100%;
     width: 100%;
-    padding-left: 30px;
+    /*padding-left: 30px;*/
 }
 h1.title-header {
     font-size: 40px;

@@ -5,8 +5,14 @@
     <div class="content">
         <div class="img-user"><img src="<?=  IMG ?>avatar.png" alt=""></div>
         <div class="name-details">
-            <div class="full-name"><span class="title">Name</span><span class="value">Feras Barahmeh</span></div>
-            <div class="user-name"><span class="title">username</span> <span class="value">Bnz</span></div>
+            <div class="full-name">
+                <span class="title"><?= $text_name ?></span>
+                <span class="value"><?= $user->extraUserInfo->FirstName . ' ' . $user->extraUserInfo->LastName ?></span>
+            </div>
+            <div class="user-name">
+                <span class="title"><?= $text_user_name ?></span>
+                <span class="value"><?= $user->UserName ?></span>
+            </div>
         </div>
     </div>
 
@@ -15,12 +21,12 @@
             <ul>
                 <li class="active" section-setting id="general-setting">
                     <i class="fa fa-cog" aria-hidden="true"></i>
-                    <div class="text">General Setting</div>
+                    <div class="text"><?= $text_general_setting ?></div>
                 </li>
 
                 <li section-setting id="account">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <div class="text">Account</div>
+                    <div class="text"><?= $text_account ?></div>
                 </li>
 
 <!--                <li section-setting id="notification">-->
@@ -52,7 +58,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
                                 </div>
 
                             </div>
@@ -75,7 +81,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
                                 </div>
 
                             </div>
@@ -99,7 +105,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
                                 </div>
 
                             </div>
@@ -124,7 +130,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
                                 </div>
 
                             </div>
@@ -148,7 +154,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
                                 </div>
                             </div>
                         </div>
@@ -170,7 +176,7 @@
                             <div class="main-layer">
                                 <div class="flex gap-10">
                                     <div class="title"><?= $text_lang ?></div>
-                                    <div class="">English</div>
+                                    <div class=""><?= $user->Language ?></div>
                                 </div>
                                 <button class=""><a href="/language"><?= $text_change ?></a></button>
                             </div>
@@ -195,7 +201,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
                                 </div>
 
                             </div>

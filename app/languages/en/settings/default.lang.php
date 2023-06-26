@@ -15,3 +15,6 @@ $content["text_last_name"] = "Last Name";
 $content["text_phone_number"] = "Phone Number";
 $content["text_address"] = "Address";
 $content["text_bod"] = "BOD";
+$content["text_general_setting"] = "General Settings";
+$content["text_name"] = "Name";
+$content["text_user_name"] = "UserName";

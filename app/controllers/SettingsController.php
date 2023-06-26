@@ -13,7 +13,6 @@ class SettingsController extends AbstractController  {
     public function defaultAction()
     {
         $this->language->load("template.common");
-        $this->language->load("users.edit");
         $this->language->load("settings.default");
 
         $user       = (array) $this->session->user;
