@@ -2,7 +2,6 @@
 
 namespace APP\LIB;
 // TODO: Add Description to validation trait
-use APP\Enums\MessageErrorLocation;
 use function APP\pr;
 
 trait Validation
@@ -20,9 +19,6 @@ trait Validation
         'email'         => '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
         'url'           => '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/'
     ];
-
-    public string $messagesLocation ;
-    public array $messagesErrors = [];
 
     public function req($value): bool
     {
@@ -164,16 +160,11 @@ trait Validation
         $nameMethod = $partsArgument[1][0];
         $valueMin = $partsArgument[2][0];
         if ($this->$nameMethod($nameAttributeValue, $valueMin) === false) {
-            $message = $this->feedKey("text_error_" . $nameMethod, [$this->get("table_" . $nameAttribute), $valueMin]);
-            if ($this->messagesLocation == MessageErrorLocation::$post) {
-                $this->message->addMessage(
-                    $message,
-                    Messenger::MESSAGE_DANGER
-                );
-                $this->_errorsNum ++;
-            } else {
-                $this->messagesErrors[] = $message;
-            }
+            $this->message->addMessage(
+                $this->feedKey("text_error_" . $nameMethod, [$this->get("table_" . $nameAttribute), $valueMin]),
+                Messenger::MESSAGE_DANGER
+            );
+            $this->_errorsNum ++;
         }
     }
     private function callMinMethod($roleMethod, $nameAttributeValue, $nameAttribute): void
@@ -249,22 +240,11 @@ trait Validation
         $paramTow   = $partsArgument[3][0];
 
         if ($this->$nameMethod($nameAttributeValue, $paramOne, $paramTow) === false) {
-            $message = $this->feedKey("text_error_" . $nameMethod, [$this->get("table_" . $nameAttribute), $paramOne, $paramTow]);
-
-            if ($this->messagesLocation == MessageErrorLocation::$post) {
-                $this->message->addMessage(
-                    $message,
-                    Messenger::MESSAGE_DANGER
-                );
-                $this->_errorsNum ++;
-            } else {
-                $this->messagesErrors[] = $message;
-            }
-//            $this->message->addMessage(
-//                $message,
-//                Messenger::MESSAGE_DANGER
-//            );
-//            $this->_errorsNum ++;
+            $this->message->addMessage(
+                $this->feedKey("text_error_" . $nameMethod, [$this->get("table_" . $nameAttribute), $paramOne, $paramTow]),
+                Messenger::MESSAGE_DANGER
+            );
+            $this->_errorsNum ++;
 
         }
 
@@ -292,28 +272,16 @@ trait Validation
     private function isSimpleRole($roleMethod, $nameAttributeValue, $nameAttribute): void
     {
         if($this->$roleMethod($nameAttributeValue) === false) {
-            $message = $this->feedKey("text_error_" . $roleMethod, [$this->get("table_" . $nameAttribute)]);
-            if ($this->messagesLocation == MessageErrorLocation::$post) {
-                $this->message->addMessage (
-                    $message,
-                    Messenger::MESSAGE_DANGER
-                );
-                $this->_errorsNum ++;
-            } else {
-                $this->messagesErrors[] = $message;
-            }
-
+            $this->message->addMessage (
+                $this->feedKey("text_error_" . $roleMethod, [$this->get("table_" . $nameAttribute)]),
+                Messenger::MESSAGE_DANGER
+            );
+            $this->_errorsNum ++;
         }
     }
 
-    public function isAppropriate($roles, $typeInput, $messagesLocation): array|bool
+    public function isAppropriate($roles, $typeInput): array|bool
     {
-        if ($messagesLocation == MessageErrorLocation::$post) {
-            $this->messagesLocation = MessageErrorLocation::$post;
-        } else if ($messagesLocation == MessageErrorLocation::$stack) {
-            $this->messagesLocation = MessageErrorLocation::$stack;
-        }
-
         $this->_words = $this->language->getDictionary();
         if ($roles) {
             foreach ($roles as $nameAttribute => $rolesFiled) {
@@ -341,9 +309,6 @@ trait Validation
 
         }
 
-        if ($messagesLocation == MessageErrorLocation::$post || empty($this->messagesErrors))
-            return $this->_errorsNum === 0 ;
-        else
-            return $this->messagesErrors;
+        return $this->_errorsNum === 0 ;
     }
 }
