@@ -126,7 +126,7 @@ function finishedMessage() {
         mass.classList.add("finished");
     });
 }
-setTimeout(finishedMessage, 5000000);
+setTimeout(finishedMessage, 5000);
 
 
 // Ajax Get Messages
