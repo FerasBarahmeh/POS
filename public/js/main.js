@@ -1,31 +1,26 @@
+// Start Login Page
+    let inputs = document.querySelectorAll(".input-login");
+    inputs.forEach(input => {
+        input.addEventListener("focus", () => {
+            let label = input.parentElement.querySelector("label");
+            label.classList.add("flay")
+        })
+        input.addEventListener("blur", () => {
+            let label = input.parentElement.querySelector("label");
+            if (input.value === '') {
+                label.classList.remove("flay");
+            } else {
+                label.classList.add("flay");
+            }
+        });
+    });
+// End Login Page
 function removeAllChildNodes(parent) {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
     }
 }
 // TODO: set active first one in nav
-// Switch Main nav
-const menuSwitch    = document.getElementById("menu-switch");
-const mainNav       = document.getElementById("main_navigation");
-const conditionMenu = menuSwitch.getAttribute("data-condition-menu");
-const actionView    = document.getElementById("action-view");
-
-
-menuSwitch.addEventListener("click", () => {
-    mainNav.classList.toggle("hidden");
-    menuSwitch.classList.toggle("rout-90");
-    mainNav.classList.remove("hidden-mobile");
-    actionView.parentElement.classList.toggle("grid");
-});
-
-// Show Drop Down Menu
-const dropDown  = document.getElementById("drop-down");
-const menu      = dropDown.querySelector("#menu");
-
-dropDown.addEventListener("click", () => {
-    menu.classList.toggle("visible");
-
-});
 
 // Start navigation Bar
     function hiddenSearchIcon(inputSearch) {
@@ -131,7 +126,7 @@ function finishedMessage() {
         mass.classList.add("finished");
     });
 }
-setTimeout(finishedMessage, 5000);
+setTimeout(finishedMessage, 5000000);
 
 
 // Ajax Get Messages

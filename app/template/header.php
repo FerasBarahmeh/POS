@@ -33,10 +33,9 @@
 
         </div>
 
-        <div class="drop-down relative" id="drop-down">
+        <div class="drop-down relative" id="">
             <div class="name cursor-pointer">
                 <span><?= $this->session->user->UserName ?></span>
-                <i class="fa fa-caret-down" aria-hidden="true"></i>
             </div>
 
             <div class="container-drop-down-main-header" id="menu">

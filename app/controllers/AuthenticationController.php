@@ -6,7 +6,7 @@ use APP\Helpers\PublicHelper\PublicHelper;
 use APP\LIB\Messenger;
 use APP\Models\UserModel;
 use UserStatus;
-use function APP\pr;
+
 
 class AuthenticationController extends AbstractController
 {
@@ -45,6 +45,7 @@ class AuthenticationController extends AbstractController
 
     public function logoutAction()
     {
+        setcookie("lang", $_SESSION["lang"]);
         $this->session->kill();
         $this->redirect("/authentication/login");
     }

@@ -106,7 +106,83 @@ input {
     color: var(--text-black-30);
 }
 /* End Colors */
+/*Start Login */
 
+#content {
+    max-width: 800px;
+    box-shadow: 0 11px 17px 5px rgb(0 0 0 / 33%);
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    height: 100%;
+}
+.img {
+    width: 400px;
+}
+.img img {
+    width: 100%;
+}
+
+#content > h1 {
+    text-align: center;
+}
+.welcome-message {
+    color: var(--bg-black-100);
+    font-size: 30px;
+}
+
+.input-bar {
+    width: 350px;
+    height: 60px;
+    border: 1px solid var(--bg-black-100);
+    border-radius: 5px;
+    margin: 30px 0;
+    transition: all .3s ease-in-out;
+    font-weight: 600;
+    position: relative;
+}
+
+.input-bar > label {
+    position: absolute;
+    font-size: 13px;
+    text-transform: capitalize;
+    transition: top .3s ease-in-out;
+    padding-left: 17px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: var(--text-black-700);
+}
+.input-bar > label.flay {
+    top: -15px;
+    font-size: 10px;
+}
+
+.input-bar > input:not([type="submit"]) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    padding: 7px;
+    font-size: 15px;
+    color: var(--text-black-700);
+}
+input[type="submit"] {
+    transition: color .3s ease-in-out,
+                background-color .3s ease-in-out;
+}
+input[type="submit"]:hover {
+    color: var(--bg-black-900);
+    background-color: var(--bg-black-100);
+}
+/*End Login */
 /* Start Header */
 header.main {
     max-width: 100%;
@@ -142,9 +218,7 @@ header.main .options .drop-down  .name {
     border-radius: 5px;
     transition: background-color .6s ease-in-out;
 }
-header.main .options .drop-down  .name:hover {
-    background-color: rgba(var(--text-black-900), 6);
-}
+
 header.main .options .container-drop-down-main-header {
     overflow: hidden;
     height: 0;
@@ -229,11 +303,11 @@ p.title {
 p.message {
     background-color: #eee;
     padding: 5px 10px;
-    color: white;
     border-radius: 5px;
     transition: all .6s ease-in-out;
     font-size: 20px;
-    margin-bottom: 5px;
+    position: absolute;
+    color: var(--text-black-700);
 }
 p.message.finished {
     opacity: 0;
@@ -241,10 +315,11 @@ p.message.finished {
     position: absolute;
 }
 p.message.danger {
-    background-color: var(--danger-color-300);
+    background-color: var(--danger-color-200);
+    color: var(--bg-black-30);
 }
 p.message.success {
-    background-color: var(--success-color-300);
+    background-color: var(--success-color-200);
 }
 p.message.info {
     background-color: var(--info-color-300);
