@@ -97,4 +97,24 @@ abstract class AbstractController
         $messages = $this->language->getDictionary();
         echo json_encode($messages);
     }
+
+    public function getUserAjaxAction(): void
+    {
+        echo json_encode([
+            "user" => $this->session->user,
+        ]);
+    }
+
+    public function changUserValueAjaxAction(): void
+    {
+        $obj = $_POST["extraInfo"];
+        $key = $_POST["key"];
+
+        if ($_POST["extraInfo"] != null){
+            $this->session->user->$obj->$key = $_POST["value"];
+        }
+        else{
+            $this->session->user->$key = $_POST["value"];
+        }
+    }
 }

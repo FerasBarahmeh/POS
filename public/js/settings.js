@@ -74,7 +74,68 @@ secondaryLayers.forEach(layer => {
    let input = layer.querySelector("input");
    let field =  input.closest("[field]");
     input.value = field.querySelector("[main-layer] .value").textContent;
-
 });
 
 
+// Change Values
+const savedButtons = document.querySelectorAll("button.save");
+let nameTables = {
+    "general-setting" : "subset_information_users",
+    "account" : "settings",
+    "notification" : "notification"
+};
+savedButtons.forEach(btn => {
+    let field = btn.closest("[field]");
+    let currentValue = field.querySelector("input").value.trim();
+    let section = field.closest("section");
+    let nameTable = nameTables[section.getAttribute("for")];
+    let nameField = field.getAttribute("name_field");
+    nameField = nameField.charAt(0).toUpperCase() + nameField.slice(1);
+
+    btn.addEventListener("click", () => {
+        let newValue = field.querySelector("input").value.trim();
+
+        fetch("http://estore.local/settings/updateFieldValueAjax", {
+            "method": "POST",
+            "headers": {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            "body": `table=${nameTable}&column=${nameField}&newValue=${newValue}`,
+        })
+            .then(function(res){ return res.json(); })
+            .then(function(data){
+
+                if (data["result"]) {
+                    fetch("http://estore.local/settings/changUserValueAjax", {
+                        "method": "POST",
+                        "headers": {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        "body": `extraInfo=extraUserInfo&key=${nameField}&value=${newValue}`,
+                    }).then(() => {
+                        let value = field.querySelector(".value");
+
+                        value.textContent = '';
+                        value.textContent = newValue;
+                        field.querySelector("input").value = newValue
+                        toggleClassActive(field);
+                    });
+
+
+                } else {
+
+                    console.log(data["result"])
+                    for (const error of data["errors"]) {
+                        let p = document.createElement("p");
+                        p.classList.add("error-message");
+                        p.classList.add("active");
+                        p.textContent = error;
+                        field.prepend(p);
+                    }
+                }
+            })
+
+
+
+    });
+});

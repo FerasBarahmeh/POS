@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2023 at 05:38 PM
+-- Generation Time: Jun 26, 2023 at 01:22 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -298,6 +298,26 @@ INSERT INTO `sales_invoices_receipts` (`ReceiptId`, `InvoiceId`, `PaymentType`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `settings`
+--
+
+CREATE TABLE `settings` (
+  `Id` int(11) UNSIGNED NOT NULL,
+  `UserId` int(11) UNSIGNED NOT NULL,
+  `Language` enum('Arabic','English') NOT NULL DEFAULT 'English',
+  `Currency` varchar(10) NOT NULL DEFAULT '$'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `settings`
+--
+
+INSERT INTO `settings` (`Id`, `UserId`, `Language`, `Currency`) VALUES
+(0, 1, 'English', 'JOD');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `subset_information_users`
 --
 
@@ -305,7 +325,7 @@ CREATE TABLE `subset_information_users` (
   `UserId` int(10) UNSIGNED NOT NULL,
   `FirstName` varchar(10) NOT NULL,
   `LastName` varchar(10) NOT NULL,
-  `Address` varchar(30) DEFAULT NULL,
+  `Address` varchar(60) DEFAULT NULL,
   `BOD` date DEFAULT NULL,
   `Image` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -315,7 +335,7 @@ CREATE TABLE `subset_information_users` (
 --
 
 INSERT INTO `subset_information_users` (`UserId`, `FirstName`, `LastName`, `Address`, `BOD`, `Image`) VALUES
-(1, 'Feras', 'Barahmeh', NULL, NULL, NULL),
+(1, 'Feras', 'Barahmeh', 'Jordan-Zaeqa-HeShaker-behavier Forqn mosqe', '2002-06-11', NULL),
 (2, 'Majd', 'Barahmeh', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -363,7 +383,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-06-20 16:42:08', 7, '0785102996', 1),
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-06-26 12:02:35', 7, '0785102996', 1),
 (2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-21 14:50:49', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
@@ -588,6 +608,12 @@ ALTER TABLE `sales_invoices_receipts`
   ADD PRIMARY KEY (`ReceiptId`),
   ADD KEY `InvoiceId` (`InvoiceId`),
   ADD KEY `UserId` (`UserId`);
+
+--
+-- Indexes for table `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`Id`);
 
 --
 -- Indexes for table `subset_information_users`

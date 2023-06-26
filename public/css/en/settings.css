@@ -176,11 +176,12 @@
     padding: 3px 10px;
     color: var(--text-black-700);
     font-size: 13px;
-    width: 100%;
+    max-width: 100%;
 }
 .section .fields .title {
-font-size: 12px;
-color: var(--text-black-900);
+    font-size: 12px;
+    color: var(--text-black-900);
+    white-space: nowrap;
 }
 .section .fields .value {
 color: var(--text-black-700);
@@ -191,6 +192,31 @@ color: var(--text-black-700);
     padding: 3px 10px;
     border-radius: 2px;
 }
+.section .fields .options {
+    display: flex;
+    gap: 2px;
+
+}
 .section .fields button:hover {
     background-color: var(--text-black-900);
+}
+.section .fields button a {
+    color: var(--text-black-30);
+}
+.error-message {
+    background-color: var(--danger-color-300);
+    color: var(--bg-black-30);
+    width: 100%;
+    padding: 0 0 0 10px;
+    text-transform: capitalize;
+    font-size: 14px;
+    border-radius: 3px;
+    opacity: 0;
+    left: -100px;
+    pointer-events: none;
+}
+.error-message.active {
+    opacity: 1;
+    pointer-events: auto;
+    left: 0;
 }
