@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2023 at 09:36 PM
+-- Generation Time: Jun 28, 2023 at 01:15 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -154,7 +154,7 @@ CREATE TABLE `purchases_invoices` (
   `SupplierId` int(10) UNSIGNED NOT NULL,
   `PaymentType` tinyint(1) NOT NULL,
   `PaymentStatus` tinyint(1) NOT NULL,
-  `Created` date NOT NULL,
+  `Created` datetime NOT NULL DEFAULT current_timestamp(),
   `Discount` decimal(8,2) DEFAULT NULL,
   `UserId` int(10) UNSIGNED NOT NULL,
   `NumberProducts` int(6) NOT NULL,
@@ -167,7 +167,7 @@ CREATE TABLE `purchases_invoices` (
 --
 
 INSERT INTO `purchases_invoices` (`InvoiceId`, `SupplierId`, `PaymentType`, `PaymentStatus`, `Created`, `Discount`, `UserId`, `NumberProducts`, `TypeInvoice`, `DiscountType`) VALUES
-(1, 1, 0, 0, '2023-06-20', '10.00', 1, 1, 'purchases', 'percentage');
+(1, 1, 0, 0, '2023-06-20 00:00:00', '10.00', 1, 1, 'purchases', 'percentage');
 
 -- --------------------------------------------------------
 
@@ -383,7 +383,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-06-26 21:28:35', 7, '0785102996', 1),
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-06-28 13:07:11', 7, '0785102996', 1),
 (2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-21 14:50:49', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
