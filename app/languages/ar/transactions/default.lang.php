@@ -24,10 +24,5 @@ $content["text_name_transactor"] = "اسم المنفذ";
 $content["text_payment_status"] = "حالة الدفع";
 $content["text_no_disc"] = "بدون خصم";
 $content["text_options"] = "الخيارات";
-
-
-
-
-
-
-
+$content["text_show"] = "Show";
+$content["text_download"] = "Download";

@@ -3,27 +3,6 @@
 <section class="transactions-container">
     <section class="options">
         <div class="filters">
-            <div class="filter">
-                <label for="type-filter"><i class="fa fa-filter"></i><?= $text_filter_by_transaction_Type ?></label>
-
-                <div class="types" id="type-filter">
-                    <button class="select-input" id="select-type-btn">
-                        <div class="angles">
-                            <div class="angle active"><i class="fa fa-angle-down"></i></div>
-                            <div class="angle"><i class="fa fa-angle-up"></i></div>
-                        </div>
-                        <span></span>
-                    </button>
-                    <ul class="">
-                        <li></li>
-                        <li><?= $text_sales ?></li>
-                        <li><?= $text_purchases ?></li>
-                    </ul>
-                </div>
-
-                <button class="show-all stander-btn" id="type-filter-btn"><?= $text_show_all ?></button>
-            </div>
-
             <div class="filter" filter-between-vals>
                 <label for="date-filter"><i class="fa fa-filter"></i> <?= $text_filter_by_date ?></label>
                 <div class="from-to">
@@ -75,7 +54,6 @@
                                 ?>
                                     <tr class="">
                                         <td><?= $transactionsSale->InvoiceId ?></td>
-<!--                                        <td>--><?php //= $transactionsTypes[$transactionsSale->TypeInvoice] ?><!--</td>-->
                                         <td><?= $transactionsSale->TypeInvoice ?></td>
                                         <td><?= (float)$transactionsSale->PaymentAmount + (float) $transactionsSale->PaymentLiteral ?></td>
                                         <td><?= $transactionsSale->Created ?></td>
@@ -86,8 +64,12 @@
                                         <td><?= $paymentsStatus[$transactionsSale->PaymentStatus] ?></td>
                                         <td>
                                             <div class="icons">
-                                                <span class="description dir-r top-5" description="show"><i class="fa fa-print"></i></span>
-
+                                                <button class="dir-r top-5 download-btn">
+                                                    <a href="/transactions/pdf/<?= $transactionsSale->InvoiceId ?>/<?= $transactionsSale->TypeInvoice ?>/D"><?= $text_download ?></a>
+                                                </button>
+                                                <button class="dir-r top-5 show-btn">
+                                                    <a href="/transactions/pdf/<?= $transactionsSale->InvoiceId ?>/<?= $transactionsSale->TypeInvoice ?>/S"><?= $text_show ?></a>
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
@@ -97,33 +79,5 @@
                     ?>
                 </tbody>
             </table>
-<!--            <div class="bar-pagination">-->
-<!--                <div class="statistics">-->
-<!--                    <div class="number-slide">-->
-<!--                        <label for="">number Rerecord in slide</label>-->
-<!--                        <select name="" id="">-->
-<!--                            <option value="">4</option>-->
-<!--                            <option value="">2</option>-->
-<!--                            <option value="">6</option>-->
-<!--                            <option value="">8</option>-->
-<!--                            <option value="">10</option>-->
-<!--                        </select>-->
-<!--                    </div>-->
-<!--                    <div class="counter"><div class="count">5</div><span>from</span><div class="from">100</div></div>-->
-<!--                </div>-->
-<!---->
-<!--                <div class="buttons">-->
-<!--                    <button class="next">Previous</button>-->
-<!--                    <ul>-->
-<!--                        <li>1</li>-->
-<!--                        <li>2</li>-->
-<!--                        <li>3</li>-->
-<!--                        <li>4</li>-->
-<!--                    </ul>-->
-<!--                    <button class="previous active">Next</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
     </section>
 </section>

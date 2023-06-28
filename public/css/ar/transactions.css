@@ -166,3 +166,26 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 table tbody tr:hover td .fa-print {
     color: var(--bg-black-30);
 }
+.download-btn,
+.show-btn {
+    background-color: transparent;
+    cursor: pointer;
+    padding: 3px;
+    color: var(--bg-black-30);
+    border-radius: 2px;
+    font-size: 13px;
+}
+.show-btn {
+    background-color: #4343bb;
+}
+.download-btn {
+    background-color: green;
+}
+.download-btn:hover,
+.show-btn:hover {
+    opacity: .5;
+}
+.download-btn a,
+.show-btn a {
+    color: var(--bg-black-30);
+}

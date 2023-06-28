@@ -11,6 +11,7 @@ class TransactionsPurchasesModel extends AbstractModel
     private SalesInvoicesModel $salesInvoicesModel;
     private SalesInvoicesDetailsModel $salesInvoicesDetailsModel;
     private SalesInvoicesReceiptsModel $salesInvoicesReceiptsModel;
+    protected static string $primaryKey = "InvoiceId";
 
     public function __constructor()
     {
@@ -48,5 +49,46 @@ class TransactionsPurchasesModel extends AbstractModel
         return $this->get($sql);
     }
 
+    public static function getInvoice(int $id)
+    {
+        $sql = "
+            SELECT 
+                I.*, R.*, C.* 
+            FROM 
+                purchases_invoices AS I 
+            INNER JOIN 
+                    purchases_invoices_receipts AS R 
+            ON 
+                R.InvoiceId = I.InvoiceId 
+            JOIN 
+                    suppliers as C 
+            ON 
+                I.SupplierId = C.SupplierId
+            WHERE I.". static::$primaryKey ." = {$id}
+        ";
+
+        return (new TransactionsPurchasesModel())->getRow($sql);
+    }
+    /**
+     *
+     * method to get all products in this invoice
+     * @param int $id The invoice number containing the products
+     * @return false|ArrayIterator false if not products else return products
+     */
+    public static function getProductsInvoice(int $id): false|ArrayIterator
+    {
+
+        $sql = "SELECT 
+                    * 
+                FROM 
+                    products AS P 
+                INNER JOIN 
+                    purchases_invoices_details AS SID 
+                ON 
+                    P.ProductId = SID.ProductId 
+                WHERE 
+                    SID.InvoiceId = {$id}";
+        return (new TransactionsPurchasesModel())->get($sql);
+    }
 
 }

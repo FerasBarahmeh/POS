@@ -1,10 +1,9 @@
 <?php
 // Title
-$content["title"] = "Sales Transaction";
+$content["title"] = "Transactions";
 
 // Title Header
 $content["title_header"] = "Transaction";
-
 
 $content["text_filter_by_transaction_Type"] = "Filter By Transaction Type";
 $content["text_filter_by_date"] = "Filter By Date (From-to)";
@@ -16,6 +15,8 @@ $content["text_print_report"] = "Print Report";
 $content["text_print_filtered"] = "Print Filtered";
 $content["text_id_invoice"] = "ID invoice";
 $content["text_id"] = "ID";
+$content["text_show"] = "Show";
+$content["text_download"] = "Download";
 $content["text_type"] = "Type";
 $content["text_time"] = "Time";
 $content["text_num_product"] = "Number Products";
@@ -27,7 +28,6 @@ $content["text_name_transactor"] = "Name Transactor";
 $content["text_payment_status"] = "Payment Status";
 $content["text_no_disc"] = "No Discount";
 $content["text_options"] = "Options";
-
 
 
 

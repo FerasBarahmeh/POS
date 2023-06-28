@@ -13,6 +13,7 @@ class Authentication
         "/denyauthorizeaccess/default",
         "/notfound/notfound",
         "/settings/default",
+        "/transactions/pdf",
     ];
     private $_session;
     private function __construct($_session)

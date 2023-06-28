@@ -73,7 +73,7 @@
                         if ($transactions) {
                             foreach ($transactions as $transaction) {
                                 ?>
-                                    <tr class="">
+                                    <tr invoice-id="<?= $transaction->InvoiceId ?>" type-invoice="<?= $transaction->TypeInvoice ?>">
                                         <td><?= $transaction->InvoiceId ?></td>
                                         <td><?= $transaction->TypeInvoice ?></td>
                                         <td><?= (float)$transaction->PaymentAmount + (float) $transaction->PaymentLiteral ?></td>
@@ -85,8 +85,13 @@
                                         <td><?= $paymentsStatus[$transaction->PaymentStatus] ?></td>
                                         <td>
                                             <div class="icons">
-                                                <span class="description dir-r top-5" description="show"><i class="fa fa-print"></i></span>
 
+                                                <button class="dir-r top-5 download-btn">
+                                                    <a href="/transactions/pdf/<?= $transaction->InvoiceId ?>/<?= $transaction->TypeInvoice ?>/D"><?= $text_download ?></a>
+                                                </button>
+                                                <button class="dir-r top-5 show-btn">
+                                                    <a href="/transactions/pdf/<?= $transaction->InvoiceId ?>/<?= $transaction->TypeInvoice ?>/S"><?= $text_show ?></a>
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
