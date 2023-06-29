@@ -1,6 +1,8 @@
 <?php
 namespace APP\LIB;
 
+use APP\Models\SettingsModel;
+
 class Language
 {
     private string $_path;
@@ -31,7 +33,7 @@ class Language
 
     private function setSessionLanguage(): void
     {
-        if (isset($_SESSION["lang"])) {
+        if (isset($_SESSION["lang"]) || isset($_COOKIE["lang"])) {
             $this->_userLanguage = $_SESSION["lang"];
         }
     }

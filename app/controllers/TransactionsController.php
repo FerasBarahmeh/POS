@@ -28,6 +28,7 @@ class TransactionsController extends AbstractController
     use PublicHelper;
     use TemplateHelper;
     use structures;
+    use TraitInvoiceController;
 
 
 
@@ -40,21 +41,7 @@ class TransactionsController extends AbstractController
         $this->language->load("template.common");
         $this->language->load("transactions.default");
 
-        $transactionsSales = new TransactionsSalesModel();
-        $sales = $transactionsSales->getInfoSalesInvoice();
-
-        $transactionsPurchases = new TransactionsPurchasesModel();
-        $purchases = $transactionsPurchases->getInfoPurchasesInvoice();
-
-
-        $this->_info["transactions"] = $this->mergeArraysRandomly(iterator_to_array($sales), iterator_to_array($purchases));
-
-        // Get Type Transaction
-        $this->_info["transactionsTypes"] = $this->getSpecificProperties(obj: (new TransactionType()), flip: true);
-
-        // Get Payment status
-        $this->_info["paymentsStatus"] = $this->getSpecificProperties(obj: (new PaymentStatus()), flip: true);
-
+        $this->transactions();
 
         $this->_renderView();
     }

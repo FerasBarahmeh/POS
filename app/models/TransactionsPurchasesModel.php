@@ -91,4 +91,47 @@ class TransactionsPurchasesModel extends AbstractModel
         return (new TransactionsPurchasesModel())->get($sql);
     }
 
+    public static function lastInvoices(int $limit=5): false|ArrayIterator
+    {
+        $sql = "
+            SELECT 
+                I.*, R.*, C.* 
+            FROM 
+                purchases_invoices AS I 
+            INNER JOIN 
+                    purchases_invoices_receipts AS R 
+            ON 
+                R.InvoiceId = I.InvoiceId 
+            JOIN 
+                    suppliers as C 
+            ON 
+                I.SupplierId = C.SupplierId
+            LIMIT {$limit}
+        ";
+        return (new TransactionsPurchasesModel())->get($sql);
+    }
+    public static function revenueToday()
+    {
+        $sql = "
+            SELECT 
+                SUM(PaymentAmount) AS revenue
+            FROM 
+                purchases_invoices_receipts
+            WHERE
+                DATE(created) = (SELECT CURRENT_DATE())
+        ";
+        return (new TransactionsSalesModel())->getRow($sql)->revenue;
+    }
+    public static function financialReceivablesToday()
+    {
+        $sql = "
+            SELECT 
+                SUM(PaymentLiteral) AS revenue
+            FROM 
+                purchases_invoices_receipts
+            WHERE
+                DATE(created) = (SELECT CURRENT_DATE())
+        ";
+        return (new TransactionsSalesModel())->getRow($sql)->revenue;
+    }
 }

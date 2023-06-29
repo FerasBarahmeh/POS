@@ -547,7 +547,8 @@ table tbody td {
     border-right: 1px solid #eee;
 }
 table tbody tr:hover td {
-    background-color: var(--bg-black-100);
+    background-color: var(--bg-black-80);
+    color: var(--bg-black-30);
 }
  table tbody td.long-content {
     max-width: 20px;

@@ -225,4 +225,62 @@ class AbstractModel
             yield $record;
         }
     }
+    /**
+     * return count primary key
+     * @return int|mixed
+     * @version 1.0
+     * @author Feras Barahemeh
+     */
+    public static function enumerate(): mixed
+    {
+        $sql = "
+            SELECT 
+                COUNT(" . static::$primaryKey . ") AS count
+            FROM 
+                " . static::$tableName ."
+        ";
+
+        return (new AbstractModel)->getRow($sql)->count;
+    }
+
+    /**
+     * method to return enumerate transaction dayle
+     * @version 1.0
+     * @author Feras Barahmeh
+     *
+     * @return int|mixed return 0 if no value returned else return count today transaction
+     */
+    public static function countTransactionsToday(): mixed
+    {
+        $sql = "
+            SELECT
+                COUNT(". static::$primaryKey .") AS count
+            FROM 
+                ". static::$tableName ." 
+            WHERE
+                DATE(Created) = (SELECT CURRENT_DATE())
+        ";
+        return (new AbstractModel())->getRow($sql)->count;
+    }
+
+    /**
+     * get sum columns value
+     * @version 1.0
+     * @author Feras Barahmeh
+     * @param string $column the column you want get sum
+     * @param string|null $where if it has a condition
+     * @return mixed
+     */
+    public static function sum(string $column, string $where=null): mixed
+    {
+        $sql = "
+            SELECT 
+                SUM($column) AS S
+            FROM
+                ". static::$tableName  ."
+        ";
+
+        return (new AbstractModel())->getRow($sql)->S;
+    }
+
 }

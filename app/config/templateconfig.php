@@ -10,7 +10,7 @@ $shiftedArray = array_shift($t);
 $CSS = [
     "main"          => CSS . $cssLang . "main"     . ".css",
     "shortcut"      => CSS . "shortcut" . ".css",
-
+    "index"         => CSS . $cssLang . "index" . ".css",
 ];
 
 $CSS[$t[0]] = CSS . $cssLang . $t[0] . ".css";

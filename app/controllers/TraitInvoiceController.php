@@ -8,8 +8,12 @@ use APP\Enums\DiscountType;
 use APP\Enums\PaymentStatus;
 use APP\Enums\PaymentType;
 use APP\Enums\StatusProduct;
+use APP\Enums\TransactionType;
 use APP\Enums\Units;
 use APP\Models\ProductModel;
+use APP\Models\TransactionsPurchasesModel;
+use APP\Models\TransactionsSalesModel;
+use Exception;
 use ReflectionException;
 
 trait TraitInvoiceController
@@ -156,5 +160,28 @@ trait TraitInvoiceController
         $receipts->UserId = $infoInvoice->employee;
 
         return $receipts->save();
+    }
+
+    /**
+     * method to get all transaction (sales, purchase) randomly sort
+     * @throws ReflectionException
+     * @throws Exception
+     */
+    protected function transactions(): void
+    {
+        $transactionsSales = new TransactionsSalesModel();
+        $sales = $transactionsSales->getInfoSalesInvoice();
+
+        $transactionsPurchases = new TransactionsPurchasesModel();
+        $purchases = $transactionsPurchases->getInfoPurchasesInvoice();
+
+
+        $this->_info["transactions"] = $this->mergeArraysRandomly(iterator_to_array($sales), iterator_to_array($purchases));
+
+        // Get Type Transaction
+        $this->_info["transactionsTypes"] = $this->getSpecificProperties(obj: (new TransactionType()), flip: true);
+
+        // Get Payment status
+        $this->_info["paymentsStatus"] = $this->getSpecificProperties(obj: (new PaymentStatus()), flip: true);
     }
 }

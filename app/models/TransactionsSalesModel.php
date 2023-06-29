@@ -94,4 +94,48 @@ class TransactionsSalesModel extends AbstractModel
         return (new TransactionsSalesModel())->get($sql);
     }
 
+    public static function lastInvoice(int $limit=5): false|ArrayIterator
+    {
+        $sql = "
+            SELECT 
+               DISTINCT I.*, R.*, C.* 
+            FROM 
+                sales_invoices AS I 
+            INNER JOIN 
+                    sales_invoices_receipts AS R 
+            ON 
+                R.InvoiceId = I.InvoiceId 
+            JOIN 
+                    clients as C 
+            ON
+                I.ClientId = C.ClientId
+            LIMIT {$limit}
+        ";
+        return (new TransactionsSalesModel())->get($sql);
+    }
+    public static function revenueToday()
+    {
+        $sql = "
+            SELECT 
+                SUM(PaymentAmount) AS revenue
+            FROM 
+                sales_invoices_receipts
+            WHERE
+                DATE(created) = (SELECT CURRENT_DATE())
+        ";
+        return (new TransactionsSalesModel())->getRow($sql)->revenue;
+    }
+    public static function financialReceivablesToday()
+    {
+        $sql = "
+            SELECT 
+                SUM(PaymentLiteral) AS revenue
+            FROM 
+                sales_invoices_receipts
+            WHERE
+                DATE(created) = (SELECT CURRENT_DATE())
+        ";
+        return (new TransactionsSalesModel())->getRow($sql)->revenue;
+    }
+
 }

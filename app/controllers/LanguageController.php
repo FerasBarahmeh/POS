@@ -13,7 +13,7 @@ class LanguageController extends AbstractController
     {
 
         $id = $this->session->user->UserId;
-        if ($_SESSION["lang"] == "en") {
+        if ($_SESSION["lang"] == "en" || (isset( $_COOKIE["lang"] ) && $_COOKIE["lang"] == "en")) {
             $_SESSION["lang"] = "ar";
             SettingsModel::changeLanguage($id, 'ar');
             setcookie("lang", 'ar');
