@@ -81,6 +81,7 @@ section.content {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.left-nav-section .title p,
 .left-nav-section .title i,
 .left-nav-section .title svg {
     color: var(--bg-black-100);

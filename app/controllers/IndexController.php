@@ -40,6 +40,7 @@ class IndexController extends AbstractController  {
         $this->language->load("index.default");
         $this->language->load("transactions.default");
 
+        $this->_info["currency"] = SettingsModel::getCurrency($this->session->user->UserId);
         $this->_info["lastSalesInvoices"] = TransactionsSalesModel::lastInvoice();
         $this->_info["lastPurchasesInvoices"] = TransactionsPurchasesModel::lastInvoices();
 

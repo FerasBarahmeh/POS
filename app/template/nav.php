@@ -125,7 +125,7 @@
             <a href="/settings"><span class="inline-block"><?= $text_nav_general_setting  ?></span></a>
         </li>
 
-        <li class="cursor-pointer main-li <?= $this->compareURL('/settings') === true ? 'selected' : '' ?>">
+        <li class="cursor-pointer main-li">
             <i class="fa fa-arrow-left" aria-hidden="true"></i>
             <a href="/authentication/logout"><span class="inline-block"><?= $text_nav_logout ?></span></a>
         </li>

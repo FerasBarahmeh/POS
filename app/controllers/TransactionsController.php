@@ -12,6 +12,7 @@ use APP\LIB\FilterInput;
 use APP\LIB\PDF;
 use APP\LIB\Template\TemplateHelper;
 use APP\Models\SalesInvoicesModel;
+use APP\Models\SettingsModel;
 use APP\Models\TransactionsPurchasesModel;
 use APP\Models\TransactionsSalesModel;
 use Dompdf\Dompdf;
@@ -135,6 +136,7 @@ class TransactionsController extends AbstractController
         $products = null;
         $idTransactor = null;
         $name= null;
+        $currency = SettingsModel::getCurrency($this->session->user->UserId);
 
         if ($typeInvoice == "sales") {
             $invoice = TransactionsSalesModel::getInvoice($idInvoice);
@@ -183,8 +185,15 @@ class TransactionsController extends AbstractController
         $pdf->Cell(34, 5, "{$idTransactor}", 0, 1);
 
 
-        $pdf->Cell(130, 5, "Discount {$invoice->Discount}", 0, 0);
-        $pdf->Cell(25, 5, "Payment Amount {$invoice->PaymentAmount}", 0, 0);
+        $symbolDiscount = null;
+        if ($invoice->DiscountType == "percentage") {
+            $symbolDiscount = '%';
+        } else {
+            $symbolDiscount = $currency;
+        }
+
+        $pdf->Cell(130, 5, "Discount {$invoice->Discount} {$symbolDiscount}", 0, 0);
+        $pdf->Cell(25, 5, "Payment Amount {$invoice->PaymentAmount} {$currency}", 0, 0);
 
         $pdf->Cell(130, 5, "", 0, 0);
         $pdf->Cell(25, 5, 'Invoice No:', 0, 0);
@@ -213,7 +222,7 @@ class TransactionsController extends AbstractController
         $pdf->Cell(25, 5, 'Invoice No:', 0, 0);
         $pdf->Cell(34, 5, "# {$invoice->InvoiceId}", 0, 1);
 
-        $pdf->Cell(60, 5, "Payment Literal {$invoice->PaymentLiteral}", 0, 0);
+        $pdf->Cell(60, 5, "Payment Literal {$invoice->PaymentLiteral} {$currency}", 0, 0);
         $pdf->Cell(0, 5, '', 0, 0);
         $pdf->Cell(0, 5, '', 0, 1);
 
@@ -242,16 +251,26 @@ class TransactionsController extends AbstractController
 
         $pdf->SetFont("Arial", '', 10);
 
+        $totalPrice = 0;
         foreach ($products as $product) {
-            $total =  $product->ProductPrice *  $product->Quantity;
+            $total =  ($product->ProductPrice / $product->Tax) *  $product->Quantity ;
+            $totalPrice += $total;
             $pdf->Cell(23, 6, "{$product->Name}", 1, 0, 'C');
             $pdf->Cell(25, 6, "{$product->BarCode}", 1, 0, 'C');
             $pdf->Cell(70, 6, "{$product->Description}", 1, 0, 'C');
             $pdf->Cell(15, 6, "{$product->Quantity}", 1, 0, 'C');
-            $pdf->Cell(30, 6, "{$product->ProductPrice}", 1, 0, 'C');
+            $pdf->Cell(30, 6, "{$product->ProductPrice} {$currency}", 1, 0, 'C');
             $pdf->Cell(10, 6, "{$product->Tax}", 1, 0, 'C');
             $pdf->Cell(25, 6, "{$total}", 1, 1, 'C');
         }
+
+        if ($invoice->DiscountType == "percentage") {
+            $totalPrice *= $invoice->Discount;
+        } else {
+            $totalPrice -= $invoice->Discount;
+        }
+        $pdf->Cell(198, 6, "Amount ", 1, 1, 'L');
+        $pdf->Cell(198, -6, "{$totalPrice} {$currency}", 0, 0, 'R');
 
         if ($to == 'D') {
             $pdf->Output("invoice.pdf", 'D');

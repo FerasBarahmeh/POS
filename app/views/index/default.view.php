@@ -50,7 +50,7 @@
                 <thead>
                 <tr>
                     <th><?= $text_id ?></th>
-                    <th><?= $text_price ?></th>
+                    <th><?= $text_price . ' <p class="bold-font inline-block">' . $currency . '</p>' ?></th>
                     <th><?= $text_time ?></th>
                     <th><?= $text_num_product ?></th>
                     <th><?= $text_discount ?></th>
@@ -102,7 +102,7 @@
                 <thead>
                 <tr>
                     <th><?= $text_id ?></th>
-                    <th><?= $text_price ?></th>
+                    <th><?= $text_price . ' <p class="bold-font inline-block">' . $currency . '</p>' ?></th>
                     <th><?= $text_time ?></th>
                     <th><?= $text_num_product ?></th>
                     <th><?= $text_discount ?></th>
@@ -159,7 +159,7 @@
                             <tr>
                                 <th><?= $text_id ?></th>
                                 <th><?= $text_type ?></th>
-                                <th><?= $text_price ?></th>
+                                <th><?= $text_price . ' <p class="bold-font inline-block">' . $currency . '</p>' ?></th>
                                 <th><?= $text_time ?></th>
                                 <th><?= $text_num_product ?></th>
                                 <th><?= $text_discount ?></th>
@@ -264,7 +264,7 @@
         </section>
 
         <section class="left-nav-section">
-            <h2 class="title"><i class="fa fa-dollar-sign" aria-hidden="true"></i> <?= $price_statistics ?></h2>
+            <h2 class="title"><p class=" inline-block"> <?= $currency ?> </p> <?= $price_statistics ?></h2>
 
             <div class="block">
                 <div class="data">

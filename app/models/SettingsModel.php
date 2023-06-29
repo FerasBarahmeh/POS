@@ -54,6 +54,16 @@ class SettingsModel extends AbstractModel
     public static function getLanguage(int $userId): mixed
     {
         $sql = "SELECT `Language` FROM " . static::$tableName . " WHERE `UserId` = " . $userId;
-        return (new SettingsModel())->getRow($sql);
+        return (new SettingsModel())->getRow($sql)->Language;
+    }
+    /**
+     * Get currency User From Database
+     * @param int $userId
+     * @return mixed
+     */
+    public static function getCurrency(int $userId): mixed
+    {
+        $sql = "SELECT `Currency` FROM " . static::$tableName . " WHERE `UserId` = " . $userId;
+        return (new SettingsModel())->getRow($sql)->Currency;
     }
 }
