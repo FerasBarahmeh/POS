@@ -264,7 +264,7 @@
         </section>
 
         <section class="left-nav-section">
-            <h2 class="title"><p class=" inline-block"> <?= $currency ?> </p> <?= $price_statistics ?></h2>
+            <h2 class="title"><i class="fa fa-dollar-sign" aria-hidden="true"></i> <?= $price_statistics ?></h2>
 
             <div class="block">
                 <div class="data">

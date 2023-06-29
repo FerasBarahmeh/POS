@@ -1,5 +1,6 @@
 div.action-view {
     padding-left: unset !important;
+    overflow: hidden;
 }
 section.content {
     height: 100%;
