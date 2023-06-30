@@ -4,6 +4,7 @@ namespace APP\Helpers\PublicHelper;
 
 
 
+use APP\Models\SettingsModel;
 use ReflectionClass;
 use ReflectionException;
 
@@ -191,6 +192,38 @@ trait PublicHelper
         }
 
         return $randomizedArray;
+    }
+
+    /**
+     * method to get number month as int like 1 to return it as name
+     * @version 1.0
+     * @author Feras Barahemh
+     * @param $monthAsNumber
+     * @return string return name month
+     */
+    public function nameMonth($monthAsNumber): string
+    {
+        $lang = SettingsModel::getLanguage($this->session->user->UserId);
+        if ($lang == null) $lang = "en";
+        $months = null;
+        if ($lang == 'en') {
+            $months = [
+                1 => "January", 2 => "February", 3 => "March", 4 => "April",
+                5 => "May", 6 => "June", 7 => "July", 8 => "August",
+                9 => "September", 10 => "October", 11 => "November", 12 => "December"
+            ];
+        } else {
+            $months = [
+                1 => "يناير", 2 => "فبراير", 3 => "مارس", 4 => "أبريل",
+                5 => "مايو", 6 => "يونيو", 7 => "يوليو", 8 => "أغسطس",
+                9 => "سبتمبر", 10 => "أكتوبر", 11 => "نوفمبر", 12 => "ديسمبر"
+            ];
+        }
+
+        if (array_key_exists($monthAsNumber, $months)) {
+            return $months[$monthAsNumber];
+        }
+        return "Invalid month number";
     }
 
 }
