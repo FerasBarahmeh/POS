@@ -1,7 +1,7 @@
 <?php
 // Title
-$content["title"] = "المخزن";
-$content["title"] = "المتجر";
+$content["title"] = "لوحه التحكم";
+$content["title_header"] = "لوحه التحكم";
 $content["suppliers"] = "الموردين";
 $content["clients"] = "العملاء";
 $content["text_transactions"] = "المعاملات";

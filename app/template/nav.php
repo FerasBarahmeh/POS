@@ -57,9 +57,18 @@
             </ul>
         </li>
 
-        <li class="cursor-pointer main-li <?= $this->compareURL('/reports') === true ? 'selected' : '' ?>">
-            <i class="fa fa-chart-pie" aria-hidden="true"></i>
-            <a href="/reports"><span class="inline-block"><?= $text_nav_reports ?></span></a>
+
+        <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/reports') === true ? 'selected' : '' ?>">
+            <button class="between-ele w-fu">
+                <span class="inline-block"><a href="/reports"><i class="fa fa-chart-pie" aria-hidden="true"></i><?= $text_nav_reports ?></a></span>
+                <i class="fa fa-angle-down angle "></i>
+            </button>
+
+            <ul class="sub-menu w-fu mtb-10 un-visible">
+                <li class="li-level-2 between-ele"><a href="/reports/daily" class="sub-link"><?= $text_nav_reports_daily ?></a><i class="fa fa-shopping-cart" aria-hidden="true"></i></li>
+                <li class="li-level-2 between-ele"><a href="/reports/monthly" class="sub-link"><?= $text_nav_reports_monthly ?></a> <i class="fas fa-comment-dollar"></i></li>
+                <li class="li-level-2 between-ele"><a href="/reports/yearly" class="sub-link"><?= $text_nav_reports_yearly ?></a> <i class="fas fa-comment-dollar"></i></li>
+            </ul>
         </li>
 
         <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/store') === true ? 'selected' : '' ?>">

@@ -1,0 +1,21 @@
+.figures {
+    display: flex;
+    margin-top: 20px;
+}
+.figures canvas {
+    height: 300px;
+}
+h4 {
+    width: 97%;
+    color: var(--text-black-900);
+    margin: 26px 0;
+    background-color: var(--bg-black-100);
+    padding: 10px;
+    border-radius: 4px;
+}
+h4 svg,
+h4 i {
+    color: var(--bg-black-70);
+    margin-right: 10px;
+    font-size: 20px !important;
+}

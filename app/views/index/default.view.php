@@ -1,4 +1,5 @@
-<section class="content">
+<h1 class="title-header"><i class="fa fa-chart-pie" aria-hidden="true"></i>  <?= $title_header ?></h1>
+<section class="content mtb-20">
     <section class="general-statistics">
         <header class="statistics">
             <div class="window">

@@ -547,11 +547,15 @@ div.action-view {
 }
 h1.title-header {
     font-size: 40px;
-    color: #777;
+    color: var(--text-black-700);
+    width: fit-content;
+    padding-right: 10px;
+    margin-bottom: 10px;
 }
 h1.title-header i,
 h1.title-header svg {
     margin-left: 10px;
+    color: var(--bg-black-100);
 }
 /* End Action View */
 

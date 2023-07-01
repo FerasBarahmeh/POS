@@ -195,13 +195,10 @@ trait PublicHelper
     }
 
     /**
-     * method to get number month as int like 1 to return it as name
-     * @version 1.0
-     * @author Feras Barahemh
-     * @param $monthAsNumber
-     * @return string return name month
+     * to get name month
+     * @return string[]
      */
-    public function nameMonth($monthAsNumber): string
+    public function getMonthNames(): array
     {
         $lang = SettingsModel::getLanguage($this->session->user->UserId);
         if ($lang == null) $lang = "en";
@@ -219,11 +216,23 @@ trait PublicHelper
                 9 => "سبتمبر", 10 => "أكتوبر", 11 => "نوفمبر", 12 => "ديسمبر"
             ];
         }
+        return $months;
+    }
+    /**
+     * method to get number month as int like 1 to return it as name
+     * @param int|string $monthAsNumber month as numeric
+     * @return string|false return name month if number is valid else return false
+     *@version 1.1
+     * @author Feras Barahemh
+     */
+    public function nameMonth(int|string $monthAsNumber): string|false
+    {
+        $months = $this->getMonthNames();
 
         if (array_key_exists($monthAsNumber, $months)) {
             return $months[$monthAsNumber];
         }
-        return "Invalid month number";
+        return false;
     }
 
 }

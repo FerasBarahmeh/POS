@@ -32,6 +32,9 @@ $content["text_nav_purchases"]                  =  "Purchases";
 $content["text_nav_sell_product"]              =  "Sell Product";
 $content["text_nav_buy_product"]              =  "Buy Product";
 $content["text_nav_reports"]                    =  "Reports";
+$content["text_nav_reports_daily"]              =  "Daily Reports";
+$content["text_nav_reports_monthly"]              =  "Monthly Reports";
+$content["text_nav_reports_yearly"]              =  "Yearly Reports";
 $content["text_nav_Notifications"]              =  "Notifications";
 
 // Start Errors

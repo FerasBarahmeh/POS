@@ -1,5 +1,6 @@
 <?php
-$content["title"] = "Store";
+$content["title"] = "Dashboard";
+$content["title_header"] = "Dashboard";
 $content["suppliers"] = "Suppliers";
 $content["clients"] = "Clients";
 $content["text_transactions"] = "Transactions";
