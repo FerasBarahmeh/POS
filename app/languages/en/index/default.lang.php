@@ -21,3 +21,5 @@ $content["sales_amount"] = "Sales amount";
 $content["purchases_amount"] = "Purchases amount";
 $content["sales_loans_amount"] = "sales loans amount";
 $content["purchases_loans_amount"] = "purchases loans amount";
+$content["general_info"] = "General Information";
+$content["best_selling_products"] = "Best Selling Product";

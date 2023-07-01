@@ -81,6 +81,9 @@ section.content {
     border-radius: 10px 10px 0 0;
     padding-top: 10px;
     padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .left-nav-section .title p,
 .left-nav-section .title i,

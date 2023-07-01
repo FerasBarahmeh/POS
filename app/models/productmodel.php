@@ -112,4 +112,21 @@ class ProductModel extends AbstractModel
         $sql = "UPDATE " . static::$tableName . " SET  Quantity = Quantity + " . $qty . " WHERE  ProductId = " . $id;
         return (new ProductModel())->executeQuery($sql);
     }
+
+    public static function bestSellingProducts(string $property="Name")
+    {
+        $sql = "
+        SELECT 
+            COUNT(P.ProductId) AS repeated, P.Name
+        FROM 
+            products AS P
+        INNER JOIN 
+            sales_invoices_details SID ON P.ProductId = SID.ProductId 
+        GROUP BY 
+            P.ProductId
+        ORDER BY 
+            repeated DESC
+        LIMIT 1;";
+        return (new ProductModel())->getRow($sql)->$property;
+    }
 }

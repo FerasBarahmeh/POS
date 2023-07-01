@@ -22,6 +22,7 @@ function chartAmountInMonth(labels, amounts, year) {
         },
         options: {
             responsive: true,
+            fill: true,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -70,6 +71,7 @@ function chartCountInvoiceInMonth(labels, counts, year) {
         },
         options: {
             responsive: true,
+            fill: true,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -253,6 +255,7 @@ function chartAmountYearly(labels, data) {
         },
         options: {
             responsive: true,
+            fill: true,
             scales: {
                 y: {
                     beginAtZero: true,
@@ -299,6 +302,7 @@ function chartCountInvoiceInYearly(labels, data) {
         },
         options: {
             responsive: true,
+            fill: true,
             scales: {
                 y: {
                     beginAtZero: true,

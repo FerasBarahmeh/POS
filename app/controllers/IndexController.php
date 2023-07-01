@@ -10,6 +10,7 @@ use APP\LIB\FilterInput;
 use APP\LIB\Template\TemplateHelper;
 use APP\Models\ClientModel;
 use APP\Models\ProductCategoriesModel;
+use APP\Models\ProductModel;
 use APP\Models\PurchasesInvoicesModel;
 use APP\Models\PurchasesInvoicesReceiptsModel;
 use APP\Models\SalesInvoicesModel;
@@ -61,6 +62,7 @@ class IndexController extends AbstractController  {
         $this->_info["salesLoans"]     = SalesInvoicesReceiptsModel::sum(column: "PaymentLiteral");
         $this->_info["purchasesAmount"]     = PurchasesInvoicesReceiptsModel::sum(column: "PaymentAmount");
         $this->_info["purchasesLoans"]     = PurchasesInvoicesReceiptsModel::sum(column: "PaymentLiteral");
+        $this->_info["bestSellingProducts"]     = ProductModel::bestSellingProducts();
 
 
 
