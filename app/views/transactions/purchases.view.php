@@ -1,4 +1,4 @@
-<h1 class="title-header"><i class="fa fa-briefcase"></i><?= $title_header ?></h1>
+<h1 class="title-header"><i class="fa fa-cash-register" aria-hidden="true"></i><?= $title_header ?></h1>
 
 <section class="transactions-container">
     <section class="options">

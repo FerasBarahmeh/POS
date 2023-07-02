@@ -62,7 +62,8 @@ class IndexController extends AbstractController  {
         $this->_info["salesLoans"]     = SalesInvoicesReceiptsModel::sum(column: "PaymentLiteral");
         $this->_info["purchasesAmount"]     = PurchasesInvoicesReceiptsModel::sum(column: "PaymentAmount");
         $this->_info["purchasesLoans"]     = PurchasesInvoicesReceiptsModel::sum(column: "PaymentLiteral");
-        $this->_info["bestSellingProducts"]     = ProductModel::bestSellingProducts();
+        $this->_info["bestSellingProducts"]     = ProductModel::bestSellingProductLastMonth();
+        $this->_info["destSellingProductPreviousMonth"]= ProductModel::bestSellingProductsInMonth();
 
 
 

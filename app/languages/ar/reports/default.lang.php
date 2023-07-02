@@ -9,3 +9,5 @@ $content["chart_sales"] = "المبيغات";
 $content["chart_purchases"] = "المشتريات";
 $content["chart_count_invoice"] = "عدد الفواتير";
 $content["chart_price"] = "السعر";
+$content["pieces"] = "قطعة";
+$content["short_statistics"] = "إحصاءات موجزة";

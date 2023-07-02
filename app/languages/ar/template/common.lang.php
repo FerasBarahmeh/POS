@@ -34,6 +34,10 @@ $content["text_nav_sell_product"]          =  "بيع منتج";
 $content["text_nav_buy_product"]          =  "شراء منتج";
 $content["text_nav_reports"]                =  "تقارير";
 $content["text_nav_Notifications"]          =  "الاشعارات";
+$content["text_nav_reports_daily"]          =  "التقارير اليومية";
+$content["text_nav_reports_monthly"]          =  "التقارير الشهرية";
+$content["text_nav_reports_yearly"]          =  "التقارير السنوية";
+
 
 // Start Errors
 $content["text_access_denied_title"]        =  "رفض دخول";

@@ -94,6 +94,11 @@ class TransactionsSalesModel extends AbstractModel
         return (new TransactionsSalesModel())->get($sql);
     }
 
+    /**
+     * to get last invoices
+     * @param int $limit number of last invoices default return last 5 invoice
+     * @return false|ArrayIterator
+     */
     public static function lastInvoice(int $limit=5): false|ArrayIterator
     {
         $sql = "
@@ -113,7 +118,12 @@ class TransactionsSalesModel extends AbstractModel
         ";
         return (new TransactionsSalesModel())->get($sql);
     }
-    public static function revenueToday()
+
+    /**
+     * get sum revenue today
+     * @return mixed
+     */
+    public static function revenueToday(): mixed
     {
         $sql = "
             SELECT 
@@ -125,7 +135,12 @@ class TransactionsSalesModel extends AbstractModel
         ";
         return (new TransactionsSalesModel())->getRow($sql)->revenue;
     }
-    public static function financialReceivablesToday()
+
+    /**
+     * to get Financial Receivables Today
+     * @return mixed
+     */
+    public static function financialReceivablesToday(): mixed
     {
         $sql = "
             SELECT 

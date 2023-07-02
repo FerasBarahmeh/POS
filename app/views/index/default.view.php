@@ -1,4 +1,4 @@
-<h1 class="title-header"><i class="fa fa-chart-line" aria-hidden="true"></i>  <?= $title_header ?></h1>
+<h1 class="title-header"><i class="fa fa-chart-pie" aria-hidden="true"></i>  <?= $title_header ?></h1>
 <section class="content mtb-20">
     <section class="general-statistics">
         <header class="statistics">
@@ -301,13 +301,23 @@
 
         </section>
         <section class="left-nav-section">
-            <h2 class="title"><i class="fa fa-info" aria-hidden="true"></i><?= $general_info ?></h2>
+            <h2 class="title"><i class="fa fa-info" aria-hidden="true"></i> <?= $general_info ?></h2>
+
+
             <div class="block">
                 <div class="data">
                     <div class="number"><?= $bestSellingProducts ?></div>
                     <div class="field"><?= $best_selling_products ?></div>
                 </div>
-                <div class="smile"><i class="fa fa-chart-line" aria-hidden="true"></i>  </div>
+                <div class="smile"><i class="fa fa-tags"></i></div>
+            </div>
+
+            <div class="block">
+                <div class="data">
+                    <div class="number"><?= $destSellingProductPreviousMonth ?></div>
+                    <div class="field"><?= $best_selling_products_previous_month ?></div>
+                </div>
+                <div class="smile"><i class="fa fa-tags"></i></div>
             </div>
 
 

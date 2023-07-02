@@ -35,7 +35,7 @@
         <li class="cursor-pointer main-li sort-col grand-li <?= $this->compareURL('/purchases') === true || $this->compareURL('/purchases')  ? 'selected' : '' ?> ">
 
             <button class="between-ele w-fu">
-                <span class="inline-block"><a href="/purchases"><i class="fa fa-cash-register"></i><?= $text_nav_purchases ?></a></span>
+                <span class="inline-block"><a href="/purchases"><i class="fa fa-cash-register" aria-hidden="true"></i><?= $text_nav_purchases ?></a></span>
                 <i class="fa fa-angle-down angle "></i>
             </button>
             <ul class="sub-menu w-fu mtb-10 un-visible">

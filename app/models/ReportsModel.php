@@ -113,4 +113,59 @@ class ReportsModel extends AbstractModel
         ";
         return (new ReportsModel())->get($sql);
     }
+
+    /**
+     * to get sales in the last month
+     * @return false|ArrayIterator
+     */
+    public static function getInvoicesLastMonth(): false|ArrayIterator
+    {
+        $sql = "
+            SELECT 
+               DISTINCT I.*, R.*, C.* 
+            FROM 
+                sales_invoices AS I 
+            INNER JOIN 
+                    sales_invoices_receipts AS R 
+            ON 
+                R.InvoiceId = I.InvoiceId 
+            JOIN 
+                    clients as C 
+            ON
+                I.ClientId = C.ClientId
+            GROUP BY 
+                YEAR(I.Created), MONTH(I.Created) 
+            ORDER BY 
+                YEAR(I.Created), MONTH(I.Created);
+        ";
+        return (new ReportsModel())->get($sql);
+
+    }
+    /**
+     * to get sales in the last year
+     * @return false|ArrayIterator
+     */
+    public static function getInvoicesLastYear(): false|ArrayIterator
+    {
+        $sql = "
+            SELECT 
+               DISTINCT I.*, R.*, C.* 
+            FROM 
+                sales_invoices AS I 
+            INNER JOIN 
+                    sales_invoices_receipts AS R 
+            ON 
+                R.InvoiceId = I.InvoiceId 
+            JOIN 
+                    clients as C 
+            ON
+                I.ClientId = C.ClientId
+            GROUP BY 
+                YEAR(I.Created)
+            ORDER BY 
+                YEAR(I.Created)
+        ";
+        return (new ReportsModel())->get($sql);
+
+    }
 }

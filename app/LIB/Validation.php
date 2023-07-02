@@ -306,7 +306,7 @@ trait Validation
         }
     }
 
-    public function isAppropriate($roles, $typeInput, $messagesLocation): array|bool
+    public function isAppropriate($roles, $typeInput, $messagesLocation=null): array|bool
     {
         if ($messagesLocation == MessageErrorLocation::$post) {
             $this->messagesLocation = MessageErrorLocation::$post;

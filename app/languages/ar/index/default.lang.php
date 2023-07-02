@@ -22,3 +22,4 @@ $content["sales_amount"] = "مبلغ المبيعات";
 $content["purchases_amount"] = "مبلغ الشراء";
 $content["sales_loans_amount"] = "مبلغ قروض المبيعات";
 $content["purchases_loans_amount"] = "مبلغ قروض الشراء";
+$content["best_selling_products_previous_month"] = "المنتج الاكثر مبيعا الاشعر الماضي";

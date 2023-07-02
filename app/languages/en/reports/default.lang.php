@@ -12,3 +12,5 @@ $content["chart_sales"] = "Sales";
 $content["chart_purchases"] = "Purchases";
 $content["chart_count_invoice"] = "Count Involves";
 $content["chart_price"] = "Price";
+$content["pieces"] = "Pieces";
+$content["short_statistics"] = "Short Statistics";

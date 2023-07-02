@@ -5,103 +5,108 @@ let messages = null;
 
 function chartAmountInMonth(labels, amounts, year) {
     const salesCanvas = document.getElementById('amountMonthly');
-    new Chart(salesCanvas, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: messages["chart_sales"],
-                data: amounts.salesValues,
-                backgroundColor: 'rgba(54, 162, 235, 0.5)'
+
+    if (salesCanvas != null) {
+        new Chart(salesCanvas, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: messages["chart_sales"],
+                    data: amounts.salesValues,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                },
+                    {
+                        label: messages["chart_purchases"],
+                        data: amounts.purchaserValue,
+                        backgroundColor: 'rgba(34, 40, 49, 0.7)'
+                    }]
             },
-                {
-                    label: messages["chart_purchases"],
-                    data: amounts.purchaserValue,
-                    backgroundColor: 'rgba(34, 40, 49, 0.7)'
-            }]
-        },
-        options: {
-            responsive: true,
-            fill: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: messages["chart_amount"]
+            options: {
+                responsive: true,
+                fill: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: messages["chart_amount"]
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: messages["chart_months"]
+                        }
                     }
                 },
-                x: {
+                plugins: {
+                    titleY: messages["chart_price"],
                     title: {
                         display: true,
-                        text: messages["chart_months"]
+                        text: messages["chart_number_amount_invoice_month"] + ' ' + year,
+                        font: {
+                            size: 14,
+                        },
                     }
-                }
+                },
             },
-            plugins: {
-                titleY: messages["chart_price"],
-                title: {
-                    display: true,
-                    text: messages["chart_number_amount_invoice_month"] + ' ' + year,
-                    font: {
-                        size: 14,
-                    },
-                }
-            },
-        },
 
-    });
+        });
+    }
 }
 function chartCountInvoiceInMonth(labels, counts, year) {
     const salesCanvas = document.getElementById('countMonthly');
-    new Chart(salesCanvas, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: messages["chart_sales"],
-                data: counts.salesCount,
-                backgroundColor: 'rgba(54, 162, 235, 0.5)'
+    if (salesCanvas != null) {
+        new Chart(salesCanvas, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: messages["chart_sales"],
+                    data: counts.salesCount,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                },
+                    {
+                        label: messages["chart_purchases"],
+                        data: counts.purchaserCount,
+                        backgroundColor: 'rgba(34, 40, 49, 0.7)'
+                    }]
             },
-                {
-                    label: messages["chart_purchases"],
-                    data: counts.purchaserCount,
-                    backgroundColor: 'rgba(34, 40, 49, 0.7)'
-                }]
-        },
-        options: {
-            responsive: true,
-            fill: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0,
+            options: {
+                responsive: true,
+                fill: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0,
+                        },
+                        title: {
+                            display: true,
+                            text: messages["chart_count_invoice"]
+                        }
                     },
-                    title: {
-                        display: true,
-                        text: messages["chart_count_invoice"]
+                    x: {
+                        title: {
+                            display: true,
+                            text: messages["chart_months"]
+                        }
                     }
                 },
-                x: {
+                plugins: {
                     title: {
                         display: true,
-                        text: messages["chart_months"]
+                        text: messages["chart_number_invoice_month"] + ' ' + year,
+                        font: {
+                            size: 14,
+                        },
                     }
-                }
+                },
             },
-            plugins: {
-                title: {
-                    display: true,
-                    text: messages["chart_number_invoice_month"] + ' ' + year,
-                    font: {
-                        size: 14,
-                    },
-                }
-            },
-        },
 
-    });
+        });
+    }
 }
 
 function setPricesMonthly(data) {
@@ -239,100 +244,106 @@ function prepareCountYearly(data) {
 }
 function chartAmountYearly(labels, data) {
     const salesCanvas = document.getElementById('amountYearly');
-    new Chart(salesCanvas, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: messages["chart_sales"],
-                data: data.sales.values,
-                backgroundColor: 'rgba(54, 162, 235, 0.5)'
-            },{
-                label: messages["chart_purchases"],
-                data: data.purchases.values,
-                backgroundColor: 'rgba(34, 40, 49, 0.7)'
-            }]
-        },
-        options: {
-            responsive: true,
-            fill: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: messages["chart_amount"]
+    if (salesCanvas != null) {
+        new Chart(salesCanvas, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: messages["chart_sales"],
+                    data: data.sales.values,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                },{
+                    label: messages["chart_purchases"],
+                    data: data.purchases.values,
+                    backgroundColor: 'rgba(34, 40, 49, 0.7)'
+                }]
+            },
+            options: {
+                responsive: true,
+                fill: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: messages["chart_amount"]
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: messages["chart_yearly"]
+                        }
                     }
                 },
-                x: {
+                plugins: {
+                    titleY: messages["chart_price"],
                     title: {
                         display: true,
-                        text: messages["chart_yearly"]
+                        text: messages["chart_number_amount_invoice_yearly"],
+                        font: {
+                            size: 14,
+                        },
                     }
-                }
+                },
             },
-            plugins: {
-                titleY: messages["chart_price"],
-                title: {
-                    display: true,
-                    text: messages["chart_number_amount_invoice_yearly"],
-                    font: {
-                        size: 14,
-                    },
-                }
-            },
-        },
-    });
+        });
+    }
+
 }
 function chartCountInvoiceInYearly(labels, data) {
     const salesCanvas = document.getElementById('countYearly');
-    new Chart(salesCanvas, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: messages["chart_sales"],
-                data: data.sales.counts,
-                backgroundColor: 'rgba(54, 162, 235, 0.5)'
-            },{
-                label: messages["chart_purchases"],
-                data: data.purchases.counts,
-                backgroundColor: 'rgba(34, 40, 49, 0.7)'
-            },]
-        },
-        options: {
-            responsive: true,
-            fill: true,
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0,
+    if (salesCanvas != null) {
+        new Chart(salesCanvas, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: messages["chart_sales"],
+                    data: data.sales.counts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                },{
+                    label: messages["chart_purchases"],
+                    data: data.purchases.counts,
+                    backgroundColor: 'rgba(34, 40, 49, 0.7)'
+                },]
+            },
+            options: {
+                responsive: true,
+                fill: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0,
+                        },
+                        title: {
+                            display: true,
+                            text: messages["chart_count_invoice"]
+                        }
                     },
-                    title: {
-                        display: true,
-                        text: messages["chart_count_invoice"]
+                    x: {
+                        title: {
+                            display: true,
+                            text: messages["chart_yearly"]
+                        }
                     }
                 },
-                x: {
+                plugins: {
                     title: {
                         display: true,
-                        text: messages["chart_yearly"]
+                        text: messages["chart_number_invoice_yearly"],
+                        font: {
+                            size: 14,
+                        },
                     }
-                }
+                },
             },
-            plugins: {
-                title: {
-                    display: true,
-                    text: messages["chart_number_invoice_yearly"],
-                    font: {
-                        size: 14,
-                    },
-                }
-            },
-        },
 
-    });
+        });
+    }
+
 }
 fetch("http://estore.local/reports/getYearlySalesAjax", {
     "method": "POST",
