@@ -1,12 +1,3 @@
-<?php
-    function setPathInHeader(): void
-    {
-        global $title;
-        if (isset($title)) {
-            echo  " >> " . $title;
-        }
-    }
-?>
 <header class="main between-ele">
     <div class="title">
         <span
@@ -18,20 +9,13 @@
         <h1 class="title inline-block ml-15 fs-20 fw-bold">
             <?= $text_header_title  ?>
             <?php if (isset($title)): ?>
-                <?= ' >> ' . $title ?>
+                <?= isset($title_path) ?  '| ' . $title_path . ' | ' . $title : ' | ' . $title ?>
             <?php endif; ?>
         </h1>
 
     </div>
 
     <div class="options flex gap-15">
-
-        <div class="icons flex gap-10 cursor-pointer">
-            <a href="/language" class="description" description="change language"><i class="fa fa-globe" aria-hidden="true"></i></a>
-            <a href="/" class="description" description="Notifications"><i class="fa fa-bell"  aria-hidden="true"></i></a>
-            <a href="/" class="description" description="Massages"><i class="fa fa-comment-dots" aria-hidden="true"></i></a>
-
-        </div>
 
         <div class="drop-down relative" id="">
             <div class="name cursor-pointer">

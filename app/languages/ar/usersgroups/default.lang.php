@@ -5,7 +5,7 @@ $content["title"] = "مجموعات المستخدمين";
 
 // Title Header
 $content["title_header"] = "مجموعات المستخدمين";
-
+$content["title_path"] = "مجموعات";
 // content page
 $content["text_content_add_group"]                = "اضافة مجموعة";
 $content["text_content_search_group"]             = "ابحث مستخدم";

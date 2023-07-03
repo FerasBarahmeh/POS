@@ -3,8 +3,8 @@
 $content["title"] = "شراء المنتجات";
 
 // العنوان الرئيسي
-$content["title_header"] = "شراء المنتجات";
-
+$content["title_header"] = "شراء";
+$content["title_path"] = "شراء";
 // الحقول
 $content["text_Name"] = "الاسم";
 $content["text_Email"] = "البريد الإلكتروني";

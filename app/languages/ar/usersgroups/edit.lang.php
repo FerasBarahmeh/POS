@@ -5,6 +5,7 @@ $content["title"] = "تعديل المجموعة";
 
 // Title Header
 $content["title_header"] = "تعديل المجموعة";
+$content["title_path"] = "مجموعات";
 
 // Inputs
 $content["text_name_group"]                     = "اسم المجموعة";

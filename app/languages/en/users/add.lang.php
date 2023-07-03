@@ -5,7 +5,7 @@ $content["title"] = "Add User";
 
 // Title Header
 $content["title_header"] = "Add User";
-
+$content["title_path"] = "Users";
 
 // Field
 $content["table_LastName"]              = "Last Name";

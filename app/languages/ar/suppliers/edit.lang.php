@@ -5,3 +5,4 @@ $content["title"] = "تعديل بيانات ممول";
 
 // Title Header
 $content["title_header"] = "تعديل بيانات ممول";
+$content["title_path"] = "الممولين";

@@ -4,6 +4,7 @@ $content["title"] = "المعاملات";
 
 // Title Header
 $content["title_header"] = "المعاملات";
+$content["title_path"] = "المعاملات";
 
 $content["text_filter_by_transaction_Type"] = "تصفية البيانات حسب قيمة العامود";
 $content["text_filter_by_transaction_Type_placeholder"] = "قيمة العامود";

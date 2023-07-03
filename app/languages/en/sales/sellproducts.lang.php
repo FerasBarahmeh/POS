@@ -4,7 +4,7 @@ $content["title"] = "Sell Products";
 
 // Title Header
 $content["title_header"] = "Sell Products";
-
+$content["title_path"] = "Sales";
 
 // Field
 $content["text_Name"] = "Name";

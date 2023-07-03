@@ -5,6 +5,7 @@ $content["title"] = "اضافة مجموعة";
 
 // Title Header
 $content["title_header"] = "اضافة مجموعة";
+$content["title_path"] = "مجموعات";
 
 // Inputs
 $content["text_name_group"]                     = "اسم المجموعة";

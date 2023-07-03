@@ -4,6 +4,7 @@ $content["title"] = "Buy Products";
 
 // Title Header
 $content["title_header"] = "Buy Products";
+$content["title_path"] = "Purchases";
 
 
 // Field

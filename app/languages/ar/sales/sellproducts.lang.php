@@ -3,8 +3,8 @@
 $content["title"] = "بيع المنتجات";
 
 // Title Header
-$content["title_header"] = "بيع المنتجات";
-
+$content["title_header"] = "البيع";
+$content["title_path"] = "البيع";
 // Field
 $content["text_Name"] = "الاسم";
 $content["text_Email"] = "البريد الإلكتروني";

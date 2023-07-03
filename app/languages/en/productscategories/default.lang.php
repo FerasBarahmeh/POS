@@ -5,7 +5,7 @@ $content["title"] = "List Category";
 
 // Title Header
 $content["title_header"] = "List Category";
-
+$content["title_path"] = "Category Product";
 // content page
 $content["text_content_add_category"]       = "Add Category";
 $content["text_content_search_category"]    = "Find Category";

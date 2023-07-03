@@ -5,7 +5,7 @@ $content["title"] = "الاقسام";
 
 // Title Header
 $content["title_header"] = "الاقسام";
-
+$content["title_path"] = "الاقسام";
 // content page
 $content["text_content_add_category"]       = "اضافة قسم";
 $content["text_content_search_category"]    = "البحث عن قسم";

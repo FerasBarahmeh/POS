@@ -5,7 +5,7 @@ $content["title"] = "العملاء";
 
 // Title Header
 $content["title_header"] = "العملاء";
-
+$content["title_path"] = "العملاء";
 // content page
 $content["text_content_add_client"]                = "اضافة عميل";
 $content["text_content_search_client"]             = "البحث عن عميل";

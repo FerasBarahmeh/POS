@@ -5,7 +5,7 @@ $content["title"] = "Modify User Information";
 
 // Title Header
 $content["title_header"] = "Modify User Information";
-
+$content["title_path"] = "Users";
 
 // Field
 $content["table_UserName"]              = "User Name";

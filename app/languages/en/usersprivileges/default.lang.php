@@ -5,7 +5,7 @@ $content["title"] = "Users Privileges";
 
 // Title Header
 $content["title_header"] = "User Privileges";
-
+$content["title_path"] = "Privileges";
 
 // content page
 $content["text_content_add_privilege"]                = "Add Privilege";

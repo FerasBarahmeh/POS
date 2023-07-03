@@ -5,7 +5,7 @@ $content["title"] = "Add Client";
 
 // Title Header
 $content["title_header"] = "Add Client";
-
+$content["title_path"] = "Clients";
 
 // Field
 $content["table_Name"]          = "Name";

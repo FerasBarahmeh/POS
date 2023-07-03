@@ -1,6 +1,7 @@
 <?php
 $content["title"] = "التقارير";
 $content["title_header"] = "التقارير";
+$content["title_path"] = "التقارير";
 $content["chart_number_invoice_month"] = "عدد الفواتير خلال السنة";
 $content["chart_number_amount_invoice_month"] = " مبالغ خلال السنة";
 $content["chart_months"] = "الاشهر";

@@ -5,6 +5,7 @@ $content["title"] = "تعديل الصلاحيات";
 
 // Title Header
 $content["title_header"] = "تعديل الصلاحيات";
+$content["title_path"] = "صلاحيات";
 
 // Inputs
 $content["text_title_privilege"]                 = "اسم الصلاحية";

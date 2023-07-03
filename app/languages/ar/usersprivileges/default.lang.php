@@ -5,6 +5,7 @@ $content["title"] = "صلاحيات المستخدمين";
 
 // Title Header
 $content["title_header"] = "صلاحيات المستخدمين";
+$content["title_path"] = "صلاحيات";
 
 // content page
 $content["text_content_add_privilege"]                = "اضافة صلاحية";

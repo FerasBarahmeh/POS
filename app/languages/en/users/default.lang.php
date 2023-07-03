@@ -5,7 +5,7 @@ $content["title"] = "List Users";
 
 // Title Header
 $content["title_header"] = "List Users";
-
+$content["title_path"] = "Users";
 // content page
 $content["text_content_add_user"]                = "Add User";
 $content["text_content_search_user"]             = "Find User";

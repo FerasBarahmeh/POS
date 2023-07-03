@@ -4,7 +4,7 @@ $content["title"] = "Transactions";
 
 // Title Header
 $content["title_header"] = "Transaction";
-
+$content["title_path"] = "Transaction";
 $content["text_filter_by_transaction_Type"] = "Filter By value column";
 $content["text_filter_by_transaction_Type_placeholder"] = "Write value column";
 $content["text_filter_by_range"] = "Filter By Range Values (start-end)";

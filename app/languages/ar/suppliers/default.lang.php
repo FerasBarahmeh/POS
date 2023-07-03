@@ -5,7 +5,7 @@ $content["title"] = "الممولين";
 
 // Title Header
 $content["title_header"] = "الممولين";
-
+$content["title_path"] = "الممولين";
 // content page
 $content["text_content_add_supplier"]                = "اضافة ممول";
 $content["text_content_search_supplier"]             = "البحث عن ممول";

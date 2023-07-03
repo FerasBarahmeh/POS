@@ -5,7 +5,7 @@ $content["title"] = "المنتجات";
 
 // Title Header
 $content["title_header"] = "المنتجات";
-
+$content["title_path"] = "المنتجات";
 // content page
 $content["text_content_add_product"]       = "اضافة منتج";
 $content["text_content_search_product"]    = "البحث عن منتج";

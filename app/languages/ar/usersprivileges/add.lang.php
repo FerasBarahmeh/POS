@@ -5,6 +5,7 @@ $content["title"] = "اضافة صلاحية";
 
 // Title Header
 $content["title_header"] = "اضافة صلاحية";
+$content["title_path"] = "صلاحيات";
 
 // Inputs
 $content["text_title_privilege"]                = "اسم الصلاحية";

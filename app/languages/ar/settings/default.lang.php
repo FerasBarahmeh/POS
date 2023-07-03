@@ -2,6 +2,7 @@
 // Title
 $content["title"] = "إعدادات عامة";
 $content["title_header"] = "إعدادات عامة";
+$content["title_path"] = "إعدادات";
 $content["text_edit"] = "تحرير";
 $content["text_save"] = "حفظ";
 $content["text_cancel"] = "إلغاء";

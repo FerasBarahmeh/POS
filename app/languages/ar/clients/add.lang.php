@@ -5,7 +5,7 @@ $content["title"] = "اضافة عميل";
 
 // Title Header
 $content["title_header"] = "اضافة عميل";
-
+$content["title_path"] = "العملاء";
 
 // Field
 $content["table_Name"]          = "اسم االعميل";
