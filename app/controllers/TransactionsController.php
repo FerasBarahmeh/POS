@@ -48,7 +48,7 @@ class TransactionsController extends AbstractController
 
 
     /**
-     * Get[http://estore.local/transactions/purchases]
+     * Get[http://pos.local/transactions/purchases]
      * @throws ReflectionException
      * @throws Exception
      */
@@ -75,7 +75,7 @@ class TransactionsController extends AbstractController
     }
 
     /**
-     * GET[http://estore.local/transactions/sales]
+     * GET[http://pos.local/transactions/sales]
      * @throws ReflectionException
      * @throws Exception
      */

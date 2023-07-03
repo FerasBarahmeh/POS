@@ -153,7 +153,7 @@ hiddenProminentElements();
 
 async function getInfoClientReq(id) {
 
-    return await fetch("http://estore.local/sales/getInfoClientAjax", {
+    return await fetch("http://pos.local/sales/getInfoClientAjax", {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -215,7 +215,7 @@ function  fillExtraInfo(element, price=0) {
     containerHtml.querySelector("[fraction]").textContent = '.' + pending.fraction;
 }
 function getExtraClientInfo(id) {
-    return fetch("http://estore.local/sales/getExtraClientInfoAjax", {
+    return fetch("http://pos.local/sales/getExtraClientInfoAjax", {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -339,7 +339,7 @@ const productsListHTML = document.querySelectorAll("[fetchProductBy]");
 
 async function getProductInfo(id) {
 
-    return await fetch("http://estore.local/sales/getInfoProductAjax", {
+    return await fetch("http://pos.local/sales/getInfoProductAjax", {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -389,8 +389,6 @@ productsListHTML.forEach(ul => {
 
                 // change color border
                 ul.closest(".partisan").style.borderColor = "#65cd65";
-                console.log(currentProductSelected)
-
 
                 flashMessage("success", currentProductSelected.info["message"], 5000);
 
@@ -812,7 +810,7 @@ createNewInvoiceBtn.addEventListener("click", () => {
     let invoiceInfo = getInfoInvoice();
 
     function fetchData() {
-        return fetch("http://estore.local/sales/isHasPrivilegeUserAjax", {
+        return fetch("http://pos.local/sales/isHasPrivilegeUserAjax", {
             "method": "POST",
             "headers": {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -835,7 +833,7 @@ createNewInvoiceBtn.addEventListener("click", () => {
             // Use the hasPrivilegeEmployee value here or return it to another function
 
             // Check If Productis valid
-            fetch("http://estore.local/sales/checkIsValidProductAjax", {
+            fetch("http://pos.local/sales/checkIsValidProductAjax", {
                 "method": "POST",
                 "headers": {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -861,7 +859,7 @@ createNewInvoiceBtn.addEventListener("click", () => {
                         const data = new URLSearchParams();
                         data.append('invoice', JSON.stringify(getInfoInvoice()));
 
-                        fetch("http://estore.local/sales/createInvoiceAjax", {
+                        fetch("http://pos.local/sales/createInvoiceAjax", {
                             method: "POST",
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded',

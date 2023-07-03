@@ -96,7 +96,7 @@ class PurchasesController extends AbstractController
     /**
      * Get information client by id
      *
-     * @param http://estore.local/sales/getInfoClientAjax
+     * @param http://pos.local/sales/getInfoClientAjax
      * @return void
      */
     public function getInfoClientAjaxAction():void
@@ -134,7 +134,7 @@ class PurchasesController extends AbstractController
      *
      * Check if employee will create has privilege to create invoice
      *
-     * @param http://estore.local/sales/isHasPrivilegeUserAjax
+     * @param http://pos.local/sales/isHasPrivilegeUserAjax
      * @return void
      */
     public function isHasPrivilegeUserAjaxAction(): void
@@ -158,7 +158,7 @@ class PurchasesController extends AbstractController
     /**
      * To get all information for specific product by id
      *
-     * @param http://estore.local/sales/getInfoProductAjax
+     * @param http://pos.local/sales/getInfoProductAjax
      * @return void
      * @throws ReflectionException
      */
@@ -217,7 +217,7 @@ class PurchasesController extends AbstractController
     /**
      * To check if quantity is valid or not
      *
-     * @param http://estore.local/sales/checkIsValidProductAjax
+     * @param http://pos.local/sales/checkIsValidProductAjax
      * @return void
      */
     public function checkIsValidProductAjaxAction(): void
@@ -264,7 +264,7 @@ class PurchasesController extends AbstractController
         $invoice = new PurchasesInvoicesModel();
         $invoice->SupplierId = $supplier->ClientId;
 
-        return $this->addCommonInvoice($invoice, $invoiceInfo, $products);
+        return $this->addCommonInvoice($invoice, $invoiceInfo, $products, $this->_controller);
     }
 
     /**
@@ -302,7 +302,7 @@ class PurchasesController extends AbstractController
 
     /**
      * Create Invoice
-     * http://estore.local/createInvoiceAjax
+     * http://pos.local/createInvoiceAjax
      * @return void
      * @throws ReflectionException
      */

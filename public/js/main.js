@@ -164,7 +164,7 @@ const getMessages = (controller, action, nameFile) => {
         }
 
 
-        xml.open("POST", "http://estore.local/"+ controller +"/" + action);
+        xml.open("POST", "http://pos.local/"+ controller +"/" + action);
         xml.setRequestHeader(
             "Content-Type",
             "application/x-www-form-urlencoded"

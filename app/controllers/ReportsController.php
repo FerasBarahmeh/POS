@@ -24,7 +24,7 @@ class ReportsController extends AbstractController
     }
 
     /**
-     * GET[http://estore.local/reports/monthly]
+     * GET[http://pos.local/reports/monthly]
      * @return void
      * @throws ReflectionException
      */
@@ -43,7 +43,7 @@ class ReportsController extends AbstractController
         $this->_renderView();
     }
     /**
-     * GET[http://estore.local/reports/yearly]
+     * GET[http://pos.local/reports/yearly]
      * @return void
      * @throws ReflectionException
      */
@@ -61,7 +61,7 @@ class ReportsController extends AbstractController
         $this->_renderView();
     }
     /**
-     * GET[http://estore.local/reports/daily]
+     * GET[http://pos.local/reports/daily]
      * @return void
      * @throws ReflectionException
      */
@@ -83,7 +83,7 @@ class ReportsController extends AbstractController
     }
 
     /**
-     * GET[http://estore.local/reports/getMonthsAjax]
+     * GET[http://pos.local/reports/getMonthsAjax]
      * get month names depend on language
      * @return void
      */
@@ -93,7 +93,7 @@ class ReportsController extends AbstractController
     }
 
     /**
-     * GET[http://estore.local/reports/getMonthlySalesAjax]
+     * GET[http://pos.local/reports/getMonthlySalesAjax]
      * get sales in last month
      * @return void
      */
@@ -102,7 +102,7 @@ class ReportsController extends AbstractController
         echo json_encode(ReportsModel::getStatisticsSalesMonthly());
     }
     /**
-     * GET[http://estore.local/reports/getMonthlyPurchasesAjax]
+     * GET[http://pos.local/reports/getMonthlyPurchasesAjax]
      * get purchases in last month
      * @return void
      */
@@ -111,7 +111,7 @@ class ReportsController extends AbstractController
         echo json_encode(ReportsModel::getStatisticsPurchasesMonthly());
     }
     /**
-     * GET[http://estore.local/reports/getYearlySalesAjax]
+     * GET[http://pos.local/reports/getYearlySalesAjax]
      * get sales in last year
      * @return void
      */
@@ -120,7 +120,7 @@ class ReportsController extends AbstractController
         echo json_encode(ReportsModel::getStatisticsSalesYearly());
     }
     /**
-     * GET[http://estore.local/reports/getYearlyPurchasesAjax]
+     * GET[http://pos.local/reports/getYearlyPurchasesAjax]
      * get purchases in last year
      * @return void
      */

@@ -99,7 +99,7 @@ class SalesController extends AbstractController
     /**
      * Get information client by id
      *
-     * @param http://estore.local/sales/getInfoClientAjax
+     * @param http://pos.local/sales/getInfoClientAjax
      * @return void
      */
     public function getInfoClientAjaxAction():void
@@ -137,7 +137,7 @@ class SalesController extends AbstractController
      *
      * Check if employee will create has privilege to create invoice
      *
-     * @param http://estore.local/sales/isHasPrivilegeUserAjax
+     * @param http://pos.local/sales/isHasPrivilegeUserAjax
      * @return void
      */
     public function isHasPrivilegeUserAjaxAction(): void
@@ -161,7 +161,7 @@ class SalesController extends AbstractController
     /**
      * To get all information for specific product by id
      *
-     * @param http://estore.local/sales/getInfoProductAjax
+     * @param http://pos.local/sales/getInfoProductAjax
      * @return void
      * @throws ReflectionException
      */
@@ -220,7 +220,7 @@ class SalesController extends AbstractController
     /**
      * To check if quantity is valid or not
      *
-     * @param http://estore.local/sales/checkIsValidProductAjax
+     * @param http://pos.local/sales/checkIsValidProductAjax
      * @return void
      */
     public function checkIsValidProductAjaxAction(): void
@@ -265,7 +265,7 @@ class SalesController extends AbstractController
 
         $invoice = new SalesInvoicesModel();
         $invoice->ClientId = $client->ClientId;
-        return $this->addCommonInvoice($invoice, $invoiceInfo, $products);
+        return $this->addCommonInvoice($invoice, $invoiceInfo, $products, $this->_controller);
     }
 
     /**
@@ -303,7 +303,7 @@ class SalesController extends AbstractController
 
     /**
      * Create Invoice
-     * http://estore.local/createInvoiceAjax
+     * http://pos.local/createInvoiceAjax
      * @return void
      * @throws ReflectionException
      */
@@ -318,6 +318,7 @@ class SalesController extends AbstractController
            if ($isDone) {
                // Create receipt
                $r = $this->createReceiptsToSaleInvoice($precipitate["invoice"]->InvoiceId, $invoice);
+
                if ($r) {
                    $message = $this->getAppropriateMessageProduct("sales.messages", "message_create_invoice_success");
 
@@ -335,7 +336,7 @@ class SalesController extends AbstractController
 
     /**
      * To Get Extra information to client like TOTAL RECEIVED, pending and draft
-     * http://estore.local/sales/getExtraClientInfoAjax
+     * http://pos.local/sales/getExtraClientInfoAjax
      * @return void
      */
     public function getExtraClientInfoAjaxAction(): void
@@ -357,7 +358,7 @@ class SalesController extends AbstractController
      *
      * Get Word Language by get specific name file
      *
-     * http://estore.local/getMessagesAjax/{Name File}
+     * http://pos.local/getMessagesAjax/{Name File}
      * @return void
      */
     public function getMessagesAjaxAction(): void

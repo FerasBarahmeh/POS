@@ -88,7 +88,7 @@ function isset(input, action, nameValue) {
         }
     };
 
-    xml.open("POST", "http://estore.local/users/" + action);
+    xml.open("POST", "http://pos.local/users/" + action);
     xml.setRequestHeader(
         "Content-Type",
         "application/x-www-form-urlencoded"

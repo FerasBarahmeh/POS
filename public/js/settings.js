@@ -95,7 +95,7 @@ savedButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         let newValue = field.querySelector("input").value.trim();
 
-        fetch("http://estore.local/settings/updateFieldValueAjax", {
+        fetch("http://pos.local/settings/updateFieldValueAjax", {
             "method": "POST",
             "headers": {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -106,7 +106,7 @@ savedButtons.forEach(btn => {
             .then(function(data){
 
                 if (data["result"]) {
-                    fetch("http://estore.local/settings/changUserValueAjax", {
+                    fetch("http://pos.local/settings/changUserValueAjax", {
                         "method": "POST",
                         "headers": {
                             'Content-Type': 'application/x-www-form-urlencoded',

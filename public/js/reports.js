@@ -129,7 +129,7 @@ function setCountInvoiceMonth(data) {
 }
 
 // Start Get Messages
-fetch("http://estore.local/reports/getMessagesAjax", {
+fetch("http://pos.local/reports/getMessagesAjax", {
     "method": "POST",
     "headers": {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -143,7 +143,7 @@ fetch("http://estore.local/reports/getMessagesAjax", {
 // End Get Messages
 
 // Start Draw Charts For Month
-fetch("http://estore.local/reports/getMonthsAjax", {
+fetch("http://pos.local/reports/getMonthsAjax", {
     "method": "POST",
     "headers": {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -154,7 +154,7 @@ fetch("http://estore.local/reports/getMonthsAjax", {
     .then(function(res){ return res.json(); })
     .then(function(data){
         months = Object.values(data);
-        fetch("http://estore.local/reports/getMonthlySalesAjax", {
+        fetch("http://pos.local/reports/getMonthlySalesAjax", {
             "method": "POST",
             "headers": {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -172,7 +172,7 @@ fetch("http://estore.local/reports/getMonthsAjax", {
                 };
             })
             .then(() => {
-                fetch("http://estore.local/reports/getMonthlyPurchasesAjax", {
+                fetch("http://pos.local/reports/getMonthlyPurchasesAjax", {
                     "method": "POST",
                     "headers": {
                         'Content-Type': 'application/x-www-form-urlencoded',
@@ -345,7 +345,7 @@ function chartCountInvoiceInYearly(labels, data) {
     }
 
 }
-fetch("http://estore.local/reports/getYearlySalesAjax", {
+fetch("http://pos.local/reports/getYearlySalesAjax", {
     "method": "POST",
     "headers": {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -369,7 +369,7 @@ fetch("http://estore.local/reports/getYearlySalesAjax", {
 
     })
     .then(() => {
-        fetch("http://estore.local/reports/getYearlyPurchasesAjax", {
+        fetch("http://pos.local/reports/getYearlyPurchasesAjax", {
             "method": "POST",
             "headers": {
                 'Content-Type': 'application/x-www-form-urlencoded',

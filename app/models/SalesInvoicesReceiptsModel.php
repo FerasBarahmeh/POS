@@ -11,6 +11,7 @@ class SalesInvoicesReceiptsModel extends AbstractModel
     public $PaymentType;
     public $PaymentAmount;
     public $PaymentLiteral;
+    public $TotalPrice;
     public $BankAccountNumber;
     public $BankName;
     public $CheckNumber;
@@ -29,7 +30,7 @@ class SalesInvoicesReceiptsModel extends AbstractModel
         "PaymentType"  => self::DATA_TYPE_INT,
         "PaymentAmount"      => self::DATA_TYPE_DECIMAL,
         "PaymentLiteral"     => self::DATA_TYPE_DECIMAL,
-        "TotalPrice"     => self::DATA_TYPE_DECIMAL,
+        "TotalPrice"        => self::DATA_TYPE_DECIMAL,
         "BankAccountNumber"     => self::DATA_TYPE_STR,
         "BankName"     => self::DATA_TYPE_STR,
         "CheckNumber"     => self::DATA_TYPE_STR,

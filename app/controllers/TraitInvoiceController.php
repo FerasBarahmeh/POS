@@ -123,7 +123,7 @@ trait TraitInvoiceController
     /**
      * @throws ReflectionException
      */
-    protected function addCommonInvoice(&$invoice, &$invoiceInfo, $products): array
+    protected function addCommonInvoice(&$invoice, &$invoiceInfo, $products, $typeInvoice): array
     {
         $invoice->PaymentType = $invoiceInfo->typePaymentValue;
 
@@ -136,6 +136,7 @@ trait TraitInvoiceController
         $invoice->UserId = $this->session->user->UserId;
 
         $invoice->NumberProducts = count((array)$products);
+        $invoice->TypeInvoice = $typeInvoice;
 
         $result = $invoice->save();
 
@@ -152,6 +153,7 @@ trait TraitInvoiceController
         $receipts->PaymentType = $infoInvoice->typePaymentValue;
         $receipts->PaymentAmount = $infoInvoice->paymentAmount;
         $receipts->PaymentLiteral = (string) ((float)$infoInvoice->totalPriceWithTax - (float)$infoInvoice->paymentAmount);
+        $receipts->TotalPrice = (float) $receipts->PaymentAmount + (float) $receipts->PaymentLiteral;
         $receipts->BankName = NULL;
         $receipts->BankAccountNumber = NULL;
         $receipts->CheckNumber = NULL;

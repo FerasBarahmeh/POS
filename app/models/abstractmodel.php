@@ -46,6 +46,7 @@ class AbstractModel
         $query = "INSERT INTO " . static::$tableName . " SET " . self::buildNameParamSQL() ;
         $stmt = DatabaseHandler::factory()->prepare($query);
         $this->bindParams($stmt);
+        
         if ($stmt->execute()) {
             $this->{static::$primaryKey} = DatabaseHandler::lastInsertID();
             return true;

@@ -11,6 +11,7 @@ class PurchasesInvoicesReceiptsModel extends AbstractModel
     public $PaymentType;
     public $PaymentAmount;
     public $PaymentLiteral;
+    public $TotalPrice;
     public $BankAccountNumber;
     public $BankName;
     public $CheckNumber;

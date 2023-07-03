@@ -88,7 +88,7 @@ abstract class AbstractController
      *
      * Get Word Language by get specific name file
      *
-     * http://estore.local/getMessagesAjax/{Name File}
+     * http://pos.local/getMessagesAjax/{Name File}
      * @return void
      */
     public function getMessagesAjaxAction(): void

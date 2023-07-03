@@ -154,7 +154,7 @@ hiddenProminentElements();
 
 async function getInfoClientReq(id) {
 
-    return await fetch("http://estore.local/sales/getInfoClientAjax", {
+    return await fetch("http://pos.local/sales/getInfoClientAjax", {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -216,7 +216,7 @@ function  fillExtraInfo(element, price=0) {
     containerHtml.querySelector("[fraction]").textContent = '.' + pending.fraction;
 }
 function getExtraClientInfo(id) {
-    return fetch("http://estore.local/purchases/getExtraClientInfoAjax", {
+    return fetch("http://pos.local/purchases/getExtraClientInfoAjax", {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -340,7 +340,7 @@ const productsListHTML = document.querySelectorAll("[fetchProductBy]");
 
 async function getProductInfo(id) {
 
-    return await fetch("http://estore.local/sales/getInfoProductAjax", {
+    return await fetch("http://pos.local/sales/getInfoProductAjax", {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -812,7 +812,7 @@ createNewInvoiceBtn.addEventListener("click", () => {
     let invoiceInfo = getInfoInvoice();
 
     function fetchData() {
-        return fetch("http://estore.local/purchases/isHasPrivilegeUserAjax", {
+        return fetch("http://pos.local/purchases/isHasPrivilegeUserAjax", {
             "method": "POST",
             "headers": {
                 'Content-Type': 'application/x-www-form-urlencoded',
@@ -835,7 +835,7 @@ createNewInvoiceBtn.addEventListener("click", () => {
             // Use the hasPrivilegeEmployee value here or return it to another function
 
             // Check If products valid
-            fetch("http://estore.local/purchases/checkIsValidProductAjax", {
+            fetch("http://pos.local/purchases/checkIsValidProductAjax", {
                 "method": "POST",
                 "headers": {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -861,7 +861,7 @@ createNewInvoiceBtn.addEventListener("click", () => {
                         const data = new URLSearchParams();
                         data.append('invoice', JSON.stringify(getInfoInvoice()));
 
-                        fetch("http://estore.local/purchases/createInvoiceAjax", {
+                        fetch("http://pos.local/purchases/createInvoiceAjax", {
                             method: "POST",
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded',
