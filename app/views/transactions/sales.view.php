@@ -3,29 +3,27 @@
 <section class="transactions-container">
     <section class="options">
         <div class="filters">
-            <div class="filter" filter-between-vals>
-                <label for="date-filter"><i class="fa fa-filter"></i> <?= $text_filter_by_date ?></label>
-                <div class="from-to">
-                    <div class="date-input">
-                        <label for="from"></label>
-                        <input type="date" id="from" class="custom-date-input" input-from value="2024-06-14">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-
-                    <div class="date-input">
-                        <label for="to"></label>
-                        <input type="date" id="to" class="custom-date-input" input-to value="2024-08-16">
-                        <i class="fa fa-calendar"></i>
-                    </div>
-                </div>
-
-                <button class="load stander-btn" apply-btn><?= $text_load ?></button>
+            <div class="filter">
+                <form action="" METHOD="POST">
+                    <label for="filter_column"><i class="fa fa-filter"></i><?= $text_filter_by_transaction_Type ?></label>
+                    <input type="search" name="filter_value" id="filter_column" placeholder="<?= $text_filter_by_transaction_Type_placeholder ?>"/>
+                    <button class="search-btn stander-btn" type="submit" name="filter_by_column" id="type-filter-btn"><?= $text_show_all ?></button>
+                </form>
+            </div>
+            <div class="filter">
+                <form action="" METHOD="POST">
+                    <label for="from"><i class="fa fa-filter"></i><?= $text_filter_by_range ?></label>
+                    <input type="search" name="from" id="from" placeholder="<?= $text_filter_by_range_start_placeholder ?>"/>
+                    <label for="to"><?= $text_to ?></label><input type="search" name="to" id="to" placeholder="<?= $text_filter_by_range_end_placeholder ?>"/>
+                    <button class="search-btn stander-btn" type="submit" name="filter-between" id="type-filter-btn"><?= $text_show_all ?></button>
+                </form>
             </div>
         </div>
-        
+
         <div class="print-buttons">
-            <button><?= $text_print_report ?></button>
-            <button><?= $text_print_filtered ?></button>
+            <button>
+                <form action="" method="POST"><input type="submit"  name="resit" value="<?= $text_resit ?>"></form>
+            </button>
         </div>
     </section>
     
@@ -35,7 +33,6 @@
                 <thead>
                     <tr>
                         <th><?= $text_id ?></th>
-                        <th><?= $text_type ?></th>
                         <th><?= $text_price ?></th>
                         <th><?= $text_time ?></th>
                         <th><?= $text_num_product ?></th>
@@ -54,7 +51,6 @@
                                 ?>
                                     <tr class="">
                                         <td><?= $transactionsSale->InvoiceId ?></td>
-                                        <td><?= $transactionsSale->TypeInvoice ?></td>
                                         <td><?= (float)$transactionsSale->PaymentAmount + (float) $transactionsSale->PaymentLiteral ?></td>
                                         <td><?= $transactionsSale->Created ?></td>
                                         <td><?= $transactionsSale->NumberProducts ?></td>

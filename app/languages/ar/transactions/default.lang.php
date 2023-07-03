@@ -5,8 +5,14 @@ $content["title"] = "المعاملات";
 // Title Header
 $content["title_header"] = "المعاملات";
 
-$content["text_filter_by_transaction_Type"] = "فلتره المعاملات بنائا على التاريخ";
-$content["text_filter_by_date"] = "تصفية (من الى)";
+$content["text_filter_by_transaction_Type"] = "تصفية البيانات حسب قيمة العامود";
+$content["text_filter_by_transaction_Type_placeholder"] = "قيمة العامود";
+$content["text_filter_by_range"] = "البحث عن قيمة مابين قيمتين";
+$content["text_filter_by_range_start_placeholder"] = "القيمة الاولى";
+$content["text_filter_by_range_end_placeholder"] = "القيمة النهائية";
+$content["text_to"] = "الى";
+$content["text_resit"] = "الغاء الفلتر";
+
 $content["text_sales"] = "المبيعات";
 $content["text_purchases"] = "المشتريات";
 $content["text_show_all"] = "عرض الكل";

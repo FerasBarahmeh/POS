@@ -13,11 +13,13 @@ class SalesInvoicesModel extends AbstractModel
     public $UserId;
     public $DiscountType;
     public $NumberProducts;
+    public $TypeInvoice;
 
 
     protected static $tableName = "sales_invoices";
 
     protected static array $tableSchema = [
+        "InvoiceId"          => self::DATA_TYPE_INT,
         "ClientId"          => self::DATA_TYPE_INT,
         "PaymentType"       => self::DATA_TYPE_INT,
         "PaymentStatus"     => self::DATA_TYPE_INT,
@@ -26,6 +28,7 @@ class SalesInvoicesModel extends AbstractModel
         "UserId"            => self::DATA_TYPE_INT,
         "DiscountType"      => self::DATA_TYPE_STR,
         "NumberProducts"    => self::DATA_TYPE_INT,
+        "TypeInvoice"    => self::DATA_TYPE_STR,
     ];
 
     protected static string $primaryKey = "InvoiceId";

@@ -167,16 +167,22 @@ trait TraitInvoiceController
      * @throws ReflectionException
      * @throws Exception
      */
-    protected function transactions(): void
+    protected function transactions($filter=null): void
     {
-        $transactionsSales = new TransactionsSalesModel();
-        $sales = $transactionsSales->getInfoSalesInvoice();
 
-        $transactionsPurchases = new TransactionsPurchasesModel();
-        $purchases = $transactionsPurchases->getInfoPurchasesInvoice();
+        $sales = null; $purchases = null;
+        if ($filter && ! isset($filter["resit"])) {
+            $sales = TransactionsSalesModel::getInfoSalesInvoice($filter);
+            $purchases = TransactionsPurchasesModel::getInfoPurchasesInvoice($filter);
+        } else {
+            $sales = TransactionsSalesModel::getInfoSalesInvoice();
+            $purchases = TransactionsPurchasesModel::getInfoPurchasesInvoice();
+        }
 
+        $this->_info["transactions"] = $sales && $purchases ?
+            $this->mergeArraysRandomly(iterator_to_array(@$sales), iterator_to_array(@$purchases)) :
+            ($sales ?: $purchases);
 
-        $this->_info["transactions"] = $this->mergeArraysRandomly(iterator_to_array($sales), iterator_to_array($purchases));
 
         // Get Type Transaction
         $this->_info["transactionsTypes"] = $this->getSpecificProperties(obj: (new TransactionType()), flip: true);

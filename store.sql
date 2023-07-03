@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2023 at 07:23 PM
+-- Generation Time: Jul 03, 2023 at 03:38 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -206,6 +206,7 @@ CREATE TABLE `purchases_invoices_receipts` (
   `PaymentType` tinyint(1) NOT NULL,
   `PaymentAmount` decimal(8,2) NOT NULL,
   `PaymentLiteral` varchar(60) NOT NULL,
+  `TotalPrice` decimal(10,2) NOT NULL,
   `BankName` varchar(30) DEFAULT NULL,
   `BankAccountNumber` varchar(30) DEFAULT NULL,
   `CheckNumber` varchar(15) DEFAULT NULL,
@@ -218,9 +219,17 @@ CREATE TABLE `purchases_invoices_receipts` (
 -- Dumping data for table `purchases_invoices_receipts`
 --
 
-INSERT INTO `purchases_invoices_receipts` (`ReceiptId`, `InvoiceId`, `PaymentType`, `PaymentAmount`, `PaymentLiteral`, `BankName`, `BankAccountNumber`, `CheckNumber`, `TransferredTo`, `created`, `UserId`) VALUES
-(1, 1, 0, '2600.00', '400', NULL, NULL, NULL, NULL, '2023-06-20', 1),
-(2, 2, 0, '2100.00', '102', NULL, NULL, NULL, NULL, '2023-06-29', 1);
+INSERT INTO `purchases_invoices_receipts` (`ReceiptId`, `InvoiceId`, `PaymentType`, `PaymentAmount`, `PaymentLiteral`, `TotalPrice`, `BankName`, `BankAccountNumber`, `CheckNumber`, `TransferredTo`, `created`, `UserId`) VALUES
+(1, 1, 0, '2600.00', '400', '0.00', NULL, NULL, NULL, NULL, '2023-06-20', 1),
+(2, 2, 0, '2100.00', '102', '0.00', NULL, NULL, NULL, NULL, '2023-06-29', 1);
+
+--
+-- Triggers `purchases_invoices_receipts`
+--
+DELIMITER $$
+CREATE TRIGGER `SetTotalPriceWhenInsertPurchases` BEFORE INSERT ON `purchases_invoices_receipts` FOR EACH ROW SET NEW.TotalPrice = (PaymentAmount + PaymentLiteral)
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -292,6 +301,7 @@ CREATE TABLE `sales_invoices_receipts` (
   `PaymentType` tinyint(1) NOT NULL,
   `PaymentAmount` decimal(8,2) NOT NULL,
   `PaymentLiteral` varchar(60) NOT NULL,
+  `TotalPrice` decimal(10,2) NOT NULL,
   `BankName` varchar(30) DEFAULT NULL,
   `BankAccountNumber` varchar(30) DEFAULT NULL,
   `CheckNumber` varchar(15) DEFAULT NULL,
@@ -304,11 +314,19 @@ CREATE TABLE `sales_invoices_receipts` (
 -- Dumping data for table `sales_invoices_receipts`
 --
 
-INSERT INTO `sales_invoices_receipts` (`ReceiptId`, `InvoiceId`, `PaymentType`, `PaymentAmount`, `PaymentLiteral`, `BankName`, `BankAccountNumber`, `CheckNumber`, `TransferredTo`, `created`, `UserId`) VALUES
-(1, 1, 0, '500.00', '100', NULL, NULL, NULL, NULL, '2023-06-20', 1),
-(2, 2, 0, '7200.00', '900', NULL, NULL, NULL, NULL, '2023-06-20', 1),
-(3, 3, 0, '1600.00', '218', NULL, NULL, NULL, NULL, '2023-06-29', 1),
-(4, 4, 0, '2300.00', '412', NULL, NULL, NULL, NULL, '2023-07-01', 1);
+INSERT INTO `sales_invoices_receipts` (`ReceiptId`, `InvoiceId`, `PaymentType`, `PaymentAmount`, `PaymentLiteral`, `TotalPrice`, `BankName`, `BankAccountNumber`, `CheckNumber`, `TransferredTo`, `created`, `UserId`) VALUES
+(1, 1, 0, '500.00', '100', '600.00', NULL, NULL, NULL, NULL, '2023-06-20', 1),
+(2, 2, 0, '7200.00', '900', '8100.00', NULL, NULL, NULL, NULL, '2023-06-20', 1),
+(3, 3, 0, '1600.00', '218', '1818.00', NULL, NULL, NULL, NULL, '2023-06-29', 1),
+(4, 4, 0, '2300.00', '412', '2712.00', NULL, NULL, NULL, NULL, '2023-07-01', 1);
+
+--
+-- Triggers `sales_invoices_receipts`
+--
+DELIMITER $$
+CREATE TRIGGER `SetTotalPriceWhenInsertSales` BEFORE INSERT ON `sales_invoices_receipts` FOR EACH ROW SET NEW.TotalPrice = (PaymentAmount + PaymentLiteral)
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -398,7 +416,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-07-01 19:00:37', 7, '0785102996', 1),
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-07-03 11:16:05', 7, '0785102996', 1),
 (2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-21 14:50:49', 9, '0785102996', 1);
 
 -- --------------------------------------------------------

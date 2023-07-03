@@ -26,27 +26,32 @@ class TransactionsPurchasesModel extends AbstractModel
      * @return false|ArrayIterator
      * @throws Exception
      */
-    public function getInfoPurchasesInvoice(NULL | array $filters = null): false|\ArrayIterator
+    public static function getInfoPurchasesInvoice(NULL | array $filters = null): false|\ArrayIterator
     {
         $sql = "
             SELECT 
-                I.*, R.*, C.* 
+                purchases_invoices.*, purchases_invoices_receipts.*, suppliers.* 
             FROM 
-                purchases_invoices AS I 
+                purchases_invoices 
             INNER JOIN 
-                    purchases_invoices_receipts AS R 
+                    purchases_invoices_receipts
             ON 
-                R.InvoiceId = I.InvoiceId 
+                purchases_invoices_receipts.InvoiceId = purchases_invoices.InvoiceId 
             JOIN 
-                    suppliers as C 
+                    suppliers
             ON 
-                I.SupplierId = C.SupplierId
+                purchases_invoices.SupplierId = suppliers.SupplierId
         ";
 
         if ($filters != null) {
-            $this->addFilterToQuery($sql, $filters);
+            (new TransactionsPurchasesModel)->addSearchTerm($sql, $filters, (new TransactionsPurchasesModel)->setSchema([
+                (new PurchasesInvoicesModel()),
+                (new PurchasesInvoicesReceiptsModel()),
+                (new SupplierModel())
+            ]));
         }
-        return $this->get($sql);
+        
+        return (new TransactionsPurchasesModel())->get($sql);
     }
 
     public static function getInvoice(int $id)

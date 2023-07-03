@@ -2,12 +2,14 @@
 
 namespace APP\Models;
 
+use APP\Helpers\PublicHelper\PublicHelper;
 use ArrayIterator;
 use Exception;
 
 class TransactionsSalesModel extends AbstractModel
 {
     use TraitTransactionsModel;
+    use PublicHelper;
     private SalesInvoicesModel $salesInvoicesModel;
     private SalesInvoicesDetailsModel $salesInvoicesDetailsModel;
     private SalesInvoicesReceiptsModel $salesInvoicesReceiptsModel;
@@ -26,28 +28,33 @@ class TransactionsSalesModel extends AbstractModel
      * @return false|ArrayIterator
      * @throws Exception
      */
-    public function getInfoSalesInvoice(NULL | array $filters = null): false|\ArrayIterator
+    public static function getInfoSalesInvoice(NULL | array $filters = null): false|\ArrayIterator
     {
         $sql = "
             SELECT 
-                I.*, R.*, C.* 
+                sales_invoices.*, sales_invoices_receipts.*, clients.* 
             FROM 
-                sales_invoices AS I 
+                sales_invoices
             INNER JOIN 
-                    sales_invoices_receipts AS R 
+                    sales_invoices_receipts
             ON 
-                R.InvoiceId = I.InvoiceId 
-            JOIN 
-                    clients as C 
+                sales_invoices_receipts.InvoiceId = sales_invoices.InvoiceId 
+            INNER JOIN
+                    clients
             ON 
-                I.ClientId = C.ClientId
+                sales_invoices.ClientId = clients.ClientId
         ";
 
         if ($filters != null) {
-
-            $this->addFilterToQuery($sql, $filters);
+            (new TransactionsSalesModel)->addSearchTerm($sql, $filters, (new TransactionsSalesModel)->setSchema([
+                (new SalesInvoicesModel()),
+                (new SalesInvoicesReceiptsModel()),
+                (new ClientModel())
+            ]));
         }
-        return $this->get($sql);
+
+        
+        return (new TransactionsSalesModel)->get($sql);
     }
 
     public static function getInvoice($id)
@@ -56,13 +63,13 @@ class TransactionsSalesModel extends AbstractModel
             SELECT 
                DISTINCT I.*, R.*, C.* 
             FROM 
-                sales_invoices AS I 
+                sales_invoices AS I
             INNER JOIN 
-                    sales_invoices_receipts AS R 
+                    sales_invoices_receipts AS R
             ON 
                 R.InvoiceId = I.InvoiceId 
             JOIN 
-                    clients as C 
+                    clients AS C
             ON
                 I.ClientId = C.ClientId
             WHERE I." . static::$primaryKey . " = ". $id . "

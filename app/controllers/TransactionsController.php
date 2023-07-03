@@ -9,13 +9,10 @@ use APP\Enums\TransactionType;
 use APP\Helpers\PublicHelper\PublicHelper;
 use APP\Helpers\Structures\Structures;
 use APP\LIB\FilterInput;
-use APP\LIB\PDF;
 use APP\LIB\Template\TemplateHelper;
-use APP\Models\SalesInvoicesModel;
 use APP\Models\SettingsModel;
 use APP\Models\TransactionsPurchasesModel;
 use APP\Models\TransactionsSalesModel;
-use Dompdf\Dompdf;
 use Exception;
 
 use ReflectionException;
@@ -42,7 +39,8 @@ class TransactionsController extends AbstractController
         $this->language->load("template.common");
         $this->language->load("transactions.default");
 
-        $this->transactions();
+        $this->transactions($_POST);
+        
 
         $this->_renderView();
     }
@@ -64,7 +62,7 @@ class TransactionsController extends AbstractController
 
         $transactionsSales = new TransactionsPurchasesModel();
 
-        $this->_info["transactionsPurchases"] = $transactionsSales->getInfoPurchasesInvoice();
+        $this->_info["transactionsPurchases"] = $transactionsSales->getInfoPurchasesInvoice($_POST);
 
         // Get Type Transaction
         $this->_info["transactionsTypes"] = $this->getSpecificProperties(obj: (new TransactionType()), flip: true);
@@ -89,7 +87,7 @@ class TransactionsController extends AbstractController
 
         $transactionsSales = new TransactionsSalesModel();
 
-        $this->_info["transactionsSales"] = $transactionsSales->getInfoSalesInvoice();
+        $this->_info["transactionsSales"] = $transactionsSales->getInfoSalesInvoice($_POST);
 
         // Get Type Transaction
         $this->_info["transactionsTypes"] = $this->getSpecificProperties(obj: (new TransactionType()), flip: true);
@@ -101,29 +99,6 @@ class TransactionsController extends AbstractController
         $this->_renderView();
     }
 
-    /**
-     * http://estore.local/transactions/applyBetweenQueryAjax
-     * apply between filter
-     * post method to fitch apply filter
-     * @throws Exception
-     */
-    public function applyBetweenQueryAjaxAction()
-    {
-        $transactionModel = new TransactionsSalesModel();
-        $data = $transactionModel->getInfoSalesInvoice([
-            "between" => [
-                "from"=>$_POST["from"],
-                "to"=>$_POST["to"],
-                "column"=>"R.Created"
-            ],
-        ]);
-
-        echo json_encode([
-            $data,
-            "transactionsTypes" => $this->getSpecificProperties(obj: (new TransactionType()), flip: true),
-            "paymentsStatus" => $this->getSpecificProperties(obj: (new PaymentStatus()), flip: true)
-        ]);
-    }
     /**
      * @throws Exception
      */

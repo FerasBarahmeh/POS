@@ -15,6 +15,7 @@ use AllowDynamicProperties;
     public $UserId;
     public $DiscountType;
     public $NumberProducts;
+    public $TypeInvoice;
 
 
     protected static $tableName = "purchases_invoices";
@@ -28,6 +29,7 @@ use AllowDynamicProperties;
         "UserId"            => self::DATA_TYPE_INT,
         "DiscountType"      => self::DATA_TYPE_STR,
         "NumberProducts"    => self::DATA_TYPE_INT,
+        "TypeInvoice"    => self::DATA_TYPE_STR,
     ];
 
     protected static string $primaryKey = "InvoiceId";

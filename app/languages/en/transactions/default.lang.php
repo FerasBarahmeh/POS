@@ -5,8 +5,13 @@ $content["title"] = "Transactions";
 // Title Header
 $content["title_header"] = "Transaction";
 
-$content["text_filter_by_transaction_Type"] = "Filter By Transaction Type";
-$content["text_filter_by_date"] = "Filter By Date (From-to)";
+$content["text_filter_by_transaction_Type"] = "Filter By value column";
+$content["text_filter_by_transaction_Type_placeholder"] = "Write value column";
+$content["text_filter_by_range"] = "Filter By Range Values (start-end)";
+$content["text_filter_by_range_start_placeholder"] = "Start";
+$content["text_filter_by_range_end_placeholder"] = "End";
+$content["text_to"] = "To";
+$content["text_resit"] = "Resit Filter";
 $content["text_sales"] = "Sales";
 $content["text_purchases"] = "Purchases";
 $content["text_show_all"] = "Show All";
