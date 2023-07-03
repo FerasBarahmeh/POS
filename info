@@ -1,0 +1,24 @@
+/*******************************************************************************
+* Point Of Sales Project (POS)                                                 *
+*                                                                              *
+* Version: 1.0                                                                 *
+* Date:    2023-03-07                                                          *
+* Author:  Feras Barahmeh                                                      *
+*******************************************************************************/
+
+What You Need To Run This Project
+1) Download Server controller like XAMPP or MAMP
+2) PHP >= 8.*
+3) If Your OS is Windows
+    - Go The host file in your device the path file is ("C:\Windows\System32\drivers\etc\hosts")
+        and add '127.0.0.1       pos.local' without single Quotation
+        then go the httpd-vhosts.conf file in Server controller (XAMPP) the path of this file is '\XAMPP\apache\conf\extra'
+        and set this lines
+
+        <VirtualHost *:80>
+            ServerAdmin http://pos.local/dashboard/
+            DocumentRoot "E:/XAMPP/htdocs/POS/public"
+        </VirtualHost>
+4) Create Database name pos and import file pos.sql the path this file is \XAMPP\htdocs\POS\pos.sql
+5) Clone this repo use this command in terminal 'https://github.com/Feras-Barahmeh/POS.git' in '\XAMPP\htdocs' folder
+6) The username admin is bnzz and the password is 1234567

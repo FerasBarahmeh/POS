@@ -11,16 +11,6 @@ use APP\LIB\Registration;
 use APP\LIB\Authentication;
 
 
-function pr($arr, $typePrint=1): void
-{
-    echo "<pre>";
-    if ($typePrint)
-        print_r($arr);
-    else
-        var_dump($arr);
-    echo "</pre>";
-}
-
 
 ! defined("DS") ? define("DS", DIRECTORY_SEPARATOR) : null;
 
