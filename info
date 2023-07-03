@@ -21,4 +21,4 @@ What You Need To Run This Project
         </VirtualHost>
 4) Create Database name pos and import file pos.sql the path this file is \XAMPP\htdocs\POS\pos.sql
 5) Clone this repo use this command in terminal 'https://github.com/Feras-Barahmeh/POS.git' in '\XAMPP\htdocs' folder
-6) The username admin is bnzz and the password is 1234567
+6) The admin username is bnzz and the password is 1234567
