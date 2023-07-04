@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2023 at 07:47 PM
+-- Generation Time: Jul 05, 2023 at 12:26 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -112,9 +112,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`ProductId`, `CategoryId`, `Name`, `Image`, `Quantity`, `BuyPrice`, `BarCode`, `Unit`, `SellPrice`, `Tax`, `Status`, `Description`, `Rating`) VALUES
-(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 413, '350.000', '1589456982', 5, '400.000', '0.50', 1, NULL, NULL),
+(1, 2, 'PlayStation 5', '819b68d98d74660225f8fe8ff75821.jpg', 409, '350.000', '1589456982', 5, '400.000', '0.50', 1, NULL, NULL),
 (3, 3, 'Fan', '2bf21fc83f5bbb2e7a58a9f7cf7c40.png', 1000, '15.000', '0124585292462', 5, '20.000', '0.00', 2, NULL, NULL),
-(4, 4, 'HP PAVILION', 'c20820aa680e5e28f6950ee120ac35.jpg', 169, '400.000', '12458796315', 5, '500.000', '0.50', 1, 'Gaming Laptop', NULL),
+(4, 4, 'HP PAVILION', 'c20820aa680e5e28f6950ee120ac35.jpg', 170, '400.000', '12458796315', 5, '500.000', '0.50', 1, 'Gaming Laptop', NULL),
 (5, 5, 'SAMSUNG A23', '548017a53025b5abb1f8a3c2c47099.jpg', 175, '150.000', '0452862685', 5, '180.000', '0.20', 1, '', NULL),
 (6, 5, 'Huawel Y9s', '80db229b10e160f2fa86c575ad5e15.jpeg', 60, '150.000', '0129256', 5, '180.000', '0.40', 1, 'New Phone From Huawel', NULL),
 (7, 2, 'Call of Duty', 'ceee04be9ed528ee0bb3856ec5c096.jpg', 100, '25.000', '01256512546521', 5, '30.000', '0.20', 2, '', NULL),
@@ -167,12 +167,7 @@ CREATE TABLE `purchases_invoices` (
 --
 
 INSERT INTO `purchases_invoices` (`InvoiceId`, `SupplierId`, `PaymentType`, `PaymentStatus`, `Created`, `Discount`, `UserId`, `NumberProducts`, `TypeInvoice`, `DiscountType`) VALUES
-(1, 1, 0, 0, '2023-06-20 00:00:00', '10.00', 1, 1, 'purchases', 'percentage'),
-(2, 2, 0, 0, '2023-06-29 20:58:03', '50.00', 1, 3, 'purchases', 'value'),
-(3, 1, 0, 0, '2023-07-03 18:19:08', '50.00', 1, 1, 'purchases', 'percentage'),
-(4, 1, 0, 0, '2023-07-03 18:21:14', '0.00', 1, 1, 'purchases', NULL),
-(5, 1, 0, 0, '2023-07-03 19:08:34', '0.00', 1, 1, 'purchases', NULL),
-(6, 2, 0, 0, '2023-07-03 19:18:11', '0.00', 1, 1, 'purchases', NULL);
+(1, 7, 0, 0, '2023-07-05 00:24:53', '5.00', 1, 1, 'purchases', 'percentage');
 
 -- --------------------------------------------------------
 
@@ -193,14 +188,7 @@ CREATE TABLE `purchases_invoices_details` (
 --
 
 INSERT INTO `purchases_invoices_details` (`Id`, `ProductId`, `ProductPrice`, `Quantity`, `InvoiceId`) VALUES
-(1, 1, '400.00', 5, 1),
-(2, 1, '400.00', 2, 2),
-(3, 4, '500.00', 1, 2),
-(4, 6, '180.00', 1, 2),
-(5, 6, '180.00', 6, 3),
-(6, 5, '180.00', 11, 4),
-(7, 4, '500.00', 1, 5),
-(8, 5, '180.00', 1, 6);
+(1, 4, '500.00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -228,12 +216,7 @@ CREATE TABLE `purchases_invoices_receipts` (
 --
 
 INSERT INTO `purchases_invoices_receipts` (`ReceiptId`, `InvoiceId`, `PaymentType`, `PaymentAmount`, `PaymentLiteral`, `TotalPrice`, `BankName`, `BankAccountNumber`, `CheckNumber`, `TransferredTo`, `created`, `UserId`) VALUES
-(1, 1, 0, '2600.00', '400', '0.00', NULL, NULL, NULL, NULL, '2023-06-20', 1),
-(2, 2, 0, '2100.00', '102', '0.00', NULL, NULL, NULL, NULL, '2023-06-29', 1),
-(3, 3, 0, '756.00', '756', '1512.00', NULL, NULL, NULL, NULL, '2023-07-03', 1),
-(4, 4, 0, '2376.00', '0', '2376.00', NULL, NULL, NULL, NULL, '2023-07-03', 1),
-(5, 5, 0, '750.00', '0', '750.00', NULL, NULL, NULL, NULL, '2023-07-03', 1),
-(6, 6, 0, '216.00', '0', '216.00', NULL, NULL, NULL, NULL, '2023-07-03', 1);
+(1, 1, 0, '700.00', '50', '750.00', NULL, NULL, NULL, NULL, '2023-07-05', 1);
 
 -- --------------------------------------------------------
 
@@ -259,30 +242,7 @@ CREATE TABLE `sales_invoices` (
 --
 
 INSERT INTO `sales_invoices` (`InvoiceId`, `ClientId`, `PaymentType`, `PaymentStatus`, `Created`, `Discount`, `UserId`, `DiscountType`, `NumberProducts`, `TypeInvoice`) VALUES
-(1, 2, 0, 0, '2023-06-20 13:02:31', '10.00', 1, 'value', 1, 'sales'),
-(2, 1, 0, 0, '2023-06-20 13:03:16', '10.00', 1, 'percentage', 2, 'sales'),
-(3, 1, 0, 0, '2023-06-29 20:00:36', '10.00', 1, 'percentage', 4, 'sales'),
-(4, 2, 0, 0, '2023-07-01 16:34:06', '15.00', 1, 'percentage', 2, 'sales'),
-(5, 2, 0, 0, '2023-07-03 17:27:13', '0.00', 1, NULL, 1, 'sales'),
-(6, 1, 0, 0, '2023-07-03 17:32:36', '0.00', 1, NULL, 1, 'sales'),
-(7, 2, 0, 0, '2023-07-03 17:33:51', '0.00', 1, NULL, 1, 'sales'),
-(8, 2, 0, 0, '2023-07-03 17:35:16', '0.00', 1, NULL, 1, 'sales'),
-(9, 1, 0, 0, '2023-07-03 17:44:50', '0.00', 1, NULL, 1, 'sales'),
-(10, 2, 0, 0, '2023-07-03 17:52:33', '0.00', 1, NULL, 1, 'sales'),
-(11, 2, 0, 0, '2023-07-03 17:54:04', '0.00', 1, NULL, 1, 'sales'),
-(12, 2, 0, 0, '2023-07-03 17:54:50', '0.00', 1, NULL, 1, 'sales'),
-(13, 2, 0, 0, '2023-07-03 17:56:02', '0.00', 1, NULL, 1, 'sales'),
-(14, 2, 0, 0, '2023-07-03 17:56:51', '0.00', 1, NULL, 1, 'sales'),
-(15, 2, 0, 0, '2023-07-03 17:57:27', '0.00', 1, NULL, 1, 'sales'),
-(16, 2, 0, 0, '2023-07-03 17:58:51', '0.00', 1, NULL, 1, 'sales'),
-(17, 2, 0, 0, '2023-07-03 18:06:59', '0.00', 1, NULL, 1, 'sales'),
-(18, 2, 0, 0, '2023-07-03 18:07:14', '0.00', 1, NULL, 1, 'sales'),
-(19, 2, 0, 0, '2023-07-03 18:09:08', '0.00', 1, NULL, 1, 'sales'),
-(20, 2, 0, 0, '2023-07-03 18:11:43', '0.00', 1, NULL, 1, 'sales'),
-(21, 2, 0, 0, '2023-07-03 18:15:54', '0.00', 1, NULL, 1, 'sales'),
-(22, 2, 0, 0, '2023-07-03 18:16:29', '0.00', 1, NULL, 1, 'sales'),
-(23, 2, 0, 0, '2023-07-03 18:18:19', '0.00', 1, NULL, 1, 'sales'),
-(24, 1, 0, 0, '2023-07-03 19:41:02', '0.00', 1, NULL, 1, 'sales');
+(1, 2, 0, 0, '2023-07-05 00:16:34', '5.00', 1, 'percentage', 1, 'sales');
 
 -- --------------------------------------------------------
 
@@ -303,34 +263,7 @@ CREATE TABLE `sales_invoices_details` (
 --
 
 INSERT INTO `sales_invoices_details` (`Id`, `ProductId`, `ProductPrice`, `Quantity`, `InvoiceId`) VALUES
-(1, 1, '400.00', 1, 1),
-(2, 1, '400.00', 1, 2),
-(3, 4, '500.00', 10, 2),
-(4, 1, '400.00', 1, 3),
-(5, 4, '500.00', 1, 3),
-(6, 5, '180.00', 1, 3),
-(7, 6, '180.00', 1, 3),
-(8, 1, '400.00', 2, 4),
-(9, 6, '180.00', 6, 4),
-(10, 4, '500.00', 2, 5),
-(11, 1, '400.00', 3, 6),
-(12, 1, '400.00', 1, 7),
-(13, 4, '500.00', 1, 8),
-(14, 1, '400.00', 1, 9),
-(15, 1, '400.00', 1, 11),
-(16, 1, '400.00', 1, 12),
-(17, 1, '400.00', 1, 13),
-(18, 1, '400.00', 1, 14),
-(19, 1, '400.00', 1, 15),
-(20, 1, '400.00', 1, 16),
-(21, 1, '400.00', 1, 17),
-(22, 1, '400.00', 1, 18),
-(23, 1, '400.00', 1, 19),
-(24, 1, '400.00', 1, 20),
-(25, 1, '400.00', 1, 21),
-(26, 1, '400.00', 1, 22),
-(27, 6, '180.00', 1, 23),
-(28, 5, '180.00', 1, 24);
+(1, 1, '400.00', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -358,13 +291,7 @@ CREATE TABLE `sales_invoices_receipts` (
 --
 
 INSERT INTO `sales_invoices_receipts` (`ReceiptId`, `InvoiceId`, `PaymentType`, `PaymentAmount`, `PaymentLiteral`, `TotalPrice`, `BankName`, `BankAccountNumber`, `CheckNumber`, `TransferredTo`, `created`, `UserId`) VALUES
-(1, 1, 0, '500.00', '100', '600.00', NULL, NULL, NULL, NULL, '2023-06-20', 1),
-(2, 2, 0, '7200.00', '900', '8100.00', NULL, NULL, NULL, NULL, '2023-06-20', 1),
-(3, 3, 0, '1600.00', '218', '1818.00', NULL, NULL, NULL, NULL, '2023-06-29', 1),
-(4, 4, 0, '2300.00', '412', '2712.00', NULL, NULL, NULL, NULL, '2023-07-01', 1),
-(5, 22, 0, '0.00', '600', '0.00', NULL, NULL, NULL, NULL, '2023-07-03', 1),
-(6, 23, 0, '252.00', '0', '252.00', NULL, NULL, NULL, NULL, '2023-07-03', 1),
-(7, 24, 0, '216.00', '0', '216.00', NULL, NULL, NULL, NULL, '2023-07-03', 1);
+(1, 1, 0, '500.00', '100', '600.00', NULL, NULL, NULL, NULL, '2023-07-05', 1);
 
 -- --------------------------------------------------------
 
@@ -428,8 +355,9 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`SupplierId`, `Name`, `PhoneNumber`, `Email`, `Address`) VALUES
-(1, 'Ahmad Mohammad', '0785102996', 'ahmad@gmail.com', 'Zarqa Jordan'),
-(2, 'Mohammad Tammemi', '0785102996', 'mohammad@gmail.com', 'Zarqa Jordan');
+(1, 'Ahmad Mohammad', '0785102996', 'ahmad@gmail.com', 'Amman Jordan'),
+(2, 'Mohammad Tammemi', '0785102996', 'mohammad@gmail.com', 'Zarqa Jordan'),
+(7, 'Jo', '078512596', 'jo@gmail.com', 'Irbid Jordan');
 
 -- --------------------------------------------------------
 
@@ -454,7 +382,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserId`, `UserName`, `Password`, `Email`, `SubscriptionDate`, `LastLogin`, `GroupId`, `PhoneNumber`, `Status`) VALUES
-(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-07-03 16:52:01', 7, '0785102996', 1),
+(1, 'bnzz', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'feras345@gmail.com', '2023-02-15 19:26:58', '2023-07-04 23:34:22', 7, '0785102996', 1),
 (2, 'da7loze', '$2a$07$yeNCSNwRpYopOhv0TrrReO.CgBLQTGn6YYr1a96YlnBHx6bYBpe7.', 'majd47@gmail.com', '2023-02-15 19:28:26', '2023-02-21 14:50:49', 9, '0785102996', 1);
 
 -- --------------------------------------------------------
@@ -790,37 +718,37 @@ ALTER TABLE `products_categories`
 -- AUTO_INCREMENT for table `purchases_invoices`
 --
 ALTER TABLE `purchases_invoices`
-  MODIFY `InvoiceId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `InvoiceId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchases_invoices_details`
 --
 ALTER TABLE `purchases_invoices_details`
-  MODIFY `Id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `purchases_invoices_receipts`
 --
 ALTER TABLE `purchases_invoices_receipts`
-  MODIFY `ReceiptId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ReceiptId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sales_invoices`
 --
 ALTER TABLE `sales_invoices`
-  MODIFY `InvoiceId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `InvoiceId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sales_invoices_details`
 --
 ALTER TABLE `sales_invoices_details`
-  MODIFY `Id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Id` smallint(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sales_invoices_receipts`
 --
 ALTER TABLE `sales_invoices_receipts`
-  MODIFY `ReceiptId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ReceiptId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subset_information_users`
@@ -832,7 +760,7 @@ ALTER TABLE `subset_information_users`
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `SupplierId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `SupplierId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
