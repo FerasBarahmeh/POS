@@ -262,7 +262,8 @@ class PurchasesController extends AbstractController
         $supplier = $invoiceInfo->client;
 
         $invoice = new PurchasesInvoicesModel();
-        $invoice->SupplierId = $supplier->ClientId;
+
+        $invoice->SupplierId = $supplier->SupplierId;
 
         return $this->addCommonInvoice($invoice, $invoiceInfo, $products, $this->_controller);
     }
@@ -334,7 +335,7 @@ class PurchasesController extends AbstractController
 
     /**
      * To Get Extra information to client like TOTAL RECEIVED, pending and draft
-     * http://estore.local/sales/getExtraClientInfoAjax
+     * GET[http://estore.local/purchases/getExtraClientInfoAjax]
      * @return void
      */
     public function getExtraClientInfoAjaxAction(): void

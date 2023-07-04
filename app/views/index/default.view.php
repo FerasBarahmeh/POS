@@ -20,7 +20,7 @@
 
             <div class="window">
                 <div class="data">
-                    <div class="number"><a href="/transactions"><?= count($transactions) ?></a></div>
+                    <div class="number"><a href="/transactions"><?= $transactions ? count($transactions) : 0 ?></a></div>
                     <div class="field"><?= $text_transactions ?></div>
                 </div>
                 <div class="icon"><i class="fa fa-file-invoice" aria-hidden="true"></i></div>

@@ -136,7 +136,12 @@ class ProductModel extends AbstractModel
         if ($fetchAll) {
             return (new ProductModel())->getRow($sql);
         } else {
-            return (new ProductModel())->getRow($sql)->$property;
+            $res = (new ProductModel())->getRow($sql);
+            if ($res == null && ! isset($res->$property)) {
+                return null;
+            }
+            return $res->$property;
+//            return (new ProductModel())->getRow($sql)->$property;
         }
     }
 
@@ -167,7 +172,12 @@ class ProductModel extends AbstractModel
         if ($fetchAll) {
             return (new ProductModel())->getRow($sql);
         } else {
-            return (new ProductModel())->getRow($sql)->$property;
+            $res = (new ProductModel())->getRow($sql);
+            if ($res == null && ! isset($res->$property)) {
+                return null;
+            }
+            return $res->$property;
+//            return (new ProductModel())->getRow($sql)->$property;
         }
     }
 

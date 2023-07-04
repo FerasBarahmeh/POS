@@ -12,10 +12,12 @@ This project is implemented with Model-view-controller (MVC) software design pat
 # Setup
 1) Download Server controller like XAMPP or MAMP
 2) PHP >= 8.*
-3) If Your OS is Windows
-    - Go The host file in your device the path file is (```C:\Windows\System32\drivers\etc\hosts```)
-      and add (```127.0.0.1       pos.local```) without single Quotation
-      then go the httpd-vhosts.conf file in Server controller (XAMPP) the path of this file is (```\XAMPP\apache\conf\extra```)
+3) Clone this repo use this command in terminal ```https://github.com/Feras-Barahmeh/POS.git``` in ```\XAMPP\htdocs``` folder
+4) Create Database name pos then import file pos.sql the path this file is ```\XAMPP\htdocs\POS\pos.sql``` all this steps from **http://localhost/phpmyadmin/**
+5) If Your OS is Windows
+    - Go The host file in your device the path file is ```C:\Windows\System32\drivers\etc\hosts```
+      and add ```127.0.0.1       pos.local``` without single Quotation
+      then go the **httpd-vhosts.conf** file in Server controller (XAMPP) the path of this file is ```\XAMPP\apache\conf\extra```
       and set this lines
 
       ```
@@ -24,10 +26,12 @@ This project is implemented with Model-view-controller (MVC) software design pat
           DocumentRoot "E:/XAMPP/htdocs/POS/public"
       </VirtualHost>
       ```
+      ###### NOTE
+    - ```E:/XAMPP/htdocs/POS/public``` `E` drive because I installed **XAMPP** in `E` drive, but you set path depend  your device 
    
-4) Create Database name pos and import file pos.sql the path this file is (```\XAMPP\htdocs\POS\pos.sql```)
-5) Clone this repo use this command in terminal (```https://github.com/Feras-Barahmeh/POS.git```) in (```\XAMPP\htdocs```) folder
-6) The ``admin`` **username**  is **bnzz** and the **password** is **1234567**
+
+
+**The ``admin`` **username**  is **bnzz** and the **password** is **1234567****
 
 
 ## Copyright

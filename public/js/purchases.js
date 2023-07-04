@@ -154,7 +154,7 @@ hiddenProminentElements();
 
 async function getInfoClientReq(id) {
 
-    return await fetch("http://pos.local/sales/getInfoClientAjax", {
+    return await fetch("http://pos.local/purchases/getInfoClientAjax", {
         "method": "POST",
         "headers": {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -231,7 +231,7 @@ function setClientInfo() {
     nameClient.textContent = clientInfo.Name;
     addressClient.textContent = clientInfo["Address"];
 
-    getExtraClientInfo(clientInfo["ClientId"]).then((r) => {
+    getExtraClientInfo(clientInfo["SupplierId"]).then((r) => {
         fillExtraInfo("total-received", Number(r["totalReceived"]));
         fillExtraInfo("pending-value", Number(r["literal"]));
     });

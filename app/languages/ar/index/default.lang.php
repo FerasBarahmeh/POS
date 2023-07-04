@@ -2,6 +2,7 @@
 // Title
 $content["title"] = "لوحه التحكم";
 $content["title_header"] = "لوحه التحكم";
+$content["title_path"] = "";
 $content["suppliers"] = "الموردين";
 $content["clients"] = "العملاء";
 $content["text_transactions"] = "المعاملات";
