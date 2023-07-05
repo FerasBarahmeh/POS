@@ -2,10 +2,9 @@
 
 // Title
 $content["title"] = "List Client";
-
+$content["text_header_title"] = "Client";
 // Title Header
 $content["title_header"] = "List Client";
-$content["title_path"] = "Clients";
 // content page
 $content["text_content_add_client"]                = "Add Client";
 $content["text_content_search_client"]             = "Find Client";

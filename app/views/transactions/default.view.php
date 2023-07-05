@@ -61,7 +61,7 @@
                                         <td><?= $transaction->DiscountType  == null ? $text_no_disc : $transaction->DiscountType ?></td>
                                         <td><?= $transaction->Name ?></td>
                                         <td><?= $paymentsStatus[$transaction->PaymentStatus] ?></td>
-                                        <td><?= $paymentsStatus->Note ? $paymentsStatus->Note : $text_no_note ?></td>
+                                        <td><?= $transaction->Note ? $transaction->Note : $text_no_note ?></td>
                                         <td>
                                             <div class="icons">
 

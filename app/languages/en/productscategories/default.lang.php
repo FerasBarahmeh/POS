@@ -2,7 +2,7 @@
 
 // Title
 $content["title"] = "List Category";
-
+$content["text_header_title"] = "Category";
 // Title Header
 $content["title_header"] = "List Category";
 $content["title_path"] = "Category Product";

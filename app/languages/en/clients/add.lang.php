@@ -2,7 +2,7 @@
 
 // Title
 $content["title"] = "Add Client";
-
+$content["text_header_title"] = "Client";
 // Title Header
 $content["title_header"] = "Add Client";
 $content["title_path"] = "Clients";

@@ -1,8 +1,8 @@
 <?php
 // Title
 $content["title"] = "General Settings";
+$content["text_header_title"] = "Settings";
 $content["title_header"] = "General Settings";
-$content["title_path"] = "Settings";
 $content["text_edit"] = "Edit";
 $content["text_save"] = "Save";
 $content["text_cansel"] = "Cansel";

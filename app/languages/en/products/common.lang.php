@@ -1,4 +1,5 @@
 <?php
+$content["text_header_title"] = "Products";
 $content["table_message_category_description"]       = "Category of this product";
 $content["table_Name"]       = "Name Products";
 $content["table_Quantity"]   = "Quantity";

@@ -2,10 +2,9 @@
 
 // Title
 $content["title"] = "List Products";
-
+$content["text_header_title"] = "Products";
 // Title Header
 $content["title_header"] = "List Products";
-$content["title_path"] = "Products";
 // content page
 $content["text_content_add_product"]       = "Add Product";
 $content["text_content_search_product"]    = "Find Product";

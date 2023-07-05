@@ -7,10 +7,14 @@
                 <i class="fa fa-bars"></i>
         </span>
         <h1 class="title inline-block ml-15 fs-20 fw-bold">
-            <?= $text_header_title  ?>
-            <?php if (isset($title)): ?>
-                <?= isset($title_path) ?  '| ' . $title_path . ' | ' . $title : ' | ' . $title ?>
-            <?php endif; ?>
+            <?php
+
+                if ($title && $title != $text_header_title) {
+                    echo $text_header_title .  ' | '. $title;
+                } else {
+                    echo $text_header_title;
+                }
+            ?>
         </h1>
 
     </div>

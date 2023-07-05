@@ -1,10 +1,9 @@
 <?php
 // Title
 $content["title"] = "Buy Products";
-
+$content["text_header_title"] = "Purchases";
 // Title Header
 $content["title_header"] = "Buy Products";
-$content["title_path"] = "Purchases";
 
 
 // Field

@@ -1,7 +1,7 @@
 <?php
 $content["title"] = "Dashboard";
+$content["text_header_title"] = "Dashboard";
 $content["title_header"] = "Dashboard";
-$content["title_path"] = "Dashboard";
 $content["suppliers"] = "Suppliers";
 $content["clients"] = "Clients";
 $content["text_transactions"] = "Transactions";

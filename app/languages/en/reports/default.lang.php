@@ -1,6 +1,7 @@
 <?php
 $content["title"] = "Reports";
 $content["title_header"] = "Reports";
+$content["text_header_title"] = "Reports";
 $content["title_path"] = "Reports";
 $content["chart_number_invoice_month"] = "Number Invoice For Each Month";
 $content["chart_number_invoice_yearly"] = "Number Invoice For Year";

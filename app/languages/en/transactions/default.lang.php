@@ -1,10 +1,11 @@
 <?php
 // Title
 $content["title"] = "Transactions";
+$content["text_header_title"] = "Transactions";
 
 // Title Header
 $content["title_header"] = "Transaction";
-$content["title_path"] = "Transaction";
+$content["title_path"] = "Transactions";
 $content["text_filter_by_transaction_Type"] = "Filter By value column";
 $content["text_filter_by_transaction_Type_placeholder"] = "Write value column";
 $content["text_filter_by_range"] = "Filter By Range Values (start-end)";

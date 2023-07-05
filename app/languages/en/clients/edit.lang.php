@@ -2,10 +2,9 @@
 
 // Title
 $content["title"] = "Modify Client Information";
-
+$content["text_header_title"] = "Client";
 // Title Header
 $content["title_header"] = "Modify Client Information";
-$content["title_path"] = "Clients";
 
 // Field
 $content["table_Name"]                  = "Client Name";
