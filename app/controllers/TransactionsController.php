@@ -244,9 +244,10 @@ class TransactionsController extends AbstractController
         } else {
             $totalPrice -= $invoice->Discount;
         }
+        $note = $invoice->Note ? $invoice->Note : 'No Notes';
         $pdf->Cell(198, 6, "Amount ", 1, 1, 'L');
         $pdf->Cell(198, -6, "{$totalPrice} {$currency}", 0, 0, 'R');
-        $pdf->Cell(0, 6, "Note: {$invoice->Note}", 0, 0, 'R');
+        $pdf->Cell(0, 6, "Note: {$note}", 0, 0, 'R');
 
         if ($to == 'D') {
             $pdf->Output("invoice.pdf", 'D');
