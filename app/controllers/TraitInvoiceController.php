@@ -37,7 +37,7 @@ trait TraitInvoiceController
         $discountType = new DiscountType();
 
 
-        $this->_info["products"] = ProductModel::getProducts();
+        $this->_info["products"] = ProductModel::getProducts(["P.Name" => "ASC"]);
 
         $this->_info["units"] = $this->getSpecificProperties($units);
         $this->_info["initUnits"] = $initUnit;

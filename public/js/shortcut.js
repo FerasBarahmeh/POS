@@ -446,3 +446,27 @@ tables.forEach(table => {
 });
 
 // End Pagination table
+
+// Start Search input
+// TODO: Apply Trie Data Structure Tree To Search
+const searchInInputs = document.querySelectorAll("[search-input]");
+searchInInputs.forEach(input => {
+    input.addEventListener("keyup", () => {
+        let containerSearchInput = input.closest("[container-search]");
+        let lis = containerSearchInput.querySelectorAll("ul li");
+        let inputValue = input.value.toLowerCase();
+
+        lis.forEach(li => {
+            let content = li.textContent.toLowerCase();
+            if (content.search(inputValue) !== -1) {
+                li.classList.remove("hidden")
+            } else {
+                li.classList.add("hidden")
+            }
+        });
+    });
+
+
+});
+// End Search input
+

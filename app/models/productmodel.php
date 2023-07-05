@@ -3,6 +3,7 @@
 namespace APP\Models;
 
 use APP\Helpers\PublicHelper\PublicHelper;
+use ArrayIterator;
 
 class ProductModel extends AbstractModel
 {
@@ -46,7 +47,14 @@ class ProductModel extends AbstractModel
         return self::$primaryKey;
     }
 
-    public static function getProducts():  bool|\ArrayIterator
+    /**
+     * method to get products
+     * @param array $ordered array contain ordered by and type order
+     * @return bool|ArrayIterator
+     * @version 1.1
+     * @author Feras Barahmeh
+     */
+    public static function getProducts(array $ordered=[]):  bool|\ArrayIterator
     {
         $query = "
             SELECT 
@@ -62,6 +70,10 @@ class ProductModel extends AbstractModel
             ON
                 p.CategoryId = pc.CategoryId            
         ";
+        if ($ordered) {
+            foreach ($ordered as $by => $type)
+            $query .= " ORDER BY $by $type ";
+        }
 
         return (new ProductModel)->get($query);
 

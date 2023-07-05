@@ -6,11 +6,13 @@
     <section class="partisan">
         <h5 class="section-title"><i class="fa fa-table"></i> <?= $text_client ?> </h5>
         <section class="input-search-fields-container header-partisan-section">
-            <div class="container-search-section component-input-js">
+            <div class="container-search-section component-input-js" container-search>
                 <div class="input">
                     <label for="name" class="title float"><?= $text_search_name_client ?></label>
                     <input type="text"
                            id="name"
+                           search-input
+                           autocomplete="off"
                            class="find-client-input search"
                            autocomplete="off"/>
 
@@ -24,11 +26,12 @@
                 </ul>
             </div>
 
-            <div class="container-search-section component-input-js">
+            <div class="container-search-section component-input-js" container-search>
                 <div class="input">
                     <label for="email" class="title float"><?= $text_search_email_client ?></label>
                     <input type="email"
                            id="email"
+                           search-input
                            class="find-client-input search"
                            autocomplete="off"/>
                 </div>
@@ -41,11 +44,12 @@
                  </ul>
             </div>
 
-            <div class="container-search-section component-input-js">
+            <div class="container-search-section component-input-js" container-search>
                 <div class="input">
                     <label for="id" class="title"><?= $text_id_client ?></label>
                     <input type="number"
                            id="id"
+                           search-input
                            class="find-client-input search"
                            autocomplete="off"/>
                 </div>
@@ -104,11 +108,12 @@
     <section class="partisan mt-20">
         <h5 class="section-title"><i class="fa fa-sitemap"></i> <?= $text_nav_products ?> </h5>
         <section class="input-search-fields-container header-partisan-section revers-r">
-            <div class="container-search-section component-input-js max-w-40-per">
+            <div class="container-search-section component-input-js max-w-40-per" container-search>
                 <div class="input">
                     <label for="Name" class="title float"><?= $text_name_product ?></label>
                     <input type="text"
                            id="Name"
+                           search-input
                            class="find-client-input search"
                            autocomplete="off"/>
 

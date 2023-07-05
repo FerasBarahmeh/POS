@@ -81,9 +81,10 @@
     position: absolute;
     border-radius: 5px;
     margin-top: 8px;
+    max-height: 200px;
     overflow-x: hidden;
     overflow-y: scroll;
-    z-index: 100;
+    z-index: 2;
     pointer-events: none;
     opacity: 0;
     transition: opacity .3s ease-in-out;
@@ -164,7 +165,7 @@
     font-size: 20px;
     color: var(--bg-black-900);
     cursor: pointer;
-    z-index: 99;
+    z-index: 1;
 }
 .sales-container .footer-partisan-section .tools-bar ul {
     display: flex;
