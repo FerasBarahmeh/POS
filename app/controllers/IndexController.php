@@ -42,8 +42,8 @@ class IndexController extends AbstractController  {
         $this->language->load("index.default");
 
         $this->_info["currency"] = SettingsModel::getCurrency($this->session->user->UserId);
-        $this->_info["lastSalesInvoices"] = TransactionsSalesModel::lastInvoice();
-        $this->_info["lastPurchasesInvoices"] = TransactionsPurchasesModel::lastInvoices();
+        $this->_info["lastSalesInvoices"] = TransactionsSalesModel::lastInvoice(filters: $_POST);
+        $this->_info["lastPurchasesInvoices"] = TransactionsPurchasesModel::lastInvoices(filters: $_POST);
 
         $countSaleTransactionToday = SalesInvoicesModel::countTransactionsToday();
         $countPurchasesTransactionToday = PurchasesInvoicesModel::countTransactionsToday();
@@ -68,7 +68,7 @@ class IndexController extends AbstractController  {
 
 
 
-        $this->transactions();
+        $this->transactions($_POST);
 
 
 

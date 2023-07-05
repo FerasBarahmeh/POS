@@ -46,6 +46,31 @@
         </header>
         <h3><i class="fa fa-file-invoice" aria-hidden="true"></i><?= $last_sales_invoice ?> </h3>
 
+        <section class="filter-box">
+            <div class="filters">
+                <div class="filter">
+                    <form action="" METHOD="POST">
+                        <label for="filter_column"><i class="fa fa-filter"></i><?= $text_filter_by_transaction_Type ?></label>
+                        <input type="search" name="filter_value" id="filter_column" placeholder="<?= $text_filter_by_transaction_Type_placeholder ?>"/>
+                        <button class="search-btn stander-btn" type="submit" name="filter_by_column" id="type-filter-btn"><?= $text_show_all ?></button>
+                    </form>
+                </div>
+                <div class="filter">
+                    <form action="" METHOD="POST">
+                        <label for="from"><i class="fa fa-filter"></i><?= $text_filter_by_range ?></label>
+                        <input type="search" name="from" id="from" placeholder="<?= $text_filter_by_range_start_placeholder ?>"/>
+                        <label for="to"><?= $text_to ?></label><input type="search" name="to" id="to" placeholder="<?= $text_filter_by_range_end_placeholder ?>"/>
+                        <button class="search-btn stander-btn" type="submit" name="filter-between" id="type-filter-btn"><?= $text_show_all ?></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="print-buttons">
+                <button>
+                    <form action="" method="POST"><input type="submit"  name="resit" value="<?= $text_resit ?>"></form>
+                </button>
+            </div>
+        </section>
         <section class="last-invoices responsive-table">
             <table class="">
                 <thead>
@@ -99,7 +124,31 @@
         </section>
 
         <h3><i class="fa fa-list" aria-hidden="true"></i><?= $last_purchases_invoice ?> </h3>
+        <section class="filter-box">
+            <div class="filters">
+                <div class="filter">
+                    <form action="" METHOD="POST">
+                        <label for="filter_column"><i class="fa fa-filter"></i><?= $text_filter_by_transaction_Type ?></label>
+                        <input type="search" name="filter_value" id="filter_column" placeholder="<?= $text_filter_by_transaction_Type_placeholder ?>"/>
+                        <button class="search-btn stander-btn" type="submit" name="filter_by_column" id="type-filter-btn"><?= $text_show_all ?></button>
+                    </form>
+                </div>
+                <div class="filter">
+                    <form action="" METHOD="POST">
+                        <label for="from"><i class="fa fa-filter"></i><?= $text_filter_by_range ?></label>
+                        <input type="search" name="from" id="from" placeholder="<?= $text_filter_by_range_start_placeholder ?>"/>
+                        <label for="to"><?= $text_to ?></label><input type="search" name="to" id="to" placeholder="<?= $text_filter_by_range_end_placeholder ?>"/>
+                        <button class="search-btn stander-btn" type="submit" name="filter-between" id="type-filter-btn"><?= $text_show_all ?></button>
+                    </form>
+                </div>
+            </div>
 
+            <div class="print-buttons">
+                <button>
+                    <form action="" method="POST"><input type="submit"  name="resit" value="<?= $text_resit ?>"></form>
+                </button>
+            </div>
+        </section>
         <section class="last-invoices responsive-table">
             <table class="">
                 <thead>
@@ -154,6 +203,31 @@
 
 
         <h3><i class="fa fa-folder" aria-hidden="true"></i><?= $manage_invoice ?></h3>
+        <section class="filter-box">
+            <div class="filters">
+                <div class="filter">
+                    <form action="" METHOD="POST">
+                        <label for="filter_column"><i class="fa fa-filter"></i><?= $text_filter_by_transaction_Type ?></label>
+                        <input type="search" name="filter_value" id="filter_column" placeholder="<?= $text_filter_by_transaction_Type_placeholder ?>"/>
+                        <button class="search-btn stander-btn" type="submit" name="filter_by_column" id="type-filter-btn"><?= $text_show_all ?></button>
+                    </form>
+                </div>
+                <div class="filter">
+                    <form action="" METHOD="POST">
+                        <label for="from"><i class="fa fa-filter"></i><?= $text_filter_by_range ?></label>
+                        <input type="search" name="from" id="from" placeholder="<?= $text_filter_by_range_start_placeholder ?>"/>
+                        <label for="to"><?= $text_to ?></label><input type="search" name="to" id="to" placeholder="<?= $text_filter_by_range_end_placeholder ?>"/>
+                        <button class="search-btn stander-btn" type="submit" name="filter-between" id="type-filter-btn"><?= $text_show_all ?></button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="print-buttons">
+                <button>
+                    <form action="" method="POST"><input type="submit"  name="resit" value="<?= $text_resit ?>"></form>
+                </button>
+            </div>
+        </section>
         <section class="manage-invoice">
             <section class="transactions-container">
 

@@ -5,6 +5,7 @@ namespace APP\Models;
 use APP\Helpers\PublicHelper\PublicHelper;
 use ArrayIterator;
 use Exception;
+use ReflectionException;
 
 class TransactionsSalesModel extends AbstractModel
 {
@@ -102,27 +103,42 @@ class TransactionsSalesModel extends AbstractModel
     }
 
     /**
-     * to get last invoices
-     * @param int $limit number of last invoices default return last 5 invoice
+     * to get last invoices sales
+     * @param int $limit number of last invoices default return last 5 invoice sales
+     * @param null $filters $_POST if you to filter box activate
      * @return false|ArrayIterator
+     * @throws ReflectionException
+     * @version 1.2
+     * @author Feras Barahemh
      */
-    public static function lastInvoice(int $limit=5): false|ArrayIterator
+    public static function lastInvoice(int $limit=5, $filters=null): false|ArrayIterator
     {
         $sql = "
             SELECT 
-               DISTINCT I.*, R.*, C.* 
+               DISTINCT sales_invoices.*, sales_invoices_receipts.*, clients.* 
             FROM 
-                sales_invoices AS I 
+                sales_invoices
             INNER JOIN 
-                    sales_invoices_receipts AS R 
+                    sales_invoices_receipts
             ON 
-                R.InvoiceId = I.InvoiceId 
+                sales_invoices_receipts.InvoiceId = sales_invoices.InvoiceId 
             JOIN 
-                    clients as C 
+                    clients 
             ON
-                I.ClientId = C.ClientId
-            LIMIT {$limit}
+                sales_invoices.ClientId = clients.ClientId
+            
         ";
+        if ($filters != null) {
+
+            (new TransactionsPurchasesModel)->addSearchTerm($sql, $filters, (new TransactionsPurchasesModel)->setSchema([
+                (new SalesInvoicesModel()),
+                (new SalesInvoicesReceiptsModel()),
+                (new ClientModel())
+            ]));
+        }
+
+        $sql .= " LIMIT {$limit}";
+        
         return (new TransactionsSalesModel())->get($sql);
     }
 

@@ -23,7 +23,7 @@ trait TraitTransactionsModel
      * @version 1.0
      * @author Feras Barahmeh
      */
-    protected function setSchema(array $objectsModel): array
+    public function setSchema(array $objectsModel): array
     {
         $schema = [];
         foreach ($objectsModel as $objectModel) {

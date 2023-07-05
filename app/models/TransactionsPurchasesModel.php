@@ -4,6 +4,7 @@ namespace APP\Models;
 
 use ArrayIterator;
 use Exception;
+use ReflectionException;
 
 class TransactionsPurchasesModel extends AbstractModel
 {
@@ -96,23 +97,40 @@ class TransactionsPurchasesModel extends AbstractModel
         return (new TransactionsPurchasesModel())->get($sql);
     }
 
-    public static function lastInvoices(int $limit=5): false|ArrayIterator
+    /**
+     * to get last invoices purchases
+     * @param int $limit number of last invoices default return last 5 invoice purchases
+     * @param null $filters $_POST if you to filter box activate
+     * @return false|ArrayIterator
+     * @throws ReflectionException
+     * @version 1.2
+     * @author Feras Barahemh
+     */
+    public static function lastInvoices(int $limit=5, $filters=null): false|ArrayIterator
     {
         $sql = "
             SELECT 
-                I.*, R.*, C.* 
+                purchases_invoices.*, purchases_invoices_receipts.*, suppliers.* 
             FROM 
-                purchases_invoices AS I 
+                purchases_invoices
             INNER JOIN 
-                    purchases_invoices_receipts AS R 
+                    purchases_invoices_receipts
             ON 
-                R.InvoiceId = I.InvoiceId 
+                purchases_invoices_receipts.InvoiceId = purchases_invoices.InvoiceId 
             JOIN 
-                    suppliers as C 
+                    suppliers
             ON 
-                I.SupplierId = C.SupplierId
-            LIMIT {$limit}
+                purchases_invoices.SupplierId = suppliers.SupplierId
+            
         ";
+        if ($filters != null) {
+            (new TransactionsPurchasesModel)->addSearchTerm($sql, $filters, (new TransactionsPurchasesModel)->setSchema([
+                (new PurchasesInvoicesModel()),
+                (new PurchasesInvoicesReceiptsModel()),
+                (new SupplierModel())
+            ]));
+        }
+        $sql .= " LIMIT {$limit}";
         return (new TransactionsPurchasesModel())->get($sql);
     }
     public static function revenueToday()
