@@ -4,27 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="edit flay label">
-      <change afterPath="$PROJECT_DIR$/public/css/ar/index.css" afterDir="false" />
+    <list default="true" id="2a2707ef-1f26-4d46-af6c-4e51c693e56d" name="Changes" comment="edit header title">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/LIB/Language.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/LIB/Language.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/templateconfig.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/templateconfig.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/IndexController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/IndexController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/LanguageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/LanguageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/TraitInvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/TraitInvoiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/TransactionsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/TransactionsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/ar/index/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/ar/index/default.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/languages/en/index/default.lang.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/languages/en/index/default.lang.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/TransactionsPurchasesModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/TransactionsPurchasesModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/TransactionsSalesModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/TransactionsSalesModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/abstractmodel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/abstractmodel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/index/default.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/index/default.view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/en/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/en/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sessions/sess_1oqojb8mv3c5ou2n0a07psim9t" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sessions/sess_5qakt8oiv421h9cafasn6l751v" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sessions/sess_nmicid0hhfo0uock7dtkcm6snf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sessions/sess_qqa9bo2ederamkeia6f8b7k0ga" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sessions/sess_sugost6ppuaqbsiue22ml1ptea" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/pos.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/uploads/images/fcf6b380c5f2297f617f831c94e400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/sess_7q5fsksvk5i7fmdccot8svupuu" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/sess_r7976uc6bugb43bae39ujnti1o" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,34 +44,34 @@
     <option name="showMembers" value="true" />
     <option name="sortByType" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/Xampp/htdocs/estore/public/css/ar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Xampp/htdocs/estore/public/css/ar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Xampp\htdocs\estore\public\css\ar" />
-      <recent name="E:\Xampp\htdocs\estore\public\css\en" />
-      <recent name="E:\Xampp\htdocs\estore\app\languages\ar\transactions" />
-      <recent name="E:\Xampp\htdocs\estore\app\languages\en\transactions" />
-      <recent name="E:\Xampp\htdocs\estore\TCPDF\examples\images" />
+      <recent name="E:\Xampp\htdocs\estore\app\languages\ar\reports" />
+      <recent name="E:\Xampp\htdocs\estore\app\languages\en\reports" />
+      <recent name="E:\Xampp\htdocs\estore\app\languages\ar" />
+      <recent name="E:\Xampp\htdocs\estore\public\js" />
     </key>
   </component>
   <component name="RunManager">
@@ -211,154 +196,16 @@
       <workItem from="1687944316159" duration="12298000" />
       <workItem from="1687961961043" duration="5730000" />
       <workItem from="1688024568053" duration="13696000" />
-      <workItem from="1688060650248" duration="9476000" />
-    </task>
-    <task id="LOCAL-00214" summary="finished design invoice section html css">
-      <created>1682455402493</created>
-      <option name="number" value="00214" />
-      <option name="presentableId" value="LOCAL-00214" />
-      <option name="project" value="LOCAL" />
-      <updated>1682455402493</updated>
-    </task>
-    <task id="LOCAL-00215" summary="add some functionality in sales page">
-      <created>1682513692201</created>
-      <option name="number" value="00215" />
-      <option name="presentableId" value="LOCAL-00215" />
-      <option name="project" value="LOCAL" />
-      <updated>1682513692201</updated>
-    </task>
-    <task id="LOCAL-00216" summary="fish design sales page">
-      <created>1682531778638</created>
-      <option name="number" value="00216" />
-      <option name="presentableId" value="LOCAL-00216" />
-      <option name="project" value="LOCAL" />
-      <updated>1682531778640</updated>
-    </task>
-    <task id="LOCAL-00217" summary="fix calculate total price function in sales.js,&#10;and edit, delete product">
-      <created>1682796170843</created>
-      <option name="number" value="00217" />
-      <option name="presentableId" value="LOCAL-00217" />
-      <option name="project" value="LOCAL" />
-      <updated>1682796170843</updated>
-    </task>
-    <task id="LOCAL-00218" summary="add message when apply discount success">
-      <created>1682805591569</created>
-      <option name="number" value="00218" />
-      <option name="presentableId" value="LOCAL-00218" />
-      <option name="project" value="LOCAL" />
-      <updated>1682805591570</updated>
-    </task>
-    <task id="LOCAL-00219" summary="Fill Extra client information input in sales.js">
-      <created>1682879609548</created>
-      <option name="number" value="00219" />
-      <option name="presentableId" value="LOCAL-00219" />
-      <option name="project" value="LOCAL" />
-      <updated>1682879609549</updated>
-    </task>
-    <task id="LOCAL-00220" summary="prepare information invoice">
-      <created>1682888092296</created>
-      <option name="number" value="00220" />
-      <option name="presentableId" value="LOCAL-00220" />
-      <option name="project" value="LOCAL" />
-      <updated>1682888092296</updated>
-    </task>
-    <task id="LOCAL-00221" summary="check if employee can crete invoice">
-      <created>1683831328164</created>
-      <option name="number" value="00221" />
-      <option name="presentableId" value="LOCAL-00221" />
-      <option name="project" value="LOCAL" />
-      <updated>1683831328164</updated>
-    </task>
-    <task id="LOCAL-00222" summary="Check if it has privilege employee to create invoice and Qty products">
-      <created>1686482426047</created>
-      <option name="number" value="00222" />
-      <option name="presentableId" value="LOCAL-00222" />
-      <option name="project" value="LOCAL" />
-      <updated>1686482426047</updated>
-    </task>
-    <task id="LOCAL-00223" summary="create invoice finished (V1)">
-      <created>1686511107749</created>
-      <option name="number" value="00223" />
-      <option name="presentableId" value="LOCAL-00223" />
-      <option name="project" value="LOCAL" />
-      <updated>1686511107749</updated>
-    </task>
-    <task id="LOCAL-00224" summary="finish sale products page">
-      <created>1686569592780</created>
-      <option name="number" value="00224" />
-      <option name="presentableId" value="LOCAL-00224" />
-      <option name="project" value="LOCAL" />
-      <updated>1686569592780</updated>
-    </task>
-    <task id="LOCAL-00225" summary="fix bug apply discount qty products when sale">
-      <created>1686581995390</created>
-      <option name="number" value="00225" />
-      <option name="presentableId" value="LOCAL-00225" />
-      <option name="project" value="LOCAL" />
-      <updated>1686581995390</updated>
-    </task>
-    <task id="LOCAL-00226" summary="add arabic language to sales page">
-      <created>1686592822357</created>
-      <option name="number" value="00226" />
-      <option name="presentableId" value="LOCAL-00226" />
-      <option name="project" value="LOCAL" />
-      <updated>1686592822357</updated>
-    </task>
-    <task id="LOCAL-00227" summary="update version 1.3 getSpecificProperties in publichelper.php">
-      <created>1686725079475</created>
-      <option name="number" value="00227" />
-      <option name="presentableId" value="LOCAL-00227" />
-      <option name="project" value="LOCAL" />
-      <updated>1686725079475</updated>
-    </task>
-    <task id="LOCAL-00228" summary="Create Transaction page">
-      <created>1686744553802</created>
-      <option name="number" value="00228" />
-      <option name="presentableId" value="LOCAL-00228" />
-      <option name="project" value="LOCAL" />
-      <updated>1686744553802</updated>
-    </task>
-    <task id="LOCAL-00229" summary="refactor template configuration">
-      <created>1686927060858</created>
-      <option name="number" value="00229" />
-      <option name="presentableId" value="LOCAL-00229" />
-      <option name="project" value="LOCAL" />
-      <updated>1686927060858</updated>
-    </task>
-    <task id="LOCAL-00230" summary="add removeAllChildNodes function to main.js">
-      <created>1686939804436</created>
-      <option name="number" value="00230" />
-      <option name="presentableId" value="LOCAL-00230" />
-      <option name="project" value="LOCAL" />
-      <updated>1686939804436</updated>
-    </task>
-    <task id="LOCAL-00231" summary="create TransactionsSalesModel.php">
-      <created>1687100713035</created>
-      <option name="number" value="00231" />
-      <option name="presentableId" value="LOCAL-00231" />
-      <option name="project" value="LOCAL" />
-      <updated>1687100713035</updated>
-    </task>
-    <task id="LOCAL-00232" summary="add getMessagesAjaxAction method in AbstractController.php">
-      <created>1687100739977</created>
-      <option name="number" value="00232" />
-      <option name="presentableId" value="LOCAL-00232" />
-      <option name="project" value="LOCAL" />
-      <updated>1687100739977</updated>
-    </task>
-    <task id="LOCAL-00233" summary="re design load filter button in transactions page">
-      <created>1687100832855</created>
-      <option name="number" value="00233" />
-      <option name="presentableId" value="LOCAL-00233" />
-      <option name="project" value="LOCAL" />
-      <updated>1687100832855</updated>
-    </task>
-    <task id="LOCAL-00234" summary="change angle icon">
-      <created>1687174052062</created>
-      <option name="number" value="00234" />
-      <option name="presentableId" value="LOCAL-00234" />
-      <option name="project" value="LOCAL" />
-      <updated>1687174052062</updated>
+      <workItem from="1688060650248" duration="15900000" />
+      <workItem from="1688102623997" duration="7798000" />
+      <workItem from="1688202363596" duration="20386000" />
+      <workItem from="1688238963299" duration="4573000" />
+      <workItem from="1688282999023" duration="18940000" />
+      <workItem from="1688315183421" duration="4660000" />
+      <workItem from="1688371981781" duration="29508000" />
+      <workItem from="1688463140699" duration="52000" />
+      <workItem from="1688506810685" duration="2787000" />
+      <workItem from="1688540398922" duration="12161000" />
     </task>
     <task id="LOCAL-00235" summary="refactor table pagination code">
       <created>1687189377613</created>
@@ -556,7 +403,154 @@
       <option name="project" value="LOCAL" />
       <updated>1687962075316</updated>
     </task>
-    <option name="localTasksCounter" value="263" />
+    <task id="LOCAL-00263" summary="Create Dashboard">
+      <created>1688073154715</created>
+      <option name="number" value="00263" />
+      <option name="presentableId" value="LOCAL-00263" />
+      <option name="project" value="LOCAL" />
+      <updated>1688073154715</updated>
+    </task>
+    <task id="LOCAL-00264" summary="Retouching edit">
+      <created>1688076947186</created>
+      <option name="number" value="00264" />
+      <option name="presentableId" value="LOCAL-00264" />
+      <option name="project" value="LOCAL" />
+      <updated>1688076947186</updated>
+    </task>
+    <task id="LOCAL-00265" summary="Retouching">
+      <created>1688078580190</created>
+      <option name="number" value="00265" />
+      <option name="presentableId" value="LOCAL-00265" />
+      <option name="project" value="LOCAL" />
+      <updated>1688078580190</updated>
+    </task>
+    <task id="LOCAL-00266" summary="create nameMonth method in publichelper.php">
+      <created>1688153549081</created>
+      <option name="number" value="00266" />
+      <option name="presentableId" value="LOCAL-00266" />
+      <option name="project" value="LOCAL" />
+      <updated>1688153549081</updated>
+    </task>
+    <task id="LOCAL-00267" summary="create reports page">
+      <created>1688232188434</created>
+      <option name="number" value="00267" />
+      <option name="presentableId" value="LOCAL-00267" />
+      <option name="project" value="LOCAL" />
+      <updated>1688232188435</updated>
+    </task>
+    <task id="LOCAL-00268" summary="add best Selling Products name">
+      <created>1688240783813</created>
+      <option name="number" value="00268" />
+      <option name="presentableId" value="LOCAL-00268" />
+      <option name="project" value="LOCAL" />
+      <updated>1688240783814</updated>
+    </task>
+    <task id="LOCAL-00269" summary="finish reports page">
+      <created>1688304953006</created>
+      <option name="number" value="00269" />
+      <option name="presentableId" value="LOCAL-00269" />
+      <option name="project" value="LOCAL" />
+      <updated>1688304953006</updated>
+    </task>
+    <task id="LOCAL-00270" summary="create filter in transitions pages">
+      <created>1688391578186</created>
+      <option name="number" value="00270" />
+      <option name="presentableId" value="LOCAL-00270" />
+      <option name="project" value="LOCAL" />
+      <updated>1688391578186</updated>
+    </task>
+    <task id="LOCAL-00271" summary="add path in header">
+      <created>1688394794412</created>
+      <option name="number" value="00271" />
+      <option name="presentableId" value="LOCAL-00271" />
+      <option name="project" value="LOCAL" />
+      <updated>1688394794412</updated>
+    </task>
+    <task id="LOCAL-00272" summary="add path in header">
+      <created>1688396116853</created>
+      <option name="number" value="00272" />
+      <option name="presentableId" value="LOCAL-00272" />
+      <option name="project" value="LOCAL" />
+      <updated>1688396116853</updated>
+    </task>
+    <task id="LOCAL-00273" summary="add info file and sum change in config application">
+      <created>1688397747225</created>
+      <option name="number" value="00273" />
+      <option name="presentableId" value="LOCAL-00273" />
+      <option name="project" value="LOCAL" />
+      <updated>1688397747225</updated>
+    </task>
+    <task id="LOCAL-00274" summary="edit sum bugs">
+      <created>1688406520114</created>
+      <option name="number" value="00274" />
+      <option name="presentableId" value="LOCAL-00274" />
+      <option name="project" value="LOCAL" />
+      <updated>1688406520114</updated>
+    </task>
+    <task id="LOCAL-00275" summary="add readme file">
+      <created>1688407512939</created>
+      <option name="number" value="00275" />
+      <option name="presentableId" value="LOCAL-00275" />
+      <option name="project" value="LOCAL" />
+      <updated>1688407512939</updated>
+    </task>
+    <task id="LOCAL-00276" summary="fix error in buy products page">
+      <created>1688509584713</created>
+      <option name="number" value="00276" />
+      <option name="presentableId" value="LOCAL-00276" />
+      <option name="project" value="LOCAL" />
+      <updated>1688509584714</updated>
+    </task>
+    <task id="LOCAL-00277" summary="update last version db">
+      <created>1688509612704</created>
+      <option name="number" value="00277" />
+      <option name="presentableId" value="LOCAL-00277" />
+      <option name="project" value="LOCAL" />
+      <updated>1688509612704</updated>
+    </task>
+    <task id="LOCAL-00278" summary="and note to invoice receipts">
+      <created>1688543188333</created>
+      <option name="number" value="00278" />
+      <option name="presentableId" value="LOCAL-00278" />
+      <option name="project" value="LOCAL" />
+      <updated>1688543188334</updated>
+    </task>
+    <task id="LOCAL-00279" summary="add search in inputs">
+      <created>1688547472948</created>
+      <option name="number" value="00279" />
+      <option name="presentableId" value="LOCAL-00279" />
+      <option name="project" value="LOCAL" />
+      <updated>1688547472948</updated>
+    </task>
+    <task id="LOCAL-00280" summary="add filter box to dashboard">
+      <created>1688549871050</created>
+      <option name="number" value="00280" />
+      <option name="presentableId" value="LOCAL-00280" />
+      <option name="project" value="LOCAL" />
+      <updated>1688549871050</updated>
+    </task>
+    <task id="LOCAL-00281" summary="edit cansel word">
+      <created>1688550076588</created>
+      <option name="number" value="00281" />
+      <option name="presentableId" value="LOCAL-00281" />
+      <option name="project" value="LOCAL" />
+      <updated>1688550076588</updated>
+    </task>
+    <task id="LOCAL-00282" summary="edit note in pdf">
+      <created>1688550507674</created>
+      <option name="number" value="00282" />
+      <option name="presentableId" value="LOCAL-00282" />
+      <option name="project" value="LOCAL" />
+      <updated>1688550507674</updated>
+    </task>
+    <task id="LOCAL-00283" summary="edit header title">
+      <created>1688552269702</created>
+      <option name="number" value="00283" />
+      <option name="presentableId" value="LOCAL-00283" />
+      <option name="project" value="LOCAL" />
+      <updated>1688552269702</updated>
+    </task>
+    <option name="localTasksCounter" value="284" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,32 +568,32 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor design form input and change some ui" />
-    <MESSAGE value="add design in arabic language css files" />
-    <MESSAGE value="add arabic language files to translations page" />
-    <MESSAGE value="create purchases pages" />
-    <MESSAGE value="load last version to DB" />
-    <MESSAGE value="edit pug in get TOTAL RECEIVED supplier" />
-    <MESSAGE value="add hint logout when edit group user" />
-    <MESSAGE value="add hint message in arabic file" />
-    <MESSAGE value="create mergeArraysRandomly method in publichelper.php" />
-    <MESSAGE value="separate transaction, sales translations and purchases transactions" />
-    <MESSAGE value="change names variable in translations pages" />
-    <MESSAGE value="upload last version db file" />
-    <MESSAGE value="edit page css and add arabic file to purchases" />
-    <MESSAGE value="add general setting link in navigation" />
-    <MESSAGE value="create setting page v1" />
-    <MESSAGE value="update Validation.php new you can return errors in array" />
-    <MESSAGE value="create settings page" />
-    <MESSAGE value="prepare language arabic files" />
-    <MESSAGE value="set language in cookes" />
-    <MESSAGE value="set language in cookies and update login page" />
     <MESSAGE value="upload last version database" />
     <MESSAGE value="add fetcher download invoice as pdf in all translations sections" />
     <MESSAGE value="edit transaction language file" />
     <MESSAGE value="upload last version db" />
     <MESSAGE value="edit flay label" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit flay label" />
+    <MESSAGE value="Create Dashboard" />
+    <MESSAGE value="Retouching edit" />
+    <MESSAGE value="Retouching" />
+    <MESSAGE value="create nameMonth method in publichelper.php" />
+    <MESSAGE value="create reports page" />
+    <MESSAGE value="add best Selling Products name" />
+    <MESSAGE value="finish reports page" />
+    <MESSAGE value="create filter in transitions pages" />
+    <MESSAGE value="add path in header" />
+    <MESSAGE value="add info file and sum change in config application" />
+    <MESSAGE value="edit sum bugs" />
+    <MESSAGE value="add readme file" />
+    <MESSAGE value="fix error in buy products page" />
+    <MESSAGE value="update last version db" />
+    <MESSAGE value="and note to invoice receipts" />
+    <MESSAGE value="add search in inputs" />
+    <MESSAGE value="add filter box to dashboard" />
+    <MESSAGE value="edit cansel word" />
+    <MESSAGE value="edit note in pdf" />
+    <MESSAGE value="edit header title" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit header title" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
