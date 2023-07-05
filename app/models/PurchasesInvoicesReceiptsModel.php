@@ -12,6 +12,7 @@ class PurchasesInvoicesReceiptsModel extends AbstractModel
     public $PaymentAmount;
     public $PaymentLiteral;
     public $TotalPrice;
+    public $Note;
     public $BankAccountNumber;
     public $BankName;
     public $CheckNumber;
@@ -25,18 +26,19 @@ class PurchasesInvoicesReceiptsModel extends AbstractModel
     protected static $tableName = "purchases_invoices_receipts";
 
     protected static array $tableSchema = [
-        "ReceiptId"            => self::DATA_TYPE_INT,
-        "InvoiceId"     => self::DATA_TYPE_INT,
-        "PaymentType"  => self::DATA_TYPE_INT,
-        "PaymentAmount"      => self::DATA_TYPE_DECIMAL,
-        "PaymentLiteral"     => self::DATA_TYPE_DECIMAL,
-        "TotalPrice"     => self::DATA_TYPE_DECIMAL,
-        "BankAccountNumber"     => self::DATA_TYPE_STR,
-        "BankName"     => self::DATA_TYPE_STR,
-        "CheckNumber"     => self::DATA_TYPE_STR,
+        "ReceiptId"         => self::DATA_TYPE_INT,
+        "InvoiceId"         => self::DATA_TYPE_INT,
+        "PaymentType"       => self::DATA_TYPE_INT,
+        "PaymentAmount"     => self::DATA_TYPE_DECIMAL,
+        "PaymentLiteral"    => self::DATA_TYPE_DECIMAL,
+        "TotalPrice"        => self::DATA_TYPE_DECIMAL,
+        "Note"              => self::DATA_TYPE_STR,
+        "BankAccountNumber" => self::DATA_TYPE_STR,
+        "BankName"          => self::DATA_TYPE_STR,
+        "CheckNumber"       => self::DATA_TYPE_STR,
         "TransferredTo"     => self::DATA_TYPE_STR,
-        "created"     => self::DATA_TYPE_STR,
-        "UserId"     => self::DATA_TYPE_INT,
+        "created"           => self::DATA_TYPE_STR,
+        "UserId"            => self::DATA_TYPE_INT,
     ];
 
     protected static string $primaryKey = "ReceiptId";

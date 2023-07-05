@@ -32,6 +32,8 @@ $content["text_discount_type"] = "Discount Type";
 $content["text_name_transactor"] = "Name Transactor";
 $content["text_payment_status"] = "Payment Status";
 $content["text_no_disc"] = "No Discount";
+$content["text_note"] = "Note";
+$content["text_no_note"] = "No Notes";
 $content["text_options"] = "Options";
 
 

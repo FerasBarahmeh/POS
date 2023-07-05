@@ -58,6 +58,7 @@
                     <th><?= $text_discount_type ?></th>
                     <th><?= $text_name_transactor ?></th>
                     <th><?= $text_payment_status ?></th>
+                    <th><?= $text_note ?></th>
                     <th><?= $text_options ?></th>
                 </tr>
                 </thead>
@@ -76,6 +77,7 @@
                             <td><?= $lastSalesInvoice->DiscountType  == null ? $text_no_disc : $lastSalesInvoice->DiscountType ?></td>
                             <td><?= $lastSalesInvoice->Name ?></td>
                             <td><?= $paymentsStatus[$lastSalesInvoice->PaymentStatus] ?></td>
+                            <td><?= $lastSalesInvoice->Note ? $lastSalesInvoice->Note : $text_no_note ?></td>
                             <td>
                                 <div class="icons">
 
@@ -110,6 +112,7 @@
                     <th><?= $text_discount_type ?></th>
                     <th><?= $text_name_transactor ?></th>
                     <th><?= $text_payment_status ?></th>
+                    <th><?= $text_note ?></th>
                     <th><?= $text_options ?></th>
                 </tr>
                 </thead>
@@ -128,6 +131,7 @@
                             <td><?= $lastPurchasesInvoice->DiscountType  == null ? $text_no_disc : $lastPurchasesInvoice->DiscountType ?></td>
                             <td><?= $lastPurchasesInvoice->Name ?></td>
                             <td><?= $paymentsStatus[$lastPurchasesInvoice->PaymentStatus] ?></td>
+                            <td><?= $lastPurchasesInvoice->Note ? $lastPurchasesInvoice->Note : $text_no_note ?></td>
                             <td>
                                 <div class="icons">
 
@@ -167,6 +171,7 @@
                                 <th><?= $text_discount_type ?></th>
                                 <th><?= $text_name_transactor ?></th>
                                 <th><?= $text_payment_status ?></th>
+                                <th><?= $text_note ?></th>
                                 <th><?= $text_options ?></th>
                             </tr>
                             </thead>
@@ -186,6 +191,7 @@
                                         <td><?= $transaction->DiscountType  == null ? $text_no_disc : $transaction->DiscountType ?></td>
                                         <td><?= $transaction->Name ?></td>
                                         <td><?= $paymentsStatus[$transaction->PaymentStatus] ?></td>
+                                        <td><?= $transaction->Note ? $transaction->Note : $text_no_note ?></td>
                                         <td>
                                             <div class="icons">
 

@@ -154,6 +154,7 @@ trait TraitInvoiceController
         $receipts->PaymentAmount = $infoInvoice->paymentAmount;
         $receipts->PaymentLiteral = (string) ((float)$infoInvoice->totalPriceWithTax - (float)$infoInvoice->paymentAmount);
         $receipts->TotalPrice = (float) $receipts->PaymentAmount + (float) $receipts->PaymentLiteral;
+        $receipts->Note = $infoInvoice->Note;
         $receipts->BankName = NULL;
         $receipts->BankAccountNumber = NULL;
         $receipts->CheckNumber = NULL;

@@ -41,6 +41,7 @@
                     <th><?= $text_discount_type ?></th>
                     <th><?= $text_name_transactor ?></th>
                     <th><?= $text_payment_status ?></th>
+                    <th><?= $text_note ?></th>
                     <th><?= $text_options ?></th>
                 </tr>
                 </thead>
@@ -62,6 +63,7 @@
                             <td><?= $transactionsPurchase->DiscountType  == null ? $text_no_disc : $transactionsPurchase->DiscountType ?></td>
                             <td><?= $transactionsPurchase->Name ?></td>
                             <td><?= $paymentsStatus[$transactionsPurchase->PaymentStatus] ?></td>
+                            <td><?= $transactionsPurchase->Note ? $transactionsPurchase->Note : $text_no_note ?></td>
                             <td>
                                 <div class="icons">
                                     <button class="dir-r top-5 download-btn">

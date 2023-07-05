@@ -395,7 +395,7 @@
                 <section class="discount">
                     <h3 class="between-ele">
                         <span><?= $text_special_offer ?></span>
-                        <!--TODO: Set Message When Add Discount  -->
+
                         <div class="hint absolute" id="discount-hint">
                             <div class="span relative">
                                 <div class="message "></div>

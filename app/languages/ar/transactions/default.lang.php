@@ -34,4 +34,6 @@ $content["text_discount_type"] = "نوع الخصم";
 $content["text_name_transactor"] = "اسم المعاملة";
 $content["text_payment_status"] = "حالة الدفع";
 $content["text_no_disc"] = "لايوجد خصم";
+$content["text_note"] = "ملاحظات";
+$content["text_no_note"] = "لايوجد ملاحظات";
 $content["text_options"] = "الخيارات";

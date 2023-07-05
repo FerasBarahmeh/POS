@@ -8,7 +8,6 @@ This project is implemented with Model-view-controller (MVC) software design pat
 # Libraries / Dependencies Used
 - Chart.js
 - fpdf
-- MySQL
 # Setup
 1) Download Server controller like XAMPP or MAMP
 2) PHP >= 8.*

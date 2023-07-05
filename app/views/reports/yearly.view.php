@@ -21,6 +21,7 @@
                     <th><?= $text_discount_type ?></th>
                     <th><?= $text_name_transactor ?></th>
                     <th><?= $text_payment_status ?></th>
+                    <th><?= $text_note ?></th>
                     <th><?= $text_options ?></th>
                 </tr>
                 </thead>
@@ -40,6 +41,7 @@
                             <td><?= $invoiceLastMonth->DiscountType  == null ? $text_no_disc : $invoiceLastMonth->DiscountType ?></td>
                             <td><?= $invoiceLastMonth->Name ?></td>
                             <td><?= $paymentsStatus[$invoiceLastMonth->PaymentStatus] ?></td>
+                            <td><?= $invoiceLastMonth->Note ? $invoiceLastMonth->Note : $text_no_note ?></td>
                             <td>
                                 <div class="icons">
 
