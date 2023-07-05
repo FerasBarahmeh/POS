@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
                                 </div>
 
                             </div>
@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
                                 </div>
 
                             </div>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
                                 </div>
 
                             </div>
@@ -130,7 +130,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
                                 </div>
 
                             </div>
@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
                                 </div>
                             </div>
                         </div>
@@ -201,7 +201,7 @@
                                 </div>
                                 <div class="options">
                                     <button class="save"><?= $text_save ?></button>
-                                    <button class="cansel" undo-btn><?= $text_cancel ?></button>
+                                    <button class="cansel" undo-btn><?= $text_cansel ?></button>
                                 </div>
 
                             </div>
